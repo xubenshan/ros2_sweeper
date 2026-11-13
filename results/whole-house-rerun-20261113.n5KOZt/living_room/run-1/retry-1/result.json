@@ -1,0 +1,138 @@
+{
+  "scenario": "living_room",
+  "domain": 68,
+  "command": [
+    "implementation:=cpp",
+    "mode:=localize",
+    "evaluate:=true",
+    "gui:=true",
+    "rviz:=false",
+    "enable_tof:=true",
+    "odom_source:=robot_wheels",
+    "benchmark_nav:=true",
+    "tof_costmap:=true",
+    "collision_aware_nav:=true",
+    "clearance_control:=true",
+    "precise_gap_navigation:=true",
+    "early_gap_replan:=true",
+    "gap_progress_timeout_s:=35",
+    "gap_navigation_retries:=1",
+    "max_gap_passes:=3",
+    "sweep_goal_tolerance:=0.1",
+    "target_gap_coverage:=true",
+    "gap_efficiency_target:=0.8",
+    "guard_gap_goals:=true",
+    "open_floor:=true",
+    "refine_sweep:=true"
+  ],
+  "task_scope": "all",
+  "requested_coverage": 0.9,
+  "rmw": "rmw_fastrtps_cpp",
+  "nav_ready": true,
+  "measurement_valid": true,
+  "startup_wall_time_s": 20.673263885008055,
+  "pose_comparison": {
+    "running_samples": 3966,
+    "median_error_m": 0.044243344888819966,
+    "p95_error_m": 0.08349826264141925,
+    "max_error_m": 0.10640018812149335,
+    "estimate_only_cells": 97,
+    "truth_only_cells": 187
+  },
+  "action_status": 4,
+  "success": true,
+  "reason": "Coverage target reached; completion margin not reached within gap-fill limit; skipped goals after navigation failures=26",
+  "timed_out": false,
+  "task_coverage": 0.9042201638221741,
+  "task_path_m": 44.422158003420925,
+  "completed_waypoints": 124,
+  "failed_waypoints": 26,
+  "wall_time_s": 652.8588368259952,
+  "sim_time_s": 417.928,
+  "real_time_factor": 0.6401506365937255,
+  "nav_goals_succeeded": 124,
+  "nav_goals_canceled": 0,
+  "nav_goals_failed": 0,
+  "nav_goal_success_rate": 1.0,
+  "states": {
+    "IDLE": 1,
+    "WAITING_MAP": 1,
+    "PLANNING": 4,
+    "RUNNING": 4,
+    "SUCCEEDED": 1
+  },
+  "contact_messages": 0,
+  "recovery_durations_s": [],
+  "scan_hz_wall": 3.197956203373459,
+  "ratio": 0.9207339286804199,
+  "efficiency": 0.7593359351158142,
+  "revisit_ratio": 0.2187454253435135,
+  "sim_unstable": false,
+  "truth_path_m": 44.86,
+  "ideal_path_m": 34.06,
+  "truth_target_cells": 5450,
+  "path_to_70_m": 26.71,
+  "path_to_80_m": 31.21,
+  "path_to_85_m": 33.22,
+  "path_to_90_m": 41.97,
+  "at_coverage": {
+    "0.70": {
+      "coverage": 0.7004,
+      "efficiency": 1.2751,
+      "revisit_ratio": 0.0658,
+      "truth_path_m": 26.71
+    },
+    "0.80": {
+      "coverage": 0.804,
+      "efficiency": 1.0915,
+      "revisit_ratio": 0.0725,
+      "truth_path_m": 31.21
+    },
+    "0.85": {
+      "coverage": 0.8508,
+      "efficiency": 1.0254,
+      "revisit_ratio": 0.0681,
+      "truth_path_m": 33.22
+    },
+    "0.90": {
+      "coverage": 0.9007,
+      "efficiency": 0.8117,
+      "revisit_ratio": 0.1978,
+      "truth_path_m": 41.97
+    }
+  },
+  "at_truth_target": {
+    "coverage": 0.9007,
+    "efficiency": 0.8117,
+    "truth_path_m": 41.97,
+    "sim_time_s": 374.74100000000004
+  },
+  "planned_waypoints": 105,
+  "planned_path_m": 37.09,
+  "gap_passes": 3,
+  "gap_plans": [
+    {
+      "waypoints": 27,
+      "planned_m": 9.99
+    },
+    {
+      "waypoints": 15,
+      "planned_m": 4.24
+    },
+    {
+      "waypoints": 4,
+      "planned_m": 2.41
+    }
+  ],
+  "deferred_sweep_waypoints": 7,
+  "adjusted_sweep_waypoints": 18,
+  "deferred_gap_waypoints": 19,
+  "adjusted_gap_waypoints": 8,
+  "navigation_timeouts": 0,
+  "no_progress": 0,
+  "contact_recoveries_started": 0,
+  "contact_recoveries_completed": 0,
+  "contact_recoveries_cleared": 0,
+  "contact_recovery_clear_rate": null,
+  "performance_passed": false
+}

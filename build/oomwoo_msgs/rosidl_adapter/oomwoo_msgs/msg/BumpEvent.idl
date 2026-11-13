@@ -1,0 +1,62 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from oomwoo_msgs/msg/BumpEvent.msg
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+#include "std_msgs/msg/Header.idl"
+
+module oomwoo_msgs {
+  module msg {
+    module BumpEvent_Constants {
+      const uint8 SIDE_BOTH = 0;
+      const uint8 SIDE_LEFT = 1;
+      const uint8 SIDE_RIGHT = 2;
+    };
+    @verbatim (language="comment", text=
+      "A localized bump: where the vacuum physically touched something solid, and how" "\n"
+      "it got there. Built by the bump_map node from the two bumper switches + TF." "\n"
+      "" "\n"
+      "The bump map is the tactile keep-out layer: LiDAR/cameras see couch skirts, bed" "\n"
+      "valances and curtains as solid, but only a physical contact proves something is" "\n"
+      "truly solid, so a coverage planner can still clean under/through the rest.")
+    struct BumpEvent {
+      @verbatim (language="comment", text=
+        "header.frame_id = map (or odom); stamp = bump time")
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "estimated contact point on the obstacle surface")
+      geometry_msgs::msg::Point contact;
+
+      @verbatim (language="comment", text=
+        "robot base_footprint at the bump")
+      geometry_msgs::msg::Point robot;
+
+      @verbatim (language="comment", text=
+        "robot base_footprint a moment before the bump")
+      geometry_msgs::msg::Point approach;
+
+      @verbatim (language="comment", text=
+        "robot heading at the bump (rad, in header.frame_id)")
+      double heading;
+
+      @verbatim (language="comment", text=
+        "which bumper switch(es) fired (see constants)")
+      uint8 side;
+
+      @verbatim (language="comment", text=
+        "Richer signal from optical-interrupter bumpers; all 0.0 when only the binary" "\n"
+        "left/right switches are available (current sim + simplest hardware). *_depress" "\n"
+        "is 0..1 (how far that side is pressed); *_rate is the press rate (1/s). The" "\n"
+        "left/right depress RATIO estimates the contact angle within the arc, replacing" "\n"
+        "the geometric guess bump_map makes from binary switches.")
+      float left_depress;
+
+      float right_depress;
+
+      float left_rate;
+
+      float right_rate;
+    };
+  };
+};

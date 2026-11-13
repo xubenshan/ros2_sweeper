@@ -1,0 +1,1 @@
+/home/xbs/ros2_sweeper_resume_project/build/oomwoo_msgs/rosidl_generator_rs/oomwoo_msgs/rust/src/lib.rs

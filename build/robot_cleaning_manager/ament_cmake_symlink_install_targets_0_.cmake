@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/libtask_execution.a" "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/cleaning_task_manager_node" "TARGETS" "task_execution" "cleaning_task_manager_node" "DESTINATION" "lib/robot_cleaning_manager")

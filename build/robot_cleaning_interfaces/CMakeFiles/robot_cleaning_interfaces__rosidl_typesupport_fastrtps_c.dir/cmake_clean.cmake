@@ -1,0 +1,25 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/action/detail/clean_task__type_support_c.cpp.o"
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/action/detail/clean_task__type_support_c.cpp.o.d"
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support_c.cpp.o"
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support_c.cpp.o.d"
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support_c.cpp.o"
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support_c.cpp.o.d"
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support_c.cpp.o"
+  "CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support_c.cpp.o.d"
+  "librobot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.pdb"
+  "librobot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.so"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/action/detail/clean_task__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/action/detail/clean_task__type_support_c.cpp"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/msg/detail/coverage_status__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support_c.cpp"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/begin_coverage__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support_c.cpp"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/plan_coverage__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support_c.cpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/robot_cleaning_interfaces__rosidl_typesupport_fastrtps_c.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

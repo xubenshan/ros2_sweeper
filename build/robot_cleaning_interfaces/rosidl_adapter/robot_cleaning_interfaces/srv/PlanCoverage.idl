@@ -1,0 +1,35 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from robot_cleaning_interfaces/srv/PlanCoverage.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+#include "geometry_msgs/msg/PoseStamped.idl"
+#include "nav_msgs/msg/OccupancyGrid.idl"
+#include "nav_msgs/msg/Path.idl"
+
+module robot_cleaning_interfaces {
+  module srv {
+    struct PlanCoverage_Request {
+      sequence<string> regions;
+
+      geometry_msgs::msg::PoseStamped start;
+
+      boolean gap_fill;
+
+      float target_coverage;
+
+      double distance_budget_m;
+
+      nav_msgs::msg::OccupancyGrid covered;
+
+      sequence<geometry_msgs::msg::Point> excluded;
+    };
+    struct PlanCoverage_Response {
+      boolean success;
+
+      string reason;
+
+      nav_msgs::msg::Path path;
+    };
+  };
+};

@@ -1,0 +1,54 @@
+/coverage_planner:
+  ros__parameters:
+    base_frame: base_footprint
+    cleaning_radius: 0.2
+    continuous_coverage_tracking: false
+    edge_margin: 0.15
+    gap_edge_priority_margin: 0.0
+    gap_safety_margin: 0.005
+    gap_use_local_costmap: true
+    odom_frame: odom
+    qos_overrides:
+      /clock:
+        subscription:
+          depth: 1
+          durability: volatile
+          history: keep_last
+          reliability: best_effort
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+      /tf:
+        subscription:
+          depth: 100
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+      /tf_static:
+        subscription:
+          depth: 100
+          history: keep_last
+          reliability: reliable
+    refine_sweep: true
+    region_names:
+    - room_1
+    regions:
+      room_1:
+      - -1.8
+      - -1.45
+      - 1.8
+      - 1.45
+    robot_radius: 0.175
+    row_overlap: 0.1
+    safety_margin: 0.005
+    start_type_description_service: true
+    sweep_safety_margin: 0.005
+    sweep_use_live_costmap: true
+    target_gap_coverage: true
+    turn_cost: 0.2
+    use_sim_time: true
+    waypoint_spacing: 0.4
+

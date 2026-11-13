@@ -1,0 +1,1 @@
+/home/xbs/ros2_sweeper_resume_project/build/oomwoo_one/ament_cmake_core/oomwoo_oneConfig.cmake

@@ -1,0 +1,1 @@
+/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_typesupport_fastrtps_cpp/robot_cleaning_interfaces/msg/detail/coverage_status__rosidl_typesupport_fastrtps_cpp.hpp

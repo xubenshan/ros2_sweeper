@@ -1,0 +1,448 @@
+l_shape: run 1, attempt 1, domain 76
+l_shape: wall=30s state=RUNNING truth=21.2% efficiency=100.0%
+l_shape: wall=60s state=RUNNING truth=38.9% efficiency=100.0%
+l_shape: wall=90s state=RUNNING truth=58.7% efficiency=100.0%
+l_shape: wall=120s state=RUNNING truth=80.2% efficiency=100.0%
+l_shape: wall=150s state=RUNNING truth=88.3% efficiency=90.3%
+l_shape: wall=180s state=RUNNING truth=90.1% efficiency=74.1%
+{
+  "scenario": "l_shape",
+  "domain": 76,
+  "command": [
+    "implementation:=cpp",
+    "mode:=localize",
+    "evaluate:=true",
+    "gui:=false",
+    "rviz:=false",
+    "world:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-1/attempt-1/l_shape/run-1/scene.world",
+    "map:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-1/attempt-1/l_shape/run-1/map.yaml",
+    "regions:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-1/attempt-1/l_shape/run-1/regions.yaml",
+    "x:=-1.08",
+    "y:=0.25",
+    "enable_tof:=false",
+    "odom_source:=robot_wheels",
+    "benchmark_nav:=true",
+    "tof_costmap:=true",
+    "collision_aware_nav:=true",
+    "clearance_control:=true",
+    "precise_gap_navigation:=true",
+    "early_gap_replan:=true",
+    "gap_progress_timeout_s:=35",
+    "gap_navigation_retries:=1",
+    "max_gap_passes:=3",
+    "sweep_goal_tolerance:=0.1",
+    "target_gap_coverage:=true",
+    "gap_efficiency_target:=0.8",
+    "guard_gap_goals:=true",
+    "open_floor:=true",
+    "refine_sweep:=true"
+  ],
+  "task_scope": "all",
+  "requested_coverage": 0.9,
+  "rmw": "rmw_cyclonedds_cpp",
+  "nav_ready": true,
+  "measurement_valid": true,
+  "startup_wall_time_s": 13.819669327000156,
+  "pose_comparison": {
+    "running_samples": 1748,
+    "median_error_m": 0.04130535418861947,
+    "p95_error_m": 0.07350121203618488,
+    "max_error_m": 0.09119849703442376,
+    "estimate_only_cells": 49,
+    "truth_only_cells": 60
+  },
+  "action_status": 4,
+  "success": true,
+  "reason": "Coverage target reached; completion margin not reached within gap-fill limit; skipped goals after navigation failures=2",
+  "timed_out": false,
+  "task_coverage": 0.9064849615097046,
+  "task_path_m": 19.500104343123038,
+  "completed_waypoints": 50,
+  "failed_waypoints": 2,
+  "wall_time_s": 192.73847062099958,
+  "sim_time_s": 180.665,
+  "real_time_factor": 0.9373582731973585,
+  "nav_goals_succeeded": 50,
+  "nav_goals_canceled": 0,
+  "nav_goals_failed": 0,
+  "nav_goal_success_rate": 1.0,
+  "states": {
+    "IDLE": 1,
+    "WAITING_MAP": 1,
+    "PLANNING": 4,
+    "RUNNING": 4,
+    "SUCCEEDED": 1
+  },
+  "contact_messages": 0,
+  "recovery_durations_s": [],
+  "scan_hz_wall": 4.682060573384991,
+  "ratio": 0.9116541147232056,
+  "efficiency": 0.6741858124732971,
+  "revisit_ratio": 0.34427735209465027,
+  "sim_unstable": false,
+  "truth_path_m": 19.73,
+  "ideal_path_m": 13.3,
+  "truth_target_cells": 2128,
+  "path_to_70_m": 10.3,
+  "path_to_80_m": 11.7,
+  "path_to_85_m": 12.84,
+  "path_to_90_m": 17.8,
+  "at_coverage": {
+    "0.70": {
+      "coverage": 0.7011,
+      "efficiency": 1.2917,
+      "revisit_ratio": 0.0978,
+      "truth_path_m": 10.3
+    },
+    "0.80": {
+      "coverage": 0.8022,
+      "efficiency": 1.1372,
+      "revisit_ratio": 0.0861,
+      "truth_path_m": 11.7
+    },
+    "0.85": {
+      "coverage": 0.8557,
+      "efficiency": 1.0359,
+      "revisit_ratio": 0.0784,
+      "truth_path_m": 12.84
+    },
+    "0.90": {
+      "coverage": 0.9004,
+      "efficiency": 0.7474,
+      "revisit_ratio": 0.2826,
+      "truth_path_m": 17.8
+    }
+  },
+  "at_truth_target": {
+    "coverage": 0.9004,
+    "efficiency": 0.7474,
+    "truth_path_m": 17.8,
+    "sim_time_s": 157.97
+  },
+  "planned_waypoints": 40,
+  "planned_path_m": 14.2,
+  "gap_passes": 3,
+  "gap_plans": [
+    {
+      "waypoints": 9,
+      "planned_m": 5.34
+    },
+    {
+      "waypoints": 3,
+      "planned_m": 1.65
+    },
+    {
+      "waypoints": 1,
+      "planned_m": 0.5
+    }
+  ],
+  "deferred_sweep_waypoints": 0,
+  "adjusted_sweep_waypoints": 11,
+  "deferred_gap_waypoints": 2,
+  "adjusted_gap_waypoints": 4,
+  "navigation_timeouts": 0,
+  "no_progress": 0,
+  "contact_recoveries_started": 0,
+  "contact_recoveries_completed": 0,
+  "contact_recoveries_cleared": 0,
+  "contact_recovery_clear_rate": null,
+  "performance_passed": false
+}
+l_shape: run 2, attempt 1, domain 80
+l_shape: wall=30s state=RUNNING truth=20.6% efficiency=100.0%
+l_shape: wall=60s state=RUNNING truth=37.7% efficiency=100.0%
+l_shape: wall=90s state=RUNNING truth=57.9% efficiency=100.0%
+l_shape: wall=120s state=RUNNING truth=77.4% efficiency=100.0%
+l_shape: wall=150s state=RUNNING truth=86.4% efficiency=91.6%
+{
+  "scenario": "l_shape",
+  "domain": 80,
+  "command": [
+    "implementation:=cpp",
+    "mode:=localize",
+    "evaluate:=true",
+    "gui:=false",
+    "rviz:=false",
+    "world:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-2/attempt-1/l_shape/run-1/scene.world",
+    "map:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-2/attempt-1/l_shape/run-1/map.yaml",
+    "regions:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-2/attempt-1/l_shape/run-1/regions.yaml",
+    "x:=-1.08",
+    "y:=0.25",
+    "enable_tof:=false",
+    "odom_source:=robot_wheels",
+    "benchmark_nav:=true",
+    "tof_costmap:=true",
+    "collision_aware_nav:=true",
+    "clearance_control:=true",
+    "precise_gap_navigation:=true",
+    "early_gap_replan:=true",
+    "gap_progress_timeout_s:=35",
+    "gap_navigation_retries:=1",
+    "max_gap_passes:=3",
+    "sweep_goal_tolerance:=0.1",
+    "target_gap_coverage:=true",
+    "gap_efficiency_target:=0.8",
+    "guard_gap_goals:=true",
+    "open_floor:=true",
+    "refine_sweep:=true"
+  ],
+  "task_scope": "all",
+  "requested_coverage": 0.9,
+  "rmw": "rmw_cyclonedds_cpp",
+  "nav_ready": true,
+  "measurement_valid": true,
+  "startup_wall_time_s": 13.599075404985342,
+  "pose_comparison": {
+    "running_samples": 1594,
+    "median_error_m": 0.03523028180383975,
+    "p95_error_m": 0.07796439843662914,
+    "max_error_m": 0.09826644059079484,
+    "estimate_only_cells": 29,
+    "truth_only_cells": 44
+  },
+  "action_status": 4,
+  "success": true,
+  "reason": "Coverage target reached; completion margin not reached within gap-fill limit; skipped goals after navigation failures=4",
+  "timed_out": false,
+  "task_coverage": 0.9083646535873413,
+  "task_path_m": 17.610190491900866,
+  "completed_waypoints": 48,
+  "failed_waypoints": 4,
+  "wall_time_s": 174.86739999102429,
+  "sim_time_s": 164.96,
+  "real_time_factor": 0.9433433562142925,
+  "nav_goals_succeeded": 48,
+  "nav_goals_canceled": 0,
+  "nav_goals_failed": 0,
+  "nav_goal_success_rate": 1.0,
+  "states": {
+    "IDLE": 1,
+    "WAITING_MAP": 1,
+    "PLANNING": 4,
+    "RUNNING": 4,
+    "SUCCEEDED": 1
+  },
+  "contact_messages": 0,
+  "recovery_durations_s": [],
+  "scan_hz_wall": 4.722720024963251,
+  "ratio": 0.9154135584831238,
+  "efficiency": 0.747930645942688,
+  "revisit_ratio": 0.24065472185611725,
+  "sim_unstable": false,
+  "truth_path_m": 17.78,
+  "ideal_path_m": 13.3,
+  "truth_target_cells": 2128,
+  "path_to_70_m": 10.37,
+  "path_to_80_m": 11.82,
+  "path_to_85_m": 12.89,
+  "path_to_90_m": 16.75,
+  "at_coverage": {
+    "0.70": {
+      "coverage": 0.7115,
+      "efficiency": 1.2821,
+      "revisit_ratio": 0.0727,
+      "truth_path_m": 10.37
+    },
+    "0.80": {
+      "coverage": 0.8092,
+      "efficiency": 1.1249,
+      "revisit_ratio": 0.0638,
+      "truth_path_m": 11.82
+    },
+    "0.85": {
+      "coverage": 0.851,
+      "efficiency": 1.0321,
+      "revisit_ratio": 0.0585,
+      "truth_path_m": 12.89
+    },
+    "0.90": {
+      "coverage": 0.9008,
+      "efficiency": 0.7942,
+      "revisit_ratio": 0.2105,
+      "truth_path_m": 16.75
+    }
+  },
+  "at_truth_target": {
+    "coverage": 0.9008,
+    "efficiency": 0.7942,
+    "truth_path_m": 16.75,
+    "sim_time_s": 151.94
+  },
+  "planned_waypoints": 39,
+  "planned_path_m": 14.12,
+  "gap_passes": 3,
+  "gap_plans": [
+    {
+      "waypoints": 11,
+      "planned_m": 4.53
+    },
+    {
+      "waypoints": 2,
+      "planned_m": 1.06
+    },
+    {
+      "waypoints": 1,
+      "planned_m": 0.2
+    }
+  ],
+  "deferred_sweep_waypoints": 0,
+  "adjusted_sweep_waypoints": 10,
+  "deferred_gap_waypoints": 4,
+  "adjusted_gap_waypoints": 0,
+  "navigation_timeouts": 0,
+  "no_progress": 0,
+  "contact_recoveries_started": 0,
+  "contact_recoveries_completed": 0,
+  "contact_recoveries_cleared": 0,
+  "contact_recovery_clear_rate": null,
+  "performance_passed": false
+}
+l_shape: run 3, attempt 1, domain 84
+l_shape: wall=30s state=RUNNING truth=20.7% efficiency=100.0%
+l_shape: wall=60s state=RUNNING truth=38.4% efficiency=100.0%
+l_shape: wall=90s state=RUNNING truth=57.2% efficiency=100.0%
+l_shape: wall=120s state=RUNNING truth=79.9% efficiency=100.0%
+l_shape: wall=150s state=RUNNING truth=86.5% efficiency=85.2%
+{
+  "scenario": "l_shape",
+  "domain": 84,
+  "command": [
+    "implementation:=cpp",
+    "mode:=localize",
+    "evaluate:=true",
+    "gui:=false",
+    "rviz:=false",
+    "world:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-3/attempt-1/l_shape/run-1/scene.world",
+    "map:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-3/attempt-1/l_shape/run-1/map.yaml",
+    "regions:=/home/xbs/ros2_sweeper_resume_project/results/cross-map-20261113.ybb8Lk/runs/l_shape/run-3/attempt-1/l_shape/run-1/regions.yaml",
+    "x:=-1.08",
+    "y:=0.25",
+    "enable_tof:=false",
+    "odom_source:=robot_wheels",
+    "benchmark_nav:=true",
+    "tof_costmap:=true",
+    "collision_aware_nav:=true",
+    "clearance_control:=true",
+    "precise_gap_navigation:=true",
+    "early_gap_replan:=true",
+    "gap_progress_timeout_s:=35",
+    "gap_navigation_retries:=1",
+    "max_gap_passes:=3",
+    "sweep_goal_tolerance:=0.1",
+    "target_gap_coverage:=true",
+    "gap_efficiency_target:=0.8",
+    "guard_gap_goals:=true",
+    "open_floor:=true",
+    "refine_sweep:=true"
+  ],
+  "task_scope": "all",
+  "requested_coverage": 0.9,
+  "rmw": "rmw_cyclonedds_cpp",
+  "nav_ready": true,
+  "measurement_valid": true,
+  "startup_wall_time_s": 13.61146929700044,
+  "pose_comparison": {
+    "running_samples": 1613,
+    "median_error_m": 0.03387306306481969,
+    "p95_error_m": 0.07238794273511916,
+    "max_error_m": 0.09579650964441733,
+    "estimate_only_cells": 37,
+    "truth_only_cells": 61
+  },
+  "action_status": 4,
+  "success": true,
+  "reason": "Coverage target reached; completion margin not reached within gap-fill limit; skipped goals after navigation failures=6",
+  "timed_out": false,
+  "task_coverage": 0.907424807548523,
+  "task_path_m": 18.087219128092215,
+  "completed_waypoints": 46,
+  "failed_waypoints": 6,
+  "wall_time_s": 174.9414153880207,
+  "sim_time_s": 167.29,
+  "real_time_factor": 0.9562629845479995,
+  "nav_goals_succeeded": 46,
+  "nav_goals_canceled": 0,
+  "nav_goals_failed": 0,
+  "nav_goal_success_rate": 1.0,
+  "states": {
+    "IDLE": 1,
+    "WAITING_MAP": 1,
+    "PLANNING": 4,
+    "RUNNING": 4,
+    "SUCCEEDED": 1
+  },
+  "contact_messages": 0,
+  "recovery_durations_s": [],
+  "scan_hz_wall": 4.778381562876254,
+  "ratio": 0.918703019618988,
+  "efficiency": 0.7292228937149048,
+  "revisit_ratio": 0.24837321043014526,
+  "sim_unstable": false,
+  "truth_path_m": 18.24,
+  "ideal_path_m": 13.3,
+  "truth_target_cells": 2128,
+  "path_to_70_m": 10.67,
+  "path_to_80_m": 12.22,
+  "path_to_85_m": 14.96,
+  "path_to_90_m": 17.95,
+  "at_coverage": {
+    "0.70": {
+      "coverage": 0.7063,
+      "efficiency": 1.2462,
+      "revisit_ratio": 0.1181,
+      "truth_path_m": 10.67
+    },
+    "0.80": {
+      "coverage": 0.8026,
+      "efficiency": 1.0886,
+      "revisit_ratio": 0.1032,
+      "truth_path_m": 12.22
+    },
+    "0.85": {
+      "coverage": 0.8524,
+      "efficiency": 0.889,
+      "revisit_ratio": 0.1853,
+      "truth_path_m": 14.96
+    },
+    "0.90": {
+      "coverage": 0.9074,
+      "efficiency": 0.7409,
+      "revisit_ratio": 0.2523,
+      "truth_path_m": 17.95
+    }
+  },
+  "at_truth_target": {
+    "coverage": 0.9074,
+    "efficiency": 0.7409,
+    "truth_path_m": 17.95,
+    "sim_time_s": 157.85500000000002
+  },
+  "planned_waypoints": 39,
+  "planned_path_m": 14.12,
+  "gap_passes": 3,
+  "gap_plans": [
+    {
+      "waypoints": 6,
+      "planned_m": 4.67
+    },
+    {
+      "waypoints": 7,
+      "planned_m": 2.33
+    },
+    {
+      "waypoints": 1,
+      "planned_m": 0.25
+    }
+  ],
+  "deferred_sweep_waypoints": 3,
+  "adjusted_sweep_waypoints": 7,
+  "deferred_gap_waypoints": 3,
+  "adjusted_gap_waypoints": 0,
+  "navigation_timeouts": 0,
+  "no_progress": 0,
+  "contact_recoveries_started": 0,
+  "contact_recoveries_completed": 0,
+  "contact_recoveries_cleared": 0,
+  "contact_recovery_clear_rate": null,
+  "performance_passed": false
+}

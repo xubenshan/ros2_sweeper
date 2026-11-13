@@ -1,0 +1,26 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from robot_cleaning_interfaces/srv/BeginCoverage.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/PoseStamped.idl"
+
+module robot_cleaning_interfaces {
+  module srv {
+    struct BeginCoverage_Request {
+      string task_id;
+
+      sequence<string> regions;
+
+      geometry_msgs::msg::PoseStamped start;
+
+      sequence<int8> restored_grid;
+
+      double restored_distance_m;
+    };
+    struct BeginCoverage_Response {
+      boolean success;
+
+      string reason;
+    };
+  };
+};

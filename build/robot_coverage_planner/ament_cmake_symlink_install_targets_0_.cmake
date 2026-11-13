@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/libcoverage_direct_planner.so" "TARGETS" "coverage_direct_planner" "DESTINATION" "lib")

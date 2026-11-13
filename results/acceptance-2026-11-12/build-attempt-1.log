@@ -1,0 +1,23 @@
+Starting >>> robot_cleaning_interfaces
+Starting >>> robot_motion_safety
+Finished <<< robot_motion_safety [0.14s]
+Finished <<< robot_cleaning_interfaces [0.46s]
+Starting >>> robot_cleaning_manager
+Starting >>> robot_coverage_planner
+Finished <<< robot_coverage_planner [0.14s]
+--- stderr: robot_cleaning_manager
+/home/xbs/robot_sweeper/ros2_ws/src/robot_cleaning_manager/test/completion_decision_test.cpp:2:10: fatal error: robot_cleaning_manager/completion_decision.hpp: No such file or directory
+    2 | #include "robot_cleaning_manager/completion_decision.hpp"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/completion_decision_test.dir/build.make:76: CMakeFiles/completion_decision_test.dir/test/completion_decision_test.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:272: CMakeFiles/completion_decision_test.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2
+---
+Failed   <<< robot_cleaning_manager [20.8s, exited with code 2]
+
+Summary: 3 packages finished [21.4s]
+  1 package failed: robot_cleaning_manager
+  1 package had stderr output: robot_cleaning_manager
+  1 package not processed

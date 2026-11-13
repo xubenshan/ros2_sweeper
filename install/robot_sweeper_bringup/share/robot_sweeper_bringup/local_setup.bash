@@ -1,0 +1,1 @@
+/home/xbs/ros2_sweeper_resume_project/build/robot_sweeper_bringup/ament_cmake_environment_hooks/local_setup.bash

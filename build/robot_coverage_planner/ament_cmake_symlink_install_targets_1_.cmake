@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/libcoverage_grid.a" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/coverage_planner_node" "TARGETS" "coverage_grid" "coverage_planner_node" "DESTINATION" "lib/robot_coverage_planner")

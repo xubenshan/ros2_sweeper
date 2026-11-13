@@ -1,0 +1,8 @@
+# CMake generated Testfile for 
+# Source directory: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/upstream/oomwoo_ws/oomwoo-one
+# Build directory: /home/xbs/ros2_sweeper_resume_project/build/oomwoo_one
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(test_bumper_wiring "/usr/bin/python3" "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/xbs/ros2_sweeper_resume_project/build/oomwoo_one/test_results/oomwoo_one/test_bumper_wiring.xunit.xml" "--package-name" "oomwoo_one" "--output-file" "/home/xbs/ros2_sweeper_resume_project/build/oomwoo_one/ament_cmake_pytest/test_bumper_wiring.txt" "--command" "/usr/bin/python3" "-u" "-m" "pytest" "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/upstream/oomwoo_ws/oomwoo-one/test/test_bumper_wiring.py" "-o" "cache_dir=/home/xbs/ros2_sweeper_resume_project/build/oomwoo_one/ament_cmake_pytest/test_bumper_wiring/.cache" "--junit-xml=/home/xbs/ros2_sweeper_resume_project/build/oomwoo_one/test_results/oomwoo_one/test_bumper_wiring.xunit.xml" "--junit-prefix=oomwoo_one")
+set_tests_properties(test_bumper_wiring PROPERTIES  LABELS "pytest" TIMEOUT "180" WORKING_DIRECTORY "/home/xbs/ros2_sweeper_resume_project/build/oomwoo_one" _BACKTRACE_TRIPLES "/opt/ros/jazzy/share/ament_cmake_test/cmake/ament_add_test.cmake;125;add_test;/opt/ros/jazzy/share/ament_cmake_pytest/cmake/ament_add_pytest_test.cmake;177;ament_add_test;/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/upstream/oomwoo_ws/oomwoo-one/CMakeLists.txt;21;ament_add_pytest_test;/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/upstream/oomwoo_ws/oomwoo-one/CMakeLists.txt;0;")
