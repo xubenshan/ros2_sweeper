@@ -10,6 +10,20 @@
 
 namespace robot_coverage_planner
 {
+namespace
+{
+constexpr double kTau = 6.28318530718;
+constexpr double kEstimatedGapPenalty = 2.5;
+constexpr double kMissingCellPenalty = 10.0;
+constexpr double kRefinementCellValue = 2.4;
+constexpr double kSweepTrackingAllowance = 0.025;
+constexpr double kGapCompletionAllowance = 0.01;
+constexpr int kMaximumOpenFloorCells = 30000;
+constexpr int kMaximumGapGoals = 24;
+constexpr double kFailedGoalExclusionRadiusM = 0.20;
+constexpr double kMinimumGapGoalTravelM = 0.15;
+}
+
 std::vector<SweepCell> decompose(const GridMap & grid, const Mask & reachable)
 {
   std::vector<SweepCell> result;
@@ -233,7 +247,7 @@ std::vector<Cell> CoveragePlan::order_lanes(
         const double bearing = next == start ? heading :
           std::atan2(next.y - start.y, next.x - start.x);
         const double score = distance * grid_.resolution +
-          options_.turn_cost * std::abs(std::remainder(bearing - heading, 6.28318530718));
+          options_.turn_cost * std::abs(std::remainder(bearing - heading, kTau));
         if (score < best) {
           best = score;
           chosen = i;
@@ -289,7 +303,8 @@ double CoveragePlan::route_cost(
     std::count(swept.begin(), swept.end(), 1);
   // Isolated missed cells need extra travel beyond their ideal straight-line sweep.
   const double estimated_gap_cost =
-    2.5 * missed * grid_.resolution * grid_.resolution / (2 * options_.cleaning_radius);
+    kEstimatedGapPenalty * missed * grid_.resolution * grid_.resolution /
+    (2 * options_.cleaning_radius);
   return length + estimated_gap_cost;
 }
 
@@ -379,7 +394,7 @@ void improve_strip_order(const LinkCosts & links, std::vector<int> & order)
 double CoveragePlan::score_open_floor_route(
   Cell start, const Mask & target, int desired, std::vector<Cell> & route) const
 {
-  const double missing_cost = 10.0 * grid_.resolution * grid_.resolution /
+  const double missing_cost = kMissingCellPenalty * grid_.resolution * grid_.resolution /
     (2 * options_.cleaning_radius);
   Mask swept(grid_.size(), 0);
   grid_.stamp(swept, target, start, options_.cleaning_radius);
@@ -459,7 +474,7 @@ std::vector<Cell> CoveragePlan::refine_sweep(
   const auto distance = [this](Cell from, Cell to) {
       return std::hypot(to.x - from.x, to.y - from.y) * grid_.resolution;
     };
-  const double value_per_cell = 2.4 * grid_.resolution * grid_.resolution /
+  const double value_per_cell = kRefinementCellValue * grid_.resolution * grid_.resolution /
     (2.0 * options_.cleaning_radius);
   double added = 0.0;
   for (int pass = 0; pass < 8; ++pass) {
@@ -540,12 +555,13 @@ std::vector<Cell> CoveragePlan::open_floor_route(
   Cell start, const Mask & allowed, const Mask & target, double target_coverage) const
 {
   const auto area = std::count(target.begin(), target.end(), 1);
-  if (area == 0 || grid_.size() > 30000) {
+  if (area == 0 || grid_.size() > kMaximumOpenFloorCells) {
     return {};
   }
   // Leave a small allowance for tracking error. Rank incomplete candidates by
   // the additional travel the missing area would require.
-  const int desired = static_cast<int>(std::ceil(std::min(1.0, target_coverage + 0.025) * area));
+  const int desired = static_cast<int>(std::ceil(
+      std::min(1.0, target_coverage + kSweepTrackingAllowance) * area));
   const int nominal = static_cast<int>(std::clamp(std::round(
       2 * options_.cleaning_radius / grid_.resolution), 1.0, 32.0));
   double best_score = std::numeric_limits<double>::infinity();
@@ -676,7 +692,7 @@ std::vector<Cell> CoveragePlan::gaps(
   }
   const auto already_covered = target_area - std::count(missing.begin(), missing.end(), 1);
   const int desired = std::max(1, static_cast<int>(std::ceil(
-      std::min(1.0, target_coverage + 0.01) * target_area) - already_covered));
+      std::min(1.0, target_coverage + kGapCompletionAllowance) * target_area) - already_covered));
   std::vector<Cell> best;
   int best_deficit = std::numeric_limits<int>::max();
   double best_distance = std::numeric_limits<double>::infinity();
@@ -729,7 +745,9 @@ std::vector<Cell> CoveragePlan::gap_route(
   int cleaned = 0;
   std::mt19937 generator(seed);
   std::uniform_real_distribution<double> preference(0.75, 1.25);
-  for (int remaining = 0; remaining < 24 && (desired == 0 || cleaned < desired); ++remaining) {
+  for (int remaining = 0; remaining < kMaximumGapGoals &&
+    (desired == 0 || cleaned < desired); ++remaining)
+  {
     const Wavefront distances(grid_, reachable_, start);
     std::vector<Candidate> candidates;
     for (int i = 0; i < grid_.size(); ++i) {
@@ -737,11 +755,11 @@ std::vector<Cell> CoveragePlan::gap_route(
       const double straight_distance = std::hypot(candidate.x - start.x, candidate.y - start.y) *
         grid_.resolution;
       if (!reachable_[i] || candidate == start || distances.cost(candidate) < 0 ||
-        (desired > 0 && straight_distance < 0.15) ||
+        (desired > 0 && straight_distance < kMinimumGapGoalTravelM) ||
         (distance_budget > 0.0 && traveled + straight_distance > distance_budget) ||
         std::any_of(excluded.begin(), excluded.end(), [&](Cell failure) {
           return std::hypot(candidate.x - failure.x, candidate.y - failure.y) *
-                 grid_.resolution < 0.20;
+                 grid_.resolution < kFailedGoalExclusionRadiusM;
         }))
       {
         continue;

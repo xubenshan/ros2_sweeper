@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+#include "robot_coverage_planner/baseline_coverage_plan.hpp"
 #include "robot_coverage_planner/coverage_plan.hpp"
 
 #include <algorithm>
@@ -27,6 +28,16 @@ using Begin = robot_cleaning_interfaces::srv::BeginCoverage;
 using Plan = robot_cleaning_interfaces::srv::PlanCoverage;
 using Status = robot_cleaning_interfaces::msg::CoverageStatus;
 
+namespace
+{
+constexpr double kMaximumCostmapAgeS = 2.0;
+constexpr double kMaximumFutureClockSkewS = 0.1;
+constexpr double kStartPoseFallbackRadiusM = 0.25;
+constexpr double kMaximumDistanceSampleM = 0.50;
+constexpr auto kContinuousSamplePeriod = std::chrono::milliseconds(50);
+constexpr auto kCellSamplePeriod = std::chrono::milliseconds(150);
+}
+
 class CoverageNode : public rclcpp::Node
 {
 public:
@@ -54,6 +65,10 @@ public:
     options_.row_overlap = declare_parameter("row_overlap", 0.10);
     options_.waypoint_spacing = declare_parameter("waypoint_spacing", 0.40);
     options_.turn_cost = declare_parameter("turn_cost", 0.20);
+    planning_algorithm_ = declare_parameter<std::string>("planning_algorithm", "optimized");
+    if (planning_algorithm_ != "optimized" && planning_algorithm_ != "baseline") {
+      throw std::invalid_argument("planning_algorithm must be optimized or baseline");
+    }
     base_frame_ = declare_parameter<std::string>("base_frame", "base_footprint");
     odom_frame_ = declare_parameter<std::string>("odom_frame", "odom");
     for (const auto & name :
@@ -107,9 +122,10 @@ public:
         begin_tracking(*request, *response);
       });
     if (continuous_coverage_tracking_) {
-      timer_ = rclcpp::create_timer(this, get_clock(), 50ms, std::bind(&CoverageNode::sample, this));
+      timer_ = rclcpp::create_timer(
+        this, get_clock(), kContinuousSamplePeriod, std::bind(&CoverageNode::sample, this));
     } else {
-      timer_ = create_wall_timer(150ms, std::bind(&CoverageNode::sample, this));
+      timer_ = create_wall_timer(kCellSamplePeriod, std::bind(&CoverageNode::sample, this));
     }
   }
 
@@ -144,7 +160,9 @@ private:
       return 0;
     }
     const auto age = now() - rclcpp::Time(latest->header.stamp, get_clock()->get_clock_type());
-    if (age < rclcpp::Duration::from_seconds(-0.1) || age > rclcpp::Duration(2, 0)) {
+    if (age < rclcpp::Duration::from_seconds(-kMaximumFutureClockSkewS) ||
+      age > rclcpp::Duration::from_seconds(kMaximumCostmapAgeS))
+    {
       return 0;
     }
     const auto live = adapt(*latest);
@@ -182,7 +200,9 @@ private:
       return 0;
     }
     const auto age = now() - rclcpp::Time(latest->header.stamp, get_clock()->get_clock_type());
-    if (age < rclcpp::Duration::from_seconds(-0.1) || age > rclcpp::Duration(2, 0)) {
+    if (age < rclcpp::Duration::from_seconds(-kMaximumFutureClockSkewS) ||
+      age > rclcpp::Duration::from_seconds(kMaximumCostmapAgeS))
+    {
       return 0;
     }
     geometry_msgs::msg::Transform map_to_local;
@@ -247,7 +267,7 @@ private:
     if (drivable(grid.index(*position))) {
       return *position;
     }
-    double best = 0.25;
+    double best = kStartPoseFallbackRadiusM;
     std::optional<Cell> fallback;
     for (int i = 0; i < grid.size(); ++i) {
       if (!drivable(i)) {
@@ -262,7 +282,7 @@ private:
       }
     }
     if (!fallback) {
-      throw std::invalid_argument("No drivable start within 0.25 m");
+        throw std::invalid_argument("No drivable start within configured fallback radius");
     }
     return *fallback;
   }
@@ -331,9 +351,16 @@ private:
         }
         const auto gap_plan = [&]() {
             start = start_cell(grid, request.start, options, blocked_centers);
+            if (planning_algorithm_ == "baseline") {
+              const BaselineCoveragePlan planner(grid, options, start, blocked_centers);
+              return planner.gaps(start, zones, cleaned, excluded, priority, task_floor,
+                  target_gap_coverage_ ? request.target_coverage : 0.0,
+                  request.distance_budget_m);
+            }
             const CoveragePlan planner(grid, options, start, blocked_centers);
             return planner.gaps(start, zones, cleaned, excluded, priority, task_floor,
-                target_gap_coverage_ ? request.target_coverage : 0.0, request.distance_budget_m);
+                target_gap_coverage_ ? request.target_coverage : 0.0,
+                request.distance_budget_m);
           };
         if (local_added > 0) {
           try {
@@ -364,9 +391,14 @@ private:
         }
       } else {
         start = start_cell(grid, request.start, options, blocked_centers);
-        const CoveragePlan planner(grid, options, start, blocked_centers);
-        points = planner.sweep(start, zones,
-            request.target_coverage == 0.0 ? 0.90 : request.target_coverage, task_floor);
+        const double target = request.target_coverage == 0.0 ? 0.90 : request.target_coverage;
+        if (planning_algorithm_ == "baseline") {
+          const BaselineCoveragePlan planner(grid, options, start, blocked_centers);
+          points = planner.sweep(start, zones, target, task_floor);
+        } else {
+          const CoveragePlan planner(grid, options, start, blocked_centers);
+          points = planner.sweep(start, zones, target, task_floor);
+        }
       }
 
       response.path.header.frame_id = source->header.frame_id;
@@ -388,10 +420,14 @@ private:
       }
       response.success = request.gap_fill || !points.empty();
       response.reason = points.empty() ? "No reachable target after geometry and failure exclusions" :
+        (planning_algorithm_ == "baseline" ?
+        (request.gap_fill ? "Baseline nearest-missing-floor gap route" :
+        "Baseline deterministic boustrophedon route") :
         (request.gap_fill ? "Selected connectors by swept uncovered area and travel cost" :
-        "Selected sweep lanes by travel and predicted missed floor");
-      RCLCPP_INFO(get_logger(), "gap_fill=%d waypoints=%zu planned_m=%.2f: %s", request.gap_fill,
-        points.size(), planned_length, response.reason.c_str());
+        "Selected sweep lanes by travel and predicted missed floor"));
+      RCLCPP_INFO(get_logger(), "algorithm=%s gap_fill=%d waypoints=%zu planned_m=%.2f: %s",
+        planning_algorithm_.c_str(), request.gap_fill, points.size(), planned_length,
+        response.reason.c_str());
       plan_pub_->publish(response.path);
     } catch (const std::exception & e) {
       response.reason = e.what();
@@ -462,7 +498,7 @@ private:
       if (previous_ && previous_uses_odom_ == uses_odom) {
         const auto [x, y] = *previous_;
         const double step = std::hypot(distance_point.x - x, distance_point.y - y);
-        if (step < 0.5) {
+        if (step < kMaximumDistanceSampleM) {
           distance_ += step;
         }
       }
@@ -510,6 +546,7 @@ private:
   double sweep_safety_margin_;
   double gap_safety_margin_;
   double gap_edge_priority_margin_;
+  std::string planning_algorithm_;
   std::unordered_map<std::string, Region> regions_;
   std::string base_frame_;
   std::string odom_frame_;

@@ -241,7 +241,8 @@ def run(scenario, args, folder, domain):
     partition = f'sweeper_benchmark_{domain}_{os.getpid()}'
     os.environ['GZ_PARTITION'] = partition
     launch_args = ['implementation:=cpp', 'mode:=localize', 'evaluate:=true',
-                   f'gui:={str(args.gui).lower()}', 'rviz:=false']
+                   f'gui:={str(args.gui).lower()}', 'rviz:=false',
+                   f'coverage_algorithm:={args.coverage_algorithm}']
     fixture_world_name = scenario if scenario == 'dynamic' else 'default'
     if scenario == 'living_room':
         launch_args += ['enable_tof:=true']
@@ -295,6 +296,7 @@ def run(scenario, args, folder, domain):
         launch_args += ['direct_sweep_navigation:=true']
     whole_map = scenario == 'living_room' or args.whole_map
     report = {'scenario': scenario, 'domain': domain, 'command': launch_args,
+              'coverage_algorithm': args.coverage_algorithm,
               'task_scope': 'all' if whole_map else 'regions',
               'requested_coverage': args.target,
               'rmw': rclpy.get_rmw_implementation_identifier(),
@@ -561,6 +563,9 @@ def main():
     parser.add_argument('--startup-retries', type=int, default=1)
     parser.add_argument('--domain', type=int, default=61)
     parser.add_argument('--target', type=float, default=.90)
+    parser.add_argument('--coverage-algorithm', choices=('optimized', 'baseline'),
+                        default='optimized',
+                        help='Select the production planner or the isolated comparison baseline')
     parser.add_argument('--timeout', type=float, default=1800)
     parser.add_argument('--output', type=Path, default=Path('results/benchmark'))
     parser.add_argument('--gui', action=argparse.BooleanOptionalAction, default=True)
@@ -655,7 +660,8 @@ def main():
                 summary[scenario][field] = {'mean': statistics.mean(values),
                                             'min': min(values), 'max': max(values), 'n': len(values)}
     (output / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
-    fields = ['scenario', 'task_scope', 'action_status', 'success', 'measurement_valid', 'performance_passed', 'reason',
+    fields = ['scenario', 'coverage_algorithm', 'task_scope', 'action_status', 'success',
+              'measurement_valid', 'performance_passed', 'reason',
               'ratio', 'efficiency', 'revisit_ratio', 'truth_path_m',
               'path_to_70_m', 'path_to_80_m', 'path_to_85_m', 'path_to_90_m',
               'truth_target_cells', 'ideal_path_m', 'planned_path_m', 'planned_waypoints',

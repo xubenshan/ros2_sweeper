@@ -1,0 +1,28 @@
+cleaning_task_manager:
+  ros__parameters:
+    # Task lifecycle and Nav2 supervision (seconds/counts).
+    navigation_timeout_s: 90
+    progress_timeout_s: 35
+    gap_progress_timeout_s: 35
+    planning_timeout_s: 35
+    startup_timeout_s: 60
+    nav_unavailable_grace_s: 5
+    navigation_retries: 1
+    gap_navigation_retries: 1
+    max_gap_passes: 3
+
+    # Physical cleaning model (meters). Must match the coverage planner/meter.
+    cleaning_radius: 0.20
+
+    # Completion and route-budget policy (ratios/meters).
+    coverage_completion_margin: 0.01
+    target_path_efficiency: 0.0
+    minimum_gap_distance_budget_m: 0.50
+
+    # Runtime costmap goal protection (meters). These retain the pre-refactor
+    # behavior and are normally not scene-specific tuning knobs.
+    waypoint_adjustment_radius_m: 0.15
+    maximum_adjustment_connector_m: 0.80
+    turn_clearance_margin_m: 0.035
+    turn_diagonal_clearance_m: 0.025
+    short_connector_guard_m: 1.20

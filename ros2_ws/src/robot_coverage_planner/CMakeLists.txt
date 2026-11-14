@@ -9,7 +9,10 @@ set(nav2_dependencies nav2_core nav2_costmap_2d nav2_navfn_planner pluginlib)
 foreach(dependency IN LISTS nav2_dependencies)
   find_package(${dependency} REQUIRED)
 endforeach()
-add_library(coverage_grid src/grid_map.cpp src/coverage_plan.cpp)
+add_library(coverage_grid
+  src/grid_map.cpp
+  src/coverage_plan.cpp
+  src/baseline_coverage_plan.cpp)
 target_include_directories(coverage_grid PUBLIC include)
 target_compile_features(coverage_grid PUBLIC cxx_std_17)
 target_compile_options(coverage_grid PRIVATE -Wall -Wextra -Wpedantic)

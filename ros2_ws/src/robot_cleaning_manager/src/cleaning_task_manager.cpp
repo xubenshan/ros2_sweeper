@@ -2,8 +2,11 @@
 #include "robot_cleaning_manager/checkpoint_store.hpp"
 #include "robot_cleaning_manager/completion_decision.hpp"
 #include "robot_cleaning_manager/navigation_executor.hpp"
+#include "robot_cleaning_manager/planning_request.hpp"
 #include "robot_cleaning_manager/replan_policy.hpp"
 #include "robot_cleaning_manager/recovery_executor.hpp"
+#include "robot_cleaning_manager/task_state.hpp"
+#include "robot_cleaning_manager/waypoint_guard.hpp"
 
 #include <algorithm>
 #include <array>
@@ -47,135 +50,11 @@ using Grid = nav_msgs::msg::OccupancyGrid;
 
 namespace
 {
-bool has_grid_geometry(const Grid & grid)
-{
-  const auto & info = grid.info;
-  return std::isfinite(info.resolution) && info.resolution > 0 && info.width && info.height &&
-         grid.data.size() == static_cast<std::size_t>(info.width) * info.height;
-}
-
-std::pair<int, int> cell_at(const Grid & grid, const geometry_msgs::msg::Point & point)
-{
-  const auto & origin = grid.info.origin;
-  const auto & q = origin.orientation;
-  const double yaw = std::atan2(2 * (q.w * q.z + q.x * q.y),
-      1 - 2 * (q.y * q.y + q.z * q.z));
-  const double dx = point.x - origin.position.x;
-  const double dy = point.y - origin.position.y;
-  return {static_cast<int>(std::floor((std::cos(yaw) * dx + std::sin(yaw) * dy) / grid.info.resolution)),
-    static_cast<int>(std::floor((-std::sin(yaw) * dx + std::cos(yaw) * dy) / grid.info.resolution))};
-}
-
-int cost_at(const Grid & grid, const geometry_msgs::msg::Point & point)
-{
-  const auto [x, y] = cell_at(grid, point);
-  if (x < 0 || y < 0 || x >= static_cast<int>(grid.info.width) ||
-    y >= static_cast<int>(grid.info.height))
-  {
-    return -1;
-  }
-  return grid.data[y * grid.info.width + x];
-}
-
-using PointCost = std::function<int(const geometry_msgs::msg::Point &)>;
-
-bool clear_connector(
-  double resolution, const PointCost & point_cost, const Pose & from, const Pose & to,
-  bool allow_unknown = false)
-{
-  const auto & start = from.pose.position;
-  const auto & goal = to.pose.position;
-  const auto length = std::hypot(goal.x - start.x, goal.y - start.y);
-  const auto steps = static_cast<int>(std::clamp(
-      std::ceil(2.0 * length / resolution), 1.0, 1024.0));
-  for (int i = 1; i <= steps; ++i) {
-    const double part = static_cast<double>(i) / steps;
-    geometry_msgs::msg::Point sample;
-    sample.x = start.x + part * (goal.x - start.x);
-    sample.y = start.y + part * (goal.y - start.y);
-    const auto cost = point_cost(sample);
-    if (cost >= 99 || (!allow_unknown && cost < 0)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-std::optional<Pose> nearby_clear_goal(
-  const Grid & grid, double sampling_resolution, const PointCost & goal_cost,
-  const PointCost & connector_cost,
-  const Pose & start, const Pose & goal)
-{
-  const auto & from = start.pose.position;
-  const auto & intended = goal.pose.position;
-  if (start.header.frame_id != grid.header.frame_id ||
-    std::hypot(intended.x - from.x, intended.y - from.y) > 0.80)
-  {
-    return std::nullopt;
-  }
-  std::optional<Pose> best;
-  double best_score = std::numeric_limits<double>::infinity();
-  const double step = grid.info.resolution;
-  const int span = static_cast<int>(std::min(6.0, std::floor(0.15 / step + 1e-6)));
-  for (int dy = -span; dy <= span; ++dy) {
-    for (int dx = -span; dx <= span; ++dx) {
-      const double offset = std::hypot(dx, dy) * step;
-      if (offset > 0.150001) {
-        continue;
-      }
-      auto candidate = goal;
-      candidate.pose.position.x += dx * step;
-      candidate.pose.position.y += dy * step;
-      const auto cost = goal_cost(candidate.pose.position);
-      const double score = offset + 0.002 * cost;
-      if (cost >= 0 && cost <= 97 && score < best_score &&
-        clear_connector(sampling_resolution, connector_cost, start, candidate))
-      {
-        best_score = score;
-        best = candidate;
-      }
-    }
-  }
-  return best;
-}
-
-bool is_between_on_line(const std::vector<Pose> & path, std::size_t index)
-{
-  if (index == 0 || index + 1 >= path.size()) {
-    return false;
-  }
-  const auto & a = path[index - 1].pose.position;
-  const auto & b = path[index].pose.position;
-  const auto & c = path[index + 1].pose.position;
-  const double dx = c.x - a.x;
-  const double dy = c.y - a.y;
-  const double along = (b.x - a.x) * dx + (b.y - a.y) * dy;
-  return along > 0.0 && along < dx * dx + dy * dy &&
-         std::abs((b.x - a.x) * dy - (b.y - a.y) * dx) <= 0.025 * std::hypot(dx, dy);
-}
-
-bool is_sharp_turn(const Pose & from, const std::vector<Pose> & path, std::size_t index)
-{
-  const auto & start = from.pose.position;
-  const auto & goal = path[index].pose.position;
-  const double incoming = std::atan2(goal.y - start.y, goal.x - start.x);
-  const auto & q = from.pose.orientation;
-  const double current = std::atan2(2 * (q.w * q.z + q.x * q.y),
-      1 - 2 * (q.y * q.y + q.z * q.z));
-  const auto changes_heading = [](double a, double b) {
-      return std::abs(std::remainder(a - b, 6.28318530718)) > 1.0;
-    };
-  if (std::hypot(goal.x - start.x, goal.y - start.y) > 0.06 &&
-    changes_heading(current, incoming))
-  {
-    return true;
-  }
-  if (index + 1 == path.size()) {
-    return false;
-  }
-  const auto & next = path[index + 1].pose.position;
-  return changes_heading(incoming, std::atan2(next.y - goal.y, next.x - goal.x));
-}
+constexpr double kMaximumOdomSampleM = 0.50;
+constexpr double kCoveredSweepSkipRatio = 0.85;
+constexpr double kMaximumCostmapAgeS = 2.0;
+constexpr double kMaximumFutureClockSkewS = 0.10;
+constexpr int kNav2InscribedCost = 99;
 
 std::string map_identity(const nav_msgs::msg::OccupancyGrid & map)
 {
@@ -210,6 +89,9 @@ public:
     timeout_(declare_parameter<int>("navigation_timeout_s", 90)),
     progress_timeout_(declare_parameter<int>("progress_timeout_s", 35)),
     gap_progress_timeout_(declare_parameter<int>("gap_progress_timeout_s", progress_timeout_.count())),
+    planning_timeout_(declare_parameter<int>("planning_timeout_s", 35)),
+    startup_timeout_(declare_parameter<int>("startup_timeout_s", 60)),
+    nav_unavailable_grace_(declare_parameter<int>("nav_unavailable_grace_s", 5)),
     retries_(declare_parameter<int>("navigation_retries", 1)),
     gap_retries_(declare_parameter<int>("gap_navigation_retries", retries_)),
     use_planner_(declare_parameter("use_coverage_planner", false)),
@@ -221,16 +103,29 @@ public:
     cleaning_radius_(declare_parameter("cleaning_radius", 0.20)),
     coverage_completion_margin_(declare_parameter("coverage_completion_margin", 0.01)),
     target_path_efficiency_(declare_parameter("target_path_efficiency", 0.0)),
+    minimum_gap_distance_budget_m_(
+      declare_parameter("minimum_gap_distance_budget_m", 0.50)),
     gap_behavior_tree_(declare_parameter<std::string>("gap_behavior_tree", "")),
+    planning_requests_(PlanningRequestOptions{
+        cleaning_radius_, target_path_efficiency_, minimum_gap_distance_budget_m_}),
+    waypoint_guard_(WaypointGuardConfig{
+        declare_parameter("waypoint_adjustment_radius_m", 0.15),
+        declare_parameter("maximum_adjustment_connector_m", 0.80),
+        declare_parameter("turn_clearance_margin_m", 0.035),
+        declare_parameter("turn_diagonal_clearance_m", 0.025),
+        declare_parameter("short_connector_guard_m", 1.20)}),
     tf_(get_clock()), listener_(tf_, this, false)
   {
     if (timeout_.count() < 1 || progress_timeout_.count() < 1 || gap_progress_timeout_.count() < 1 ||
+      planning_timeout_.count() < 1 || startup_timeout_.count() < 1 ||
+      nav_unavailable_grace_.count() < 1 ||
       retries_ < 0 || gap_retries_ < 0 || gap_failure_replan_threshold_ < 0 ||
       !std::isfinite(cleaning_radius_) || cleaning_radius_ <= 0.0 ||
       !std::isfinite(coverage_completion_margin_) || coverage_completion_margin_ < 0.0 ||
       coverage_completion_margin_ > 0.10 ||
       !std::isfinite(target_path_efficiency_) || target_path_efficiency_ < 0.0 ||
-      target_path_efficiency_ > 1.0)
+      target_path_efficiency_ > 1.0 || !std::isfinite(minimum_gap_distance_budget_m_) ||
+      minimum_gap_distance_budget_m_ <= 0.0)
     {
       throw std::invalid_argument("invalid navigation limits or cleaning radius");
     }
@@ -260,10 +155,10 @@ public:
     contact_sub_ = create_subscription<std_msgs::msg::String>(
       "motion/contact", latched, [this](std_msgs::msg::String::ConstSharedPtr msg) {
         contact_ = msg->data;
-        if (task_ && state_ == "RUNNING" && contact_ != "clear" && !recovery_) {
+        if (task_ && state() == TaskState::running && contact_ != "clear" && !recovery_) {
           recovery_.emplace(contact_);
           recovery_start_.reset();
-          set_state("RECOVERING");
+          transition_to(TaskState::recovering, "collision detected");
           nav_.cancel();
           RCLCPP_WARN(get_logger(), "Collision on %s, recovering waypoint %zu",
             contact_.c_str(), current_.next);
@@ -272,8 +167,10 @@ public:
     estop_sub_ = create_subscription<std_msgs::msg::Bool>(
       "motion/estop_state", latched, [this](std_msgs::msg::Bool::ConstSharedPtr msg) {
         estopped_ = msg->data;
-        if (estopped_ && task_ && (state_ == "RUNNING" || state_ == "RECOVERING")) {
-          set_state("PAUSED");
+        if (estopped_ && task_ &&
+          (state() == TaskState::running || state() == TaskState::recovering))
+        {
+          transition_to(TaskState::paused, "emergency stop asserted");
           stop_recovery();
           nav_.cancel();
           persist();
@@ -294,13 +191,13 @@ public:
       if (defer_blocked_sweep_goals_ || adjust_blocked_gap_goals_) {
         costmap_sub_ = create_subscription<Grid>("global_costmap/costmap", latched,
           [this](Grid::ConstSharedPtr costmap) {
-            if (has_grid_geometry(*costmap)) {
+            if (WaypointGuard::has_grid_geometry(*costmap)) {
               costmap_ = std::move(costmap);
             }
           });
         local_costmap_sub_ = create_subscription<Grid>("local_costmap/costmap", latched,
           [this](Grid::ConstSharedPtr costmap) {
-            if (has_grid_geometry(*costmap)) {
+            if (WaypointGuard::has_grid_geometry(*costmap)) {
               local_costmap_ = std::move(costmap);
             }
           });
@@ -321,9 +218,9 @@ public:
     odom_sub_ = create_subscription<nav_msgs::msg::Odometry>(
       "odom", rclcpp::SensorDataQoS(), [this](nav_msgs::msg::Odometry::ConstSharedPtr odom) {
         const auto & p = odom->pose.pose.position;
-        if (!use_planner_ && previous_ && task_ && state_ == "RUNNING") {
+        if (!use_planner_ && previous_ && task_ && state() == TaskState::running) {
           const double step = std::hypot(p.x - previous_->x, p.y - previous_->y);
-          if (step < 0.5) {
+          if (step < kMaximumOdomSampleM) {
             current_.distance += step;
           }
         }
@@ -332,11 +229,11 @@ public:
     pause_ = create_service<Trigger>("cleaning/pause", [this](
       Trigger::Request::SharedPtr, Trigger::Response::SharedPtr reply)
       {
-        if (!task_ || (state_ != "RUNNING" && state_ != "RECOVERING")) {
+        if (!task_ || (state() != TaskState::running && state() != TaskState::recovering)) {
           reply->message = "No running task to pause";
           return;
         }
-        set_state("PAUSED");
+        transition_to(TaskState::paused, "pause requested");
         stop_recovery();
         nav_.cancel();
         reply->success = persist();
@@ -345,13 +242,13 @@ public:
     resume_ = create_service<Trigger>("cleaning/resume", [this](
       Trigger::Request::SharedPtr, Trigger::Response::SharedPtr reply)
       {
-        if (!task_ || state_ != "PAUSED" || nav_.busy() || !nav_.ready() || estopped_) {
+        if (!task_ || state() != TaskState::paused || nav_.busy() || !nav_.ready() || estopped_) {
           reply->message = "Wait for a paused task and navigation cancel acknowledgment";
           return;
         }
         reply->success = true;
         reply->message = "Resuming remaining route from the current pose";
-        set_state("RUNNING");
+        transition_to(TaskState::running, "resume requested");
       });
     server_ = rclcpp_action::create_server<CleanTask>(
       this, "cleaning/task",
@@ -390,7 +287,7 @@ public:
         early_replan_attempted_ = false;
         nav_missing_since_.reset();
         started_ = std::chrono::steady_clock::now();
-        set_state("WAITING_MAP");
+        transition_to(TaskState::waiting_map, "goal accepted");
       });
     timer_ = create_wall_timer(100ms, std::bind(&CleaningTaskManager::tick, this));
     publish_state();
@@ -414,28 +311,43 @@ public:
   {
     if (task_) {
       if (task_->is_canceling()) {
-        finish("CANCELED", "Task canceled");
+        if (state() != TaskState::canceling) {
+          transition_to(TaskState::canceling, "shutdown acknowledged cancel request");
+        }
+        finish(TaskState::canceled, "Task canceled");
       } else {
-        finish("FAILED", "Manager stopped; checkpoint preserved");
+        finish(TaskState::failed, "Manager stopped; checkpoint preserved");
       }
     }
   }
 
 private:
+  TaskState state() const noexcept {return state_machine_.state();}
+
   void publish_state()
   {
     std_msgs::msg::String msg;
-    msg.data = state_;
+    msg.data = task_state_name(state());
     state_pub_->publish(msg);
     RCLCPP_INFO(get_logger(), "task=%s state=%s completed=%zu next=%zu/%zu",
-      current_.task_id.c_str(), state_.c_str(), current_.completed, current_.next,
+      current_.task_id.c_str(), msg.data.c_str(), current_.completed, current_.next,
       current_.path.size());
   }
 
-  void set_state(std::string state)
+  bool transition_to(TaskState next, std::string_view trigger)
   {
-    state_ = std::move(state);
+    const auto previous = state();
+    if (!state_machine_.transition(next)) {
+      RCLCPP_ERROR(get_logger(), "Illegal task transition %s -> %s (%.*s)",
+        task_state_name(previous).data(), task_state_name(next).data(),
+        static_cast<int>(trigger.size()), trigger.data());
+      return false;
+    }
+    RCLCPP_DEBUG(get_logger(), "Task transition %s -> %s (%.*s)",
+      task_state_name(previous).data(), task_state_name(next).data(),
+      static_cast<int>(trigger.size()), trigger.data());
     publish_state();
+    return true;
   }
 
   bool persist()
@@ -467,13 +379,13 @@ private:
 
   void prepare()
   {
-    set_state("PLANNING");
-    plan_deadline_ = std::chrono::steady_clock::now() + 35s;
+    transition_to(TaskState::planning, "dependencies ready");
+    plan_deadline_ = std::chrono::steady_clock::now() + planning_timeout_;
     try {
       if (task_->get_goal()->resume_checkpoint) {
         auto stored = checkpoints_.load(current_.task_id);
         if (!stored || stored->map_id != map_id_ || stored->regions != current_.regions) {
-          finish("FAILED", "Checkpoint missing or map/regions changed");
+          finish(TaskState::failed, "Checkpoint missing or map/regions changed");
           return;
         }
         current_ = std::move(*stored);
@@ -494,7 +406,7 @@ private:
             }
             const auto response = future.get();
             if (!response->success) {
-              finish("FAILED", response->reason);
+              finish(TaskState::failed, response->reason);
             } else if (current_.path.empty()) {
               request_plan(false);
             } else {
@@ -507,7 +419,7 @@ private:
         for (const auto & region : current_.regions) {
           const auto route = routes_.find(region);
           if (route == routes_.end()) {
-            finish("FAILED", "Unknown region: " + region);
+            finish(TaskState::failed, "Unknown region: " + region);
             return;
           }
           current_.path.insert(current_.path.end(), route->second.begin(), route->second.end());
@@ -515,7 +427,7 @@ private:
         current_.total = current_.path.size();
       }
     } catch (const std::exception & e) {
-      finish("FAILED", e.what());
+      finish(TaskState::failed, e.what());
       return;
     }
     start_route();
@@ -523,7 +435,7 @@ private:
 
   bool planning(std::uint64_t generation) const
   {
-    return task_ && generation_ == generation && state_ == "PLANNING" &&
+    return task_ && generation_ == generation && state() == TaskState::planning &&
       !task_->is_canceling();
   }
 
@@ -531,34 +443,29 @@ private:
   {
     const auto pose = position();
     if (!pose || !plan_->service_is_ready()) {
-      finish("FAILED", "Planner or map-frame pose unavailable");
+      finish(TaskState::failed, "Planner or map-frame pose unavailable");
       return;
     }
-    set_state("PLANNING");
-    plan_deadline_ = std::chrono::steady_clock::now() + 35s;
-    auto request = std::make_shared<Plan::Request>();
-    request->regions = current_.regions;
-    request->start = *pose;
-    request->gap_fill = gap;
-    request->target_coverage = coverage_target_;
-    if (gap && target_path_efficiency_ > 0.0 && has_grid_geometry(coverage_grid_)) {
-      const auto cells = std::count_if(coverage_grid_.data.begin(), coverage_grid_.data.end(),
-          [](int value) {return value >= 0;});
-      const double resolution = coverage_grid_.info.resolution;
-      const double ideal = cells * resolution * resolution / (2.0 * cleaning_radius_);
-      request->distance_budget_m = std::max(0.5, ideal / target_path_efficiency_ - current_.distance);
+    transition_to(TaskState::planning, gap ? "gap plan requested" : "sweep plan requested");
+    plan_deadline_ = std::chrono::steady_clock::now() + planning_timeout_;
+    PlanningRequestContext context;
+    context.regions = current_.regions;
+    context.start = *pose;
+    context.gap_fill = gap;
+    context.target_coverage = coverage_target_;
+    context.distance_traveled_m = current_.distance;
+    context.covered = coverage_grid_;
+    context.failure_exclusions = excluded_;
+    context.deferred_gap_goals = deferred_gap_goals_;
+    context.current_path_size = current_.path.size();
+    context.ignore_failure_exclusions = ignore_failure_exclusions;
+    auto request = std::make_shared<Plan::Request>(planning_requests_.build(context));
+    if (request->distance_budget_m > 0.0) {
       RCLCPP_INFO(get_logger(), "Remaining gap distance budget %.2f m", request->distance_budget_m);
-    }
-    request->covered = coverage_grid_;
-    request->excluded = excluded_;
-    if (ignore_failure_exclusions) {
-      request->excluded.clear();
     }
     if (gap && !deferred_gap_goals_.empty() && deferred_gap_goals_.size() == current_.path.size()) {
       // An entire pass was rejected before motion. Ask for an alternative
       // once, without recording the live obstacle as a permanent failure.
-      request->excluded.insert(
-        request->excluded.end(), deferred_gap_goals_.begin(), deferred_gap_goals_.end());
       RCLCPP_WARN(get_logger(), "Replanning around %zu deferred gap goals after no motion",
         deferred_gap_goals_.size());
     }
@@ -586,7 +493,7 @@ private:
           if (gap && ignore_failure_exclusions) {
             reason = "No coverage route after retry without failed-waypoint exclusions: " + reason;
           }
-          finish("FAILED", reason);
+          finish(TaskState::failed, reason);
           return;
         }
         current_.path = response->path.poses;
@@ -603,7 +510,7 @@ private:
   void start_route()
   {
     if (current_.path.empty()) {
-      finish("FAILED", "No path for requested regions");
+      finish(TaskState::failed, "No path for requested regions");
       return;
     }
     nav_msgs::msg::Path path;
@@ -612,19 +519,19 @@ private:
     path.poses = current_.path;
     path_pub_->publish(path);
     if (!persist()) {
-      finish("FAILED", checkpoint_error_);
+      finish(TaskState::failed, checkpoint_error_);
       return;
     }
     std_msgs::msg::Bool active;
     active.data = true;
     active_pub_->publish(active);
-    set_state("RUNNING");
+    transition_to(TaskState::running, "route ready");
   }
 
   void feedback()
   {
     auto update = std::make_shared<CleanTask::Feedback>();
-    update->state = state_;
+    update->state = task_state_name(state());
     update->coverage = current_.coverage;
     update->completed_waypoints = current_.completed;
     update->total_waypoints = current_.total;
@@ -639,7 +546,7 @@ private:
 
   void skip_covered_waypoints()
   {
-    if (!use_planner_ || !has_grid_geometry(coverage_grid_)) {
+    if (!use_planner_ || !WaypointGuard::has_grid_geometry(coverage_grid_)) {
       return;
     }
     // Gap planning scores the whole connector. Its endpoint can be covered
@@ -655,11 +562,21 @@ private:
       // A covered turn can still be needed to keep the next connection short
       // and drivable. In the optimized sweep skip only redundant line points.
       if (defer_blocked_sweep_goals_ && current_.pass == 0 &&
-        !is_between_on_line(current_.path, current_.next))
+        !WaypointGuard::is_between_on_line(current_.path, current_.next))
       {
         break;
       }
-      const auto [x, y] = cell_at(coverage_grid_, current_.path[current_.next].pose.position);
+      const auto & point = current_.path[current_.next].pose.position;
+      const auto & origin = coverage_grid_.info.origin;
+      const auto & q = origin.orientation;
+      const double yaw = std::atan2(2 * (q.w * q.z + q.x * q.y),
+          1 - 2 * (q.y * q.y + q.z * q.z));
+      const double map_x = point.x - origin.position.x;
+      const double map_y = point.y - origin.position.y;
+      const int x = static_cast<int>(std::floor(
+          (std::cos(yaw) * map_x + std::sin(yaw) * map_y) / info.resolution));
+      const int y = static_cast<int>(std::floor(
+          (-std::sin(yaw) * map_x + std::cos(yaw) * map_y) / info.resolution));
       int possible = 0;
       int covered = 0;
       for (int dy = -cells; dy <= cells; ++dy) {
@@ -675,7 +592,9 @@ private:
           }
         }
       }
-      if (possible == 0 || covered < possible * (current_.pass == 0 ? 0.85 : 1.0)) {
+      if (possible == 0 || covered < possible *
+        (current_.pass == 0 ? kCoveredSweepSkipRatio : 1.0))
+      {
         break;
       }
       ++current_.next;
@@ -694,15 +613,16 @@ private:
       return std::nullopt;
     }
     const auto age = now() - rclcpp::Time(costmap_->header.stamp, get_clock()->get_clock_type());
-    const auto max_clock_skew = rclcpp::Duration::from_seconds(-0.1);
-    if (age < max_clock_skew || age > rclcpp::Duration(2, 0)) {
+    const auto max_clock_skew = rclcpp::Duration::from_seconds(-kMaximumFutureClockSkewS);
+    const auto max_costmap_age = rclcpp::Duration::from_seconds(kMaximumCostmapAgeS);
+    if (age < max_clock_skew || age > max_costmap_age) {
       return std::nullopt;
     }
     std::optional<geometry_msgs::msg::Transform> map_to_local;
     if (local_costmap_) {
       const auto local_age = now() - rclcpp::Time(
         local_costmap_->header.stamp, get_clock()->get_clock_type());
-      if (local_age >= max_clock_skew && local_age <= rclcpp::Duration(2, 0)) {
+      if (local_age >= max_clock_skew && local_age <= max_costmap_age) {
         try {
           map_to_local = tf_.lookupTransform(local_costmap_->header.frame_id,
               costmap_->header.frame_id, tf2::TimePointZero).transform;
@@ -712,7 +632,7 @@ private:
       }
     }
     const PointCost raw_point_cost = [&](const geometry_msgs::msg::Point & point) {
-        const int global = cost_at(*costmap_, point);
+        const int global = WaypointGuard::cost_at(*costmap_, point);
         if (!map_to_local) {
           return global;
         }
@@ -722,24 +642,10 @@ private:
         auto local = point;
         local.x = map_to_local->translation.x + std::cos(yaw) * point.x - std::sin(yaw) * point.y;
         local.y = map_to_local->translation.y + std::sin(yaw) * point.x + std::cos(yaw) * point.y;
-        return std::max(global, cost_at(*local_costmap_, local));
+        return std::max(global, WaypointGuard::cost_at(*local_costmap_, local));
       };
     const PointCost turn_point_cost = [&](const geometry_msgs::msg::Point & point) {
-        int cost = raw_point_cost(point);
-        // A sharp turn near a wall can sweep the base beyond its target.
-        constexpr double axial = 0.035;
-        constexpr double diagonal = 0.025;
-        constexpr std::array<std::pair<double, double>, 8> offsets{{
-            {axial, 0.0}, {-axial, 0.0}, {0.0, axial}, {0.0, -axial},
-            {diagonal, diagonal}, {-diagonal, diagonal},
-            {diagonal, -diagonal}, {-diagonal, -diagonal}}};
-        for (const auto & [dx, dy] : offsets) {
-          auto sample = point;
-          sample.x += dx;
-          sample.y += dy;
-          cost = std::max(cost, raw_point_cost(sample));
-        }
-        return cost;
+        return waypoint_guard_.turn_clearance_cost(raw_point_cost, point);
       };
     const double resolution = map_to_local ?
       std::min(costmap_->info.resolution, local_costmap_->info.resolution) : costmap_->info.resolution;
@@ -754,16 +660,19 @@ private:
       const bool short_connector = from && map_to_local &&
         from->header.frame_id == goal.header.frame_id &&
         std::hypot(goal.pose.position.x - from->pose.position.x,
-        goal.pose.position.y - from->pose.position.y) <= 1.20;
-      const auto & goal_cost = gap && from && is_sharp_turn(*from, current_.path, current_.next) ?
+        goal.pose.position.y - from->pose.position.y) <=
+        waypoint_guard_.config().short_connector_guard_m;
+      const auto & goal_cost = gap && from &&
+        WaypointGuard::is_sharp_turn(*from, current_.path, current_.next) ?
         turn_point_cost : raw_point_cost;
-      if (goal_cost(goal.pose.position) < 99 && (!short_connector ||
-        clear_connector(resolution, raw_point_cost, *from, goal, true)))
+      if (goal_cost(goal.pose.position) < kNav2InscribedCost && (!short_connector ||
+        WaypointGuard::clear_connector(resolution, raw_point_cost, *from, goal, true)))
       {
         break;
       }
       if (from) {
-        adjusted = nearby_clear_goal(*costmap_, resolution, goal_cost, raw_point_cost, *from, goal);
+        adjusted = waypoint_guard_.nearby_clear_goal(
+          *costmap_, resolution, goal_cost, raw_point_cost, *from, goal);
         if (adjusted) {
           RCLCPP_INFO(get_logger(), "Adjusted %s waypoint %zu around live obstacle",
             gap ? "gap" : "sweep", current_.next);
@@ -803,14 +712,14 @@ private:
       return;
     }
     if (task_->is_canceling()) {
-      if (state_ != "CANCELING") {
-        set_state("CANCELING");
+      if (state() != TaskState::canceling) {
+        transition_to(TaskState::canceling, "Action cancel requested");
         stop_recovery();
       }
       if (nav_.busy()) {
         nav_.cancel();
       } else {
-        finish("CANCELED", stop_reason_.empty() ? "Task canceled" : stop_reason_);
+        finish(TaskState::canceled, stop_reason_.empty() ? "Task canceled" : stop_reason_);
       }
       return;
     }
@@ -820,12 +729,13 @@ private:
       if (nav_.busy()) {
         nav_.cancel();
       } else {
-        finish("FAILED", checkpoint_error_.empty() ? "Map changed during task" : checkpoint_error_);
+        finish(TaskState::failed,
+          checkpoint_error_.empty() ? "Map changed during task" : checkpoint_error_);
       }
       return;
     }
     feedback();
-    if (state_ == "WAITING_MAP") {
+    if (state() == TaskState::waiting_map) {
       if (!map_id_.empty() && nav_.ready() &&
         (!use_planner_ || (begin_->service_is_ready() && plan_->service_is_ready() && position())))
       {
@@ -835,25 +745,25 @@ private:
           "Waiting: map=%d nav=%d planner=%d tracker=%d tf=%d",
           !map_id_.empty(), nav_.ready(), use_planner_ && plan_->service_is_ready(),
           use_planner_ && begin_->service_is_ready(), static_cast<bool>(position()));
-        if (std::chrono::steady_clock::now() - started_ > 60s) {
-          finish("FAILED", "Map, Nav2, planner, tracker, or map-frame pose unavailable");
+        if (std::chrono::steady_clock::now() - started_ > startup_timeout_) {
+          finish(TaskState::failed, "Map, Nav2, planner, tracker, or map-frame pose unavailable");
         }
       }
       return;
     }
-    if (state_ == "PLANNING") {
+    if (state() == TaskState::planning) {
       if (std::chrono::steady_clock::now() > plan_deadline_) {
-        finish("FAILED", "Coverage planning timed out");
+        finish(TaskState::failed, "Coverage planning timed out");
       }
       return;
     }
-    if (state_ == "STOPPING") {
+    if (state() == TaskState::stopping) {
       if (!nav_.busy()) {
-        finish("FAILED", stop_reason_);
+        finish(TaskState::failed, stop_reason_);
       }
       return;
     }
-    if (state_ == "PAUSED") {
+    if (state() == TaskState::paused) {
       return;
     }
     if (!nav_.ready()) {
@@ -861,9 +771,9 @@ private:
       if (!nav_missing_since_) {
         nav_missing_since_ = now;
       }
-      if (now - *nav_missing_since_ > 5s) {
+      if (now - *nav_missing_since_ > nav_unavailable_grace_) {
         stop_reason_ = "Nav2 stopped during the cleaning task";
-        set_state("STOPPING");
+        transition_to(TaskState::stopping, "Nav2 unavailable beyond grace period");
         stop_recovery();
         nav_.cancel();
         persist();
@@ -874,7 +784,7 @@ private:
     if (nav_.busy()) {
       return;
     }
-    if (state_ == "RECOVERING") {
+    if (state() == TaskState::recovering) {
       if (recovery_) {
         run_recovery();
         return;
@@ -882,13 +792,13 @@ private:
       if (std::chrono::steady_clock::now() < retry_after_) {
         return;
       }
-      set_state("RUNNING");
+      transition_to(TaskState::running, "recovery delay completed");
     }
     if (use_planner_) {
       const auto decision = decide_completion(
         current_.coverage, coverage_target_, coverage_completion_margin_, false);
       if (decision.finish) {
-        finish(decision.success ? "SUCCEEDED" : "FAILED", decision.reason);
+        finish(decision.success ? TaskState::succeeded : TaskState::failed, decision.reason);
         return;
       }
     }
@@ -915,7 +825,7 @@ private:
     skip_covered_waypoints();
     auto adjusted = adjust_blocked_waypoints();
     if (!checkpoint_error_.empty()) {
-      finish("FAILED", checkpoint_error_);
+      finish(TaskState::failed, checkpoint_error_);
       return;
     }
     if (current_.next >= current_.path.size()) {
@@ -927,7 +837,7 @@ private:
         }
         return;
       }
-      finish(current_.failed ? "FAILED" : "SUCCEEDED",
+      finish(current_.failed ? TaskState::failed : TaskState::succeeded,
         current_.failed ? "Route finished with unreachable goals: " + last_failure_ :
         "Route completed");
       return;
@@ -943,11 +853,12 @@ private:
         if (status == NavigationExecutor::Status::cancel_unconfirmed) {
           stop_reason_ = "Nav2 did not acknowledge cancel; motion authority revoked";
           stop_recovery();
-          set_state("STOPPING");
+          transition_to(TaskState::stopping, "navigation cancel was not acknowledged");
           persist();
           return;
         }
-        if (task_->is_canceling() || state_ == "PAUSED" || state_ == "STOPPING" ||
+        if (task_->is_canceling() || state() == TaskState::paused ||
+          state() == TaskState::stopping ||
           recovery_ || !checkpoint_error_.empty())
         {
           return;
@@ -969,8 +880,8 @@ private:
     stop_recovery();
     RCLCPP_INFO(get_logger(), "Recovery complete, contact=%s", contact_.c_str());
     on_navigation_result(NavigationExecutor::Status::failed);
-    if (state_ == "RECOVERING" && attempts_ == 0) {
-      set_state("RUNNING");
+    if (state() == TaskState::recovering && attempts_ == 0) {
+      transition_to(TaskState::running, "collision recovery completed");
     }
   }
 
@@ -988,7 +899,7 @@ private:
     if (!context.empty()) {
       reason = context + "; " + reason;
     }
-    finish(decision.success ? "SUCCEEDED" : "FAILED", reason);
+    finish(decision.success ? TaskState::succeeded : TaskState::failed, reason);
   }
 
   void stop_recovery()
@@ -1030,32 +941,39 @@ private:
       persist();
     } else {
       retry_after_ = std::chrono::steady_clock::now() + 1s;
-      set_state("RECOVERING");
+      transition_to(TaskState::recovering, "navigation retry scheduled");
     }
   }
 
-  void finish(const std::string & state, const std::string & reason)
+  void finish(TaskState terminal_state, const std::string & reason)
   {
     stop_recovery();
-    set_state(state);
+    if (!is_terminal(terminal_state)) {
+      RCLCPP_ERROR(get_logger(), "finish called with non-terminal state %s",
+        task_state_name(terminal_state).data());
+      terminal_state = TaskState::failed;
+    }
+    if (!transition_to(terminal_state, reason)) {
+      return;
+    }
     active_pub_->publish(std_msgs::msg::Bool{});
     auto result = std::make_shared<CleanTask::Result>();
-    result->success = state == "SUCCEEDED";
+    result->success = terminal_state == TaskState::succeeded;
     result->reason = reason;
     result->completed_waypoints = current_.completed;
     result->failed_waypoints = current_.failed;
     result->path_length_m = current_.distance;
     result->coverage = current_.coverage;
-    if (state == "CANCELED" || state == "SUCCEEDED") {
+    if (terminal_state == TaskState::canceled || terminal_state == TaskState::succeeded) {
       try {
         checkpoints_.remove(current_.task_id);
       } catch (const std::exception & e) {
         RCLCPP_WARN(get_logger(), "Cannot remove finished checkpoint: %s", e.what());
       }
     }
-    if (state == "SUCCEEDED") {
+    if (terminal_state == TaskState::succeeded) {
       task_->succeed(result);
-    } else if (state == "CANCELED") {
+    } else if (terminal_state == TaskState::canceled) {
       task_->canceled(result);
     } else {
       task_->abort(result);
@@ -1068,6 +986,9 @@ private:
   const std::chrono::seconds timeout_;
   const std::chrono::seconds progress_timeout_;
   const std::chrono::seconds gap_progress_timeout_;
+  const std::chrono::seconds planning_timeout_;
+  const std::chrono::seconds startup_timeout_;
+  const std::chrono::seconds nav_unavailable_grace_;
   const int retries_;
   const int gap_retries_;
   const bool use_planner_;
@@ -1079,7 +1000,10 @@ private:
   const double cleaning_radius_;
   const double coverage_completion_margin_;
   const double target_path_efficiency_;
+  const double minimum_gap_distance_budget_m_;
   const std::string gap_behavior_tree_;
+  const PlanningRequestBuilder planning_requests_;
+  const WaypointGuard waypoint_guard_;
   tf2_ros::Buffer tf_;
   tf2_ros::TransformListener listener_;
   float coverage_target_{0.90f};
@@ -1099,7 +1023,7 @@ private:
   rclcpp_action::Server<CleanTask>::SharedPtr server_;
   std::shared_ptr<TaskHandle> task_;
   Checkpoint current_;
-  std::string state_{"IDLE"};
+  TaskStateMachine state_machine_;
   std::string map_id_;
   std::string last_failure_;
   std::string checkpoint_error_;

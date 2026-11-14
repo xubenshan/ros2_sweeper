@@ -6,10 +6,21 @@
 
 namespace robot_cleaning_manager
 {
+namespace
+{
+constexpr double kMeaningfulRemainingDistanceM = 0.08;
+constexpr double kMeaningfulPoseMovementM = 0.12;
+constexpr auto kLifecyclePollPeriod = std::chrono::milliseconds(500);
+constexpr auto kLifecycleResponseLifetime = std::chrono::seconds(3);
+constexpr auto kLifecycleActiveFreshness = std::chrono::seconds(2);
+constexpr auto kUnavailableCancelTimeout = std::chrono::seconds(3);
+constexpr auto kCancelAcknowledgmentTimeout = std::chrono::seconds(8);
+}
+
 bool NavigationProgress::observe(double remaining, const geometry_msgs::msg::PoseStamped & pose)
 {
   const bool closer = std::isfinite(remaining) && remaining >= 0.0 &&
-    remaining + 0.08 < best_remaining_;
+    remaining + kMeaningfulRemainingDistanceM < best_remaining_;
   if (closer) {
     best_remaining_ = remaining;
   }
@@ -22,7 +33,8 @@ bool NavigationProgress::observe(double remaining, const geometry_msgs::msg::Pos
     return closer;
   }
   const auto & previous = anchor_->pose.position;
-  const bool moved = std::hypot(point.x - previous.x, point.y - previous.y) >= 0.12;
+  const bool moved = std::hypot(point.x - previous.x, point.y - previous.y) >=
+    kMeaningfulPoseMovementM;
   if (moved || closer) {
     anchor_ = pose;
   }
@@ -39,7 +51,7 @@ NavigationExecutor::NavigationExecutor(rclcpp::Node & node)
 bool NavigationExecutor::ready() const
 {
   return client_->action_server_is_ready() &&
-    Clock::now() - last_active_ < std::chrono::seconds(2);
+    Clock::now() - last_active_ < kLifecycleActiveFreshness;
 }
 
 void NavigationExecutor::send(
@@ -130,10 +142,10 @@ void NavigationExecutor::poll(
   std::chrono::seconds timeout, std::chrono::seconds progress_timeout)
 {
   const auto now = Clock::now();
-  if (now - last_check_ >= std::chrono::milliseconds(500)) {
+  if (now - last_check_ >= kLifecyclePollPeriod) {
     last_check_ = now;
     lifecycle_->prune_requests_older_than(std::chrono::system_clock::now() -
-      std::chrono::seconds(3));
+      kLifecycleResponseLifetime);
     if (lifecycle_->service_is_ready()) {
       lifecycle_->async_send_request(std::make_shared<GetState::Request>(),
         [this](rclcpp::Client<GetState>::SharedFuture result) {
@@ -148,9 +160,9 @@ void NavigationExecutor::poll(
   if (cancel_requested_) {
     // A server that has disappeared cannot acknowledge cancel. Ignore any
     // result from that generation if it reappears after this timeout.
-    if (!ready() && now - cancel_at_ > std::chrono::seconds(3)) {
+    if (!ready() && now - cancel_at_ > kUnavailableCancelTimeout) {
       finish(Status::unavailable);
-    } else if (now - cancel_at_ > std::chrono::seconds(8)) {
+    } else if (now - cancel_at_ > kCancelAcknowledgmentTimeout) {
       finish(Status::cancel_unconfirmed);
     }
     return;

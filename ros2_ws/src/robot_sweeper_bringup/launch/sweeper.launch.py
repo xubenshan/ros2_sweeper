@@ -21,6 +21,34 @@ from launch_ros.actions import Node, SetRemap
 from launch_ros.parameter_descriptions import ParameterValue
 from nav2_common.launch import RewrittenYaml
 
+OPEN_FLOOR_EDGE_MARGIN_M = 0.15
+SAFE_GAP_MARGIN_M = 0.065
+GAP_EDGE_PRIORITY_MARGIN_M = 0.15
+DEFAULT_PLANNER_SAFETY_MARGIN_M = 0.005
+TRUTH_CLEANING_RADIUS_M = 0.20
+TRUTH_ROBOT_RADIUS_M = 0.1745
+CLEARANCE_CONTROLLER_PROFILE = {
+    'use_cost_regulated_linear_velocity_scaling': 'true',
+    'inflation_cost_scaling_factor': None,
+    'cost_scaling_dist': '0.30',
+    'cost_scaling_gain': '0.70',
+    'min_approach_linear_velocity': '0.07',
+    'regulated_linear_scaling_min_speed': '0.06',
+    'lookahead_dist': '0.22',
+}
+FRONT_TOF_PROFILE = {
+    'topic': '/tof_front/points',
+    'data_type': 'PointCloud2',
+    'min_obstacle_height': '0.025',
+    'max_obstacle_height': '0.15',
+    'obstacle_min_range': '0.02',
+    'obstacle_max_range': '0.75',
+    'raytrace_max_range': '0.85',
+    'observation_persistence': '0.40',
+    'marking': 'true',
+    'clearing': 'true',
+}
+
 
 def include(package, launch_file, **arguments):
     path = get_package_share_path(package) / 'launch' / launch_file
@@ -51,15 +79,9 @@ def configure_navigation_params(
         if clearance_control:
             local = config['local_costmap']['local_costmap']['ros__parameters']
             scaling = local.get('inflation_layer', {}).get('cost_scaling_factor', 10.0)
-            for key, value in {
-                'use_cost_regulated_linear_velocity_scaling': 'true',
-                'inflation_cost_scaling_factor': str(float(scaling)),
-                'cost_scaling_dist': '0.30',
-                'cost_scaling_gain': '0.70',
-                'min_approach_linear_velocity': '0.07',
-                'regulated_linear_scaling_min_speed': '0.06',
-                'lookahead_dist': '0.22',
-            }.items():
+            profile = dict(CLEARANCE_CONTROLLER_PROFILE)
+            profile['inflation_cost_scaling_factor'] = str(float(scaling))
+            for key, value in profile.items():
                 rewrites[f'{controller}.{key}'] = value
     for name in ('local_costmap', 'global_costmap'):
         costmap = config.get(name, {}).get(name, {}).get('ros__parameters', {})
@@ -77,18 +99,7 @@ def configure_navigation_params(
             continue
         prefix = f'{prefix}.obstacle_layer'
         rewrites[f'{prefix}.observation_sources'] = ' '.join([*sources, 'front_tof'])
-        for key, value in {
-            'topic': '/tof_front/points',
-            'data_type': 'PointCloud2',
-            'min_obstacle_height': '0.025',
-            'max_obstacle_height': '0.15',
-            'obstacle_min_range': '0.02',
-            'obstacle_max_range': '0.75',
-            'raytrace_max_range': '0.85',
-            'observation_persistence': '0.40',
-            'marking': 'true',
-            'clearing': 'true',
-        }.items():
+        for key, value in FRONT_TOF_PROFILE.items():
             rewrites[f'{prefix}.front_tof.{key}'] = value
     if not rewrites:
         return params
@@ -304,13 +315,14 @@ def configure(context):
             with open(regions, encoding='utf-8') as region_file:
                 coverage_parameters = yaml.safe_load(region_file)['coverage_planner']['ros__parameters']
             planner_overrides = {'use_sim_time': sim_time,
+                                 'planning_algorithm': value('coverage_algorithm'),
                                  'target_gap_coverage': value('target_gap_coverage') == 'true',
                                  'gap_use_local_costmap': value('guard_gap_goals') == 'true',
                                  'continuous_coverage_tracking':
                                      value('continuous_coverage_tracking') == 'true'}
             open_floor = value('open_floor') == 'true'
             if open_floor:
-                planner_overrides['edge_margin'] = 0.15
+                planner_overrides['edge_margin'] = OPEN_FLOOR_EDGE_MARGIN_M
                 planner_overrides['refine_sweep'] = value('refine_sweep') == 'true'
                 planner_overrides['sweep_use_live_costmap'] = value('sweep_use_live_costmap') == 'true'
             if value('sweep_safety_margin'):
@@ -318,16 +330,22 @@ def configure(context):
             safe_gap = value('safe_gap') == 'true'
             if safe_gap:
                 planner_overrides.update(
-                    gap_safety_margin=max(.065, float(coverage_parameters.get('safety_margin', .005))),
-                    gap_edge_priority_margin=.15,
+                    gap_safety_margin=max(
+                        SAFE_GAP_MARGIN_M,
+                        float(coverage_parameters.get(
+                            'safety_margin', DEFAULT_PLANNER_SAFETY_MARGIN_M))),
+                    gap_edge_priority_margin=GAP_EDGE_PRIORITY_MARGIN_M,
                 )
             if value('gap_safety_margin'):
                 planner_overrides['gap_safety_margin'] = float(value('gap_safety_margin'))
             result.append(Node(package='robot_coverage_planner', executable='coverage_planner_node',
                                parameters=[regions, planner_overrides], output='screen'))
             if value('task_manager') == 'true':
+                manager_config = (get_package_share_path('robot_cleaning_manager') /
+                                  'config' / 'task_manager.yaml')
                 result.append(Node(package='robot_cleaning_manager', executable='cleaning_task_manager_node',
-                     parameters=[{'use_sim_time': sim_time, 'use_coverage_planner': True,
+                     parameters=[str(manager_config),
+                                 {'use_sim_time': sim_time, 'use_coverage_planner': True,
                                   'defer_blocked_sweep_goals': open_floor,
                                   'adjust_blocked_gap_goals': value('guard_gap_goals') == 'true',
                                   'gap_behavior_tree': gap_tree,
@@ -347,8 +365,10 @@ def configure(context):
                                   'spawn_y': seed_y, 'spawn_yaw': seed_yaw}],
                      remappings=[('~/pose', '/ground_truth/pose')]),
                 Node(package='oomwoo_sim_support', executable='coverage_meter', output='screen',
-                     parameters=[{'use_sim_time': sim_time, 'cleaning_radius': 0.20,
-                                  'robot_radius': 0.1745, 'coverage_target': 0.90}],
+                     parameters=[{'use_sim_time': sim_time,
+                                  'cleaning_radius': TRUTH_CLEANING_RADIUS_M,
+                                  'robot_radius': TRUTH_ROBOT_RADIUS_M,
+                                  'coverage_target': 0.90}],
                      remappings=[('cleaning_active', '/cleaning/active')]),
             ])
         if value('rviz') == 'true':
@@ -401,6 +421,8 @@ def generate_launch_description():
         DeclareLaunchArgument('gap_goal_tolerance', default_value='0.10'),
         DeclareLaunchArgument('safe_gap', default_value='false', choices=boolean),
         DeclareLaunchArgument('target_gap_coverage', default_value='true', choices=boolean),
+        DeclareLaunchArgument('coverage_algorithm', default_value='optimized',
+                              choices=['optimized', 'baseline']),
         DeclareLaunchArgument('guard_gap_goals', default_value='true', choices=boolean),
         DeclareLaunchArgument('open_floor', default_value='true', choices=boolean),
         DeclareLaunchArgument('continuous_coverage_tracking', default_value='false', choices=boolean),

@@ -6,7 +6,12 @@ set(dependencies geometry_msgs lifecycle_msgs nav2_msgs nav_msgs rclcpp rclcpp_a
 foreach(dependency IN LISTS dependencies)
   find_package(${dependency} REQUIRED)
 endforeach()
-add_library(task_execution src/navigation_executor.cpp src/checkpoint_store.cpp)
+add_library(task_execution
+  src/navigation_executor.cpp
+  src/checkpoint_store.cpp
+  src/task_state.cpp
+  src/planning_request.cpp
+  src/waypoint_guard.cpp)
 target_compile_features(task_execution PUBLIC cxx_std_17)
 target_include_directories(task_execution PUBLIC include)
 target_compile_options(task_execution PRIVATE -Wall -Wextra -Wpedantic)
@@ -27,5 +32,11 @@ if(BUILD_TESTING)
   target_include_directories(completion_decision_test PRIVATE include)
   ament_add_gtest(replan_policy_test test/replan_policy_test.cpp)
   target_include_directories(replan_policy_test PRIVATE include)
+  ament_add_gtest(task_state_test test/task_state_test.cpp)
+  target_link_libraries(task_state_test task_execution)
+  ament_add_gtest(planning_request_test test/planning_request_test.cpp)
+  target_link_libraries(planning_request_test task_execution)
+  ament_add_gtest(waypoint_guard_test test/waypoint_guard_test.cpp)
+  target_link_libraries(waypoint_guard_test task_execution)
 endif()
 ament_package()

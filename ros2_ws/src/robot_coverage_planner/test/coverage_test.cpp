@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+#include "robot_coverage_planner/baseline_coverage_plan.hpp"
 #include "robot_coverage_planner/coverage_plan.hpp"
 
 #include <algorithm>
@@ -322,4 +323,56 @@ TEST(CoveragePlan, FullyCoveredHasNoSupplementalGoals)
   const auto grid = empty_grid();
   const CoveragePlan plan(grid, {}, {3, 3});
   EXPECT_TRUE(plan.gaps({3, 3}, {}, plan.target_floor({}), {}).empty());
+}
+
+TEST(BaselineCoveragePlan, ProducesDeterministicCollisionFreeBoustrophedonRoute)
+{
+  auto grid = empty_grid();
+  for (int y = 3; y <= 8; ++y) {
+    grid.occupancy[grid.index({7, y})] = 100;
+  }
+  PlanOptions options;
+  options.robot_radius = 0.0;
+  options.safety_margin = 0.0;
+  const Cell start{2, 2};
+  const BaselineCoveragePlan plan(grid, options, start);
+  const auto first = plan.sweep(start, {}, 0.90);
+  const auto second = plan.sweep(start, {}, 0.90);
+  ASSERT_FALSE(first.empty());
+  EXPECT_EQ(first, second);
+  auto from = start;
+  for (const auto to : first) {
+    EXPECT_TRUE(grid.straight(plan.reachable(), from, to));
+    from = to;
+  }
+}
+
+TEST(BaselineCoveragePlan, BasicGapFillMovesToNearestMissingFloor)
+{
+  const auto grid = empty_grid();
+  PlanOptions options;
+  options.robot_radius = 0.0;
+  options.safety_margin = 0.0;
+  options.cleaning_radius = 0.06;
+  const Cell start{2, 4};
+  const BaselineCoveragePlan plan(grid, options, start);
+  auto covered = plan.target_floor({});
+  covered[grid.index({4, 4})] = 0;
+  covered[grid.index({10, 8})] = 0;
+  const auto route = plan.gaps(start, {}, covered, {});
+  ASSERT_FALSE(route.empty());
+  EXPECT_LT(std::hypot(route.front().x - 4, route.front().y - 4),
+    std::hypot(route.front().x - 10, route.front().y - 8));
+}
+
+TEST(BaselineCoveragePlan, UsesSameTaskFloorAsOptimizedPlanner)
+{
+  const auto grid = empty_grid();
+  PlanOptions options;
+  options.robot_radius = 0.0;
+  options.safety_margin = 0.0;
+  const Cell start{3, 3};
+  const CoveragePlan optimized(grid, options, start);
+  const BaselineCoveragePlan baseline(grid, options, start);
+  EXPECT_EQ(baseline.target_floor({}), optimized.target_floor({}));
 }
