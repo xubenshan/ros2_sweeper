@@ -2,12 +2,14 @@ cmake_minimum_required(VERSION 3.16)
 project(robot_cleaning_manager)
 find_package(ament_cmake REQUIRED)
 set(dependencies geometry_msgs lifecycle_msgs nav2_msgs nav_msgs rclcpp rclcpp_action
-  robot_cleaning_interfaces std_msgs std_srvs tf2_ros)
+  robot_cleaning_interfaces std_msgs std_srvs tf2 tf2_ros)
 foreach(dependency IN LISTS dependencies)
   find_package(${dependency} REQUIRED)
 endforeach()
 add_library(task_execution
   src/navigation_executor.cpp
+  src/cleaning_event_log.cpp
+  src/localization_health.cpp
   src/checkpoint_store.cpp
   src/task_state.cpp
   src/planning_request.cpp
@@ -20,7 +22,11 @@ add_executable(cleaning_task_manager_node src/cleaning_task_manager.cpp)
 target_compile_options(cleaning_task_manager_node PRIVATE -Wall -Wextra -Wpedantic)
 target_link_libraries(cleaning_task_manager_node task_execution)
 ament_target_dependencies(cleaning_task_manager_node ${dependencies})
-install(TARGETS task_execution cleaning_task_manager_node DESTINATION lib/${PROJECT_NAME})
+add_executable(localization_health_monitor_node src/localization_health_monitor.cpp)
+target_compile_options(localization_health_monitor_node PRIVATE -Wall -Wextra -Wpedantic)
+target_link_libraries(localization_health_monitor_node task_execution)
+ament_target_dependencies(localization_health_monitor_node ${dependencies})
+install(TARGETS task_execution cleaning_task_manager_node localization_health_monitor_node DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
@@ -35,6 +41,13 @@ if(BUILD_TESTING)
   ament_add_gtest(task_state_test test/task_state_test.cpp)
   target_link_libraries(task_state_test task_execution)
   ament_add_gtest(planning_request_test test/planning_request_test.cpp)
+  ament_add_gtest(cleaning_event_log_test test/cleaning_event_log_test.cpp)
+  target_link_libraries(cleaning_event_log_test task_execution)
+  ament_target_dependencies(cleaning_event_log_test robot_cleaning_interfaces)
+  ament_add_gtest(localization_health_test test/localization_health_test.cpp)
+  target_link_libraries(localization_health_test task_execution)
+  ament_add_gtest(pause_ownership_test test/pause_ownership_test.cpp)
+  target_link_libraries(pause_ownership_test task_execution)
   target_link_libraries(planning_request_test task_execution)
   ament_add_gtest(waypoint_guard_test test/waypoint_guard_test.cpp)
   target_link_libraries(waypoint_guard_test task_execution)

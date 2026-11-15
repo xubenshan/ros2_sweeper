@@ -102,3 +102,12 @@ TEST(TaskState, CancelIsLegalFromEveryAsynchronousActivePhase)
   expect_cancel({TaskState::waiting_map, TaskState::planning, TaskState::running,
     TaskState::recovering});
 }
+
+TEST(TaskState, RouteReadyWhileLocalizationLostMayPauseFromPlanning)
+{
+  TaskStateMachine machine;
+  ASSERT_TRUE(machine.transition(TaskState::waiting_map));
+  ASSERT_TRUE(machine.transition(TaskState::planning));
+  EXPECT_TRUE(machine.transition(TaskState::paused));
+  EXPECT_TRUE(machine.transition(TaskState::running));
+}

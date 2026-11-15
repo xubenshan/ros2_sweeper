@@ -162,7 +162,6 @@ local_costmap:
       width: 3
       height: 3
       resolution: 0.02
-      robot_radius: 0.1745
       # No voxel_layer: with a single-plane 2D LiDAR it only repeated the
       # obstacle_layer's ray tracing (and published an empty 3D grid).
       plugins: ["obstacle_layer", "inflation_layer"]
@@ -170,7 +169,7 @@ local_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         # Tight for a vacuum: it should hug walls/furniture to clean edges, not
         # balloon away from them. inflation_radius just above the inscribed radius
-        # (robot_radius 0.1745) with a steep cost falloff.
+        # injected from robot_geometry.yaml, with a steep cost falloff.
         inflation_radius: 0.20
         cost_scaling_factor: 5.0
       obstacle_layer:
@@ -199,7 +198,6 @@ global_costmap:
       global_frame: map
       robot_base_frame: base_link
       transform_tolerance: 0.3
-      robot_radius: 0.1745
       resolution: 0.05
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]   # no voxel_layer, see local_costmap
@@ -225,7 +223,7 @@ global_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         # Tight for a vacuum: it should hug walls/furniture to clean edges, not
         # balloon away from them. inflation_radius just above the inscribed radius
-        # (robot_radius 0.1745) with a steep cost falloff.
+        # after the robot radius is injected from robot_geometry.yaml.
         inflation_radius: 0.20
         cost_scaling_factor: 5.0
       always_send_full_costmap: true

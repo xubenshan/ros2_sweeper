@@ -39,7 +39,7 @@ bool TaskStateMachine::can_transition(TaskState next) const noexcept
       return next == TaskState::planning || next == TaskState::canceling ||
              next == TaskState::failed;
     case TaskState::planning:
-      return next == TaskState::running || next == TaskState::canceling ||
+      return next == TaskState::running || next == TaskState::paused || next == TaskState::canceling ||
              next == TaskState::failed;
     case TaskState::running:
       return next == TaskState::planning || next == TaskState::paused ||

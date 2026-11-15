@@ -6,6 +6,7 @@
 #include <chrono>
 #include <cmath>
 #include <mutex>
+#include <limits>
 #include <stdexcept>
 #include <unordered_map>
 
@@ -14,6 +15,7 @@
 #include <rclcpp/create_timer.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <robot_cleaning_interfaces/msg/coverage_status.hpp>
+#include <robot_cleaning_interfaces/msg/localization_health.hpp>
 #include <robot_cleaning_interfaces/srv/begin_coverage.hpp>
 #include <robot_cleaning_interfaces/srv/plan_coverage.hpp>
 #include <std_msgs/msg/string.hpp>
@@ -28,6 +30,7 @@ using Begin = robot_cleaning_interfaces::srv::BeginCoverage;
 using Plan = robot_cleaning_interfaces::srv::PlanCoverage;
 using Status = robot_cleaning_interfaces::msg::CoverageStatus;
 
+using LocalizationHealth = robot_cleaning_interfaces::msg::LocalizationHealth;
 namespace
 {
 constexpr double kMaximumCostmapAgeS = 2.0;
@@ -44,7 +47,8 @@ public:
   CoverageNode()
   : Node("coverage_planner"), tf_(get_clock()), listener_(tf_, this, false)
   {
-    options_.robot_radius = declare_parameter("robot_radius", 0.175);
+    options_.robot_radius = declare_parameter(
+      "robot_radius", std::numeric_limits<double>::quiet_NaN());
     options_.safety_margin = declare_parameter("safety_margin", 0.005);
     options_.edge_margin = declare_parameter("edge_margin", 0.0);
     options_.refine_sweep = declare_parameter("refine_sweep", false);
@@ -61,7 +65,8 @@ public:
     {
       throw std::invalid_argument("invalid sweep or gap clearance");
     }
-    options_.cleaning_radius = declare_parameter("cleaning_radius", 0.20);
+    options_.cleaning_radius = declare_parameter(
+      "cleaning_radius", std::numeric_limits<double>::quiet_NaN());
     options_.row_overlap = declare_parameter("row_overlap", 0.10);
     options_.waypoint_spacing = declare_parameter("waypoint_spacing", 0.40);
     options_.turn_cost = declare_parameter("turn_cost", 0.20);
@@ -69,8 +74,14 @@ public:
     if (planning_algorithm_ != "optimized" && planning_algorithm_ != "baseline") {
       throw std::invalid_argument("planning_algorithm must be optimized or baseline");
     }
-    base_frame_ = declare_parameter<std::string>("base_frame", "base_footprint");
-    odom_frame_ = declare_parameter<std::string>("odom_frame", "odom");
+    base_frame_ = declare_parameter<std::string>("base_frame", "");
+    odom_frame_ = declare_parameter<std::string>("odom_frame", "");
+    if (!std::isfinite(options_.robot_radius) || options_.robot_radius <= 0.0 ||
+      !std::isfinite(options_.cleaning_radius) || options_.cleaning_radius <= 0.0 ||
+      base_frame_.empty() || odom_frame_.empty())
+    {
+      throw std::invalid_argument("robot geometry parameters must be provided by launch");
+    }
     for (const auto & name :
       declare_parameter("region_names", std::vector<std::string>{}))
     {
@@ -106,6 +117,15 @@ public:
           previous_.reset();
         }
         running_ = state->data == "RUNNING";
+      });
+    localization_sub_ = create_subscription<LocalizationHealth>(
+      "cleaning/localization_health", latched,
+      [this](LocalizationHealth::ConstSharedPtr health) {
+        if (!health->healthy) {
+          previous_.reset();
+          previous_cell_.reset();
+        }
+        localization_healthy_ = health->healthy;
       });
     status_pub_ = create_publisher<Status>("cleaning/coverage_status", latched);
     grid_pub_ = create_publisher<Grid>("cleaning/covered_grid", latched);
@@ -473,7 +493,7 @@ private:
 
   void sample()
   {
-    if (!grid_ || !running_) {
+    if (!grid_ || !running_ || !localization_healthy_) {
       return;
     }
     try {
@@ -565,6 +585,7 @@ private:
   std::size_t total_{0};
   double distance_{0};
   bool running_{false};
+  bool localization_healthy_{false};
   tf2_ros::Buffer tf_;
   tf2_ros::TransformListener listener_;
   rclcpp::CallbackGroup::SharedPtr plan_group_;
@@ -572,6 +593,7 @@ private:
   rclcpp::Subscription<Grid>::SharedPtr costmap_sub_;
   rclcpp::Subscription<Grid>::SharedPtr local_costmap_sub_;
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr state_sub_;
+  rclcpp::Subscription<LocalizationHealth>::SharedPtr localization_sub_;
   rclcpp::Publisher<Status>::SharedPtr status_pub_;
   rclcpp::Publisher<Grid>::SharedPtr grid_pub_;
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr plan_pub_;

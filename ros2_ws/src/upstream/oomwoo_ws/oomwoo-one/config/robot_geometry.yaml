@@ -1,0 +1,26 @@
+# Single source for physical and cleaning geometry. All dimensions are metres.
+# Changing these values updates Xacro, Gazebo drive geometry, Nav2 costmaps,
+# coverage planning, task budgeting and independent truth evaluation together.
+# Algorithm margins and overlap settings intentionally live in their own configs.
+schema_version: 1
+profile: resume_sweeper_v1
+
+frames:
+  global: map
+  odom: odom
+  base_footprint: base_footprint
+  base_link: base_link
+
+# Circular body envelope used by collision and reachability checks.
+base:
+  radius_m: 0.1745
+
+drive_wheels:
+  # Radius, tread width and centre-to-centre track of the differential drive.
+  radius_m: 0.034
+  width_m: 0.012
+  center_separation_m: 0.235
+
+cleaning:
+  # Effective brush radius; larger values increase swath width and coverage stamps.
+  radius_m: 0.20

@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 #include "robot_cleaning_manager/checkpoint_store.hpp"
+#include "robot_cleaning_manager/cleaning_event_log.hpp"
 #include "robot_cleaning_manager/completion_decision.hpp"
 #include "robot_cleaning_manager/navigation_executor.hpp"
+#include "robot_cleaning_manager/pause_ownership.hpp"
 #include "robot_cleaning_manager/planning_request.hpp"
 #include "robot_cleaning_manager/replan_policy.hpp"
 #include "robot_cleaning_manager/recovery_executor.hpp"
@@ -25,9 +27,12 @@
 #include <nav_msgs/msg/odometry.hpp>
 #include <nav_msgs/msg/path.hpp>
 #include <robot_cleaning_interfaces/action/clean_task.hpp>
+#include <robot_cleaning_interfaces/msg/cleaning_event.hpp>
 #include <robot_cleaning_interfaces/msg/coverage_status.hpp>
+#include <robot_cleaning_interfaces/msg/localization_health.hpp>
 #include <robot_cleaning_interfaces/srv/begin_coverage.hpp>
 #include <robot_cleaning_interfaces/srv/plan_coverage.hpp>
+#include <robot_cleaning_interfaces/srv/list_cleaning_events.hpp>
 #include <std_msgs/msg/float32.hpp>
 #include <std_msgs/msg/bool.hpp>
 #include <std_msgs/msg/empty.hpp>
@@ -46,6 +51,9 @@ using Pose = geometry_msgs::msg::PoseStamped;
 using Plan = robot_cleaning_interfaces::srv::PlanCoverage;
 using Begin = robot_cleaning_interfaces::srv::BeginCoverage;
 using Coverage = robot_cleaning_interfaces::msg::CoverageStatus;
+using CleaningEvent = robot_cleaning_interfaces::msg::CleaningEvent;
+using LocalizationHealth = robot_cleaning_interfaces::msg::LocalizationHealth;
+using ListCleaningEvents = robot_cleaning_interfaces::srv::ListCleaningEvents;
 using Grid = nav_msgs::msg::OccupancyGrid;
 
 namespace
@@ -89,7 +97,7 @@ public:
     timeout_(declare_parameter<int>("navigation_timeout_s", 90)),
     progress_timeout_(declare_parameter<int>("progress_timeout_s", 35)),
     gap_progress_timeout_(declare_parameter<int>("gap_progress_timeout_s", progress_timeout_.count())),
-    planning_timeout_(declare_parameter<int>("planning_timeout_s", 35)),
+    planning_timeout_(declare_parameter<int>("planning_timeout_s", 60)),
     startup_timeout_(declare_parameter<int>("startup_timeout_s", 60)),
     nav_unavailable_grace_(declare_parameter<int>("nav_unavailable_grace_s", 5)),
     retries_(declare_parameter<int>("navigation_retries", 1)),
@@ -100,7 +108,11 @@ public:
     early_gap_replan_(declare_parameter("early_gap_replan", true)),
     max_gap_passes_(declare_parameter<int>("max_gap_passes", 3)),
     gap_failure_replan_threshold_(declare_parameter<int>("gap_failure_replan_threshold", 0)),
-    cleaning_radius_(declare_parameter("cleaning_radius", 0.20)),
+    event_log_capacity_(declare_parameter<int>("event_log_capacity", 500)),
+    event_log_(static_cast<std::size_t>(std::max(1, event_log_capacity_))),
+    cleaning_radius_(declare_parameter("cleaning_radius", std::numeric_limits<double>::quiet_NaN())),
+    map_frame_(declare_parameter<std::string>("map_frame", "")),
+    base_frame_(declare_parameter<std::string>("base_frame", "")),
     coverage_completion_margin_(declare_parameter("coverage_completion_margin", 0.01)),
     target_path_efficiency_(declare_parameter("target_path_efficiency", 0.0)),
     minimum_gap_distance_budget_m_(
@@ -121,13 +133,15 @@ public:
       nav_unavailable_grace_.count() < 1 ||
       retries_ < 0 || gap_retries_ < 0 || gap_failure_replan_threshold_ < 0 ||
       !std::isfinite(cleaning_radius_) || cleaning_radius_ <= 0.0 ||
+      map_frame_.empty() || base_frame_.empty() ||
       !std::isfinite(coverage_completion_margin_) || coverage_completion_margin_ < 0.0 ||
       coverage_completion_margin_ > 0.10 ||
       !std::isfinite(target_path_efficiency_) || target_path_efficiency_ < 0.0 ||
+      event_log_capacity_ < 1 || event_log_capacity_ > 10000 ||
       target_path_efficiency_ > 1.0 || !std::isfinite(minimum_gap_distance_budget_m_) ||
       minimum_gap_distance_budget_m_ <= 0.0)
     {
-      throw std::invalid_argument("invalid navigation limits or cleaning radius");
+      throw std::invalid_argument("invalid navigation limits or required robot geometry");
     }
     names_ = declare_parameter<std::vector<std::string>>("region_names", std::vector<std::string>{});
     for (const auto & name : names_) {
@@ -139,7 +153,7 @@ public:
       }
       for (std::size_t i = 0; i < route.size(); i += 3) {
         Pose pose;
-        pose.header.frame_id = "map";
+        pose.header.frame_id = map_frame_;
         pose.pose.position.x = route[i];
         pose.pose.position.y = route[i + 1];
         pose.pose.orientation.z = std::sin(route[i + 2] / 2.0);
@@ -158,6 +172,8 @@ public:
         if (task_ && state() == TaskState::running && contact_ != "clear" && !recovery_) {
           recovery_.emplace(contact_);
           recovery_start_.reset();
+          record_event("COLLISION_RECOVERY", CleaningEvent::WARNING,
+            "Collision detected on " + contact_);
           transition_to(TaskState::recovering, "collision detected");
           nav_.cancel();
           RCLCPP_WARN(get_logger(), "Collision on %s, recovering waypoint %zu",
@@ -167,9 +183,14 @@ public:
     estop_sub_ = create_subscription<std_msgs::msg::Bool>(
       "motion/estop_state", latched, [this](std_msgs::msg::Bool::ConstSharedPtr msg) {
         estopped_ = msg->data;
+        if (estopped_) {
+          pause_ownership_.set(PauseOwner::emergency_stop);
+          record_event("EMERGENCY_STOP", CleaningEvent::WARNING, "Emergency stop asserted");
+        }
         if (estopped_ && task_ &&
           (state() == TaskState::running || state() == TaskState::recovering))
         {
+          active_pub_->publish(std_msgs::msg::Bool{});
           transition_to(TaskState::paused, "emergency stop asserted");
           stop_recovery();
           nav_.cancel();
@@ -181,7 +202,7 @@ public:
       begin_ = create_client<Begin>("cleaning/begin_coverage");
       coverage_sub_ = create_subscription<Coverage>(
         "cleaning/coverage_status", latched, [this](Coverage::ConstSharedPtr update) {
-          if (task_ && update->task_id == current_.task_id) {
+          if (task_ && localization_healthy_ && update->task_id == current_.task_id) {
             coverage_grid_ = update->covered;
             current_.covered = update->covered.data;
             current_.coverage = update->coverage;
@@ -207,6 +228,24 @@ public:
     progress_pub_ = create_publisher<std_msgs::msg::Float32>("cleaning/progress", latched);
     goal_pub_ = create_publisher<Pose>("cleaning/current_goal", latched);
     path_pub_ = create_publisher<nav_msgs::msg::Path>("cleaning/path", latched);
+    event_pub_ = create_publisher<CleaningEvent>(
+      "cleaning/events", rclcpp::QoS(50).reliable().transient_local());
+    event_list_ = create_service<ListCleaningEvents>(
+      "cleaning/list_events", [this](
+        ListCleaningEvents::Request::SharedPtr request,
+        ListCleaningEvents::Response::SharedPtr response) {
+        constexpr std::size_t kDefaultLimit = 50;
+        constexpr std::size_t kMaximumLimit = 200;
+        const auto requested = request->limit == 0 ? kDefaultLimit :
+          static_cast<std::size_t>(request->limit);
+        response->events = event_log_.select(
+          std::min(requested, kMaximumLimit), request->task_id_filter, request->code_filter);
+        response->success = true;
+        response->message = "events returned newest first";
+      });
+    localization_sub_ = create_subscription<LocalizationHealth>(
+      "cleaning/localization_health", latched,
+      [this](LocalizationHealth::ConstSharedPtr health) {on_localization_health(*health);});
     map_sub_ = create_subscription<nav_msgs::msg::OccupancyGrid>(
       "map", latched, [this](nav_msgs::msg::OccupancyGrid::ConstSharedPtr map) {
         if (map->info.width && map->info.height &&
@@ -218,7 +257,8 @@ public:
     odom_sub_ = create_subscription<nav_msgs::msg::Odometry>(
       "odom", rclcpp::SensorDataQoS(), [this](nav_msgs::msg::Odometry::ConstSharedPtr odom) {
         const auto & p = odom->pose.pose.position;
-        if (!use_planner_ && previous_ && task_ && state() == TaskState::running) {
+        if (!use_planner_ && previous_ && task_ && localization_healthy_ &&
+          state() == TaskState::running) {
           const double step = std::hypot(p.x - previous_->x, p.y - previous_->y);
           if (step < kMaximumOdomSampleM) {
             current_.distance += step;
@@ -233,20 +273,30 @@ public:
           reply->message = "No running task to pause";
           return;
         }
+        pause_ownership_.set(PauseOwner::manual);
+        record_event("MANUAL_PAUSE", CleaningEvent::INFO, "Pause requested by operator");
         transition_to(TaskState::paused, "pause requested");
         stop_recovery();
         nav_.cancel();
         reply->success = persist();
+        active_pub_->publish(std_msgs::msg::Bool{});
         reply->message = reply->success ? "Paused; navigation cancel requested" : checkpoint_error_;
       });
     resume_ = create_service<Trigger>("cleaning/resume", [this](
       Trigger::Request::SharedPtr, Trigger::Response::SharedPtr reply)
       {
-        if (!task_ || state() != TaskState::paused || nav_.busy() || !nav_.ready() || estopped_) {
-          reply->message = "Wait for a paused task and navigation cancel acknowledgment";
+        if (!task_ || state() != TaskState::paused || nav_.busy() || !nav_.ready() || estopped_ ||
+          !localization_healthy_) {
+          reply->message =
+            "Wait for a paused task, healthy localization, and navigation cancel acknowledgment";
           return;
         }
         reply->success = true;
+        std_msgs::msg::Bool active;
+        active.data = true;
+        active_pub_->publish(active);
+        pause_ownership_.clear();
+        record_event("MANUAL_RESUME", CleaningEvent::INFO, "Resume requested by operator");
         reply->message = "Resuming remaining route from the current pose";
         transition_to(TaskState::running, "resume requested");
       });
@@ -286,8 +336,11 @@ public:
         consecutive_failures_ = 0;
         early_replan_attempted_ = false;
         nav_missing_since_.reset();
+        pause_ownership_.clear();
+        planning_in_flight_ = false;
         started_ = std::chrono::steady_clock::now();
         transition_to(TaskState::waiting_map, "goal accepted");
+        record_event("GOAL_ACCEPTED", CleaningEvent::INFO, "CleanTask goal accepted");
       });
     timer_ = create_wall_timer(100ms, std::bind(&CleaningTaskManager::tick, this));
     publish_state();
@@ -324,6 +377,88 @@ public:
 private:
   TaskState state() const noexcept {return state_machine_.state();}
 
+  void record_event(
+    const std::string & code, std::uint8_t severity, const std::string & message,
+    bool recoverable = true, std::string_view previous_state = {})
+  {
+    if (!event_pub_) {
+      return;
+    }
+    CleaningEvent event;
+    event.header.stamp = now();
+    event.header.frame_id = map_frame_;
+    event.task_id = current_.task_id;
+    event.severity = severity;
+    event.code = code;
+    event.state = task_state_name(state());
+    event.previous_state = previous_state;
+    event.recoverable = recoverable;
+    event.message = message;
+    event.coverage = current_.coverage;
+    event.completed_waypoints = current_.completed;
+    event.failed_waypoints = current_.failed;
+    event.total_waypoints = current_.total;
+    event_pub_->publish(event_log_.append(std::move(event)));
+  }
+
+  void on_localization_health(const LocalizationHealth & health)
+  {
+    const bool first = !localization_seen_;
+    const bool was_healthy = localization_healthy_;
+    const auto previous_health_state = localization_state_;
+    localization_seen_ = true;
+    localization_state_ = health.state;
+    localization_healthy_ = health.healthy;
+    localization_reason_ = health.reason;
+
+    if (first) {
+      if (health.healthy) {
+        record_event("LOCALIZATION_READY", CleaningEvent::INFO, health.reason);
+      } else if (health.state == LocalizationHealth::LOST) {
+        record_event("LOCALIZATION_LOST", CleaningEvent::WARNING, health.reason);
+      }
+    } else if (health.state != previous_health_state) {
+      if (health.state == LocalizationHealth::LOST) {
+        record_event("LOCALIZATION_LOST", CleaningEvent::WARNING, health.reason);
+      } else if (health.healthy && !was_healthy) {
+        record_event("LOCALIZATION_RECOVERED", CleaningEvent::INFO, health.reason);
+      } else if (health.state == LocalizationHealth::DEGRADED) {
+        record_event("LOCALIZATION_DEGRADED", CleaningEvent::WARNING, health.reason);
+      }
+    }
+
+    if (health.state == LocalizationHealth::LOST) {
+      previous_.reset();
+    }
+
+    if (!health.healthy && health.state == LocalizationHealth::LOST && task_ &&
+      (state() == TaskState::planning || state() == TaskState::running ||
+      state() == TaskState::recovering))
+    {
+      const auto interrupted_state = state();
+      pause_ownership_.set(PauseOwner::localization);
+      active_pub_->publish(std_msgs::msg::Bool{});
+      transition_to(TaskState::paused, "localization lost");
+      stop_recovery();
+      if (interrupted_state == TaskState::running || interrupted_state == TaskState::recovering) {
+        nav_.cancel();
+      }
+      persist();
+      record_event(
+        "LOCALIZATION_PAUSED_TASK", CleaningEvent::WARNING,
+        interrupted_state == TaskState::planning ?
+        "Task paused while planning; route will be saved but not executed: " + health.reason :
+        "Task paused and navigation cancel requested: " + health.reason);
+      return;
+    }
+
+    if (health.healthy && !was_healthy &&
+      pause_ownership_.localization_owned() && task_ && state() == TaskState::paused)
+    {
+      pause_ownership_.localization_recovered();
+    }
+  }
+
   void publish_state()
   {
     std_msgs::msg::String msg;
@@ -341,12 +476,19 @@ private:
       RCLCPP_ERROR(get_logger(), "Illegal task transition %s -> %s (%.*s)",
         task_state_name(previous).data(), task_state_name(next).data(),
         static_cast<int>(trigger.size()), trigger.data());
+      record_event(
+        "ILLEGAL_STATE_TRANSITION", CleaningEvent::ERROR,
+        std::string(task_state_name(previous)) + " -> " + std::string(task_state_name(next)) +
+        ": " + std::string(trigger), false, task_state_name(previous));
       return false;
     }
     RCLCPP_DEBUG(get_logger(), "Task transition %s -> %s (%.*s)",
       task_state_name(previous).data(), task_state_name(next).data(),
       static_cast<int>(trigger.size()), trigger.data());
     publish_state();
+    record_event(
+      "STATE_TRANSITION", CleaningEvent::INFO, std::string(trigger), true,
+      task_state_name(previous));
     return true;
   }
 
@@ -358,6 +500,7 @@ private:
     } catch (const std::exception & e) {
       checkpoint_error_ = std::string("Checkpoint failed: ") + e.what();
       RCLCPP_ERROR(get_logger(), "%s", checkpoint_error_.c_str());
+      record_event("CHECKPOINT_ERROR", CleaningEvent::ERROR, checkpoint_error_, false);
       return false;
     }
   }
@@ -365,7 +508,7 @@ private:
   std::optional<Pose> position()
   {
     try {
-      const auto transform = tf_.lookupTransform("map", "base_footprint", tf2::TimePointZero);
+      const auto transform = tf_.lookupTransform(map_frame_, base_frame_, tf2::TimePointZero);
       Pose pose;
       pose.header = transform.header;
       pose.pose.position.x = transform.transform.translation.x;
@@ -400,10 +543,12 @@ private:
         request->restored_grid = current_.covered;
         request->restored_distance_m = current_.distance;
         const auto generation = generation_;
+        planning_in_flight_ = true;
         begin_->async_send_request(request, [this, generation](rclcpp::Client<Begin>::SharedFuture future) {
             if (!planning(generation)) {
               return;
             }
+            planning_in_flight_ = false;
             const auto response = future.get();
             if (!response->success) {
               finish(TaskState::failed, response->reason);
@@ -435,19 +580,25 @@ private:
 
   bool planning(std::uint64_t generation) const
   {
-    return task_ && generation_ == generation && state() == TaskState::planning &&
-      !task_->is_canceling();
+    const bool accepts_result = state() == TaskState::planning ||
+      (state() == TaskState::paused && pause_ownership_.localization_owned() && planning_in_flight_);
+    return task_ && generation_ == generation && accepts_result && !task_->is_canceling();
   }
 
   void request_plan(bool gap, bool ignore_failure_exclusions = false)
   {
     const auto pose = position();
+    record_event(gap ? "GAP_PLAN_REQUESTED" : "SWEEP_PLAN_REQUESTED", CleaningEvent::INFO,
+      gap ? "Coverage gap-fill plan requested" : "Initial coverage plan requested");
     if (!pose || !plan_->service_is_ready()) {
       finish(TaskState::failed, "Planner or map-frame pose unavailable");
       return;
     }
-    transition_to(TaskState::planning, gap ? "gap plan requested" : "sweep plan requested");
+    if (state() != TaskState::paused) {
+      transition_to(TaskState::planning, gap ? "gap plan requested" : "sweep plan requested");
+    }
     plan_deadline_ = std::chrono::steady_clock::now() + planning_timeout_;
+    planning_in_flight_ = true;
     PlanningRequestContext context;
     context.regions = current_.regions;
     context.start = *pose;
@@ -477,6 +628,7 @@ private:
         if (!planning(generation)) {
           return;
         }
+        planning_in_flight_ = false;
         const auto response = future.get();
         if (!response->success || response->path.poses.empty()) {
           if (should_retry_gap_plan_without_failure_exclusions(
@@ -493,6 +645,7 @@ private:
           if (gap && ignore_failure_exclusions) {
             reason = "No coverage route after retry without failed-waypoint exclusions: " + reason;
           }
+          record_event("PLANNING_FAILED", CleaningEvent::ERROR, reason, false);
           finish(TaskState::failed, reason);
           return;
         }
@@ -503,6 +656,8 @@ private:
           ++current_.pass;
           consecutive_failures_ = 0;
         }
+        record_event(gap ? "GAP_PLAN_READY" : "SWEEP_PLAN_READY", CleaningEvent::INFO,
+          "Planner returned " + std::to_string(current_.path.size()) + " waypoints");
         start_route();
       });
   }
@@ -514,7 +669,7 @@ private:
       return;
     }
     nav_msgs::msg::Path path;
-    path.header.frame_id = "map";
+    path.header.frame_id = map_frame_;
     path.header.stamp = now();
     path.poses = current_.path;
     path_pub_->publish(path);
@@ -522,9 +677,27 @@ private:
       finish(TaskState::failed, checkpoint_error_);
       return;
     }
+    if (!localization_healthy_) {
+      pause_ownership_.set(PauseOwner::localization);
+      active_pub_->publish(std_msgs::msg::Bool{});
+      if (state() != TaskState::paused) {
+        transition_to(TaskState::paused, "route ready while localization unhealthy");
+      }
+      record_event(
+        "LOCALIZATION_HELD_ROUTE", CleaningEvent::WARNING,
+        "Route saved but not started: " + localization_reason_);
+      return;
+    }
+    const bool resuming_after_localization =
+      state() == TaskState::paused && pause_ownership_.localization_owned();
+    pause_ownership_.clear();
     std_msgs::msg::Bool active;
     active.data = true;
     active_pub_->publish(active);
+    if (resuming_after_localization) {
+      record_event("LOCALIZATION_AUTO_RESUME", CleaningEvent::INFO,
+        "Localization stable; starting the saved route");
+    }
     transition_to(TaskState::running, "route ready");
   }
 
@@ -713,6 +886,10 @@ private:
     }
     if (task_->is_canceling()) {
       if (state() != TaskState::canceling) {
+        pause_ownership_.set(PauseOwner::cancel);
+        planning_in_flight_ = false;
+        active_pub_->publish(std_msgs::msg::Bool{});
+        record_event("CANCEL_REQUESTED", CleaningEvent::INFO, "CleanTask cancel requested");
         transition_to(TaskState::canceling, "Action cancel requested");
         stop_recovery();
       }
@@ -736,23 +913,25 @@ private:
     }
     feedback();
     if (state() == TaskState::waiting_map) {
-      if (!map_id_.empty() && nav_.ready() &&
+      if (localization_healthy_ && !map_id_.empty() && nav_.ready() &&
         (!use_planner_ || (begin_->service_is_ready() && plan_->service_is_ready() && position())))
       {
         prepare();
       } else {
         RCLCPP_INFO_THROTTLE(get_logger(), *get_clock(), 5000,
-          "Waiting: map=%d nav=%d planner=%d tracker=%d tf=%d",
+          "Waiting: localization=%d map=%d nav=%d planner=%d tracker=%d tf=%d",
+          localization_healthy_,
           !map_id_.empty(), nav_.ready(), use_planner_ && plan_->service_is_ready(),
           use_planner_ && begin_->service_is_ready(), static_cast<bool>(position()));
         if (std::chrono::steady_clock::now() - started_ > startup_timeout_) {
-          finish(TaskState::failed, "Map, Nav2, planner, tracker, or map-frame pose unavailable");
+          finish(TaskState::failed, "Localization, map, Nav2, planner, tracker, or map-frame pose unavailable");
         }
       }
       return;
     }
     if (state() == TaskState::planning) {
       if (std::chrono::steady_clock::now() > plan_deadline_) {
+        planning_in_flight_ = false;
         finish(TaskState::failed, "Coverage planning timed out");
       }
       return;
@@ -764,6 +943,24 @@ private:
       return;
     }
     if (state() == TaskState::paused) {
+      if (planning_in_flight_) {
+        if (std::chrono::steady_clock::now() > plan_deadline_) {
+          planning_in_flight_ = false;
+          finish(TaskState::failed, "Coverage planning timed out while localization was unavailable");
+        }
+        return;
+      }
+      if (pause_ownership_.should_auto_resume(
+          true, localization_healthy_, planning_in_flight_, !nav_.busy(), nav_.ready(), estopped_))
+      {
+        pause_ownership_.clear();
+        std_msgs::msg::Bool active;
+        active.data = true;
+        active_pub_->publish(active);
+        record_event("LOCALIZATION_AUTO_RESUME", CleaningEvent::INFO,
+          "Localization stable; resuming remaining route");
+        transition_to(TaskState::running, "localization recovered");
+      }
       return;
     }
     if (!nav_.ready()) {
@@ -930,9 +1127,12 @@ private:
       case Status::canceled: last_failure_ = "goal canceled"; break;
       default: last_failure_ = "navigation failed"; break;
     }
+    record_event("NAVIGATION_FAILED", CleaningEvent::WARNING, last_failure_);
     RCLCPP_WARN(get_logger(), "waypoint %zu: %s", current_.next, last_failure_.c_str());
     const auto allowed_retries = current_.pass > 0 ? gap_retries_ : retries_;
     if (attempts_++ >= allowed_retries) {
+      record_event("NAVIGATION_GOAL_ABANDONED", CleaningEvent::WARNING,
+        "Waypoint excluded after retries: " + last_failure_);
       ++current_.failed;
       ++consecutive_failures_;
       excluded_.push_back(current_.path[current_.next].pose.position);
@@ -940,6 +1140,7 @@ private:
       attempts_ = 0;
       persist();
     } else {
+      record_event("NAVIGATION_RETRY", CleaningEvent::WARNING, last_failure_);
       retry_after_ = std::chrono::steady_clock::now() + 1s;
       transition_to(TaskState::recovering, "navigation retry scheduled");
     }
@@ -957,6 +1158,13 @@ private:
       return;
     }
     active_pub_->publish(std_msgs::msg::Bool{});
+    pause_ownership_.clear();
+    planning_in_flight_ = false;
+    const char * terminal_code = terminal_state == TaskState::succeeded ? "TASK_SUCCEEDED" :
+      (terminal_state == TaskState::canceled ? "TASK_CANCELED" : "TASK_FAILED");
+    const auto severity = terminal_state == TaskState::failed ? CleaningEvent::ERROR :
+      CleaningEvent::INFO;
+    record_event(terminal_code, severity, reason, terminal_state != TaskState::failed);
     auto result = std::make_shared<CleanTask::Result>();
     result->success = terminal_state == TaskState::succeeded;
     result->reason = reason;
@@ -997,7 +1205,11 @@ private:
   const bool early_gap_replan_;
   const int max_gap_passes_;
   const int gap_failure_replan_threshold_;
+  const int event_log_capacity_;
+  CleaningEventLog event_log_;
   const double cleaning_radius_;
+  const std::string map_frame_;
+  const std::string base_frame_;
   const double coverage_completion_margin_;
   const double target_path_efficiency_;
   const double minimum_gap_distance_budget_m_;
@@ -1031,6 +1243,12 @@ private:
   bool reserved_{false};
   bool shutting_down_{false};
   bool estopped_{false};
+  bool localization_seen_{false};
+  bool localization_healthy_{false};
+  PauseOwnership pause_ownership_;
+  bool planning_in_flight_{false};
+  std::uint8_t localization_state_{LocalizationHealth::UNKNOWN};
+  std::string localization_reason_{"waiting for localization health"};
   std::string contact_{"clear"};
   std::optional<RecoveryExecutor> recovery_;
   std::optional<std::chrono::steady_clock::time_point> recovery_start_;
@@ -1051,6 +1269,9 @@ private:
   rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr progress_pub_;
   rclcpp::Publisher<Pose>::SharedPtr goal_pub_;
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr path_pub_;
+  rclcpp::Publisher<CleaningEvent>::SharedPtr event_pub_;
+  rclcpp::Service<ListCleaningEvents>::SharedPtr event_list_;
+  rclcpp::Subscription<LocalizationHealth>::SharedPtr localization_sub_;
   rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr map_sub_;
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
   rclcpp::Service<Trigger>::SharedPtr pause_;

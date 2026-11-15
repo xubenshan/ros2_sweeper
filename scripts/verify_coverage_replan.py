@@ -10,7 +10,7 @@ import tempfile
 import time
 
 from action_msgs.msg import GoalStatus
-from ament_index_python.packages import get_package_prefix
+from ament_index_python.packages import get_package_prefix, get_package_share_directory
 from geometry_msgs.msg import PoseStamped, TransformStamped
 from lifecycle_msgs.srv import GetState
 from nav2_msgs.action import NavigateToPose
@@ -19,11 +19,12 @@ import rclpy
 from rclpy.action import ActionClient, ActionServer
 from rclpy.qos import DurabilityPolicy, QoSProfile
 from robot_cleaning_interfaces.action import CleanTask
+from robot_cleaning_interfaces.msg import LocalizationHealth
 from robot_cleaning_interfaces.srv import PlanCoverage
-from tf2_ros import StaticTransformBroadcaster
-
 from run_cleaning_benchmark import stop
+from tf2_ros import StaticTransformBroadcaster
 from verify_navigation import wait
+import yaml
 
 
 def main():
@@ -75,6 +76,22 @@ def main():
     map_pub = node.create_publisher(OccupancyGrid, '/map', latched)
     map_pub.publish(grid)
     node.create_timer(.25, lambda: map_pub.publish(grid))
+    health_pub = node.create_publisher(
+        LocalizationHealth, '/cleaning/localization_health', latched)
+    health = LocalizationHealth()
+    health.header.frame_id = 'map'
+    health.state = LocalizationHealth.HEALTHY
+    health.healthy = True
+    health.covariance_xy = .01
+    health.lost_covariance_threshold = .50
+    health.reason = 'Controlled test localization'
+
+    def publish_health():
+        health.header.stamp = node.get_clock().now().to_msg()
+        health_pub.publish(health)
+
+    node.create_timer(.25, publish_health)
+    publish_health()
 
     obstacle_x = 1.45
     costmap = OccupancyGrid()
@@ -115,8 +132,17 @@ def main():
         tf.sendTransform(transform)
     try:
         with tempfile.TemporaryDirectory(prefix='sweeper-replan-') as directory:
+            geometry_file = Path(
+                get_package_share_directory('oomwoo_one')) / 'config' / 'robot_geometry.yaml'
+            geometry = yaml.safe_load(geometry_file.read_text())
+            robot_radius = geometry['base']['radius_m']
+            cleaning_radius = geometry['cleaning']['radius_m']
+            frames = geometry['frames']
             manager_parameters = [
                 '-p', 'use_coverage_planner:=true', '-p', f'checkpoint_dir:={directory}',
+                '-p', f'cleaning_radius:={cleaning_radius}',
+                '-p', f'map_frame:={frames["global"]}',
+                '-p', f'base_frame:={frames["base_footprint"]}',
             ]
             if args.during_gap:
                 manager_parameters += [
@@ -124,7 +150,12 @@ def main():
                 ]
             if args.defer_blocked:
                 manager_parameters += ['-p', 'defer_blocked_sweep_goals:=true']
-            planner_parameters = []
+            planner_parameters = [
+                '-p', f'robot_radius:={robot_radius}',
+                '-p', f'cleaning_radius:={cleaning_radius}',
+                '-p', f'base_frame:={frames["base_footprint"]}',
+                '-p', f'odom_frame:={frames["odom"]}',
+            ]
             if args.local_costmap:
                 planner_parameters += ['-p', 'edge_margin:=.10', '-p', 'gap_use_local_costmap:=true']
             for package, executable, parameters in (

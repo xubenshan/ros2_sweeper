@@ -5,8 +5,6 @@ import shlex
 import tempfile
 import xml.etree.ElementTree as ET
 
-import xacro
-import yaml
 from ament_index_python.packages import get_package_share_path
 from launch import LaunchDescription
 from launch.actions import (
@@ -21,12 +19,13 @@ from launch_ros.actions import Node, SetRemap
 from launch_ros.parameter_descriptions import ParameterValue
 from nav2_common.launch import RewrittenYaml
 
+import xacro
+import yaml
+
 OPEN_FLOOR_EDGE_MARGIN_M = 0.15
 SAFE_GAP_MARGIN_M = 0.065
 GAP_EDGE_PRIORITY_MARGIN_M = 0.15
 DEFAULT_PLANNER_SAFETY_MARGIN_M = 0.005
-TRUTH_CLEANING_RADIUS_M = 0.20
-TRUTH_ROBOT_RADIUS_M = 0.1745
 CLEARANCE_CONTROLLER_PROFILE = {
     'use_cost_regulated_linear_velocity_scaling': 'true',
     'inflation_cost_scaling_factor': None,
@@ -56,13 +55,78 @@ def include(package, launch_file, **arguments):
         PythonLaunchDescriptionSource(str(path)), launch_arguments=arguments.items())
 
 
+def load_robot_geometry(path):
+    with open(path, encoding='utf-8') as geometry_file:
+        document = yaml.safe_load(geometry_file)
+    if not isinstance(document, dict) or document.get('schema_version') != 1:
+        raise ValueError('robot_geometry.yaml must use schema_version 1')
+    try:
+        frames = document['frames']
+        geometry = {
+            'map_frame': str(frames['global']),
+            'odom_frame': str(frames['odom']),
+            'base_footprint_frame': str(frames['base_footprint']),
+            'base_link_frame': str(frames['base_link']),
+            'robot_radius': float(document['base']['radius_m']),
+            'wheel_radius': float(document['drive_wheels']['radius_m']),
+            'wheel_width': float(document['drive_wheels']['width_m']),
+            'wheel_separation': float(document['drive_wheels']['center_separation_m']),
+            'cleaning_radius': float(document['cleaning']['radius_m']),
+        }
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError('robot_geometry.yaml is missing a required geometry field') from error
+    frame_values = [value for key, value in geometry.items() if key.endswith('_frame')]
+    numeric_values = [value for key, value in geometry.items() if not key.endswith('_frame')]
+    if any(not value for value in frame_values) or any(value <= 0.0 for value in numeric_values):
+        raise ValueError('robot_geometry.yaml frames must be non-empty and dimensions positive')
+    return geometry
+
+
+def navigation_geometry_rewrites(geometry):
+    radius = str(geometry['robot_radius'])
+    return {
+        'local_costmap.local_costmap.ros__parameters.robot_radius': radius,
+        'global_costmap.global_costmap.ros__parameters.robot_radius': radius,
+        'local_costmap.local_costmap.ros__parameters.global_frame': geometry['odom_frame'],
+        'local_costmap.local_costmap.ros__parameters.robot_base_frame':
+            geometry['base_link_frame'],
+        'global_costmap.global_costmap.ros__parameters.global_frame': geometry['map_frame'],
+        'global_costmap.global_costmap.ros__parameters.robot_base_frame':
+            geometry['base_link_frame'],
+    }
+
+
+def application_geometry_parameters(geometry):
+    return {
+        'planner': {
+            'robot_radius': geometry['robot_radius'],
+            'cleaning_radius': geometry['cleaning_radius'],
+            'base_frame': geometry['base_footprint_frame'],
+            'odom_frame': geometry['odom_frame'],
+        },
+        'manager': {
+            'cleaning_radius': geometry['cleaning_radius'],
+            'map_frame': geometry['map_frame'],
+            'base_frame': geometry['base_footprint_frame'],
+        },
+        'meter': {
+            'cleaning_radius': geometry['cleaning_radius'],
+            'robot_radius': geometry['robot_radius'],
+        },
+        'localization': {
+            'map_frame': geometry['map_frame'],
+            'base_frame': geometry['base_footprint_frame'],
+        },
+    }
+
+
 def configure_navigation_params(
     params, context, use_tof, collision_aware, clearance_control, sweep_goal_tolerance,
-    direct_sweep_navigation,
+    direct_sweep_navigation, geometry,
 ):
     with open(params, encoding='utf-8') as config_file:
         config = yaml.safe_load(config_file)
-    rewrites = {}
+    rewrites = navigation_geometry_rewrites(geometry)
     if direct_sweep_navigation:
         planner = config['planner_server']['ros__parameters']['planner_plugins'][0]
         rewrites[f'planner_server.ros__parameters.{planner}.plugin'] = (
@@ -101,8 +165,6 @@ def configure_navigation_params(
         rewrites[f'{prefix}.observation_sources'] = ' '.join([*sources, 'front_tof'])
         for key, value in FRONT_TOF_PROFILE.items():
             rewrites[f'{prefix}.front_tof.{key}'] = value
-    if not rewrites:
-        return params
     return RewrittenYaml(
         source_file=params, param_rewrites=rewrites, convert_types=True).perform(context)
 
@@ -112,6 +174,9 @@ def configure(context):
         return LaunchConfiguration(name).perform(context)
 
     model = get_package_share_path('oomwoo_one')
+    geometry_file = model / 'config' / 'robot_geometry.yaml'
+    geometry = load_robot_geometry(geometry_file)
+    geometry_parameters = application_geometry_parameters(geometry)
     gazebo = get_package_share_path('oomwoo_gazebo')
     support = get_package_share_path('oomwoo_sim_support')
     world = gazebo / 'worlds' / value('world')
@@ -143,13 +208,13 @@ def configure(context):
     collision_aware = (clearance_control or direct_sweep_navigation or
                        value('collision_aware_nav') == 'true')
     sweep_goal_tolerance = value('sweep_goal_tolerance')
-    if use_tof or collision_aware or sweep_goal_tolerance:
-        params = configure_navigation_params(
-            params, context, use_tof, collision_aware, clearance_control, sweep_goal_tolerance,
-            direct_sweep_navigation)
+    params = configure_navigation_params(
+        params, context, use_tof, collision_aware, clearance_control, sweep_goal_tolerance,
+        direct_sweep_navigation, geometry)
 
     robot = xacro.process_file(str(model / 'urdf' / 'robot.urdf.xacro'), mappings={
-        'odom_source': value('odom_source'), 'enable_tof': value('enable_tof')}).toxml()
+        'odom_source': value('odom_source'), 'enable_tof': value('enable_tof'),
+        'geometry_file': str(geometry_file)}).toxml()
     gz_args = ('-r -v 2 ' if gui else '-s -r --headless-rendering -v 2 ') + shlex.quote(str(world))
     bridge_config = model / 'config' / 'gz_bridge.yaml'
     bridge_cleanup = []
@@ -315,6 +380,7 @@ def configure(context):
             with open(regions, encoding='utf-8') as region_file:
                 coverage_parameters = yaml.safe_load(region_file)['coverage_planner']['ros__parameters']
             planner_overrides = {'use_sim_time': sim_time,
+                                 **geometry_parameters['planner'],
                                  'planning_algorithm': value('coverage_algorithm'),
                                  'target_gap_coverage': value('target_gap_coverage') == 'true',
                                  'gap_use_local_costmap': value('guard_gap_goals') == 'true',
@@ -338,6 +404,12 @@ def configure(context):
                 )
             if value('gap_safety_margin'):
                 planner_overrides['gap_safety_margin'] = float(value('gap_safety_margin'))
+            result.append(Node(
+                package='robot_cleaning_manager',
+                executable='localization_health_monitor_node',
+                parameters=[{'use_sim_time': sim_time,
+                             'covariance_required': mode == 'localize',
+                             **geometry_parameters['localization']}], output='screen'))
             result.append(Node(package='robot_coverage_planner', executable='coverage_planner_node',
                                parameters=[regions, planner_overrides], output='screen'))
             if value('task_manager') == 'true':
@@ -346,6 +418,7 @@ def configure(context):
                 result.append(Node(package='robot_cleaning_manager', executable='cleaning_task_manager_node',
                      parameters=[str(manager_config),
                                  {'use_sim_time': sim_time, 'use_coverage_planner': True,
+                                  **geometry_parameters['manager'],
                                   'defer_blocked_sweep_goals': open_floor,
                                   'adjust_blocked_gap_goals': value('guard_gap_goals') == 'true',
                                   'gap_behavior_tree': gap_tree,
@@ -355,8 +428,7 @@ def configure(context):
                                   'max_gap_passes': int(value('max_gap_passes')),
                                   'coverage_completion_margin': float(value('coverage_completion_margin')),
                                   'target_path_efficiency': float(value('gap_efficiency_target')),
-                                  'gap_failure_replan_threshold': 2 if safe_gap else 0,
-                                  'cleaning_radius': float(coverage_parameters.get('cleaning_radius', 0.20))}],
+                                  'gap_failure_replan_threshold': 2 if safe_gap else 0}],
                      output='screen'))
         if value('evaluate') == 'true':
             result.extend([
@@ -366,8 +438,7 @@ def configure(context):
                      remappings=[('~/pose', '/ground_truth/pose')]),
                 Node(package='oomwoo_sim_support', executable='coverage_meter', output='screen',
                      parameters=[{'use_sim_time': sim_time,
-                                  'cleaning_radius': TRUTH_CLEANING_RADIUS_M,
-                                  'robot_radius': TRUTH_ROBOT_RADIUS_M,
+                                  **geometry_parameters['meter'],
                                   'coverage_target': 0.90}],
                      remappings=[('cleaning_active', '/cleaning/active')]),
             ])

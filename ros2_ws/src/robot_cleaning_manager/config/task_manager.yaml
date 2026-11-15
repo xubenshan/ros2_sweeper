@@ -4,17 +4,16 @@ cleaning_task_manager:
     navigation_timeout_s: 90
     progress_timeout_s: 35
     gap_progress_timeout_s: 35
-    planning_timeout_s: 35
+    # Whole-map planning can take ~35-45 s on a loaded software-rendered VM.
+    planning_timeout_s: 60
     startup_timeout_s: 60
     nav_unavailable_grace_s: 5
     navigation_retries: 1
     gap_navigation_retries: 1
     max_gap_passes: 3
 
-    # Physical cleaning model (meters). Must match the coverage planner/meter.
-    cleaning_radius: 0.20
-
     # Completion and route-budget policy (ratios/meters).
+    event_log_capacity: 500
     coverage_completion_margin: 0.01
     target_path_efficiency: 0.0
     minimum_gap_distance_budget_m: 0.50

@@ -1,13 +1,23 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:arg name="geometry_file" default="../config/robot_geometry.yaml"/>
+  <xacro:property name="geometry_file_path" value="$(arg geometry_file)"/>
+  <xacro:property name="robot_geometry" value="${xacro.load_yaml(geometry_file_path)}"/>
+  <xacro:if value="${int(robot_geometry['schema_version']) != 1}">
+    <xacro:property name="geometry_schema_error"
+      value="${xacro.fatal('unsupported robot geometry schema_version')}" lazy_eval="false"/>
+  </xacro:if>
+  <xacro:property name="base_geometry" value="${robot_geometry['base']}"/>
+  <xacro:property name="wheel_geometry" value="${robot_geometry['drive_wheels']}"/>
+
   <!-- ****************** ROBOT DIMENSIONS ****************** -->
   <!-- Units: meters, degrees, kg, N*m, m/s2 -->
   <!-- oomwoo-one (forked from Proscenic M6 Pro): round body 349mm dia, ~95mm tall (incl. LiDAR turret).
        Geometry inherited — refine from the sourced parts + 3D design. -->
   <!-- wheel_base = measured wheel track 235mm. The bridge uses its own odometry
        constant WHEEL_BASE = 0.233m (2mm less); negligible, calibrate empirically. -->
-  <xacro:property name="wheel_diameter" value="0.068"/>
-  <xacro:property name="wheel_width" value="0.012"/>
+  <xacro:property name="wheel_diameter" value="${2.0 * float(wheel_geometry['radius_m'])}"/>
+  <xacro:property name="wheel_width" value="${float(wheel_geometry['width_m'])}"/>
   <xacro:property name="caster_diameter" value="0.025"/>
   <!-- Caster center to base edge. The caster sits at the FRONT (+x), like a
        consumer vacuum: the support polygon then spans the wheel axle (x = 0)
@@ -15,8 +25,8 @@
        See lidar_center_offset below, which is what puts it there. -->
   <xacro:property name="caster_inset" value="0.030"/>
   <xacro:property name="floor_clearance" value="0.0125"/>
-  <xacro:property name="base_diameter" value="0.349"/>
-  <xacro:property name="wheel_base" value="0.235"/>
+  <xacro:property name="base_diameter" value="${2.0 * float(base_geometry['radius_m'])}"/>
+  <xacro:property name="wheel_base" value="${float(wheel_geometry['center_separation_m'])}"/>
   <!-- Body cylinder: top is 79mm above the floor, minus 12.5mm floor gap = 66.5mm tall.
        LiDAR housing sits on top (body top 79mm + 18mm housing = ~97mm total height). -->
   <xacro:property name="lower_cylinder_height" value="0.0665"/>

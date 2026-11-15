@@ -63,9 +63,18 @@ class KeepoutLaunchGraphTests(unittest.TestCase):
         return ctx, self.opaque[0].execute(ctx)
 
     def test_default_graph_does_not_enable_filters(self):
-        _, actions = self.evaluate('')
-        self.assertFalse(any(isinstance(a, SetLaunchConfiguration) for a in actions))
-        self.assertEqual(len(actions), 6)
+        ctx, actions = self.evaluate('')
+        setters = [a for a in actions if isinstance(a, SetLaunchConfiguration)]
+        self.assertEqual(len(setters), 1)
+        setters[0].execute(ctx)
+        params = yaml.safe_load(
+            Path(ctx.launch_configurations['nav2_params_file']).read_text()
+        )
+        for name in ('global_costmap', 'local_costmap'):
+            ros_params = params[name][name]['ros__parameters']
+            self.assertNotIn('filters', ros_params)
+            self.assertEqual(ros_params['robot_radius'], 0.1745)
+        self.assertEqual(len(actions), 8)
 
     def test_optin_graph_generates_both_costmap_filters(self):
         with tempfile.TemporaryDirectory() as tmp_name:

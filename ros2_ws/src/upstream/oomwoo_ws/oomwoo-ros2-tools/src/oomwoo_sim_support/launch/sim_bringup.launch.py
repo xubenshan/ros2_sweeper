@@ -30,9 +30,13 @@ clock-ordered; the one deliberate stagger is the 8 s localization->nav gap, and
 the application nodes also self-gate on their inputs.
 """
 
+import math
 import os
+import shutil
+import tempfile
 
 from ament_index_python.packages import get_package_share_directory
+
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
@@ -47,8 +51,11 @@ from launch.event_handlers import OnShutdown
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command
 from launch.substitutions import LaunchConfiguration
+
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
+
+import yaml
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -115,24 +122,48 @@ def generate_launch_description() -> LaunchDescription:
             except Exception:
                 model = 'oomwoo_one'
         pkg_robot = get_package_share_directory(model)
+        scratch = tempfile.mkdtemp(prefix='sweeper_sim_params_')
+        try:
+            geometry_path = os.path.join(pkg_robot, 'config', 'robot_geometry.yaml')
+            with open(geometry_path, encoding='utf-8') as geometry_file:
+                geometry = yaml.safe_load(geometry_file)
+            if not isinstance(geometry, dict) or geometry.get('schema_version') != 1:
+                raise ValueError('robot_geometry.yaml must use schema_version 1')
+            robot_radius = float(geometry['base']['radius_m'])
+            frames = geometry['frames']
+            if not math.isfinite(robot_radius) or robot_radius <= 0.0:
+                raise ValueError('robot_geometry.yaml has an invalid base radius')
+            nav_source = context.perform_substitution(nav2_params)
+            with open(nav_source, encoding='utf-8') as nav_file:
+                nav_document = yaml.safe_load(nav_file)
+            for costmap_name, global_frame in (
+                ('local_costmap', frames['odom']), ('global_costmap', frames['global'])
+            ):
+                params = nav_document[costmap_name][costmap_name]['ros__parameters']
+                params['robot_radius'] = robot_radius
+                params['global_frame'] = global_frame
+                params['robot_base_frame'] = frames['base_link']
+            runtime_nav_params = os.path.join(scratch, 'nav2_params_with_geometry.yaml')
+            with open(runtime_nav_params, 'w', encoding='utf-8') as nav_file:
+                yaml.safe_dump(nav_document, nav_file, sort_keys=False)
+        except Exception:
+            shutil.rmtree(scratch, ignore_errors=True)
+            raise
+
         # SIM-ONLY mask contract; we never modify stock YAML. Each Nav2 costmap
         # receives both a KeepoutFilter and its separate inflation filter.
         keepout_actions = []
         keepout_path = context.perform_substitution(LaunchConfiguration('keepout_mask')).strip()
         if keepout_path:
-            import shutil
-            import tempfile
-
             from oomwoo_sim_support.keepout_config import build_keepout_overlay
             from oomwoo_sim_support.keepout_config import INFO_TOPIC
             from oomwoo_sim_support.keepout_config import MASK_TOPIC
 
             if not os.path.isabs(keepout_path):
                 raise RuntimeError('keepout_mask must be an absolute path')
-            scratch = tempfile.mkdtemp(prefix='oomwoo_keepout_')
             try:
                 overlay, forbidden_count = build_keepout_overlay(
-                    context.perform_substitution(nav2_params),
+                    runtime_nav_params,
                     context.perform_substitution(map_yaml),
                     keepout_path,
                     output_dir=scratch,
@@ -141,7 +172,7 @@ def generate_launch_description() -> LaunchDescription:
                 shutil.rmtree(scratch, ignore_errors=True)
                 raise
             print(f'KEEP_OUT_SIM_ONLY: {forbidden_count} forbidden cells')
-            keepout_actions.append(SetLaunchConfiguration('nav2_params_file', str(overlay)))
+            runtime_nav_params = str(overlay)
             keepout_actions.extend(
                 [
                     Node(
@@ -194,19 +225,19 @@ def generate_launch_description() -> LaunchDescription:
                 ]
             )
 
-            def cleanup_keepout(context):
-                shutil.rmtree(scratch, ignore_errors=True)
-                return []
+        keepout_actions.insert(0, SetLaunchConfiguration('nav2_params_file', runtime_nav_params))
 
-            keepout_actions.append(
-                RegisterEventHandler(
-                    OnShutdown(on_shutdown=[OpaqueFunction(function=cleanup_keepout)])
-                )
-            )
+        def cleanup_runtime_params(context):
+            shutil.rmtree(scratch, ignore_errors=True)
+            return []
+
+        keepout_actions.append(RegisterEventHandler(
+            OnShutdown(on_shutdown=[OpaqueFunction(function=cleanup_runtime_params)])))
         xacro_file = os.path.join(pkg_robot, 'urdf', 'robot.urdf.xacro')
         bridge_sim = os.path.join(pkg_robot, 'config', 'gz_bridge.yaml')
 
-        robot_description = ParameterValue(Command(['xacro ', xacro_file]), value_type=str)
+        robot_description = ParameterValue(
+            Command(['xacro ', xacro_file, ' geometry_file:=', geometry_path]), value_type=str)
         rsp = Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
