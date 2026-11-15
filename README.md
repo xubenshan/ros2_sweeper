@@ -86,26 +86,33 @@ Gazebo 用于验证机器人运动学、激光雷达、碰撞、家具绕行和�
 
 ![ROS 2 自主清扫系统架构](docs/assets/system-architecture.drawio.svg)
 
+系统分为启动配置、清扫应用、导航与运动执行、交互与独立验收四个部分：
+
 ```text
-AMCL / TF -> LocalizationHealthMonitor
-                    |              |
-                    v              v
-CleanTask Action -> CleaningTaskManager -> Coverage Planner
-                         |
-                         v
-                 NavigationExecutor -> Nav2 -> Motion Safety -> Gazebo Robot
-                         |
-                         v
-               CleaningEvent Topic / 查询服务
+robot_geometry.yaml -> sweeper.launch.py
+        -> Xacro / Gazebo + Nav2 Costmaps + 清扫节点 + 真值评估器
+
+CleanTask Action -> CleaningTaskManager <-> Coverage Planner
+                         ├── NavigationExecutor -> Nav2 -> Motion Safety -> Gazebo Robot
+                         ├── CheckpointStore
+                         └── CleaningEvent
+
+AMCL / TF / Odom -> LocalizationHealthMonitor
+                         └── Manager 暂停任务 / Planner 冻结覆盖统计
+
+Gazebo ground truth -> Coverage Meter -> 自动化测试与实验报告
+                       （不参与运行时任务决策）
 ```
 
+- `robot_geometry.yaml`：机器人半径、轮径、轮距、清扫半径和关键坐标系的唯一来源，由 Bringup 注入 Xacro、Gazebo、Nav2、清扫节点和真值评估器。
 - `CleaningTaskManager`：任务的统一协调入口。
 - `Coverage Planner`：生成初始清扫路线和补扫路线。
 - `NavigationExecutor`：向 Nav2 发送航点并处理导航结果。
 - `LocalizationHealthMonitor`：根据 AMCL 协方差、TF 和数据新鲜度判断定位状态。
+- `CheckpointStore`：保存任务进度、覆盖网格和续扫状态。
 - `Motion Safety`：管理速度指令优先级和安全停车。
-- `CleaningEvent`：记录可查询的任务生命周期和异常恢复事件。
-- Gazebo 真值只用于验收，不参与机器人运行时决策。
+- `CleaningEvent`：通过可靠、Transient Local Topic 和查询服务记录任务生命周期与异常恢复事件。
+- `Coverage Meter`：根据 Gazebo 真值位姿独立统计覆盖率、实际里程、路径效率和重复行驶率，只用于验收。
 
 ## 项目目录
 
