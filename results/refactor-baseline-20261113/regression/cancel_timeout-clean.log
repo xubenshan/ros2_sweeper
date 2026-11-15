@@ -1,0 +1,15 @@
+[INFO] [1794587165.608022002] [cleaning_task_manager]: task= state=IDLE completed=0 next=0/0
+[INFO] [1794587165.790342906] [cleaning_task_manager]: task=cancel-fault state=WAITING_MAP completed=0 next=0/0
+[INFO] [1794587165.811142451] [cleaning_task_manager]: task=cancel-fault state=PLANNING completed=0 next=0/0
+[INFO] [1794587165.811481085] [cleaning_task_manager]: task=cancel-fault state=RUNNING completed=0 next=0/3
+[INFO] [1794587165.913249002] [cleaning_task_manager]: task=cancel-fault state=PAUSED completed=0 next=0/3
+[ERROR] [1794587174.010172693] [cleaning_task_manager]: Illegal task transition PAUSED -> STOPPING (navigation cancel was not acknowledged)
+[INFO] [1794587178.212639817] [cleaning_task_manager]: task=cancel-fault state=FAILED completed=0 next=0/3
+Traceback (most recent call last):
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_cancel_timeout.py", line 100, in <module>
+    main()
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_cancel_timeout.py", line 82, in main
+    wait(node, outcome.done, 12, 'bounded cancel failure')
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_navigation.py", line 25, in wait
+    raise RuntimeError(f'Timed out waiting for {description}')
+RuntimeError: Timed out waiting for bounded cancel failure

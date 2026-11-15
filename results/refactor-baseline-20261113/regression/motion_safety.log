@@ -1,0 +1,9 @@
+[INFO] [1794587028.656210411] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+Traceback (most recent call last):
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_motion_safety.py", line 108, in <module>
+    main()
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_motion_safety.py", line 65, in main
+    wait(node, lambda: observed[-1][1] > .1, 3, 'navigation authority')
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_navigation.py", line 25, in wait
+    raise RuntimeError(f'Timed out waiting for {description}')
+RuntimeError: Timed out waiting for navigation authority

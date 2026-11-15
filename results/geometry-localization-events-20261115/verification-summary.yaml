@@ -1,0 +1,65 @@
+date: 2026-11-15
+branch: codex/geometry-localization-events
+commit: 5b7dfe4
+base: 7a1577b
+build:
+  packages: 7
+  status: passed
+tests:
+  total: 257
+  errors: 0
+  failures: 0
+  skipped: 11
+formal_living_room_smoke:
+  state_observed: RUNNING
+  runtime_coverage: 0.0135779819
+  executed_path_m: 0.1420894410
+  localization_state: HEALTHY
+  action_status: CANCELED
+  action_reason: Task canceled
+localization_gazebo:
+  before_loss:
+    coverage: 0.0658959523
+    path_m: 0.3065150529
+  lost:
+    coverage: 0.0739884377
+    path_m: 0.3689646649
+  lost_after_4s:
+    coverage: 0.0739884377
+    path_m: 0.3689646649
+  auto_resumed: true
+  manual_pause_remained_paused_after_recovery: true
+  event_count: 71
+  event_order: newest_first
+notes:
+  - Planning timeout increased from 35 s to 60 s after a 35.2 s measured living-room plan.
+  - Existing untracked experiment results were preserved and excluded from commit 5b7dfe4.
+regressions:
+  motion_safety: passed
+  navigation_faults:
+    invalid_goal_status: ABORTED
+    nav2_shutdown: true
+    time_to_zero_wall_s: 0.3745567670
+    cleaning_action_status: ABORTED
+    reason: Nav2 stopped during the cleaning task
+  coverage_replan:
+    navigation_failures_injected: 4
+    original_waypoints: 70
+    replacement_waypoints: 19
+    reachable_side_only: true
+  dynamic_gazebo:
+    action_status: SUCCEEDED
+    runtime_coverage: 0.9108485579
+    truth_coverage_ratio: 0.5015957355
+    task_scope: regions
+    whole_map_performance_acceptance: not_applicable
+    truth_path_m: 6.01
+    moving_obstacle_updates: 62
+    contact_recoveries_completed: 2
+    navigation_failures: 1
+    navigation_timeouts: 0
+startup_observation:
+  first_navigation_fault_attempt: failed_before_test
+  evidence: lifecycle manager async get_state request failed while configuring bt_navigator
+  vm_load_average_1m: 30.60
+  isolated_retry: passed

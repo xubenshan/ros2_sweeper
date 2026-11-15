@@ -1,0 +1,10 @@
+[INFO] [1794587228.508049037] [cleaning_task_manager]: task= state=IDLE completed=0 next=0/0
+[INFO] [1794587228.684580679] [cleaning_task_manager]: task=full-route state=WAITING_MAP completed=0 next=0/0
+[INFO] [1794587288.718863677] [cleaning_task_manager]: task=full-route state=FAILED completed=0 next=0/0
+Traceback (most recent call last):
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_cleaning_action.py", line 126, in <module>
+    main()
+  File "/home/xbs/ros2_sweeper_resume_project/scripts/verify_cleaning_action.py", line 89, in main
+    assert done.status == GoalStatus.STATUS_SUCCEEDED, done
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: robot_cleaning_interfaces.action.CleanTask_GetResult_Response(status=6, result=robot_cleaning_interfaces.action.CleanTask_Result(success=False, reason='Map, Nav2, planner, tracker, or map-frame pose unavailable', coverage=0.0, path_length_m=0.0, completed_waypoints=0, failed_waypoints=0))
