@@ -174,6 +174,7 @@ def configure(context):
         return LaunchConfiguration(name).perform(context)
 
     model = get_package_share_path('oomwoo_one')
+    bringup = get_package_share_path('robot_sweeper_bringup')
     geometry_file = model / 'config' / 'robot_geometry.yaml'
     geometry = load_robot_geometry(geometry_file)
     geometry_parameters = application_geometry_parameters(geometry)
@@ -443,9 +444,10 @@ def configure(context):
                      remappings=[('cleaning_active', '/cleaning/active')]),
             ])
         if value('rviz') == 'true':
+            rviz_config = value('rviz_config') or str(bringup / 'rviz' / 'cleaning.rviz')
             result.append(Node(
                 package='rviz2', executable='rviz2', output='screen',
-                arguments=['-d', str(model / 'rviz' / 'navigation.rviz')],
+                arguments=['-d', rviz_config],
                 parameters=[{'use_sim_time': sim_time}]))
         return result
 
@@ -468,6 +470,7 @@ def generate_launch_description():
         DeclareLaunchArgument('initial_yaw', default_value=''),
         DeclareLaunchArgument('gui', default_value='true', choices=boolean),
         DeclareLaunchArgument('rviz', default_value='false', choices=boolean),
+        DeclareLaunchArgument('rviz_config', default_value=''),
         DeclareLaunchArgument('explore', default_value='false', choices=boolean),
         DeclareLaunchArgument('enable_tof', default_value='true', choices=boolean),
         DeclareLaunchArgument('tof_costmap', default_value='true', choices=boolean),
