@@ -4,9 +4,9 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /TF1/Tree1
+        - /Cleaning1
       Splitter Ratio: 0.5833333134651184
-    Tree Height: 140
+    Tree Height: 320
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -69,7 +69,7 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: false
@@ -125,7 +125,7 @@ Visualization Manager:
                 wheel_right_link:
                   {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -138,7 +138,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: Intensity
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 0
@@ -159,7 +159,7 @@ Visualization Manager:
         Value: /scan
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
+      Value: false
     - Alpha: 1
       Class: rviz_default_plugins/Map
       Color Scheme: map
@@ -184,7 +184,7 @@ Visualization Manager:
     - Alpha: 1
       Class: nav2_rviz_plugins/ParticleCloud
       Color: 0; 180; 0
-      Enabled: true
+      Enabled: false
       Max Arrow Length: 0.30000001192092896
       Min Arrow Length: 0.019999999552965164
       Name: Amcl Particle Swarm
@@ -196,10 +196,10 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Best Effort
         Value: /particle_cloud
-      Value: true
+      Value: false
     - Class: rviz_common/Group
       Displays:
-        - Alpha: 0.3499999940395355
+        - Alpha: 0.25
           Class: rviz_default_plugins/Map
           Color Scheme: costmap
           Draw Behind: false
@@ -417,7 +417,7 @@ Visualization Manager:
             Reliability Policy: Reliable
             Value: /global_costmap/published_footprint
           Value: false
-      Enabled: true
+      Enabled: false
       Name: Global Planner
     - Class: rviz_common/Group
       Displays:
@@ -529,10 +529,10 @@ Visualization Manager:
           Use Fixed Frame: true
           Use rainbow: true
           Value: false
-      Enabled: true
+      Enabled: false
       Name: Controller
     - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
+      Enabled: false
       Name: MarkerArray
       Namespaces:
         {}
@@ -542,43 +542,7 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /waypoints
-      Value: true
-    - Class: rviz_default_plugins/Camera
-      Enabled: true
-      Far Plane Distance: 100
-      Image Rendering: background and overlay
-      Name: Camera
-      Overlay Alpha: 0.5
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /color_camera/image_raw
-      Value: true
-      Visibility:
-        Amcl Particle Swarm: true
-        Controller:
-          Local Costmap: true
-          Local Plan: true
-          Polygon: true
-          Trajectories: true
-          Value: true
-          VoxelGrid: true
-        Global Planner:
-          Global Costmap: true
-          Path: true
-          Polygon: true
-          Value: true
-          VoxelGrid: true
-        Grid: true
-        LaserScan: true
-        Map: true
-        MarkerArray: true
-        RobotModel: true
-        TF: true
-        Value: true
-      Zoom Factor: 1
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
