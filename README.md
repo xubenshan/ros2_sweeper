@@ -8,19 +8,37 @@
 
 > 这是我为机器人软件开发岗位准备的简历项目。目标不只是让机器人“能动”，而是让它能够自主生成清扫路线、执行清扫任务、识别漏扫区域，并在导航失败或遇到障碍时继续完成任务。
 
-## 演示
+## 可视化效果
 
 ![Gazebo、RViz 与覆盖验收预览](docs/assets/sweeper-demo.gif)
 
-上图包含 Gazebo 客厅、RViz 机器人模型、整屋覆盖结果和跨地图验收结果。
+演示包含 Gazebo 物理仿真、RViz2 导航与定位、覆盖路径执行以及独立真值验收。
 
-### RViz2 导航与地图可视化
+### Gazebo 正式客厅
+
+![Gazebo 正式客厅仿真](docs/assets/gazebo-living-room.png)
+
+Gazebo 用于验证机器人运动学、激光雷达、碰撞、家具绕行和动态障碍。正式客厅包含沙发、茶几、座椅、电视柜等典型室内障碍。
+
+### RViz2 清扫调试界面
 
 ![RViz2 导航、定位与代价地图界面](docs/assets/rviz2-navigation-map.png)
 
-RViz2 用于同时观察栅格地图、机器人模型、TF、激光雷达、AMCL 定位、Nav2 全局与局部代价地图以及导航状态。清扫系统还可以叠加显示覆盖规划路径、当前目标和已清扫区域，便于分析机器人为什么选择某条路线以及障碍物如何影响导航。
+RViz2 同时显示栅格地图、机器人模型、TF、激光雷达、AMCL 定位、Nav2 全局与局部代价地图以及导航状态。
 
 项目提供专用的 `cleaning.rviz` 配置。使用 `rviz:=true` 启动时会自动加载清扫路径、当前目标和运行时覆盖网格；Gazebo 真值覆盖图层默认关闭，需要独立验收时可在 RViz 的 `Cleaning` 分组中开启。
+
+| RViz2 机器人模型 | 整屋覆盖与真实轨迹 |
+|---|---|
+| ![RViz2 扫地机器人模型](docs/assets/rviz-robot-model.png) | ![正式客厅覆盖率和真实轨迹](docs/assets/living-room-coverage.png) |
+
+左图用于检查 URDF、关节和 TF；右图根据 Gazebo 真实位姿展示已覆盖区域、漏扫区域、机器人轨迹以及覆盖率随实际里程的变化。
+
+### 跨地图覆盖验收
+
+![跨地图覆盖率与真实执行轨迹](docs/assets/cross-map-coverage-atlas.png)
+
+该图保留 L 形多房间和复杂家具布局的六轮零调参测试结果，包括未达到 90% 的样本，用于分析跨地图泛化能力，而不是只展示最好的一次运行。
 
 ## 项目实现的功能
 
@@ -73,6 +91,28 @@ CleanTask Action -> CleaningTaskManager -> Coverage Planner
 - `Motion Safety`：管理速度指令优先级和安全停车。
 - `CleaningEvent`：记录可查询的任务生命周期和异常恢复事件。
 - Gazebo 真值只用于验收，不参与机器人运行时决策。
+
+## 项目目录
+
+```text
+.
+├── ros2_ws/
+│   └── src/
+│       ├── robot_cleaning_interfaces/   # CleanTask Action、定位健康与事件接口
+│       ├── robot_cleaning_manager/      # 任务状态机、Nav2 调度、恢复与检查点
+│       ├── robot_coverage_planner/      # 覆盖规划、漏扫识别与动态补扫
+│       ├── robot_motion_safety/         # 速度仲裁、急停、碰撞与看门狗
+│       ├── robot_sweeper_bringup/       # Gazebo、Nav2、RViz2 一体化启动
+│       └── upstream/                    # 机器人模型、仿真世界和基础导航支持
+├── scripts/                             # 场景生成、自动测试和验收脚本
+├── docs/
+│   ├── assets/                          # 架构图、GIF 和仿真截图
+│   └── refactor_and_baseline.md         # 重构与基线实验说明
+├── results/                             # 已筛选提交的基线数据与验收报告
+└── README.md
+```
+
+五个清扫应用包通过 ROS 2 Topic、Service 和 Action 解耦；`robot_sweeper_bringup` 负责把机器人模型、Gazebo、定位、Nav2、清扫应用层和 RViz2 组合成完整系统。
 
 ## 面试中可以重点介绍的内容
 
@@ -136,31 +176,152 @@ CleanTask Action -> CleaningTaskManager -> Coverage Planner
 - Reliable / Transient Local QoS、结构化事件接口、异步回调代次保护
 - 栅格地图、弓字形覆盖、Wavefront 连接、可达性检查
 
-## 运行项目
+## 环境与构建
+
+### 1. 环境要求
+
+- Ubuntu 24.04
+- ROS 2 Jazzy Desktop
+- Nav2、SLAM Toolbox
+- Gazebo Harmonic 与 `ros_gz`
+- Python 3、CMake、colcon
+
+克隆项目：
 
 ```bash
-cd /home/xbs/ros2_sweeper_resume_project/ros2_ws
+git clone https://github.com/xubenshan/ros2_sweeper.git
+cd ros2_sweeper
+```
+
+首次使用时安装依赖：
+
+```bash
+sudo apt update
+sudo apt install -y python3-rosdep python3-colcon-common-extensions
+
 source /opt/ros/jazzy/setup.bash
+sudo rosdep init        # 系统已经初始化过 rosdep 时跳过这一行
+rosdep update
+rosdep install --from-paths ros2_ws/src --ignore-src -r -y
+```
+
+### 2. 编译
+
+```bash
+cd ros2_ws
+source /opt/ros/jazzy/setup.bash
+
 colcon build --symlink-install --parallel-workers 3
 source install/setup.bash
+```
 
-cd ..
+后续打开新终端时，需要重新加载环境：
+
+```bash
+cd <项目目录>/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+```
+
+### 3. 单元测试
+
+```bash
+cd <项目目录>/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+
+colcon test
+colcon test-result --all --verbose
+```
+
+当前回归结果为 `260 tests, 0 errors, 0 failures, 11 skipped`。
+
+## 运行与查看清扫效果
+
+### 方式一：Gazebo、RViz2 和真值评估同时启动
+
+终端一：
+
+```bash
+cd <项目目录>/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+
+ros2 launch robot_sweeper_bringup sweeper.launch.py \
+  implementation:=cpp \
+  mode:=localize \
+  gui:=true \
+  rviz:=true \
+  evaluate:=true \
+  open_floor:=true
+```
+
+等待 Gazebo、AMCL 和 Nav2 完成启动后，在终端二发送整屋清扫任务：
+
+```bash
+cd <项目目录>/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+
+ros2 action send_goal --feedback \
+  /cleaning/task \
+  robot_cleaning_interfaces/action/CleanTask \
+  "{task_id: 'living-room-demo', mode: 0, regions: [], target_coverage: 0.90, resume_checkpoint: false}"
+```
+
+RViz2 会自动加载专用的 `cleaning.rviz`：
+
+- 绿色：覆盖规划路径 `/cleaning/planner_path`
+- 蓝色：当前任务路线 `/cleaning/path`
+- 橙色：当前清扫目标 `/cleaning/current_goal`
+- 覆盖图层：`/cleaning/covered_grid`
+- Gazebo 真值覆盖图层：`/coverage_meter/covered_grid`，默认关闭
+
+### 方式二：自动运行并保存验收结果
+
+```bash
+cd <项目目录>
+source /opt/ros/jazzy/setup.bash
+source ros2_ws/install/setup.bash
+
 python3 scripts/run_cleaning_benchmark.py \
-  --scenario multi_room \
+  --scenario living_room \
   --runs 1 \
   --whole-map \
   --gui \
+  --timeout 900 \
   --coverage-algorithm optimized \
-  --output results/readme-demo
+  --output results/manual-living-room
 ```
 
-## 项目边界
+运行结束后查看：
 
-- 目前只完成 Gazebo 仿真，没有实体机器人测试证据。
-- baseline 对照为每种算法、每张地图一轮有效仿真，不代表统计显著性结论。
-- 窄通道的重复行驶仍偏高，L 形房间的跨区域顺序仍可优化。
-- 定位健康判断目前基于 AMCL 协方差、TF 和数据新鲜度，尚未加入多传感器一致性诊断。
-- 虚拟机 CPU 高负载时，Nav2 Lifecycle 启动仍可能偶发失败，需要继续完善启动健康检查。
+```text
+results/manual-living-room/living_room/run-1/result.json
+results/manual-living-room/summary.csv
+```
+
+其他内置场景可将 `--scenario` 改为：
+
+| 场景 | 参数 | 主要验证内容 |
+|---|---|---|
+| 双房间 | `multi_room` | 跨房间连接与区域访问顺序 |
+| 岛状障碍 | `islands` | 障碍物周围覆盖与补扫 |
+| 窄通道 | `narrow` | 狭窄区域通行与重复行驶 |
+| 动态障碍 | `dynamic` | 障碍变化、导航恢复与重新规划 |
+
+### 实时查看任务指标
+
+```bash
+# 清扫任务状态与运行时进度
+ros2 topic echo /cleaning/state
+ros2 topic echo /cleaning/progress
+
+# Gazebo 独立真值指标，需要 evaluate:=true
+ros2 topic echo /coverage_meter/ratio
+ros2 topic echo /coverage_meter/efficiency
+ros2 topic echo /coverage_meter/revisit_ratio
+```
 
 ## 关键配置与接口
 
