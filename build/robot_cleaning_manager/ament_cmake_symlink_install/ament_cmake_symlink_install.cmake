@@ -315,7 +315,7 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install("TARGETS" "task_execution" "cleaning_task_manager_node" "DESTINATION" "lib/robot_cleaning_manager")
+# install("TARGETS" "task_execution" "cleaning_task_manager_node" "localization_health_monitor_node" "DESTINATION" "lib/robot_cleaning_manager")
 include("/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install(DIRECTORY "config" "DESTINATION" "share/robot_cleaning_manager")

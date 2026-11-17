@@ -146,6 +146,7 @@ checkpoint_test: /opt/ros/jazzy/lib/libstatic_transform_broadcaster_node.so
 checkpoint_test: /opt/ros/jazzy/lib/libtf2_ros.so
 checkpoint_test: /opt/ros/jazzy/lib/librclcpp_action.so
 checkpoint_test: /opt/ros/jazzy/lib/librcl_action.so
+checkpoint_test: /opt/ros/jazzy/lib/libtf2.so
 checkpoint_test: /opt/ros/jazzy/lib/libmessage_filters.so
 checkpoint_test: /opt/ros/jazzy/lib/librclcpp.so
 checkpoint_test: /opt/ros/jazzy/lib/liblibstatistics_collector.so
@@ -186,7 +187,6 @@ checkpoint_test: /opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupport_c.so
 checkpoint_test: /opt/ros/jazzy/lib/libstatistics_msgs__rosidl_generator_c.so
 checkpoint_test: /opt/ros/jazzy/lib/libtracetools.so
 checkpoint_test: /opt/ros/jazzy/lib/librcl_logging_interface.so
-checkpoint_test: /opt/ros/jazzy/lib/libtf2.so
 checkpoint_test: /opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_fastrtps_c.so
 checkpoint_test: /opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_introspection_c.so
 checkpoint_test: /opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_fastrtps_cpp.so

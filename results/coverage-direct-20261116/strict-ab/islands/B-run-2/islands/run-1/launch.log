@@ -1,0 +1,865 @@
+[INFO] [launch]: All log files can be found below /home/xbs/.ros/log/2026-11-17-00-43-21-553405-ubuntu24.04-637875
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [637889]
+[INFO] [robot_state_publisher-2]: process started with pid [637890]
+[INFO] [parameter_bridge-3]: process started with pid [637892]
+[INFO] [create-4]: process started with pid [637893]
+[robot_state_publisher-2] [INFO] [1794847401.941982817] [robot_state_publisher]: Robot initialized
+[create-4] [INFO] [1794847401.944708541] [ros_gz_sim]: Waiting messages on topic [robot_description].
+[create-4] [INFO] [1794847402.376659305] [ros_gz_sim]: Entity creation successful.
+[INFO] [create-4]: process has finished cleanly [pid 637893]
+[INFO] [map_server-5]: process started with pid [637954]
+[INFO] [amcl-6]: process started with pid [637955]
+[INFO] [lifecycle_manager-7]: process started with pid [637956]
+[INFO] [initialpose_pub-8]: process started with pid [637957]
+[INFO] [cmd_vel_arbiter-9]: process started with pid [637958]
+[INFO] [localization_health_monitor_node-10]: process started with pid [637959]
+[INFO] [coverage_planner_node-11]: process started with pid [637960]
+[INFO] [cleaning_task_manager_node-12]: process started with pid [637961]
+[INFO] [ground_truth-13]: process started with pid [637962]
+[INFO] [coverage_meter-14]: process started with pid [637965]
+[lifecycle_manager-7] [INFO] [1794847402.558032878] [lifecycle_manager_localization]: Creating
+[lifecycle_manager-7] [INFO] [1794847402.561793113] [lifecycle_manager_localization]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[map_server-5] [INFO] [1794847402.580617585] [map_server]: 
+[map_server-5] 	map_server lifecycle node launched. 
+[map_server-5] 	Waiting on external lifecycle transitions to activate
+[map_server-5] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-5] [INFO] [1794847402.580698256] [map_server]: Creating
+[amcl-6] [INFO] [1794847402.600648328] [amcl]: 
+[amcl-6] 	amcl lifecycle node launched. 
+[amcl-6] 	Waiting on external lifecycle transitions to activate
+[amcl-6] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[amcl-6] [INFO] [1794847402.601209940] [amcl]: Creating
+[cleaning_task_manager_node-12] [INFO] [1794847402.690186326] [cleaning_task_manager]: task= state=IDLE completed=0 next=0/0
+[lifecycle_manager-7] [INFO] [1794847402.738750667] [lifecycle_manager_localization]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-7] [INFO] [1794847402.738784502] [lifecycle_manager_localization]: [34m[1mConfiguring map_server[0m[0m
+[coverage_meter-14] [INFO] [1794847402.880229138] [coverage_meter]: coverage_meter up; waiting for /map + truth
+[ground_truth-13] [INFO] [1794847402.899369543] [ground_truth]: ground_truth up (teleport-aware odom truth)
+[map_server-5] [INFO] [1794847402.911806643] [map_server]: Configuring
+[map_server-5] [INFO] [1794847402.911901898] [map_io]: Loading yaml file: /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/strict-ab/islands/B-run-2/islands/run-1/map.yaml
+[map_server-5] [INFO] [1794847402.912060240] [map_io]: resolution: 0.05
+[map_server-5] [INFO] [1794847402.912064948] [map_io]: origin[0]: -1.8
+[map_server-5] [INFO] [1794847402.912066823] [map_io]: origin[1]: -1.3
+[map_server-5] [INFO] [1794847402.912068990] [map_io]: origin[2]: 0
+[map_server-5] [INFO] [1794847402.912070907] [map_io]: free_thresh: 0.196
+[map_server-5] [INFO] [1794847402.912072782] [map_io]: occupied_thresh: 0.65
+[map_server-5] [INFO] [1794847402.912074949] [map_io]: mode: trinary
+[map_server-5] [INFO] [1794847402.912076907] [map_io]: negate: 0
+[map_server-5] [INFO] [1794847402.912190538] [map_io]: Loading image_file: /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/strict-ab/islands/B-run-2/islands/run-1/map.pgm
+[map_server-5] [INFO] [1794847402.912413425] [map_io]: Read map /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/strict-ab/islands/B-run-2/islands/run-1/map.pgm: 72 X 52 map @ 0.05 m/cell
+[lifecycle_manager-7] [INFO] [1794847402.920044110] [lifecycle_manager_localization]: [34m[1mConfiguring amcl[0m[0m
+[amcl-6] [INFO] [1794847402.920642975] [amcl]: Configuring
+[amcl-6] [INFO] [1794847402.920703478] [amcl]: initTransforms
+[amcl-6] [INFO] [1794847402.927856805] [amcl]: initPubSub
+[amcl-6] [INFO] [1794847402.934545734] [amcl]: Subscribed to map topic.
+[parameter_bridge-3] [INFO] [1794847402.978900107] [ros_gz_bridge]: Creating GZ->ROS Bridge: [clock (gz.msgs.Clock) -> clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.980613863] [ros_gz_bridge]: Creating GZ->ROS Bridge: [joint_states (gz.msgs.Model) -> joint_states (sensor_msgs/msg/JointState)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.983030321] [ros_gz_bridge]: Creating GZ->ROS Bridge: [imu (gz.msgs.IMU) -> imu (sensor_msgs/msg/Imu)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.984113877] [ros_gz_bridge]: Creating GZ->ROS Bridge: [odom (gz.msgs.Odometry) -> odom (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.985770629] [ros_gz_bridge]: Creating GZ->ROS Bridge: [odom_wheel (gz.msgs.Odometry) -> odom_wheel (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.986229361] [ros_gz_bridge]: Creating GZ->ROS Bridge: [odom_truth (gz.msgs.Odometry) -> odom_truth (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.986785431] [ros_gz_bridge]: Creating GZ->ROS Bridge: [tf (gz.msgs.Pose_V) -> tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.988127209] [ros_gz_bridge]: Creating ROS->GZ Bridge: [cmd_vel (geometry_msgs/msg/Twist) -> cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.989267518] [ros_gz_bridge]: Creating GZ->ROS Bridge: [scan (gz.msgs.LaserScan) -> scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.989724625] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/world/default/model/oomwoo_one/link/base_footprint/sensor/bumper_left/contact (gz.msgs.Contacts) -> bumper_left/contact (ros_gz_interfaces/msg/Contacts)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.991563803] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/world/default/model/oomwoo_one/link/base_footprint/sensor/bumper_right/contact (gz.msgs.Contacts) -> bumper_right/contact (ros_gz_interfaces/msg/Contacts)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.992174668] [ros_gz_bridge]: Creating GZ->ROS Bridge: [range_left (gz.msgs.LaserScan) -> range_left (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.993031379] [ros_gz_bridge]: Creating GZ->ROS Bridge: [range_right (gz.msgs.LaserScan) -> range_right (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.994874349] [ros_gz_bridge]: Creating GZ->ROS Bridge: [tof_front/points (gz.msgs.PointCloudPacked) -> tof_front/points (sensor_msgs/msg/PointCloud2)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.995893360] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/image (gz.msgs.Image) -> camera/image (sensor_msgs/msg/Image)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794847402.996967707] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/camera_info (gz.msgs.CameraInfo) -> camera/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[lifecycle_manager-7] [INFO] [1794847403.277866609] [lifecycle_manager_localization]: [34m[1mActivating map_server[0m[0m
+[map_server-5] [INFO] [1794847403.278388886] [map_server]: Activating
+[map_server-5] [INFO] [1794847403.278689735] [map_server]: Creating bond (map_server) to lifecycle manager.
+[amcl-6] [INFO] [1794847403.280142393] [amcl]: Received a 72 X 52 map @ 0.050 m/pix
+[parameter_bridge-3] [INFO] [1794847403.287578569] [ros_gz_bridge]: Passing message from ROS geometry_msgs/msg/Twist to Gazebo gz.msgs.Twist (showing msg only once per type)
+[lifecycle_manager-7] [INFO] [1794847403.384595197] [lifecycle_manager_localization]: Server map_server connected with bond.
+[lifecycle_manager-7] [INFO] [1794847403.384638282] [lifecycle_manager_localization]: [34m[1mActivating amcl[0m[0m
+[amcl-6] [INFO] [1794847403.384965674] [amcl]: Activating
+[amcl-6] [INFO] [1794847403.384996759] [amcl]: initialPoseReceived
+[amcl-6] [INFO] [1794847403.385038678] [amcl]: Setting pose (0.000000): -1.080 0.250 0.000
+[amcl-6] [INFO] [1794847403.385480159] [amcl]: Creating bond (amcl) to lifecycle manager.
+[coverage_meter-14] [INFO] [1794847403.470082022] [coverage_meter]: map 72x52 @ 0.050m, 2450 free cells (reachable set computed at first truth pose)
+[lifecycle_manager-7] [INFO] [1794847403.490648374] [lifecycle_manager_localization]: Server amcl connected with bond.
+[lifecycle_manager-7] [INFO] [1794847403.490682876] [lifecycle_manager_localization]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-7] [INFO] [1794847403.490687459] [lifecycle_manager_localization]: [34m[1mCreating bond timer...[0m[0m
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="range_left"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="range_right"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="imu"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="laser_scan_sensor"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: NEEDS EXTENSION: falling back to kms_swrast
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: NEEDS EXTENSION: falling back to kms_swrast
+[ground_truth-13] [INFO] [1794847405.734628773] [ground_truth]: ground_truth: using /odom_truth as truth (wheel-odom mode)
+[coverage_meter-14] [INFO] [1794847405.738356965] [coverage_meter]: serviceable cells from start (30, 14): 1568 (raw reachable 2450, edge_margin 0.15m deferred to floor-care)
+[coverage_meter-14] [INFO] [1794847406.338262681] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=0.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[amcl-6] [INFO] [1794847406.765463923] [amcl]: createLaserObject
+[localization_health_monitor_node-10] [INFO] [1794847406.827453317] [localization_health_monitor]: Localization DEGRADED: map-to-base transform unavailable
+[initialpose_pub-8] [INFO] [1794847406.846850689] [initialpose_pub]: AMCL localized after 2.0s (0 backstop seed(s)) — releasing navigation
+[INFO] [initialpose_pub-8]: process has finished cleanly [pid 637957]
+[INFO] [controller_server-15]: process started with pid [638164]
+[INFO] [planner_server-16]: process started with pid [638165]
+[INFO] [behavior_server-17]: process started with pid [638166]
+[INFO] [bt_navigator-18]: process started with pid [638167]
+[INFO] [lifecycle_manager-19]: process started with pid [638168]
+[lifecycle_manager-19] [INFO] [1794847407.042162097] [lifecycle_manager_navigation]: Creating
+[lifecycle_manager-19] [INFO] [1794847407.044538594] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[bt_navigator-18] [INFO] [1794847407.070210953] [bt_navigator]: 
+[bt_navigator-18] 	bt_navigator lifecycle node launched. 
+[bt_navigator-18] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-18] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-18] [INFO] [1794847407.071863746] [bt_navigator]: Creating
+[behavior_server-17] [INFO] [1794847407.086240901] [behavior_server]: 
+[behavior_server-17] 	behavior_server lifecycle node launched. 
+[behavior_server-17] 	Waiting on external lifecycle transitions to activate
+[behavior_server-17] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1794847407.127185252] [controller_server]: 
+[controller_server-15] 	controller_server lifecycle node launched. 
+[controller_server-15] 	Waiting on external lifecycle transitions to activate
+[controller_server-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1794847407.133132265] [controller_server]: Creating controller server
+[planner_server-16] [INFO] [1794847407.138157023] [planner_server]: 
+[planner_server-16] 	planner_server lifecycle node launched. 
+[planner_server-16] 	Waiting on external lifecycle transitions to activate
+[planner_server-16] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-16] [INFO] [1794847407.139845860] [planner_server]: Creating
+[lifecycle_manager-19] [INFO] [1794847407.146098681] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-19] [INFO] [1794847407.146132474] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m
+[planner_server-16] [INFO] [1794847407.148161662] [global_costmap.global_costmap]: 
+[planner_server-16] 	global_costmap lifecycle node launched. 
+[planner_server-16] 	Waiting on external lifecycle transitions to activate
+[planner_server-16] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-16] [INFO] [1794847407.148905950] [global_costmap.global_costmap]: Creating Costmap
+[controller_server-15] [INFO] [1794847407.152882571] [local_costmap.local_costmap]: 
+[controller_server-15] 	local_costmap lifecycle node launched. 
+[controller_server-15] 	Waiting on external lifecycle transitions to activate
+[controller_server-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1794847407.153210629] [local_costmap.local_costmap]: Creating Costmap
+[controller_server-15] [INFO] [1794847407.244639863] [controller_server]: Configuring controller interface
+[controller_server-15] [INFO] [1794847407.244665489] [controller_server]: getting progress checker plugins..
+[controller_server-15] [INFO] [1794847407.244747119] [controller_server]: getting goal checker plugins..
+[controller_server-15] [INFO] [1794847407.244769620] [controller_server]: Controller frequency set to 5.0000Hz
+[controller_server-15] [INFO] [1794847407.244786079] [local_costmap.local_costmap]: Configuring
+[controller_server-15] [INFO] [1794847407.254688420] [local_costmap.local_costmap]: Using plugin "obstacle_layer"
+[controller_server-15] [INFO] [1794847407.258126055] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-15] [INFO] [1794847407.261890957] [local_costmap.local_costmap]: Initialized plugin "obstacle_layer"
+[controller_server-15] [INFO] [1794847407.261919166] [local_costmap.local_costmap]: Using plugin "voxel_layer"
+[controller_server-15] [INFO] [1794847407.262188097] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-15] [INFO] [1794847407.270446396] [local_costmap.local_costmap]: Initialized plugin "voxel_layer"
+[controller_server-15] [INFO] [1794847407.270476981] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-15] [INFO] [1794847407.270999883] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[controller_server-15] [INFO] [1794847407.302859768] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-15] [INFO] [1794847407.303073070] [controller_server]: Controller Server has progress_checker  progress checkers available.
+[controller_server-15] [INFO] [1794847407.303861152] [controller_server]: Created goal checker : goal_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-15] [INFO] [1794847407.305068631] [controller_server]: Created goal checker : coverage_gap_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-15] [INFO] [1794847407.305972677] [controller_server]: Controller Server has goal_checker coverage_gap_checker  goal checkers available.
+[controller_server-15] [INFO] [1794847407.307133237] [controller_server]: Created controller : FollowPath of type nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794847407.312230665] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-19] [INFO] [1794847407.321797906] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m
+[planner_server-16] [INFO] [1794847407.322333350] [planner_server]: Configuring
+[planner_server-16] [INFO] [1794847407.322355310] [global_costmap.global_costmap]: Configuring
+[planner_server-16] [INFO] [1794847407.328963399] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-16] [INFO] [1794847407.334505558] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-16] [INFO] [1794847407.335612865] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-16] [INFO] [1794847407.335635825] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[planner_server-16] [INFO] [1794847407.335762415] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[coverage_meter-14] [INFO] [1794847407.337649386] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=1.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847407.341850602] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-16] [INFO] [1794847407.341890687] [global_costmap.global_costmap]: Using plugin "voxel_layer"
+[planner_server-16] [INFO] [1794847407.343061414] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-16] [INFO] [1794847407.353560411] [global_costmap.global_costmap]: Initialized plugin "voxel_layer"
+[planner_server-16] [INFO] [1794847407.353589371] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-16] [INFO] [1794847407.354695845] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[planner_server-16] [INFO] [1794847407.373046661] [planner_server]: Created global planner plugin GridBased of type nav2_navfn_planner::NavfnPlanner
+[planner_server-16] [INFO] [1794847407.373091622] [planner_server]: Configuring plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794847407.374949842] [planner_server]: Created global planner plugin CoverageDirect of type robot_coverage_planner::CoverageDirectPlanner
+[planner_server-16] [INFO] [1794847407.375033347] [planner_server]: Configuring plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794847407.376801479] [planner_server]: Coverage direct connectors enabled: maximum_length=1.20 m maximum_cost=220
+[planner_server-16] [INFO] [1794847407.376840148] [planner_server]: Planner Server has GridBased CoverageDirect  planners available.
+[lifecycle_manager-19] [INFO] [1794847407.386219379] [lifecycle_manager_navigation]: [34m[1mConfiguring behavior_server[0m[0m
+[behavior_server-17] [INFO] [1794847407.386972959] [behavior_server]: Configuring
+[behavior_server-17] [INFO] [1794847407.394047322] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors::Spin
+[behavior_server-17] [INFO] [1794847407.396744878] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors::BackUp
+[behavior_server-17] [INFO] [1794847407.398495092] [behavior_server]: Creating behavior plugin drive_on_heading of type nav2_behaviors::DriveOnHeading
+[behavior_server-17] [INFO] [1794847407.399454892] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors::Wait
+[behavior_server-17] [INFO] [1794847407.400259141] [behavior_server]: Creating behavior plugin assisted_teleop of type nav2_behaviors::AssistedTeleop
+[behavior_server-17] [INFO] [1794847407.410841059] [behavior_server]: Configuring spin
+[behavior_server-17] [INFO] [1794847407.418151101] [behavior_server]: Configuring backup
+[behavior_server-17] [INFO] [1794847407.423695552] [behavior_server]: Configuring drive_on_heading
+[behavior_server-17] [INFO] [1794847407.426184013] [behavior_server]: Configuring wait
+[behavior_server-17] [INFO] [1794847407.429724695] [behavior_server]: Configuring assisted_teleop
+[lifecycle_manager-19] [INFO] [1794847407.436760889] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m
+[bt_navigator-18] [INFO] [1794847407.437035737] [bt_navigator]: Configuring
+[bt_navigator-18] [INFO] [1794847407.445977738] [bt_navigator]: Creating navigator id navigate_to_pose of type nav2_bt_navigator::NavigateToPoseNavigator
+[bt_navigator-18] [WARN] [1794847407.450691229] [bt_navigator]: Error_code parameters were not set. Using default values of: follow_path_error_code compute_path_error_code
+[bt_navigator-18] Make sure these match your BT and there are not other sources of error codes youreported to your application
+[bt_navigator-18] [INFO] [1794847407.512230263] [bt_navigator]: Creating navigator id navigate_through_poses of type nav2_bt_navigator::NavigateThroughPosesNavigator
+[lifecycle_manager-19] [INFO] [1794847407.530082345] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[controller_server-15] [INFO] [1794847407.531975276] [controller_server]: Activating
+[controller_server-15] [INFO] [1794847407.532002944] [local_costmap.local_costmap]: Activating
+[controller_server-15] [INFO] [1794847407.532007653] [local_costmap.local_costmap]: Checking transform
+[controller_server-15] [INFO] [1794847407.532032779] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "base_link" passed to canTransform argument source_frame - frame does not exist
+[controller_server-15] [INFO] [1794847408.032234906] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "base_link" passed to canTransform argument source_frame - frame does not exist
+[coverage_meter-14] [INFO] [1794847408.337695647] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=2.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847408.532191408] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "base_link" passed to canTransform argument source_frame - frame does not exist
+[controller_server-15] [INFO] [1794847409.032576181] [local_costmap.local_costmap]: start
+[controller_server-15] [INFO] [1794847409.283696787] [controller_server]: Activating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794847409.283745748] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794847409.290139201] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[planner_server-16] [INFO] [1794847409.290775817] [planner_server]: Activating
+[planner_server-16] [INFO] [1794847409.290811943] [global_costmap.global_costmap]: Activating
+[planner_server-16] [INFO] [1794847409.290817569] [global_costmap.global_costmap]: Checking transform
+[planner_server-16] [INFO] [1794847409.290846945] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[coverage_meter-14] [INFO] [1794847409.337108397] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=3.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847409.791008427] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.440000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794847410.291059511] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.940000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794847410.337884905] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=4.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847410.407081485] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 72 X 52 at 0.050000 m/pix
+[planner_server-16] [INFO] [1794847410.791197378] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 6.440000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[localization_health_monitor_node-10] [INFO] [1794847411.026780298] [localization_health_monitor]: Localization HEALTHY: transient localization degradation cleared
+[planner_server-16] [INFO] [1794847411.291173552] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 6.940000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794847411.337827143] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=5.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847411.791067375] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 7.440000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794847412.291007100] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 7.940000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794847412.336994613] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=6.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847412.791031983] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 8.440000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794847413.291003929] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 8.940000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794847413.337244410] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=7.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847413.791972038] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 9.440000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794847414.290992864] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 9.940000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794847414.337738784] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=8.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847414.791077980] [global_costmap.global_costmap]: start
+[planner_server-16] [INFO] [1794847414.842456928] [planner_server]: Activating plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794847414.842496681] [planner_server]: Activating plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794847414.843855166] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794847414.850131194] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[behavior_server-17] [INFO] [1794847414.850661179] [behavior_server]: Activating
+[behavior_server-17] [INFO] [1794847414.850684306] [behavior_server]: Activating spin
+[behavior_server-17] [INFO] [1794847414.850691014] [behavior_server]: Activating backup
+[behavior_server-17] [INFO] [1794847414.850696139] [behavior_server]: Activating drive_on_heading
+[behavior_server-17] [INFO] [1794847414.850701348] [behavior_server]: Activating wait
+[behavior_server-17] [INFO] [1794847414.850706557] [behavior_server]: Activating assisted_teleop
+[behavior_server-17] [INFO] [1794847414.850714515] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794847414.857897089] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[bt_navigator-18] [INFO] [1794847414.858632335] [bt_navigator]: Activating
+[bt_navigator-18] [INFO] [1794847414.935194981] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794847414.941659685] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+[coverage_meter-14] [INFO] [1794847415.337866370] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=9.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[cleaning_task_manager_node-12] [INFO] [1794847416.294963294] [cleaning_task_manager]: task=islands-127-1794847416 state=WAITING_MAP completed=0 next=0/0
+[coverage_meter-14] [INFO] [1794847416.338610802] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=10.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[cleaning_task_manager_node-12] [INFO] [1794847416.391113175] [cleaning_task_manager]: task=islands-127-1794847416 state=PLANNING completed=0 next=0/0
+[coverage_planner_node-11] [INFO] [1794847416.393649513] [coverage_planner]: Tracking 1568 target cells with edge_margin=0.15 m
+[cleaning_task_manager_node-12] [INFO] [1794847416.394606478] [cleaning_task_manager]: task=islands-127-1794847416 state=PLANNING completed=0 next=0/0
+[coverage_planner_node-11] [INFO] [1794847416.395099753] [coverage_planner]: Planning with 66 additional live obstacle cells
+[coverage_meter-14] [INFO] [1794847417.337722798] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=11.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794847418.337710570] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=9.80 reachable_cells=1568 sim_t=12.6 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_planner_node-11] [INFO] [1794847419.007526786] [coverage_planner]: algorithm=optimized gap_fill=0 waypoints=33 planned_m=10.63: Selected sweep lanes by travel and predicted missed floor
+[cleaning_task_manager_node-12] [INFO] [1794847419.008679678] [cleaning_task_manager]: task=islands-127-1794847416 state=RUNNING completed=0 next=0/33
+[coverage_meter-14] [INFO] [1794847419.009225789] [coverage_meter]: cleaning job active: path/time accounting reset
+[cleaning_task_manager_node-12] [INFO] [1794847419.090814000] [cleaning_task_manager]: Adjusted sweep waypoint 0 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847419.090941506] [cleaning_task_manager]: NavigateToPose goal=(-0.925, 0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847419.163478051] [bt_navigator]: Begin navigating from current location (-1.08, 0.25) to (-0.92, 0.23)
+[planner_server-16] [INFO] [1794847419.165699705] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.157 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847419.185077935] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [WARN] [1794847419.185151022] [controller_server]: No progress checker was specified in parameter 'current_progress_checker'. Server will use only plugin loaded progress_checker . This warning will appear once.
+[localization_health_monitor_node-10] [INFO] [1794847419.226742084] [localization_health_monitor]: Localization DEGRADED: localization pose stale while robot is moving
+[coverage_meter-14] [INFO] [1794847419.337086750] [coverage_meter]: COVERAGE_REPORT coverage=0.0312 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.01 ideal_m=9.80 reachable_cells=1568 sim_t=0.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847419.585591696] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847419.613846167] [bt_navigator]: Goal succeeded
+[localization_health_monitor_node-10] [INFO] [1794847419.626746528] [localization_health_monitor]: Localization HEALTHY: transient localization degradation cleared
+[cleaning_task_manager_node-12] [INFO] [1794847419.691199331] [cleaning_task_manager]: NavigateToPose goal=(-0.925, 0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847419.693266852] [bt_navigator]: Begin navigating from current location (-1.02, 0.24) to (-0.92, 0.23)
+[planner_server-16] [INFO] [1794847419.694004556] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.097 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847419.695849399] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794847419.695913694] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847419.703713880] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847419.790780743] [cleaning_task_manager]: NavigateToPose goal=(-1.225, 0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847419.791122761] [bt_navigator]: Begin navigating from current location (-1.02, 0.24) to (-1.22, 0.23)
+[planner_server-16] [INFO] [1794847419.792521498] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.206 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847419.802199696] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847420.336987355] [coverage_meter]: COVERAGE_REPORT coverage=0.0370 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.07 ideal_m=9.80 reachable_cells=1568 sim_t=1.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847420.803056405] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.206 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847421.002697784] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847421.337077076] [coverage_meter]: COVERAGE_REPORT coverage=0.0370 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.07 ideal_m=9.80 reachable_cells=1568 sim_t=2.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847421.812177012] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.206 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847422.002500617] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847422.337016687] [coverage_meter]: COVERAGE_REPORT coverage=0.0370 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.08 ideal_m=9.80 reachable_cells=1568 sim_t=3.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847422.832236234] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.168 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847423.002448064] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847423.337809532] [coverage_meter]: COVERAGE_REPORT coverage=0.0370 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.16 ideal_m=9.80 reachable_cells=1568 sim_t=4.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847423.802963618] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847423.831646979] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847423.891728879] [cleaning_task_manager]: NavigateToPose goal=(-1.225, 0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847423.892151526] [bt_navigator]: Begin navigating from current location (-1.13, 0.20) to (-1.22, 0.68)
+[planner_server-16] [INFO] [1794847423.893024111] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.480 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847423.903682773] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847424.337251957] [coverage_meter]: COVERAGE_REPORT coverage=0.0427 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.20 ideal_m=9.80 reachable_cells=1568 sim_t=5.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847424.913070331] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.479 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847425.103824459] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847425.337489946] [coverage_meter]: COVERAGE_REPORT coverage=0.0459 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.22 ideal_m=9.80 reachable_cells=1568 sim_t=6.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847425.923219783] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.363 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847426.103830349] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847426.337046841] [coverage_meter]: COVERAGE_REPORT coverage=0.0612 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.40 ideal_m=9.80 reachable_cells=1568 sim_t=7.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847426.953693903] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.140 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847427.103875514] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847427.303930747] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847427.332498095] [bt_navigator]: Goal succeeded
+[coverage_meter-14] [INFO] [1794847427.337664313] [coverage_meter]: COVERAGE_REPORT coverage=0.0867 efficiency=16.7774 revisit_ratio=0.0000 path_m=0.58 ideal_m=9.80 reachable_cells=1568 sim_t=8.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[cleaning_task_manager_node-12] [INFO] [1794847427.391111074] [cleaning_task_manager]: NavigateToPose goal=(-0.925, 0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847427.391902614] [bt_navigator]: Begin navigating from current location (-1.21, 0.59) to (-0.92, 0.68)
+[planner_server-16] [INFO] [1794847427.392797242] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.297 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847427.393759999] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847428.337512520] [coverage_meter]: COVERAGE_REPORT coverage=0.0867 efficiency=16.4763 revisit_ratio=0.0000 path_m=0.59 ideal_m=9.80 reachable_cells=1568 sim_t=9.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847428.402852290] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.307 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847428.593980356] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847429.337723936] [coverage_meter]: COVERAGE_REPORT coverage=0.0938 efficiency=14.8531 revisit_ratio=0.0000 path_m=0.66 ideal_m=9.80 reachable_cells=1568 sim_t=10.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847429.412995616] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.216 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847429.593940578] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847430.193926311] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847430.222225932] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847430.292114714] [cleaning_task_manager]: NavigateToPose goal=(-0.525, 0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847430.292669200] [bt_navigator]: Begin navigating from current location (-1.00, 0.66) to (-0.52, 0.68)
+[planner_server-16] [INFO] [1794847430.293848009] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.471 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847430.313612037] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847430.338227225] [coverage_meter]: COVERAGE_REPORT coverage=0.1103 efficiency=11.7264 revisit_ratio=0.0000 path_m=0.84 ideal_m=9.80 reachable_cells=1568 sim_t=11.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847431.323728455] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.310 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847431.338059337] [coverage_meter]: COVERAGE_REPORT coverage=0.1269 efficiency=9.7988 revisit_ratio=0.0000 path_m=1.00 ideal_m=9.80 reachable_cells=1568 sim_t=12.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847431.513757016] [controller_server]: Passing new path to controller.
+[planner_server-16] [INFO] [1794847432.333595468] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.145 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847432.337119227] [coverage_meter]: COVERAGE_REPORT coverage=0.1448 efficiency=8.3640 revisit_ratio=0.0000 path_m=1.17 ideal_m=9.80 reachable_cells=1568 sim_t=13.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847432.513768318] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847432.913783953] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847432.943597147] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847432.991123181] [cleaning_task_manager]: NavigateToPose goal=(-0.125, 0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847432.991923887] [bt_navigator]: Begin navigating from current location (-0.61, 0.66) to (-0.12, 0.68)
+[planner_server-16] [INFO] [1794847432.992785472] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.489 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847433.003181740] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847433.337074561] [coverage_meter]: COVERAGE_REPORT coverage=0.1511 efficiency=7.7558 revisit_ratio=0.0000 path_m=1.26 ideal_m=9.80 reachable_cells=1568 sim_t=14.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847434.012878519] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.397 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847434.203537036] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847434.337266140] [coverage_meter]: COVERAGE_REPORT coverage=0.1620 efficiency=7.0887 revisit_ratio=0.0000 path_m=1.38 ideal_m=9.80 reachable_cells=1568 sim_t=15.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847435.022885879] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.274 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847435.203411173] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847435.338699139] [coverage_meter]: COVERAGE_REPORT coverage=0.1696 efficiency=6.5041 revisit_ratio=0.0000 path_m=1.51 ideal_m=9.80 reachable_cells=1568 sim_t=16.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847436.043179064] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.148 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847436.203435051] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847436.337090719] [coverage_meter]: COVERAGE_REPORT coverage=0.1830 efficiency=6.0303 revisit_ratio=0.0000 path_m=1.63 ideal_m=9.80 reachable_cells=1568 sim_t=17.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847436.603497303] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847436.632397778] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847436.690759463] [cleaning_task_manager]: Adjusted sweep waypoint 7 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847436.690860093] [cleaning_task_manager]: NavigateToPose goal=(0.125, 0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847436.691778555] [bt_navigator]: Begin navigating from current location (-0.21, 0.69) to (0.13, 0.68)
+[planner_server-16] [INFO] [1794847436.692773979] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.338 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847436.712791180] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847437.337194744] [coverage_meter]: COVERAGE_REPORT coverage=0.1881 efficiency=5.7052 revisit_ratio=0.0000 path_m=1.72 ideal_m=9.80 reachable_cells=1568 sim_t=18.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847437.723004350] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.228 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847437.912956965] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847438.337195704] [coverage_meter]: COVERAGE_REPORT coverage=0.2054 efficiency=5.2739 revisit_ratio=0.0000 path_m=1.86 ideal_m=9.80 reachable_cells=1568 sim_t=19.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847438.713068755] [controller_server]: Reached the goal!
+[planner_server-16] [INFO] [1794847438.732912070] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.073 reason=footprint_blocked
+[bt_navigator-18] [INFO] [1794847438.742233781] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847438.790677177] [cleaning_task_manager]: Adjusted sweep waypoint 8 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847438.790771140] [cleaning_task_manager]: NavigateToPose goal=(0.225, 0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847438.792470974] [bt_navigator]: Begin navigating from current location (0.06, 0.66) to (0.23, 0.68)
+[planner_server-16] [INFO] [1794847438.793426563] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.167 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847438.803856329] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847439.337045100] [coverage_meter]: COVERAGE_REPORT coverage=0.2213 efficiency=4.8500 revisit_ratio=0.0000 path_m=2.02 ideal_m=9.80 reachable_cells=1568 sim_t=20.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847439.404042493] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847439.432983298] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847439.491160797] [cleaning_task_manager]: Adjusted sweep waypoint 9 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847439.491261927] [cleaning_task_manager]: NavigateToPose goal=(0.275, 0.775) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847439.491800662] [bt_navigator]: Begin navigating from current location (0.15, 0.67) to (0.28, 0.78)
+[planner_server-16] [INFO] [1794847439.492633078] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.164 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847439.502642448] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794847440.102991186] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847440.132040869] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847440.191041822] [cleaning_task_manager]: Adjusted sweep waypoint 17 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847440.191071366] [cleaning_task_manager]: Deferred 7 sweep waypoints blocked by live costmap
+[cleaning_task_manager_node-12] [INFO] [1794847440.191651478] [cleaning_task_manager]: NavigateToPose goal=(0.275, 0.125) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847440.192552230] [bt_navigator]: Begin navigating from current location (0.20, 0.69) to (0.28, 0.13)
+[planner_server-16] [INFO] [1794847440.193652451] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.567 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847440.194834343] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847440.337211119] [coverage_meter]: COVERAGE_REPORT coverage=0.2296 efficiency=4.6929 revisit_ratio=0.0000 path_m=2.09 ideal_m=9.80 reachable_cells=1568 sim_t=21.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847441.203492315] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.587 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847441.337149736] [coverage_meter]: COVERAGE_REPORT coverage=0.2296 efficiency=4.6873 revisit_ratio=0.0000 path_m=2.09 ideal_m=9.80 reachable_cells=1568 sim_t=22.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847441.395071299] [controller_server]: Passing new path to controller.
+[planner_server-16] [INFO] [1794847442.223532413] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.600 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847442.337798997] [coverage_meter]: COVERAGE_REPORT coverage=0.2296 efficiency=4.6752 revisit_ratio=0.0000 path_m=2.10 ideal_m=9.80 reachable_cells=1568 sim_t=23.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847442.395131986] [controller_server]: Passing new path to controller.
+[planner_server-16] [INFO] [1794847443.243915718] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.519 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847443.336910083] [coverage_meter]: COVERAGE_REPORT coverage=0.2347 efficiency=4.4510 revisit_ratio=0.0000 path_m=2.20 ideal_m=9.80 reachable_cells=1568 sim_t=24.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847443.395049775] [controller_server]: Passing new path to controller.
+[planner_server-16] [INFO] [1794847444.273383409] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.411 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847444.337257547] [coverage_meter]: COVERAGE_REPORT coverage=0.2474 efficiency=4.1492 revisit_ratio=0.0000 path_m=2.36 ideal_m=9.80 reachable_cells=1568 sim_t=25.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847444.395351067] [controller_server]: Passing new path to controller.
+[planner_server-16] [INFO] [1794847445.303379024] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.270 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847445.337736585] [coverage_meter]: COVERAGE_REPORT coverage=0.2647 efficiency=3.8592 revisit_ratio=0.0000 path_m=2.54 ideal_m=9.80 reachable_cells=1568 sim_t=26.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847445.395123359] [controller_server]: Passing new path to controller.
+[planner_server-16] [INFO] [1794847446.323351670] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.141 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847446.337592243] [coverage_meter]: COVERAGE_REPORT coverage=0.2793 efficiency=3.7302 revisit_ratio=0.0000 path_m=2.63 ideal_m=9.80 reachable_cells=1568 sim_t=27.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847446.394969638] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847446.795063744] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847446.823131953] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847446.890818228] [cleaning_task_manager]: NavigateToPose goal=(0.175, 0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847446.891335795] [bt_navigator]: Begin navigating from current location (0.22, 0.18) to (0.18, 0.23)
+[planner_server-16] [INFO] [1794847446.892561730] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.061 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847446.902250830] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794847446.902510759] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847446.921579694] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847446.990820003] [cleaning_task_manager]: Adjusted sweep waypoint 19 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847446.990916883] [cleaning_task_manager]: NavigateToPose goal=(0.125, -0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847446.991408032] [bt_navigator]: Begin navigating from current location (0.22, 0.18) to (0.13, -0.22)
+[planner_server-16] [INFO] [1794847446.992738055] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.416 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847447.002773631] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847447.337119995] [coverage_meter]: COVERAGE_REPORT coverage=0.2832 efficiency=3.6597 revisit_ratio=0.0000 path_m=2.68 ideal_m=9.80 reachable_cells=1568 sim_t=28.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847448.012658267] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.383 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847448.202954654] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847448.337548984] [coverage_meter]: COVERAGE_REPORT coverage=0.2883 efficiency=3.5848 revisit_ratio=0.0000 path_m=2.73 ideal_m=9.80 reachable_cells=1568 sim_t=29.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847449.022415340] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.290 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847449.202921738] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847449.337244380] [coverage_meter]: COVERAGE_REPORT coverage=0.2997 efficiency=3.4450 revisit_ratio=0.0000 path_m=2.84 ideal_m=9.80 reachable_cells=1568 sim_t=30.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847450.042738786] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.140 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847450.202954268] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847450.337618461] [coverage_meter]: COVERAGE_REPORT coverage=0.3163 efficiency=3.2772 revisit_ratio=0.0000 path_m=2.99 ideal_m=9.80 reachable_cells=1568 sim_t=31.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847450.602980654] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847450.632022862] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847450.690999363] [cleaning_task_manager]: NavigateToPose goal=(-0.125, -0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847450.691999496] [bt_navigator]: Begin navigating from current location (0.12, -0.15) to (-0.12, -0.22)
+[planner_server-16] [INFO] [1794847450.692809077] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.259 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847450.713181945] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847451.337038730] [coverage_meter]: COVERAGE_REPORT coverage=0.3195 efficiency=3.2362 revisit_ratio=0.0000 path_m=3.03 ideal_m=9.80 reachable_cells=1568 sim_t=32.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847451.713041298] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.213 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847451.913479521] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847452.336977759] [coverage_meter]: COVERAGE_REPORT coverage=0.3323 efficiency=3.1042 revisit_ratio=0.0000 path_m=3.16 ideal_m=9.80 reachable_cells=1568 sim_t=33.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847452.513347841] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847452.542417756] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847452.590853613] [cleaning_task_manager]: NavigateToPose goal=(-0.525, -0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847452.592624657] [bt_navigator]: Begin navigating from current location (-0.04, -0.23) to (-0.52, -0.22)
+[planner_server-16] [INFO] [1794847452.593774713] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.482 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847452.604077798] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847453.337618849] [coverage_meter]: COVERAGE_REPORT coverage=0.3444 efficiency=2.9907 revisit_ratio=0.0000 path_m=3.28 ideal_m=9.80 reachable_cells=1568 sim_t=34.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847453.613636515] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.382 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847453.804236321] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847454.337757567] [coverage_meter]: COVERAGE_REPORT coverage=0.3610 efficiency=2.8625 revisit_ratio=0.0000 path_m=3.42 ideal_m=9.80 reachable_cells=1568 sim_t=35.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847454.633618597] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.296 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847454.804381887] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847455.337099689] [coverage_meter]: COVERAGE_REPORT coverage=0.3693 efficiency=2.8004 revisit_ratio=0.0000 path_m=3.50 ideal_m=9.80 reachable_cells=1568 sim_t=36.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847455.643876399] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.212 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847455.804428810] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847456.337359050] [coverage_meter]: COVERAGE_REPORT coverage=0.3820 efficiency=2.6962 revisit_ratio=0.0000 path_m=3.63 ideal_m=9.80 reachable_cells=1568 sim_t=37.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847456.663912909] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.103 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847456.804320210] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847456.804453466] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847456.843833624] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847456.890823650] [cleaning_task_manager]: NavigateToPose goal=(-0.925, -0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847456.891679775] [bt_navigator]: Begin navigating from current location (-0.44, -0.29) to (-0.92, -0.22)
+[planner_server-16] [INFO] [1794847456.892620320] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.489 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847456.902634889] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847457.337491224] [coverage_meter]: COVERAGE_REPORT coverage=0.3820 efficiency=2.6781 revisit_ratio=0.0000 path_m=3.66 ideal_m=9.80 reachable_cells=1568 sim_t=38.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847457.912976066] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.418 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847458.103118676] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847458.336902849] [coverage_meter]: COVERAGE_REPORT coverage=0.3973 efficiency=2.5906 revisit_ratio=0.0000 path_m=3.78 ideal_m=9.80 reachable_cells=1568 sim_t=39.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847458.932687473] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.264 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847459.102848648] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847459.336917155] [coverage_meter]: COVERAGE_REPORT coverage=0.4145 efficiency=2.4980 revisit_ratio=0.0000 path_m=3.92 ideal_m=9.80 reachable_cells=1568 sim_t=40.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847459.943384844] [planner_server]: CoverageDirect decision=direct_success attempted=true fallback=false length=0.139 reason=
+[controller_server-15] [INFO] [1794847460.102817493] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847460.337452805] [coverage_meter]: COVERAGE_REPORT coverage=0.4260 efficiency=2.4226 revisit_ratio=0.0000 path_m=4.05 ideal_m=9.80 reachable_cells=1568 sim_t=41.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847460.972679014] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.087 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847461.102903412] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847461.103131506] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847461.142040755] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847461.191062532] [cleaning_task_manager]: NavigateToPose goal=(-1.325, -0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847461.193210511] [bt_navigator]: Begin navigating from current location (-0.87, -0.29) to (-1.32, -0.22)
+[planner_server-16] [INFO] [1794847461.194181224] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.459 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847461.203937819] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847461.337651342] [coverage_meter]: COVERAGE_REPORT coverage=0.4260 efficiency=2.4181 revisit_ratio=0.0000 path_m=4.05 ideal_m=9.80 reachable_cells=1568 sim_t=42.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847462.213944571] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.296 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847462.337765402] [coverage_meter]: COVERAGE_REPORT coverage=0.4490 efficiency=2.3081 revisit_ratio=0.0000 path_m=4.25 ideal_m=9.80 reachable_cells=1568 sim_t=43.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847462.404073258] [controller_server]: Passing new path to controller.
+[planner_server-16] [INFO] [1794847463.226092619] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.115 reason=footprint_blocked
+[coverage_meter-14] [INFO] [1794847463.337508723] [coverage_meter]: COVERAGE_REPORT coverage=0.4662 efficiency=2.2176 revisit_ratio=0.0000 path_m=4.42 ideal_m=9.80 reachable_cells=1568 sim_t=44.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847463.404098839] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847463.404224511] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847463.444003631] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847463.491644670] [cleaning_task_manager]: NavigateToPose goal=(-1.325, -0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847463.492171945] [bt_navigator]: Begin navigating from current location (-1.24, -0.25) to (-1.32, -0.67)
+[planner_server-16] [INFO] [1794847463.493075530] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.436 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847463.494594937] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847464.337754428] [coverage_meter]: COVERAGE_REPORT coverage=0.4713 efficiency=2.2065 revisit_ratio=0.0000 path_m=4.44 ideal_m=9.80 reachable_cells=1568 sim_t=45.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847464.503013151] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.441 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847464.694758228] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847465.337650937] [coverage_meter]: COVERAGE_REPORT coverage=0.4713 efficiency=2.1977 revisit_ratio=0.0000 path_m=4.46 ideal_m=9.80 reachable_cells=1568 sim_t=46.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847465.513092097] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.408 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847465.694762306] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847466.337214500] [coverage_meter]: COVERAGE_REPORT coverage=0.4777 efficiency=2.1316 revisit_ratio=0.0000 path_m=4.60 ideal_m=9.80 reachable_cells=1568 sim_t=47.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847466.543912064] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.254 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847466.695019132] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847467.337200737] [coverage_meter]: COVERAGE_REPORT coverage=0.4962 efficiency=2.0607 revisit_ratio=0.0000 path_m=4.76 ideal_m=9.80 reachable_cells=1568 sim_t=48.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847467.553641755] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.125 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847467.694897677] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847467.894835531] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847467.922670612] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847467.990834247] [cleaning_task_manager]: NavigateToPose goal=(-0.925, -0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847467.991550406] [bt_navigator]: Begin navigating from current location (-1.27, -0.60) to (-0.92, -0.67)
+[planner_server-16] [INFO] [1794847467.992987642] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.355 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847468.002992578] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847468.337266714] [coverage_meter]: COVERAGE_REPORT coverage=0.5000 efficiency=2.0366 revisit_ratio=0.0000 path_m=4.81 ideal_m=9.80 reachable_cells=1568 sim_t=49.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847469.013676109] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.364 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847469.203175151] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847469.337598523] [coverage_meter]: COVERAGE_REPORT coverage=0.5000 efficiency=2.0354 revisit_ratio=0.0000 path_m=4.81 ideal_m=9.80 reachable_cells=1568 sim_t=50.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847470.032629561] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.372 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847470.203179814] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847470.338118371] [coverage_meter]: COVERAGE_REPORT coverage=0.5026 efficiency=2.0045 revisit_ratio=0.0000 path_m=4.89 ideal_m=9.80 reachable_cells=1568 sim_t=51.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847471.043479112] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.217 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847471.203335056] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847471.337493151] [coverage_meter]: COVERAGE_REPORT coverage=0.5217 efficiency=1.9348 revisit_ratio=0.0000 path_m=5.07 ideal_m=9.80 reachable_cells=1568 sim_t=52.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847472.003167258] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847472.031799744] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847472.091248571] [cleaning_task_manager]: NavigateToPose goal=(-0.525, -0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847472.092098904] [bt_navigator]: Begin navigating from current location (-1.01, -0.63) to (-0.52, -0.67)
+[planner_server-16] [INFO] [1794847472.093457010] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.489 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847472.102988630] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847472.337244602] [coverage_meter]: COVERAGE_REPORT coverage=0.5306 efficiency=1.8977 revisit_ratio=0.0000 path_m=5.16 ideal_m=9.80 reachable_cells=1568 sim_t=53.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847473.103657750] [planner_server]: CoverageDirect decision=direct_success attempted=true fallback=false length=0.316 reason=
+[controller_server-15] [INFO] [1794847473.303354277] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847473.337845665] [coverage_meter]: COVERAGE_REPORT coverage=0.5485 efficiency=1.8274 revisit_ratio=0.0000 path_m=5.36 ideal_m=9.80 reachable_cells=1568 sim_t=54.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847474.113077939] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.129 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847474.303195793] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847474.303523892] [controller_server]: Reached the goal!
+[coverage_meter-14] [INFO] [1794847474.337516088] [coverage_meter]: COVERAGE_REPORT coverage=0.5689 efficiency=1.7636 revisit_ratio=0.0000 path_m=5.56 ideal_m=9.80 reachable_cells=1568 sim_t=55.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[bt_navigator-18] [INFO] [1794847474.342959763] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847474.391035710] [cleaning_task_manager]: NavigateToPose goal=(-0.125, -0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847474.391628488] [bt_navigator]: Begin navigating from current location (-0.62, -0.66) to (-0.12, -0.67)
+[planner_server-16] [INFO] [1794847474.392597076] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.491 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847474.402686971] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847475.336921944] [coverage_meter]: COVERAGE_REPORT coverage=0.5823 efficiency=1.7124 revisit_ratio=0.0000 path_m=5.72 ideal_m=9.80 reachable_cells=1568 sim_t=56.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847475.412947588] [planner_server]: CoverageDirect decision=direct_success attempted=true fallback=false length=0.318 reason=
+[controller_server-15] [INFO] [1794847475.602882797] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847476.336938941] [coverage_meter]: COVERAGE_REPORT coverage=0.6001 efficiency=1.6548 revisit_ratio=0.0000 path_m=5.92 ideal_m=9.80 reachable_cells=1568 sim_t=57.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847476.433099826] [planner_server]: CoverageDirect decision=direct_success attempted=true fallback=false length=0.122 reason=
+[controller_server-15] [INFO] [1794847476.602864196] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847476.603007744] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847476.642052176] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847476.690727771] [cleaning_task_manager]: Adjusted sweep waypoint 28 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847476.690835276] [cleaning_task_manager]: NavigateToPose goal=(0.125, -0.775) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847476.691172501] [bt_navigator]: Begin navigating from current location (-0.21, -0.68) to (0.13, -0.77)
+[planner_server-16] [INFO] [1794847476.692068168] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.351 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847476.702739882] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847477.337812383] [coverage_meter]: COVERAGE_REPORT coverage=0.6154 efficiency=1.6129 revisit_ratio=0.0000 path_m=6.08 ideal_m=9.80 reachable_cells=1568 sim_t=58.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847477.712885409] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.199 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847477.903052817] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847478.338084868] [coverage_meter]: COVERAGE_REPORT coverage=0.6269 efficiency=1.5861 revisit_ratio=0.0000 path_m=6.18 ideal_m=9.80 reachable_cells=1568 sim_t=59.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847478.722888292] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.127 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847478.902930337] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847479.102910068] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847479.131696259] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847479.191743800] [cleaning_task_manager]: Adjusted sweep waypoint 29 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847479.191848221] [cleaning_task_manager]: NavigateToPose goal=(0.175, -0.825) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_coverage_sweep.xml
+[bt_navigator-18] [INFO] [1794847479.192674010] [bt_navigator]: Begin navigating from current location (0.03, -0.73) to (0.18, -0.82)
+[planner_server-16] [INFO] [1794847479.193433296] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.174 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847479.203630652] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847479.337158410] [coverage_meter]: COVERAGE_REPORT coverage=0.6339 efficiency=1.5708 revisit_ratio=0.0000 path_m=6.24 ideal_m=9.80 reachable_cells=1568 sim_t=60.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794847480.204043710] [planner_server]: CoverageDirect decision=direct_rejected_navfn_fallback attempted=true fallback=true length=0.067 reason=footprint_blocked
+[controller_server-15] [INFO] [1794847480.204528692] [controller_server]: Reached the goal!
+[controller_server-15] [INFO] [1794847480.205352230] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794847480.205390107] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847480.213458571] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847480.290816924] [cleaning_task_manager]: Deferred 3 sweep waypoints blocked by live costmap
+[cleaning_task_manager_node-12] [INFO] [1794847480.291187192] [cleaning_task_manager]: task=islands-127-1794847416 state=PLANNING completed=23 next=33/33
+[cleaning_task_manager_node-12] [INFO] [1794847480.291231652] [cleaning_task_manager]: Remaining gap distance budget 5.99 m
+[coverage_planner_node-11] [INFO] [1794847480.293195495] [coverage_planner]: Planning with 238 additional live obstacle cells
+[coverage_planner_node-11] [INFO] [1794847480.293993490] [coverage_planner]: Gap search blocked 5 centers from the local costmap
+[coverage_meter-14] [INFO] [1794847480.337753928] [coverage_meter]: COVERAGE_REPORT coverage=0.6397 efficiency=1.5435 revisit_ratio=0.0000 path_m=6.35 ideal_m=9.80 reachable_cells=1568 sim_t=61.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_planner_node-11] [INFO] [1794847480.600725111] [coverage_planner]: algorithm=optimized gap_fill=1 waypoints=12 planned_m=3.91: Selected connectors by swept uncovered area and travel cost
+[cleaning_task_manager_node-12] [INFO] [1794847480.601872540] [cleaning_task_manager]: task=islands-127-1794847416 state=RUNNING completed=23 next=0/12
+[cleaning_task_manager_node-12] [INFO] [1794847480.691121787] [cleaning_task_manager]: NavigateToPose goal=(0.325, -0.825) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847480.808957714] [bt_navigator]: Begin navigating from current location (0.13, -0.80) to (0.33, -0.82)
+[controller_server-15] [INFO] [1794847480.829882659] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847481.337008245] [coverage_meter]: COVERAGE_REPORT coverage=0.6441 efficiency=1.5318 revisit_ratio=0.0000 path_m=6.40 ideal_m=9.80 reachable_cells=1568 sim_t=62.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847482.030041988] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847482.030182828] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847482.069449132] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847482.091033605] [cleaning_task_manager]: NavigateToPose goal=(0.925, -0.825) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847482.091836893] [bt_navigator]: Begin navigating from current location (0.24, -0.85) to (0.93, -0.82)
+[controller_server-15] [INFO] [1794847482.094356887] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847482.337026337] [coverage_meter]: COVERAGE_REPORT coverage=0.6486 efficiency=1.5103 revisit_ratio=0.0000 path_m=6.49 ideal_m=9.80 reachable_cells=1568 sim_t=63.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847483.294528546] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847483.336823865] [coverage_meter]: COVERAGE_REPORT coverage=0.6537 efficiency=1.4869 revisit_ratio=0.0000 path_m=6.59 ideal_m=9.80 reachable_cells=1568 sim_t=64.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847484.294631996] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847484.336940355] [coverage_meter]: COVERAGE_REPORT coverage=0.6588 efficiency=1.4652 revisit_ratio=0.0000 path_m=6.69 ideal_m=9.80 reachable_cells=1568 sim_t=65.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847485.294632180] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847485.336806156] [coverage_meter]: COVERAGE_REPORT coverage=0.6639 efficiency=1.4434 revisit_ratio=0.0000 path_m=6.79 ideal_m=9.80 reachable_cells=1568 sim_t=66.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847486.294548431] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847486.337561694] [coverage_meter]: COVERAGE_REPORT coverage=0.6690 efficiency=1.4211 revisit_ratio=0.0000 path_m=6.90 ideal_m=9.80 reachable_cells=1568 sim_t=67.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847487.294701474] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847487.337018161] [coverage_meter]: COVERAGE_REPORT coverage=0.6754 efficiency=1.3998 revisit_ratio=0.0000 path_m=7.00 ideal_m=9.80 reachable_cells=1568 sim_t=68.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847487.694613378] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847487.722114622] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847487.790726455] [cleaning_task_manager]: NavigateToPose goal=(1.175, -0.675) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847487.791117181] [bt_navigator]: Begin navigating from current location (0.83, -0.83) to (1.18, -0.67)
+[controller_server-15] [INFO] [1794847487.803078865] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847488.337149065] [coverage_meter]: COVERAGE_REPORT coverage=0.6843 efficiency=1.3822 revisit_ratio=0.0000 path_m=7.09 ideal_m=9.80 reachable_cells=1568 sim_t=69.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847489.003218501] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847489.338581310] [coverage_meter]: COVERAGE_REPORT coverage=0.6964 efficiency=1.3595 revisit_ratio=0.0000 path_m=7.21 ideal_m=9.80 reachable_cells=1568 sim_t=70.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847490.003461114] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847490.203256089] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847490.231680997] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847490.290926757] [cleaning_task_manager]: NavigateToPose goal=(1.175, -0.325) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847490.291660999] [bt_navigator]: Begin navigating from current location (1.09, -0.72) to (1.18, -0.32)
+[controller_server-15] [INFO] [1794847490.295747315] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847490.337120826] [coverage_meter]: COVERAGE_REPORT coverage=0.7085 efficiency=1.3383 revisit_ratio=0.0000 path_m=7.32 ideal_m=9.80 reachable_cells=1568 sim_t=71.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794847491.337364369] [coverage_meter]: COVERAGE_REPORT coverage=0.7162 efficiency=1.3285 revisit_ratio=0.0000 path_m=7.38 ideal_m=9.80 reachable_cells=1568 sim_t=72.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847491.498170519] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847492.337707155] [coverage_meter]: COVERAGE_REPORT coverage=0.7264 efficiency=1.3030 revisit_ratio=0.0000 path_m=7.52 ideal_m=9.80 reachable_cells=1568 sim_t=73.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847492.496603500] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847493.096826522] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847493.122012233] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847493.190929433] [cleaning_task_manager]: NavigateToPose goal=(1.175, 0.025) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847493.191904020] [bt_navigator]: Begin navigating from current location (1.16, -0.39) to (1.18, 0.03)
+[controller_server-15] [INFO] [1794847493.194931869] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847493.336857626] [coverage_meter]: COVERAGE_REPORT coverage=0.7417 efficiency=1.2768 revisit_ratio=0.0000 path_m=7.68 ideal_m=9.80 reachable_cells=1568 sim_t=74.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794847494.336929421] [coverage_meter]: COVERAGE_REPORT coverage=0.7653 efficiency=1.2455 revisit_ratio=0.0000 path_m=7.87 ideal_m=9.80 reachable_cells=1568 sim_t=75.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847494.395186914] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847495.195085088] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847495.222608905] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847495.290980323] [cleaning_task_manager]: NavigateToPose goal=(1.175, 0.375) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847495.292739987] [bt_navigator]: Begin navigating from current location (1.14, -0.06) to (1.18, 0.38)
+[controller_server-15] [INFO] [1794847495.295685124] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847495.337211089] [coverage_meter]: COVERAGE_REPORT coverage=0.7800 efficiency=1.2244 revisit_ratio=0.0000 path_m=8.00 ideal_m=9.80 reachable_cells=1568 sim_t=76.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794847496.336938597] [coverage_meter]: COVERAGE_REPORT coverage=0.7915 efficiency=1.2120 revisit_ratio=0.0000 path_m=8.09 ideal_m=9.80 reachable_cells=1568 sim_t=77.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847496.495809991] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847497.337220037] [coverage_meter]: COVERAGE_REPORT coverage=0.8080 efficiency=1.1850 revisit_ratio=0.0000 path_m=8.27 ideal_m=9.80 reachable_cells=1568 sim_t=78.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847497.495906706] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847498.295912714] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847498.323143138] [bt_navigator]: Goal succeeded
+[coverage_meter-14] [INFO] [1794847498.337104991] [coverage_meter]: COVERAGE_REPORT coverage=0.8195 efficiency=1.1694 revisit_ratio=0.0000 path_m=8.38 ideal_m=9.80 reachable_cells=1568 sim_t=79.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[cleaning_task_manager_node-12] [INFO] [1794847498.390822638] [cleaning_task_manager]: NavigateToPose goal=(1.175, 0.725) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847498.391943064] [bt_navigator]: Begin navigating from current location (1.14, 0.30) to (1.18, 0.73)
+[controller_server-15] [INFO] [1794847498.395264593] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847499.336887846] [coverage_meter]: COVERAGE_REPORT coverage=0.8355 efficiency=1.1513 revisit_ratio=0.0000 path_m=8.51 ideal_m=9.80 reachable_cells=1568 sim_t=80.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847499.596493361] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847500.336902618] [coverage_meter]: COVERAGE_REPORT coverage=0.8559 efficiency=1.1253 revisit_ratio=0.0000 path_m=8.71 ideal_m=9.80 reachable_cells=1568 sim_t=81.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847500.396064719] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847500.422397307] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847500.491901551] [cleaning_task_manager]: Adjusted gap waypoint 7 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847500.491997722] [cleaning_task_manager]: NavigateToPose goal=(1.075, 0.725) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847500.492519371] [bt_navigator]: Begin navigating from current location (1.17, 0.63) to (1.08, 0.73)
+[controller_server-15] [INFO] [1794847500.513348456] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847501.337823631] [coverage_meter]: COVERAGE_REPORT coverage=0.8584 efficiency=1.1210 revisit_ratio=0.0000 path_m=8.74 ideal_m=9.80 reachable_cells=1568 sim_t=82.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847501.713630175] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847501.713770474] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847501.752862898] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847501.790852729] [cleaning_task_manager]: NavigateToPose goal=(1.025, 0.125) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847501.791668267] [bt_navigator]: Begin navigating from current location (1.15, 0.67) to (1.03, 0.13)
+[controller_server-15] [INFO] [1794847501.794866122] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847502.337635916] [coverage_meter]: COVERAGE_REPORT coverage=0.8616 efficiency=1.1188 revisit_ratio=0.0000 path_m=8.76 ideal_m=9.80 reachable_cells=1568 sim_t=83.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847502.995099180] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847503.337192555] [coverage_meter]: COVERAGE_REPORT coverage=0.8616 efficiency=1.1184 revisit_ratio=0.0000 path_m=8.76 ideal_m=9.80 reachable_cells=1568 sim_t=84.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847503.995093347] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847504.337199705] [coverage_meter]: COVERAGE_REPORT coverage=0.8616 efficiency=1.1090 revisit_ratio=0.0000 path_m=8.84 ideal_m=9.80 reachable_cells=1568 sim_t=85.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847504.995351100] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847505.337738870] [coverage_meter]: COVERAGE_REPORT coverage=0.8616 efficiency=1.0927 revisit_ratio=0.0000 path_m=8.97 ideal_m=9.80 reachable_cells=1568 sim_t=86.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847505.995501631] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847506.336978425] [coverage_meter]: COVERAGE_REPORT coverage=0.8616 efficiency=1.0774 revisit_ratio=0.0277 path_m=9.10 ideal_m=9.80 reachable_cells=1568 sim_t=87.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847506.995263134] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847507.337679912] [coverage_meter]: COVERAGE_REPORT coverage=0.8629 efficiency=1.0653 revisit_ratio=0.0274 path_m=9.20 ideal_m=9.80 reachable_cells=1568 sim_t=88.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847507.795170242] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847507.821923507] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847507.891984376] [cleaning_task_manager]: NavigateToPose goal=(0.925, 0.075) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847507.892470107] [bt_navigator]: Begin navigating from current location (1.08, 0.22) to (0.93, 0.08)
+[controller_server-15] [INFO] [1794847507.903308811] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847508.337103999] [coverage_meter]: COVERAGE_REPORT coverage=0.8673 efficiency=1.0513 revisit_ratio=0.0540 path_m=9.32 ideal_m=9.80 reachable_cells=1568 sim_t=89.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847509.103582701] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847509.103767751] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847509.143260678] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847509.190809096] [cleaning_task_manager]: NavigateToPose goal=(0.575, 0.075) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847509.191882020] [bt_navigator]: Begin navigating from current location (0.99, 0.15) to (0.58, 0.08)
+[controller_server-15] [INFO] [1794847509.194131831] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847509.337802843] [coverage_meter]: COVERAGE_REPORT coverage=0.8724 efficiency=1.0440 revisit_ratio=0.0536 path_m=9.39 ideal_m=9.80 reachable_cells=1568 sim_t=90.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794847510.337673390] [coverage_meter]: COVERAGE_REPORT coverage=0.8865 efficiency=1.0260 revisit_ratio=0.0527 path_m=9.55 ideal_m=9.80 reachable_cells=1568 sim_t=91.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847510.394628777] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847511.336909941] [coverage_meter]: COVERAGE_REPORT coverage=0.8999 efficiency=1.0115 revisit_ratio=0.0520 path_m=9.69 ideal_m=9.80 reachable_cells=1568 sim_t=92.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847511.394680029] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847511.594528457] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847511.622536899] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847511.691433618] [cleaning_task_manager]: NavigateToPose goal=(0.425, 0.075) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847511.692545376] [bt_navigator]: Begin navigating from current location (0.66, 0.07) to (0.43, 0.08)
+[controller_server-15] [INFO] [1794847511.703714635] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847512.336892184] [coverage_meter]: COVERAGE_REPORT coverage=0.9082 efficiency=1.0016 revisit_ratio=0.0515 path_m=9.78 ideal_m=9.80 reachable_cells=1568 sim_t=93.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847512.903862417] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847513.103878922] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847513.132813194] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847513.191123842] [cleaning_task_manager]: task=islands-127-1794847416 state=PLANNING completed=35 next=12/12
+[cleaning_task_manager_node-12] [INFO] [1794847513.191190428] [cleaning_task_manager]: Remaining gap distance budget 2.49 m
+[coverage_planner_node-11] [INFO] [1794847513.192716956] [coverage_planner]: Planning with 145 additional live obstacle cells
+[coverage_planner_node-11] [INFO] [1794847513.193108474] [coverage_planner]: Gap search blocked 41 centers from the local costmap
+[coverage_planner_node-11] [INFO] [1794847513.286568009] [coverage_planner]: algorithm=optimized gap_fill=1 waypoints=2 planned_m=0.85: Selected connectors by swept uncovered area and travel cost
+[cleaning_task_manager_node-12] [INFO] [1794847513.287876652] [cleaning_task_manager]: task=islands-127-1794847416 state=RUNNING completed=35 next=0/2
+[cleaning_task_manager_node-12] [INFO] [1794847513.292699371] [cleaning_task_manager]: NavigateToPose goal=(0.325, 0.225) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847513.293008010] [bt_navigator]: Begin navigating from current location (0.51, 0.07) to (0.33, 0.23)
+[controller_server-15] [INFO] [1794847513.304025344] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847513.337146723] [coverage_meter]: COVERAGE_REPORT coverage=0.9114 efficiency=0.9914 revisit_ratio=0.0509 path_m=9.88 ideal_m=9.80 reachable_cells=1568 sim_t=94.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794847514.337480131] [coverage_meter]: COVERAGE_REPORT coverage=0.9120 efficiency=0.9883 revisit_ratio=0.0508 path_m=9.92 ideal_m=9.80 reachable_cells=1568 sim_t=95.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847514.504216486] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847515.304218884] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847515.333518379] [bt_navigator]: Goal succeeded
+[coverage_meter-14] [INFO] [1794847515.337715235] [coverage_meter]: COVERAGE_REPORT coverage=0.9139 efficiency=0.9753 revisit_ratio=0.0501 path_m=10.05 ideal_m=9.80 reachable_cells=1568 sim_t=96.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[cleaning_task_manager_node-12] [INFO] [1794847515.391807186] [cleaning_task_manager]: Adjusted gap waypoint 1 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847515.391928983] [cleaning_task_manager]: NavigateToPose goal=(0.275, 0.775) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847515.392430339] [bt_navigator]: Begin navigating from current location (0.37, 0.14) to (0.28, 0.78)
+[controller_server-15] [INFO] [1794847515.403471631] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847516.337011247] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9644 revisit_ratio=0.0742 path_m=10.16 ideal_m=9.80 reachable_cells=1568 sim_t=97.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847516.603716901] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847517.337161872] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9497 revisit_ratio=0.0975 path_m=10.32 ideal_m=9.80 reachable_cells=1568 sim_t=98.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847517.603743174] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847518.337797303] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9357 revisit_ratio=0.0961 path_m=10.47 ideal_m=9.80 reachable_cells=1568 sim_t=99.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847518.603693477] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847519.337214129] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9258 revisit_ratio=0.1187 path_m=10.59 ideal_m=9.80 reachable_cells=1568 sim_t=100.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847519.603659232] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847520.338095763] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9139 revisit_ratio=0.1172 path_m=10.72 ideal_m=9.80 reachable_cells=1568 sim_t=101.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847520.603661521] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794847520.603807861] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847520.643013878] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847520.691584108] [cleaning_task_manager]: task=islands-127-1794847416 state=PLANNING completed=37 next=2/2
+[cleaning_task_manager_node-12] [INFO] [1794847520.691664653] [cleaning_task_manager]: Remaining gap distance budget 1.61 m
+[coverage_planner_node-11] [INFO] [1794847520.692109132] [coverage_planner]: Planning with 173 additional live obstacle cells
+[coverage_planner_node-11] [INFO] [1794847520.692480773] [coverage_planner]: Gap search blocked 11 centers from the local costmap
+[coverage_planner_node-11] [INFO] [1794847520.742834126] [coverage_planner]: algorithm=optimized gap_fill=1 waypoints=3 planned_m=0.41: Selected connectors by swept uncovered area and travel cost
+[cleaning_task_manager_node-12] [INFO] [1794847520.743965177] [cleaning_task_manager]: task=islands-127-1794847416 state=RUNNING completed=37 next=0/3
+[cleaning_task_manager_node-12] [INFO] [1794847520.790797329] [cleaning_task_manager]: Adjusted gap waypoint 0 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847520.792074803] [cleaning_task_manager]: NavigateToPose goal=(0.325, 0.775) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847520.792700581] [bt_navigator]: Begin navigating from current location (0.21, 0.72) to (0.33, 0.78)
+[controller_server-15] [INFO] [1794847520.794370406] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794847520.794743173] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847520.813031456] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847520.890726498] [cleaning_task_manager]: Adjusted gap waypoint 1 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847520.890826544] [cleaning_task_manager]: NavigateToPose goal=(0.275, 0.725) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847520.891577745] [bt_navigator]: Begin navigating from current location (0.21, 0.72) to (0.28, 0.73)
+[controller_server-15] [INFO] [1794847520.894169737] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794847520.894448999] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847520.901822582] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847520.990967057] [cleaning_task_manager]: Adjusted gap waypoint 2 around live obstacle
+[cleaning_task_manager_node-12] [INFO] [1794847520.991647588] [cleaning_task_manager]: NavigateToPose goal=(0.225, 0.575) behavior_tree=/tmp/sweeper-bt-ynpxat8d/navigate_gap.xml
+[bt_navigator-18] [INFO] [1794847520.992452290] [bt_navigator]: Begin navigating from current location (0.21, 0.72) to (0.23, 0.58)
+[controller_server-15] [INFO] [1794847520.995924489] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794847521.337816420] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9116 revisit_ratio=0.1169 path_m=10.75 ideal_m=9.80 reachable_cells=1568 sim_t=102.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847522.196132920] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847522.337162136] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9114 revisit_ratio=0.1169 path_m=10.75 ideal_m=9.80 reachable_cells=1568 sim_t=103.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847523.196095496] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794847523.337530807] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9087 revisit_ratio=0.1165 path_m=10.78 ideal_m=9.80 reachable_cells=1568 sim_t=104.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794847523.796522546] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794847523.822938941] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794847523.890869701] [cleaning_task_manager]: task=islands-127-1794847416 state=SUCCEEDED completed=40 next=3/3
+[coverage_meter-14] [INFO] [1794847524.337613832] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9056 revisit_ratio=0.1393 path_m=10.82 ideal_m=9.80 reachable_cells=1568 sim_t=105.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794847525.337091156] [coverage_meter]: COVERAGE_REPORT coverage=0.9145 efficiency=0.9056 revisit_ratio=0.1393 path_m=10.82 ideal_m=9.80 reachable_cells=1568 sim_t=106.3 target_hit=True t_target=93.33000000000001 pose_jumps=0 sim_unstable=False
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [lifecycle_manager-19]: sending signal 'SIGINT' to process[lifecycle_manager-19]
+[INFO] [bt_navigator-18]: sending signal 'SIGINT' to process[bt_navigator-18]
+[INFO] [behavior_server-17]: sending signal 'SIGINT' to process[behavior_server-17]
+[INFO] [planner_server-16]: sending signal 'SIGINT' to process[planner_server-16]
+[INFO] [controller_server-15]: sending signal 'SIGINT' to process[controller_server-15]
+[INFO] [coverage_meter-14]: sending signal 'SIGINT' to process[coverage_meter-14]
+[INFO] [ground_truth-13]: sending signal 'SIGINT' to process[ground_truth-13]
+[INFO] [cleaning_task_manager_node-12]: sending signal 'SIGINT' to process[cleaning_task_manager_node-12]
+[INFO] [coverage_planner_node-11]: sending signal 'SIGINT' to process[coverage_planner_node-11]
+[INFO] [localization_health_monitor_node-10]: sending signal 'SIGINT' to process[localization_health_monitor_node-10]
+[INFO] [cmd_vel_arbiter-9]: sending signal 'SIGINT' to process[cmd_vel_arbiter-9]
+[INFO] [lifecycle_manager-7]: sending signal 'SIGINT' to process[lifecycle_manager-7]
+[INFO] [amcl-6]: sending signal 'SIGINT' to process[amcl-6]
+[INFO] [map_server-5]: sending signal 'SIGINT' to process[map_server-5]
+[INFO] [parameter_bridge-3]: sending signal 'SIGINT' to process[parameter_bridge-3]
+[INFO] [robot_state_publisher-2]: sending signal 'SIGINT' to process[robot_state_publisher-2]
+[INFO] [gazebo-1]: sending signal 'SIGINT' to process[gazebo-1]
+[lifecycle_manager-19] [INFO] [1794847525.357014132] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-19] [INFO] [1794847525.357093178] [lifecycle_manager_navigation]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_navigation)
+[bt_navigator-18] [INFO] [1794847525.358634205] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-18] [INFO] [1794847525.358676124] [bt_navigator]: Running Nav2 LifecycleNode rcl preshutdown (bt_navigator)
+[bt_navigator-18] [INFO] [1794847525.358710500] [bt_navigator]: Deactivating
+[bt_navigator-18] [INFO] [1794847525.358725209] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[behavior_server-17] [INFO] [1794847525.360001016] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[behavior_server-17] [INFO] [1794847525.360049685] [behavior_server]: Running Nav2 LifecycleNode rcl preshutdown (behavior_server)
+[behavior_server-17] [INFO] [1794847525.360091312] [behavior_server]: Deactivating
+[behavior_server-17] [INFO] [1794847525.360111730] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[planner_server-16] [INFO] [1794847525.361591671] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-16] [INFO] [1794847525.361634673] [planner_server]: Running Nav2 LifecycleNode rcl preshutdown (planner_server)
+[planner_server-16] [INFO] [1794847525.361669591] [planner_server]: Deactivating
+[planner_server-16] [INFO] [1794847525.361685050] [global_costmap.global_costmap]: Deactivating
+[controller_server-15] [INFO] [1794847525.362758890] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[controller_server-15] [INFO] [1794847525.362792725] [controller_server]: Running Nav2 LifecycleNode rcl preshutdown (controller_server)
+[controller_server-15] [INFO] [1794847525.362822018] [controller_server]: Deactivating
+[controller_server-15] [INFO] [1794847525.362831643] [controller_server]: Deactivating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794847525.362842477] [local_costmap.local_costmap]: Deactivating
+[lifecycle_manager-19] [INFO] [1794847525.367177630] [lifecycle_manager_navigation]: Destroying lifecycle_manager_navigation
+[coverage_planner_node-11] [INFO] [1794847525.368104880] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-18] [INFO] [1794847525.368923166] [bt_navigator]: Cleaning up
+[behavior_server-17] [INFO] [1794847525.371867256] [behavior_server]: Cleaning up
+[behavior_server-17] [INFO] [1794847525.372923637] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[localization_health_monitor_node-10] [INFO] [1794847525.374328242] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[cmd_vel_arbiter-9] [INFO] [1794847525.377180786] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-7] [INFO] [1794847525.379419512] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-7] [INFO] [1794847525.379483764] [lifecycle_manager_localization]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_localization)
+[lifecycle_manager-7] [INFO] [1794847525.379553726] [lifecycle_manager_localization]: [34m[1mTerminating bond timer...[0m[0m
+[amcl-6] [INFO] [1794847525.384789836] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[amcl-6] [INFO] [1794847525.384850838] [amcl]: Running Nav2 LifecycleNode rcl preshutdown (amcl)
+[amcl-6] [INFO] [1794847525.384903132] [amcl]: Deactivating
+[amcl-6] [INFO] [1794847525.384914133] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[map_server-5] [INFO] [1794847525.392971244] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-5] [INFO] [1794847525.393038955] [map_server]: Running Nav2 LifecycleNode rcl preshutdown (map_server)
+[map_server-5] [INFO] [1794847525.393102875] [map_server]: Deactivating
+[map_server-5] [INFO] [1794847525.393110167] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[amcl-6] [INFO] [1794847525.396489693] [amcl]: Cleaning up
+[parameter_bridge-3] [INFO] [1794847525.397082136] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[robot_state_publisher-2] [INFO] [1794847525.406482808] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-5] [INFO] [1794847525.408248554] [map_server]: Cleaning up
+[map_server-5] [INFO] [1794847525.408416478] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[amcl-6] [INFO] [1794847525.412833884] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[lifecycle_manager-7] [INFO] [1794847525.426148106] [lifecycle_manager_localization]: Destroying lifecycle_manager_localization
+[map_server-5] [INFO] [1794847525.429814770] [map_server]: Destroying
+[controller_server-15] [INFO] [1794847525.432933493] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[amcl-6] [INFO] [1794847525.441772431] [amcl]: Destroying
+[controller_server-15] [INFO] [1794847525.443907860] [controller_server]: Cleaning up
+[controller_server-15] [INFO] [1794847525.443931236] [controller_server]: Cleaning up controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794847525.443974321] [local_costmap.local_costmap]: Cleaning up
+[behavior_server-17] [INFO] [1794847525.451687834] [behavior_server]: Destroying
+[controller_server-15] [INFO] [1794847525.484553056] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[controller_server-15] [INFO] [1794847525.489226016] [local_costmap.local_costmap]: Destroying
+[controller_server-15] [INFO] [1794847525.495489588] [controller_server]: Destroying
+[bt_navigator-18] [INFO] [1794847525.513084418] [bt_navigator]: Completed Cleaning up
+[bt_navigator-18] [INFO] [1794847525.513124962] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[INFO] [lifecycle_manager-19]: process has finished cleanly [pid 638168]
+[bt_navigator-18] [INFO] [1794847525.517481365] [bt_navigator]: Destroying
+[INFO] [parameter_bridge-3]: process has finished cleanly [pid 637892]
+[INFO] [coverage_planner_node-11]: process has finished cleanly [pid 637960]
+[INFO] [localization_health_monitor_node-10]: process has finished cleanly [pid 637959]
+[INFO] [lifecycle_manager-7]: process has finished cleanly [pid 637956]
+[INFO] [cmd_vel_arbiter-9]: process has finished cleanly [pid 637958]
+[INFO] [coverage_meter-14]: process has finished cleanly [pid 637965]
+[INFO] [robot_state_publisher-2]: process has finished cleanly [pid 637890]
+[INFO] [map_server-5]: process has finished cleanly [pid 637954]
+[INFO] [behavior_server-17]: process has finished cleanly [pid 638166]
+[INFO] [amcl-6]: process has finished cleanly [pid 637955]
+[INFO] [cleaning_task_manager_node-12]: process has finished cleanly [pid 637961]
+[INFO] [ground_truth-13]: process has finished cleanly [pid 637962]
+[INFO] [controller_server-15]: process has finished cleanly [pid 638164]
+[INFO] [bt_navigator-18]: process has finished cleanly [pid 638167]
+[planner_server-16] [INFO] [1794847525.793097509] [planner_server]: Deactivating plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794847525.793230682] [planner_server]: Deactivating plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794847525.793246391] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-16] [INFO] [1794847525.803468099] [planner_server]: Cleaning up
+[planner_server-16] [INFO] [1794847525.809442325] [global_costmap.global_costmap]: Cleaning up
+[planner_server-16] [INFO] [1794847525.812932815] [planner_server]: Cleaning up plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794847525.813138282] [planner_server]: Cleaning up plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794847525.813176534] [planner_server]: Destroying plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794847525.813182201] [planner_server]: Destroying plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794847525.820693787] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-16] [INFO] [1794847525.823553749] [global_costmap.global_costmap]: Destroying
+[planner_server-16] [INFO] [1794847525.827652724] [planner_server]: Destroying
+[INFO] [planner_server-16]: process has finished cleanly [pid 638165]
+[ERROR] [gazebo-1]: process[gazebo-1] failed to terminate '5' seconds after receiving 'SIGINT', escalating to 'SIGTERM'
+[INFO] [gazebo-1]: sending signal 'SIGTERM' to process[gazebo-1]
+[ERROR] [gazebo-1]: process has died [pid 637889, exit code -15, cmd 'ruby /opt/ros/jazzy/opt/gz_tools_vendor/bin/gz sim -s -r --headless-rendering -v 2 /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/strict-ab/islands/B-run-2/islands/run-1/scene.world --force-version 8'].
+[INFO] [launch]: process[gazebo-1] was required: shutting down launched system

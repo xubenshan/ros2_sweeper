@@ -428,13 +428,13 @@ libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libgeometry_msgs__rosidl_types
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libgeometry_msgs__rosidl_generator_py.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libgeometry_msgs__rosidl_typesupport_c.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libgeometry_msgs__rosidl_generator_c.so
-libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_generator_py.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
-libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_typesupport_c.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_typesupport_cpp.so
+libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_generator_py.so
+libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_typesupport_c.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_msgs__rosidl_generator_c.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_generator_py.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so

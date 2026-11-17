@@ -145,6 +145,139 @@ impl rosidl_runtime_rs::Message for BeginCoverage_Response {
 }
 
 
+// Corresponds to robot_cleaning_interfaces__srv__ListCleaningEvents_Request
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[allow(non_camel_case_types)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ListCleaningEvents_Request {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub limit: u32,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub task_id_filter: std::string::String,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub code_filter: std::string::String,
+
+}
+
+
+
+impl Default for ListCleaningEvents_Request {
+  fn default() -> Self {
+    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::srv::rmw::ListCleaningEvents_Request::default())
+  }
+}
+
+impl rosidl_runtime_rs::Message for ListCleaningEvents_Request {
+  type RmwMsg = super::srv::rmw::ListCleaningEvents_Request;
+
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
+    match msg_cow {
+      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        limit: msg.limit,
+        task_id_filter: msg.task_id_filter.as_str().into(),
+        code_filter: msg.code_filter.as_str().into(),
+      }),
+      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+      limit: msg.limit,
+        task_id_filter: msg.task_id_filter.as_str().into(),
+        code_filter: msg.code_filter.as_str().into(),
+      })
+    }
+  }
+
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
+    Self {
+      limit: msg.limit,
+      task_id_filter: msg.task_id_filter.to_string(),
+      code_filter: msg.code_filter.to_string(),
+    }
+  }
+}
+
+
+// Corresponds to robot_cleaning_interfaces__srv__ListCleaningEvents_Response
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[allow(non_camel_case_types)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ListCleaningEvents_Response {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub success: bool,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub message: std::string::String,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub events: Vec<super::msg::CleaningEvent>,
+
+}
+
+
+
+impl Default for ListCleaningEvents_Response {
+  fn default() -> Self {
+    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::srv::rmw::ListCleaningEvents_Response::default())
+  }
+}
+
+impl rosidl_runtime_rs::Message for ListCleaningEvents_Response {
+  type RmwMsg = super::srv::rmw::ListCleaningEvents_Response;
+
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
+    match msg_cow {
+      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        success: msg.success,
+        message: msg.message.as_str().into(),
+        events: msg.events
+          .into_iter()
+          .map(|elem| super::msg::CleaningEvent::into_rmw_message(std::borrow::Cow::Owned(elem)).into_owned())
+          .collect(),
+      }),
+      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+      success: msg.success,
+        message: msg.message.as_str().into(),
+        events: msg.events
+          .iter()
+          .map(|elem| super::msg::CleaningEvent::into_rmw_message(std::borrow::Cow::Borrowed(elem)).into_owned())
+          .collect(),
+      })
+    }
+  }
+
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
+    Self {
+      success: msg.success,
+      message: msg.message.to_string(),
+      events: msg.events
+          .into_iter()
+          .map(super::msg::CleaningEvent::from_rmw_message)
+          .collect(),
+    }
+  }
+}
+
+
 // Corresponds to robot_cleaning_interfaces__srv__PlanCoverage_Request
 
 // This struct is not documented.
@@ -339,6 +472,28 @@ impl rosidl_runtime_rs::Service for BeginCoverage {
     fn get_type_support() -> *const std::ffi::c_void {
         // SAFETY: No preconditions for this function.
         unsafe { rosidl_typesupport_c__get_service_type_support_handle__robot_cleaning_interfaces__srv__BeginCoverage() }
+    }
+}
+
+
+
+
+#[link(name = "robot_cleaning_interfaces__rosidl_typesupport_c")]
+extern "C" {
+    fn rosidl_typesupport_c__get_service_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents() -> *const std::ffi::c_void;
+}
+
+// Corresponds to robot_cleaning_interfaces__srv__ListCleaningEvents
+#[allow(missing_docs, non_camel_case_types)]
+pub struct ListCleaningEvents;
+
+impl rosidl_runtime_rs::Service for ListCleaningEvents {
+    type Request = ListCleaningEvents_Request;
+    type Response = ListCleaningEvents_Response;
+
+    fn get_type_support() -> *const std::ffi::c_void {
+        // SAFETY: No preconditions for this function.
+        unsafe { rosidl_typesupport_c__get_service_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents() }
     }
 }
 

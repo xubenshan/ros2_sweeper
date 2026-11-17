@@ -180,6 +180,176 @@ impl rosidl_runtime_rs::RmwMessage for BeginCoverage_Response where Self: Sized 
 
 #[link(name = "robot_cleaning_interfaces__rosidl_typesupport_c")]
 extern "C" {
+    fn rosidl_typesupport_c__get_message_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents_Request() -> *const std::ffi::c_void;
+}
+
+#[link(name = "robot_cleaning_interfaces__rosidl_generator_c")]
+extern "C" {
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Request__init(msg: *mut ListCleaningEvents_Request) -> bool;
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Request__Sequence__init(seq: *mut rosidl_runtime_rs::Sequence<ListCleaningEvents_Request>, size: usize) -> bool;
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Request__Sequence__fini(seq: *mut rosidl_runtime_rs::Sequence<ListCleaningEvents_Request>);
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Request__Sequence__copy(in_seq: &rosidl_runtime_rs::Sequence<ListCleaningEvents_Request>, out_seq: *mut rosidl_runtime_rs::Sequence<ListCleaningEvents_Request>) -> bool;
+}
+
+// Corresponds to robot_cleaning_interfaces__srv__ListCleaningEvents_Request
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[allow(non_camel_case_types)]
+#[repr(C)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ListCleaningEvents_Request {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub limit: u32,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub task_id_filter: rosidl_runtime_rs::String,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub code_filter: rosidl_runtime_rs::String,
+
+}
+
+
+
+impl Default for ListCleaningEvents_Request {
+  fn default() -> Self {
+    unsafe {
+      let mut msg = std::mem::zeroed();
+      if !robot_cleaning_interfaces__srv__ListCleaningEvents_Request__init(&mut msg as *mut _) {
+        panic!("Call to robot_cleaning_interfaces__srv__ListCleaningEvents_Request__init() failed");
+      }
+      msg
+    }
+  }
+}
+
+impl rosidl_runtime_rs::SequenceAlloc for ListCleaningEvents_Request {
+  fn sequence_init(seq: &mut rosidl_runtime_rs::Sequence<Self>, size: usize) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { robot_cleaning_interfaces__srv__ListCleaningEvents_Request__Sequence__init(seq as *mut _, size) }
+  }
+  fn sequence_fini(seq: &mut rosidl_runtime_rs::Sequence<Self>) {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { robot_cleaning_interfaces__srv__ListCleaningEvents_Request__Sequence__fini(seq as *mut _) }
+  }
+  fn sequence_copy(in_seq: &rosidl_runtime_rs::Sequence<Self>, out_seq: &mut rosidl_runtime_rs::Sequence<Self>) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { robot_cleaning_interfaces__srv__ListCleaningEvents_Request__Sequence__copy(in_seq, out_seq as *mut _) }
+  }
+}
+
+impl rosidl_runtime_rs::Message for ListCleaningEvents_Request {
+  type RmwMsg = Self;
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> { msg_cow }
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self { msg }
+}
+
+impl rosidl_runtime_rs::RmwMessage for ListCleaningEvents_Request where Self: Sized {
+  const TYPE_NAME: &'static str = "robot_cleaning_interfaces/srv/ListCleaningEvents_Request";
+  fn get_type_support() -> *const std::ffi::c_void {
+    // SAFETY: No preconditions for this function.
+    unsafe { rosidl_typesupport_c__get_message_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents_Request() }
+  }
+}
+
+
+#[link(name = "robot_cleaning_interfaces__rosidl_typesupport_c")]
+extern "C" {
+    fn rosidl_typesupport_c__get_message_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents_Response() -> *const std::ffi::c_void;
+}
+
+#[link(name = "robot_cleaning_interfaces__rosidl_generator_c")]
+extern "C" {
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Response__init(msg: *mut ListCleaningEvents_Response) -> bool;
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Response__Sequence__init(seq: *mut rosidl_runtime_rs::Sequence<ListCleaningEvents_Response>, size: usize) -> bool;
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Response__Sequence__fini(seq: *mut rosidl_runtime_rs::Sequence<ListCleaningEvents_Response>);
+    fn robot_cleaning_interfaces__srv__ListCleaningEvents_Response__Sequence__copy(in_seq: &rosidl_runtime_rs::Sequence<ListCleaningEvents_Response>, out_seq: *mut rosidl_runtime_rs::Sequence<ListCleaningEvents_Response>) -> bool;
+}
+
+// Corresponds to robot_cleaning_interfaces__srv__ListCleaningEvents_Response
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[allow(non_camel_case_types)]
+#[repr(C)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ListCleaningEvents_Response {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub success: bool,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub message: rosidl_runtime_rs::String,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub events: rosidl_runtime_rs::Sequence<super::super::msg::rmw::CleaningEvent>,
+
+}
+
+
+
+impl Default for ListCleaningEvents_Response {
+  fn default() -> Self {
+    unsafe {
+      let mut msg = std::mem::zeroed();
+      if !robot_cleaning_interfaces__srv__ListCleaningEvents_Response__init(&mut msg as *mut _) {
+        panic!("Call to robot_cleaning_interfaces__srv__ListCleaningEvents_Response__init() failed");
+      }
+      msg
+    }
+  }
+}
+
+impl rosidl_runtime_rs::SequenceAlloc for ListCleaningEvents_Response {
+  fn sequence_init(seq: &mut rosidl_runtime_rs::Sequence<Self>, size: usize) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { robot_cleaning_interfaces__srv__ListCleaningEvents_Response__Sequence__init(seq as *mut _, size) }
+  }
+  fn sequence_fini(seq: &mut rosidl_runtime_rs::Sequence<Self>) {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { robot_cleaning_interfaces__srv__ListCleaningEvents_Response__Sequence__fini(seq as *mut _) }
+  }
+  fn sequence_copy(in_seq: &rosidl_runtime_rs::Sequence<Self>, out_seq: &mut rosidl_runtime_rs::Sequence<Self>) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { robot_cleaning_interfaces__srv__ListCleaningEvents_Response__Sequence__copy(in_seq, out_seq as *mut _) }
+  }
+}
+
+impl rosidl_runtime_rs::Message for ListCleaningEvents_Response {
+  type RmwMsg = Self;
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> { msg_cow }
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self { msg }
+}
+
+impl rosidl_runtime_rs::RmwMessage for ListCleaningEvents_Response where Self: Sized {
+  const TYPE_NAME: &'static str = "robot_cleaning_interfaces/srv/ListCleaningEvents_Response";
+  fn get_type_support() -> *const std::ffi::c_void {
+    // SAFETY: No preconditions for this function.
+    unsafe { rosidl_typesupport_c__get_message_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents_Response() }
+  }
+}
+
+
+#[link(name = "robot_cleaning_interfaces__rosidl_typesupport_c")]
+extern "C" {
     fn rosidl_typesupport_c__get_message_type_support_handle__robot_cleaning_interfaces__srv__PlanCoverage_Request() -> *const std::ffi::c_void;
 }
 
@@ -388,6 +558,28 @@ impl rosidl_runtime_rs::Service for BeginCoverage {
     fn get_type_support() -> *const std::ffi::c_void {
         // SAFETY: No preconditions for this function.
         unsafe { rosidl_typesupport_c__get_service_type_support_handle__robot_cleaning_interfaces__srv__BeginCoverage() }
+    }
+}
+
+
+
+
+#[link(name = "robot_cleaning_interfaces__rosidl_typesupport_c")]
+extern "C" {
+    fn rosidl_typesupport_c__get_service_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents() -> *const std::ffi::c_void;
+}
+
+// Corresponds to robot_cleaning_interfaces__srv__ListCleaningEvents
+#[allow(missing_docs, non_camel_case_types)]
+pub struct ListCleaningEvents;
+
+impl rosidl_runtime_rs::Service for ListCleaningEvents {
+    type Request = ListCleaningEvents_Request;
+    type Response = ListCleaningEvents_Response;
+
+    fn get_type_support() -> *const std::ffi::c_void {
+        // SAFETY: No preconditions for this function.
+        unsafe { rosidl_typesupport_c__get_service_type_support_handle__robot_cleaning_interfaces__srv__ListCleaningEvents() }
     }
 }
 

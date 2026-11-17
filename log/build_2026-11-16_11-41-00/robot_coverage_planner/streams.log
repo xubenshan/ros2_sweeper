@@ -1,0 +1,79 @@
+[0.009s] Invoking command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner': AMENT_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner -- -j6 -l6
+[0.037s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.200s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.207s] -- Found geometry_msgs: 5.3.8 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.230s] -- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.238s] -- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.247s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.258s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.292s] -- Found nav_msgs: 5.3.8 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[0.321s] -- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.351s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.352s] -- Found rmw_fastrtps_cpp: 8.4.4 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.409s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.468s] -- Found robot_cleaning_interfaces: 0.1.0 (/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/share/robot_cleaning_interfaces/cmake)
+[0.517s] -- Found tf2_ros: 0.36.22 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[0.587s] -- Found nav2_core: 1.3.13 (/opt/ros/jazzy/share/nav2_core/cmake)
+[0.862s] -- Found eigen3_cmake_module: 0.3.1 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[0.864s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.995s] -- Found nav2_navfn_planner: 1.3.13 (/opt/ros/jazzy/share/nav2_navfn_planner/cmake)
+[1.155s] -- Found ament_cmake_gtest: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_gtest/cmake)
+[1.156s] -- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[1.317s] -- Configuring done (1.3s)
+[1.599s] -- Generating done (0.2s)
+[1.608s] -- Build files have been written to: /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner
+[1.653s] [  7%] [32mBuilding CXX object CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.o[0m
+[1.661s] [ 14%] [32mBuilding CXX object CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o[0m
+[1.663s] [ 28%] Built target gtest_main
+[1.670s] [ 42%] Built target coverage_direct_planner
+[1.670s] [ 57%] Built target gtest
+[1.943s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/baseline_coverage_plan.cpp: In member function ‘robot_coverage_planner::Mask robot_coverage_planner::BaselineCoveragePlan::center_mask(const std::vector<robot_coverage_planner::Region>&) const’:
+[1.943s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/baseline_coverage_plan.cpp:37:51: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+[1.943s]    37 |     const auto [x, y] = grid_.center(grid_.cell(i));
+[1.944s]       |                                                   ^
+[2.085s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/coverage_plan.cpp: In member function ‘robot_coverage_planner::Mask robot_coverage_planner::CoveragePlan::within(const std::vector<robot_coverage_planner::Region>&) const’:
+[2.086s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/coverage_plan.cpp:104:53: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+[2.086s]   104 |     const auto position = grid_.center(grid_.cell(i));
+[2.086s]       |                                                     ^
+[2.651s] [ 64%] [32m[1mLinking CXX static library libcoverage_grid.a[0m
+[2.796s] [ 71%] Built target coverage_grid
+[2.816s] [ 78%] [32mBuilding CXX object CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o[0m
+[2.821s] [ 85%] [32mBuilding CXX object CMakeFiles/coverage_planner_node.dir/src/coverage_node.cpp.o[0m
+[3.655s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/test/coverage_test.cpp: In member function ‘virtual void GridMap_RotatedOriginAndBounds_Test::TestBody()’:
+[3.655s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/test/coverage_test.cpp:27:39: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+[3.655s]    27 |   const auto [x, y] = grid.center(cell);
+[3.655s]       |                                       ^
+[4.094s] [ 92%] [32m[1mLinking CXX executable coverage_test[0m
+[4.217s] [ 92%] Built target coverage_test
+[11.335s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/coverage_node.cpp: In member function ‘void robot_coverage_planner::CoverageNode::plan_route(const robot_cleaning_interfaces::srv::PlanCoverage::Request&, robot_cleaning_interfaces::srv::PlanCoverage::Response&)’:
+[11.335s] /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/coverage_node.cpp:428:50: note: parameter passing for argument of type ‘std::pair<double, double>’ when C++17 is enabled changed to match C++14 in GCC 10.1
+[11.335s]   428 |         const auto [x, y] = grid.center(points[i]);
+[11.335s]       |                                                  ^
+[19.845s] [100%] [32m[1mLinking CXX executable coverage_planner_node[0m
+[20.674s] [100%] Built target coverage_planner_node
+[20.686s] Invoked command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner' returned '0': AMENT_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner -- -j6 -l6
+[20.687s] Invoking command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner': AMENT_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner
+[20.695s] -- Install configuration: ""
+[20.696s] -- Execute custom install script
+[20.696s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner//coverage_nav2_plugin.xml
+[20.696s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/lib/libcoverage_direct_planner.so
+[20.696s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/lib/robot_coverage_planner/libcoverage_grid.a
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/lib/robot_coverage_planner/coverage_planner_node
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/config/regions.yaml
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/ament_index/resource_index/package_run_dependencies/robot_coverage_planner
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/ament_index/resource_index/parent_prefix_path/robot_coverage_planner
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/environment/ament_prefix_path.sh
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/environment/ament_prefix_path.dsv
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/environment/path.sh
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/environment/path.dsv
+[20.697s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/local_setup.bash
+[20.699s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/local_setup.sh
+[20.699s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/local_setup.zsh
+[20.699s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/local_setup.dsv
+[20.699s] -- Symlinking: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/package.dsv
+[20.705s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/ament_index/resource_index/packages/robot_coverage_planner
+[20.706s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/ament_index/resource_index/nav2_core__pluginlib__plugin/robot_coverage_planner
+[20.706s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/cmake/robot_coverage_plannerConfig.cmake
+[20.706s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/cmake/robot_coverage_plannerConfig-version.cmake
+[20.706s] -- Up-to-date symlink: /home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/share/robot_coverage_planner/package.xml
+[20.708s] Invoked command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner' returned '0': AMENT_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy LD_LIBRARY_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner

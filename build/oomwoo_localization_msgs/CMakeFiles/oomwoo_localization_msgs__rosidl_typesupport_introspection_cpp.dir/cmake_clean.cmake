@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/oomwoo_localization_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/oomwoo_localization_msgs/srv/detail/relocalize__type_support.cpp.o"
+  "CMakeFiles/oomwoo_localization_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/oomwoo_localization_msgs/srv/detail/relocalize__type_support.cpp.o.d"
+  "liboomwoo_localization_msgs__rosidl_typesupport_introspection_cpp.pdb"
+  "liboomwoo_localization_msgs__rosidl_typesupport_introspection_cpp.so"
+  "rosidl_typesupport_introspection_cpp/oomwoo_localization_msgs/srv/detail/relocalize__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/oomwoo_localization_msgs/srv/detail/relocalize__type_support.cpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/oomwoo_localization_msgs__rosidl_typesupport_introspection_cpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

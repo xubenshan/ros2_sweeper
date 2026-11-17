@@ -321,11 +321,20 @@ ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/action/CleanTask.json" "DESTINATION" "share/robot_cleaning_interfaces/action")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/action/CleanTask.json" "DESTINATION" "share/robot_cleaning_interfaces/action")
 
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/msg/CleaningEvent.json" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/msg/CleaningEvent.json" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/msg/CoverageStatus.json" "DESTINATION" "share/robot_cleaning_interfaces/msg")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/msg/CoverageStatus.json" "DESTINATION" "share/robot_cleaning_interfaces/msg")
 
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/msg/LocalizationHealth.json" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/msg/LocalizationHealth.json" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/srv/BeginCoverage.json" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/srv/BeginCoverage.json" "DESTINATION" "share/robot_cleaning_interfaces/srv")
+
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/srv/ListCleaningEvents.json" "DESTINATION" "share/robot_cleaning_interfaces/srv")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/srv/ListCleaningEvents.json" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/srv/PlanCoverage.json" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_type_description/robot_cleaning_interfaces/srv/PlanCoverage.json" "DESTINATION" "share/robot_cleaning_interfaces/srv")
@@ -381,11 +390,20 @@ ament_cmake_symlink_install_directory("/home/xbs/ros2_sweeper_resume_project/ros
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/action/CleanTask.idl" "DESTINATION" "share/robot_cleaning_interfaces/action")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/action/CleanTask.idl" "DESTINATION" "share/robot_cleaning_interfaces/action")
 
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/msg/CleaningEvent.idl" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/msg/CleaningEvent.idl" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/msg/CoverageStatus.idl" "DESTINATION" "share/robot_cleaning_interfaces/msg")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/msg/CoverageStatus.idl" "DESTINATION" "share/robot_cleaning_interfaces/msg")
 
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/msg/LocalizationHealth.idl" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/msg/LocalizationHealth.idl" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/srv/BeginCoverage.idl" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/srv/BeginCoverage.idl" "DESTINATION" "share/robot_cleaning_interfaces/srv")
+
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/srv/ListCleaningEvents.idl" "DESTINATION" "share/robot_cleaning_interfaces/srv")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/srv/ListCleaningEvents.idl" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/srv/PlanCoverage.idl" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_adapter/robot_cleaning_interfaces/srv/PlanCoverage.idl" "DESTINATION" "share/robot_cleaning_interfaces/srv")
@@ -393,11 +411,20 @@ ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/action/CleanTask.action" "DESTINATION" "share/robot_cleaning_interfaces/action")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/action/CleanTask.action" "DESTINATION" "share/robot_cleaning_interfaces/action")
 
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/msg/CleaningEvent.msg" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/msg/CleaningEvent.msg" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/msg/CoverageStatus.msg" "DESTINATION" "share/robot_cleaning_interfaces/msg")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/msg/CoverageStatus.msg" "DESTINATION" "share/robot_cleaning_interfaces/msg")
 
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/msg/LocalizationHealth.msg" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/msg/LocalizationHealth.msg" "DESTINATION" "share/robot_cleaning_interfaces/msg")
+
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/srv/BeginCoverage.srv" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/srv/BeginCoverage.srv" "DESTINATION" "share/robot_cleaning_interfaces/srv")
+
+# install(FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/srv/ListCleaningEvents.srv" "DESTINATION" "share/robot_cleaning_interfaces/srv")
+ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/srv/ListCleaningEvents.srv" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/srv/PlanCoverage.srv" "DESTINATION" "share/robot_cleaning_interfaces/srv")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces" FILES "/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces/srv/PlanCoverage.srv" "DESTINATION" "share/robot_cleaning_interfaces/srv")

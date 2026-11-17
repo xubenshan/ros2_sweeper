@@ -1,0 +1,42 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from robot_cleaning_interfaces/msg/CleaningEvent.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module robot_cleaning_interfaces {
+  module msg {
+    module CleaningEvent_Constants {
+      const uint8 INFO = 0;
+      const uint8 WARNING = 1;
+      const uint8 ERROR = 2;
+    };
+    struct CleaningEvent {
+      std_msgs::msg::Header header;
+
+      uint64 sequence;
+
+      uint8 severity;
+
+      string task_id;
+
+      string code;
+
+      string state;
+
+      string previous_state;
+
+      boolean recoverable;
+
+      string message;
+
+      float coverage;
+
+      uint32 completed_waypoints;
+
+      uint32 failed_waypoints;
+
+      uint32 total_waypoints;
+    };
+  };
+};

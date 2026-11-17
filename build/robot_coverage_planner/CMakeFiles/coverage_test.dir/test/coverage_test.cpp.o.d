@@ -1,6 +1,7 @@
 CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/test/coverage_test.cpp \
  /usr/include/stdc-predef.h \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/baseline_coverage_plan.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/coverage_plan.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/grid_map.hpp \
  /usr/include/c++/13/cstdint \

@@ -1,6 +1,7 @@
 CMakeFiles/coverage_planner_node.dir/src/coverage_node.cpp.o: \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/coverage_node.cpp \
  /usr/include/stdc-predef.h \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/baseline_coverage_plan.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/coverage_plan.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/grid_map.hpp \
  /usr/include/c++/13/cstdint \
@@ -736,6 +737,11 @@ CMakeFiles/coverage_planner_node.dir/src/coverage_node.cpp.o: \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/coverage_status__traits.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/localization_health.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__struct.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__builder.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__traits.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__type_support.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/begin_coverage.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/begin_coverage__struct.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/begin_coverage__builder.hpp \

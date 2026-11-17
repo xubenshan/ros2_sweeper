@@ -224,6 +224,19 @@ cleaning_task_manager_node/fast:
 .PHONY : cleaning_task_manager_node/fast
 
 #=============================================================================
+# Target rules for targets named localization_health_monitor_node
+
+# Build rule for target.
+localization_health_monitor_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 localization_health_monitor_node
+.PHONY : localization_health_monitor_node
+
+# fast build rule for target.
+localization_health_monitor_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_monitor_node.dir/build.make CMakeFiles/localization_health_monitor_node.dir/build
+.PHONY : localization_health_monitor_node/fast
+
+#=============================================================================
 # Target rules for targets named checkpoint_test
 
 # Build rule for target.
@@ -276,6 +289,84 @@ replan_policy_test/fast:
 .PHONY : replan_policy_test/fast
 
 #=============================================================================
+# Target rules for targets named task_state_test
+
+# Build rule for target.
+task_state_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 task_state_test
+.PHONY : task_state_test
+
+# fast build rule for target.
+task_state_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_state_test.dir/build.make CMakeFiles/task_state_test.dir/build
+.PHONY : task_state_test/fast
+
+#=============================================================================
+# Target rules for targets named planning_request_test
+
+# Build rule for target.
+planning_request_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 planning_request_test
+.PHONY : planning_request_test
+
+# fast build rule for target.
+planning_request_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/planning_request_test.dir/build.make CMakeFiles/planning_request_test.dir/build
+.PHONY : planning_request_test/fast
+
+#=============================================================================
+# Target rules for targets named cleaning_event_log_test
+
+# Build rule for target.
+cleaning_event_log_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cleaning_event_log_test
+.PHONY : cleaning_event_log_test
+
+# fast build rule for target.
+cleaning_event_log_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_event_log_test.dir/build.make CMakeFiles/cleaning_event_log_test.dir/build
+.PHONY : cleaning_event_log_test/fast
+
+#=============================================================================
+# Target rules for targets named localization_health_test
+
+# Build rule for target.
+localization_health_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 localization_health_test
+.PHONY : localization_health_test
+
+# fast build rule for target.
+localization_health_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_test.dir/build.make CMakeFiles/localization_health_test.dir/build
+.PHONY : localization_health_test/fast
+
+#=============================================================================
+# Target rules for targets named pause_ownership_test
+
+# Build rule for target.
+pause_ownership_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pause_ownership_test
+.PHONY : pause_ownership_test
+
+# fast build rule for target.
+pause_ownership_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pause_ownership_test.dir/build.make CMakeFiles/pause_ownership_test.dir/build
+.PHONY : pause_ownership_test/fast
+
+#=============================================================================
+# Target rules for targets named waypoint_guard_test
+
+# Build rule for target.
+waypoint_guard_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 waypoint_guard_test
+.PHONY : waypoint_guard_test
+
+# fast build rule for target.
+waypoint_guard_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/waypoint_guard_test.dir/build.make CMakeFiles/waypoint_guard_test.dir/build
+.PHONY : waypoint_guard_test/fast
+
+#=============================================================================
 # Target rules for targets named gtest
 
 # Build rule for target.
@@ -325,6 +416,30 @@ src/checkpoint_store.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.s
 .PHONY : src/checkpoint_store.cpp.s
 
+src/cleaning_event_log.o: src/cleaning_event_log.cpp.o
+.PHONY : src/cleaning_event_log.o
+
+# target to build an object file
+src/cleaning_event_log.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o
+.PHONY : src/cleaning_event_log.cpp.o
+
+src/cleaning_event_log.i: src/cleaning_event_log.cpp.i
+.PHONY : src/cleaning_event_log.i
+
+# target to preprocess a source file
+src/cleaning_event_log.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.i
+.PHONY : src/cleaning_event_log.cpp.i
+
+src/cleaning_event_log.s: src/cleaning_event_log.cpp.s
+.PHONY : src/cleaning_event_log.s
+
+# target to generate assembly for a file
+src/cleaning_event_log.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.s
+.PHONY : src/cleaning_event_log.cpp.s
+
 src/cleaning_task_manager.o: src/cleaning_task_manager.cpp.o
 .PHONY : src/cleaning_task_manager.o
 
@@ -348,6 +463,54 @@ src/cleaning_task_manager.s: src/cleaning_task_manager.cpp.s
 src/cleaning_task_manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_task_manager_node.dir/build.make CMakeFiles/cleaning_task_manager_node.dir/src/cleaning_task_manager.cpp.s
 .PHONY : src/cleaning_task_manager.cpp.s
+
+src/localization_health.o: src/localization_health.cpp.o
+.PHONY : src/localization_health.o
+
+# target to build an object file
+src/localization_health.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/localization_health.cpp.o
+.PHONY : src/localization_health.cpp.o
+
+src/localization_health.i: src/localization_health.cpp.i
+.PHONY : src/localization_health.i
+
+# target to preprocess a source file
+src/localization_health.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/localization_health.cpp.i
+.PHONY : src/localization_health.cpp.i
+
+src/localization_health.s: src/localization_health.cpp.s
+.PHONY : src/localization_health.s
+
+# target to generate assembly for a file
+src/localization_health.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/localization_health.cpp.s
+.PHONY : src/localization_health.cpp.s
+
+src/localization_health_monitor.o: src/localization_health_monitor.cpp.o
+.PHONY : src/localization_health_monitor.o
+
+# target to build an object file
+src/localization_health_monitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_monitor_node.dir/build.make CMakeFiles/localization_health_monitor_node.dir/src/localization_health_monitor.cpp.o
+.PHONY : src/localization_health_monitor.cpp.o
+
+src/localization_health_monitor.i: src/localization_health_monitor.cpp.i
+.PHONY : src/localization_health_monitor.i
+
+# target to preprocess a source file
+src/localization_health_monitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_monitor_node.dir/build.make CMakeFiles/localization_health_monitor_node.dir/src/localization_health_monitor.cpp.i
+.PHONY : src/localization_health_monitor.cpp.i
+
+src/localization_health_monitor.s: src/localization_health_monitor.cpp.s
+.PHONY : src/localization_health_monitor.s
+
+# target to generate assembly for a file
+src/localization_health_monitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_monitor_node.dir/build.make CMakeFiles/localization_health_monitor_node.dir/src/localization_health_monitor.cpp.s
+.PHONY : src/localization_health_monitor.cpp.s
 
 src/navigation_executor.o: src/navigation_executor.cpp.o
 .PHONY : src/navigation_executor.o
@@ -373,6 +536,78 @@ src/navigation_executor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/navigation_executor.cpp.s
 .PHONY : src/navigation_executor.cpp.s
 
+src/planning_request.o: src/planning_request.cpp.o
+.PHONY : src/planning_request.o
+
+# target to build an object file
+src/planning_request.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/planning_request.cpp.o
+.PHONY : src/planning_request.cpp.o
+
+src/planning_request.i: src/planning_request.cpp.i
+.PHONY : src/planning_request.i
+
+# target to preprocess a source file
+src/planning_request.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/planning_request.cpp.i
+.PHONY : src/planning_request.cpp.i
+
+src/planning_request.s: src/planning_request.cpp.s
+.PHONY : src/planning_request.s
+
+# target to generate assembly for a file
+src/planning_request.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/planning_request.cpp.s
+.PHONY : src/planning_request.cpp.s
+
+src/task_state.o: src/task_state.cpp.o
+.PHONY : src/task_state.o
+
+# target to build an object file
+src/task_state.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/task_state.cpp.o
+.PHONY : src/task_state.cpp.o
+
+src/task_state.i: src/task_state.cpp.i
+.PHONY : src/task_state.i
+
+# target to preprocess a source file
+src/task_state.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/task_state.cpp.i
+.PHONY : src/task_state.cpp.i
+
+src/task_state.s: src/task_state.cpp.s
+.PHONY : src/task_state.s
+
+# target to generate assembly for a file
+src/task_state.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/task_state.cpp.s
+.PHONY : src/task_state.cpp.s
+
+src/waypoint_guard.o: src/waypoint_guard.cpp.o
+.PHONY : src/waypoint_guard.o
+
+# target to build an object file
+src/waypoint_guard.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o
+.PHONY : src/waypoint_guard.cpp.o
+
+src/waypoint_guard.i: src/waypoint_guard.cpp.i
+.PHONY : src/waypoint_guard.i
+
+# target to preprocess a source file
+src/waypoint_guard.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.i
+.PHONY : src/waypoint_guard.cpp.i
+
+src/waypoint_guard.s: src/waypoint_guard.cpp.s
+.PHONY : src/waypoint_guard.s
+
+# target to generate assembly for a file
+src/waypoint_guard.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.s
+.PHONY : src/waypoint_guard.cpp.s
+
 test/checkpoint_test.o: test/checkpoint_test.cpp.o
 .PHONY : test/checkpoint_test.o
 
@@ -396,6 +631,30 @@ test/checkpoint_test.s: test/checkpoint_test.cpp.s
 test/checkpoint_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/checkpoint_test.dir/build.make CMakeFiles/checkpoint_test.dir/test/checkpoint_test.cpp.s
 .PHONY : test/checkpoint_test.cpp.s
+
+test/cleaning_event_log_test.o: test/cleaning_event_log_test.cpp.o
+.PHONY : test/cleaning_event_log_test.o
+
+# target to build an object file
+test/cleaning_event_log_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_event_log_test.dir/build.make CMakeFiles/cleaning_event_log_test.dir/test/cleaning_event_log_test.cpp.o
+.PHONY : test/cleaning_event_log_test.cpp.o
+
+test/cleaning_event_log_test.i: test/cleaning_event_log_test.cpp.i
+.PHONY : test/cleaning_event_log_test.i
+
+# target to preprocess a source file
+test/cleaning_event_log_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_event_log_test.dir/build.make CMakeFiles/cleaning_event_log_test.dir/test/cleaning_event_log_test.cpp.i
+.PHONY : test/cleaning_event_log_test.cpp.i
+
+test/cleaning_event_log_test.s: test/cleaning_event_log_test.cpp.s
+.PHONY : test/cleaning_event_log_test.s
+
+# target to generate assembly for a file
+test/cleaning_event_log_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_event_log_test.dir/build.make CMakeFiles/cleaning_event_log_test.dir/test/cleaning_event_log_test.cpp.s
+.PHONY : test/cleaning_event_log_test.cpp.s
 
 test/completion_decision_test.o: test/completion_decision_test.cpp.o
 .PHONY : test/completion_decision_test.o
@@ -421,6 +680,30 @@ test/completion_decision_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/completion_decision_test.dir/build.make CMakeFiles/completion_decision_test.dir/test/completion_decision_test.cpp.s
 .PHONY : test/completion_decision_test.cpp.s
 
+test/localization_health_test.o: test/localization_health_test.cpp.o
+.PHONY : test/localization_health_test.o
+
+# target to build an object file
+test/localization_health_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_test.dir/build.make CMakeFiles/localization_health_test.dir/test/localization_health_test.cpp.o
+.PHONY : test/localization_health_test.cpp.o
+
+test/localization_health_test.i: test/localization_health_test.cpp.i
+.PHONY : test/localization_health_test.i
+
+# target to preprocess a source file
+test/localization_health_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_test.dir/build.make CMakeFiles/localization_health_test.dir/test/localization_health_test.cpp.i
+.PHONY : test/localization_health_test.cpp.i
+
+test/localization_health_test.s: test/localization_health_test.cpp.s
+.PHONY : test/localization_health_test.s
+
+# target to generate assembly for a file
+test/localization_health_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_test.dir/build.make CMakeFiles/localization_health_test.dir/test/localization_health_test.cpp.s
+.PHONY : test/localization_health_test.cpp.s
+
 test/navigation_progress_test.o: test/navigation_progress_test.cpp.o
 .PHONY : test/navigation_progress_test.o
 
@@ -444,6 +727,54 @@ test/navigation_progress_test.s: test/navigation_progress_test.cpp.s
 test/navigation_progress_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation_progress_test.dir/build.make CMakeFiles/navigation_progress_test.dir/test/navigation_progress_test.cpp.s
 .PHONY : test/navigation_progress_test.cpp.s
+
+test/pause_ownership_test.o: test/pause_ownership_test.cpp.o
+.PHONY : test/pause_ownership_test.o
+
+# target to build an object file
+test/pause_ownership_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pause_ownership_test.dir/build.make CMakeFiles/pause_ownership_test.dir/test/pause_ownership_test.cpp.o
+.PHONY : test/pause_ownership_test.cpp.o
+
+test/pause_ownership_test.i: test/pause_ownership_test.cpp.i
+.PHONY : test/pause_ownership_test.i
+
+# target to preprocess a source file
+test/pause_ownership_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pause_ownership_test.dir/build.make CMakeFiles/pause_ownership_test.dir/test/pause_ownership_test.cpp.i
+.PHONY : test/pause_ownership_test.cpp.i
+
+test/pause_ownership_test.s: test/pause_ownership_test.cpp.s
+.PHONY : test/pause_ownership_test.s
+
+# target to generate assembly for a file
+test/pause_ownership_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pause_ownership_test.dir/build.make CMakeFiles/pause_ownership_test.dir/test/pause_ownership_test.cpp.s
+.PHONY : test/pause_ownership_test.cpp.s
+
+test/planning_request_test.o: test/planning_request_test.cpp.o
+.PHONY : test/planning_request_test.o
+
+# target to build an object file
+test/planning_request_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/planning_request_test.dir/build.make CMakeFiles/planning_request_test.dir/test/planning_request_test.cpp.o
+.PHONY : test/planning_request_test.cpp.o
+
+test/planning_request_test.i: test/planning_request_test.cpp.i
+.PHONY : test/planning_request_test.i
+
+# target to preprocess a source file
+test/planning_request_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/planning_request_test.dir/build.make CMakeFiles/planning_request_test.dir/test/planning_request_test.cpp.i
+.PHONY : test/planning_request_test.cpp.i
+
+test/planning_request_test.s: test/planning_request_test.cpp.s
+.PHONY : test/planning_request_test.s
+
+# target to generate assembly for a file
+test/planning_request_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/planning_request_test.dir/build.make CMakeFiles/planning_request_test.dir/test/planning_request_test.cpp.s
+.PHONY : test/planning_request_test.cpp.s
 
 test/replan_policy_test.o: test/replan_policy_test.cpp.o
 .PHONY : test/replan_policy_test.o
@@ -469,6 +800,54 @@ test/replan_policy_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/replan_policy_test.dir/build.make CMakeFiles/replan_policy_test.dir/test/replan_policy_test.cpp.s
 .PHONY : test/replan_policy_test.cpp.s
 
+test/task_state_test.o: test/task_state_test.cpp.o
+.PHONY : test/task_state_test.o
+
+# target to build an object file
+test/task_state_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_state_test.dir/build.make CMakeFiles/task_state_test.dir/test/task_state_test.cpp.o
+.PHONY : test/task_state_test.cpp.o
+
+test/task_state_test.i: test/task_state_test.cpp.i
+.PHONY : test/task_state_test.i
+
+# target to preprocess a source file
+test/task_state_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_state_test.dir/build.make CMakeFiles/task_state_test.dir/test/task_state_test.cpp.i
+.PHONY : test/task_state_test.cpp.i
+
+test/task_state_test.s: test/task_state_test.cpp.s
+.PHONY : test/task_state_test.s
+
+# target to generate assembly for a file
+test/task_state_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_state_test.dir/build.make CMakeFiles/task_state_test.dir/test/task_state_test.cpp.s
+.PHONY : test/task_state_test.cpp.s
+
+test/waypoint_guard_test.o: test/waypoint_guard_test.cpp.o
+.PHONY : test/waypoint_guard_test.o
+
+# target to build an object file
+test/waypoint_guard_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/waypoint_guard_test.dir/build.make CMakeFiles/waypoint_guard_test.dir/test/waypoint_guard_test.cpp.o
+.PHONY : test/waypoint_guard_test.cpp.o
+
+test/waypoint_guard_test.i: test/waypoint_guard_test.cpp.i
+.PHONY : test/waypoint_guard_test.i
+
+# target to preprocess a source file
+test/waypoint_guard_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/waypoint_guard_test.dir/build.make CMakeFiles/waypoint_guard_test.dir/test/waypoint_guard_test.cpp.i
+.PHONY : test/waypoint_guard_test.cpp.i
+
+test/waypoint_guard_test.s: test/waypoint_guard_test.cpp.s
+.PHONY : test/waypoint_guard_test.s
+
+# target to generate assembly for a file
+test/waypoint_guard_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/waypoint_guard_test.dir/build.make CMakeFiles/waypoint_guard_test.dir/test/waypoint_guard_test.cpp.s
+.PHONY : test/waypoint_guard_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -485,34 +864,77 @@ help:
 	@echo "... robot_cleaning_manager_uninstall"
 	@echo "... uninstall"
 	@echo "... checkpoint_test"
+	@echo "... cleaning_event_log_test"
 	@echo "... cleaning_task_manager_node"
 	@echo "... completion_decision_test"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... localization_health_monitor_node"
+	@echo "... localization_health_test"
 	@echo "... navigation_progress_test"
+	@echo "... pause_ownership_test"
+	@echo "... planning_request_test"
 	@echo "... replan_policy_test"
 	@echo "... task_execution"
+	@echo "... task_state_test"
+	@echo "... waypoint_guard_test"
 	@echo "... src/checkpoint_store.o"
 	@echo "... src/checkpoint_store.i"
 	@echo "... src/checkpoint_store.s"
+	@echo "... src/cleaning_event_log.o"
+	@echo "... src/cleaning_event_log.i"
+	@echo "... src/cleaning_event_log.s"
 	@echo "... src/cleaning_task_manager.o"
 	@echo "... src/cleaning_task_manager.i"
 	@echo "... src/cleaning_task_manager.s"
+	@echo "... src/localization_health.o"
+	@echo "... src/localization_health.i"
+	@echo "... src/localization_health.s"
+	@echo "... src/localization_health_monitor.o"
+	@echo "... src/localization_health_monitor.i"
+	@echo "... src/localization_health_monitor.s"
 	@echo "... src/navigation_executor.o"
 	@echo "... src/navigation_executor.i"
 	@echo "... src/navigation_executor.s"
+	@echo "... src/planning_request.o"
+	@echo "... src/planning_request.i"
+	@echo "... src/planning_request.s"
+	@echo "... src/task_state.o"
+	@echo "... src/task_state.i"
+	@echo "... src/task_state.s"
+	@echo "... src/waypoint_guard.o"
+	@echo "... src/waypoint_guard.i"
+	@echo "... src/waypoint_guard.s"
 	@echo "... test/checkpoint_test.o"
 	@echo "... test/checkpoint_test.i"
 	@echo "... test/checkpoint_test.s"
+	@echo "... test/cleaning_event_log_test.o"
+	@echo "... test/cleaning_event_log_test.i"
+	@echo "... test/cleaning_event_log_test.s"
 	@echo "... test/completion_decision_test.o"
 	@echo "... test/completion_decision_test.i"
 	@echo "... test/completion_decision_test.s"
+	@echo "... test/localization_health_test.o"
+	@echo "... test/localization_health_test.i"
+	@echo "... test/localization_health_test.s"
 	@echo "... test/navigation_progress_test.o"
 	@echo "... test/navigation_progress_test.i"
 	@echo "... test/navigation_progress_test.s"
+	@echo "... test/pause_ownership_test.o"
+	@echo "... test/pause_ownership_test.i"
+	@echo "... test/pause_ownership_test.s"
+	@echo "... test/planning_request_test.o"
+	@echo "... test/planning_request_test.i"
+	@echo "... test/planning_request_test.s"
 	@echo "... test/replan_policy_test.o"
 	@echo "... test/replan_policy_test.i"
 	@echo "... test/replan_policy_test.s"
+	@echo "... test/task_state_test.o"
+	@echo "... test/task_state_test.i"
+	@echo "... test/task_state_test.s"
+	@echo "... test/waypoint_guard_test.o"
+	@echo "... test/waypoint_guard_test.i"
+	@echo "... test/waypoint_guard_test.s"
 .PHONY : help
 
 

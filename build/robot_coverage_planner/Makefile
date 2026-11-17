@@ -275,6 +275,30 @@ gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+src/baseline_coverage_plan.o: src/baseline_coverage_plan.cpp.o
+.PHONY : src/baseline_coverage_plan.o
+
+# target to build an object file
+src/baseline_coverage_plan.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/coverage_grid.dir/build.make CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o
+.PHONY : src/baseline_coverage_plan.cpp.o
+
+src/baseline_coverage_plan.i: src/baseline_coverage_plan.cpp.i
+.PHONY : src/baseline_coverage_plan.i
+
+# target to preprocess a source file
+src/baseline_coverage_plan.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/coverage_grid.dir/build.make CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.i
+.PHONY : src/baseline_coverage_plan.cpp.i
+
+src/baseline_coverage_plan.s: src/baseline_coverage_plan.cpp.s
+.PHONY : src/baseline_coverage_plan.s
+
+# target to generate assembly for a file
+src/baseline_coverage_plan.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/coverage_grid.dir/build.make CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.s
+.PHONY : src/baseline_coverage_plan.cpp.s
+
 src/coverage_direct_planner.o: src/coverage_direct_planner.cpp.o
 .PHONY : src/coverage_direct_planner.o
 
@@ -416,6 +440,9 @@ help:
 	@echo "... coverage_test"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... src/baseline_coverage_plan.o"
+	@echo "... src/baseline_coverage_plan.i"
+	@echo "... src/baseline_coverage_plan.s"
 	@echo "... src/coverage_direct_planner.o"
 	@echo "... src/coverage_direct_planner.i"
 	@echo "... src/coverage_direct_planner.s"

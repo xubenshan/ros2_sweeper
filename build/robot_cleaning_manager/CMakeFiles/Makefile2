@@ -65,10 +65,17 @@ CMAKE_BINARY_DIR = /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_ma
 # The main recursive "all" target.
 all: CMakeFiles/task_execution.dir/all
 all: CMakeFiles/cleaning_task_manager_node.dir/all
+all: CMakeFiles/localization_health_monitor_node.dir/all
 all: CMakeFiles/checkpoint_test.dir/all
 all: CMakeFiles/navigation_progress_test.dir/all
 all: CMakeFiles/completion_decision_test.dir/all
 all: CMakeFiles/replan_policy_test.dir/all
+all: CMakeFiles/task_state_test.dir/all
+all: CMakeFiles/planning_request_test.dir/all
+all: CMakeFiles/cleaning_event_log_test.dir/all
+all: CMakeFiles/localization_health_test.dir/all
+all: CMakeFiles/pause_ownership_test.dir/all
+all: CMakeFiles/waypoint_guard_test.dir/all
 all: gtest/all
 .PHONY : all
 
@@ -81,10 +88,17 @@ clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/robot_cleaning_manager_uninstall.dir/clean
 clean: CMakeFiles/task_execution.dir/clean
 clean: CMakeFiles/cleaning_task_manager_node.dir/clean
+clean: CMakeFiles/localization_health_monitor_node.dir/clean
 clean: CMakeFiles/checkpoint_test.dir/clean
 clean: CMakeFiles/navigation_progress_test.dir/clean
 clean: CMakeFiles/completion_decision_test.dir/clean
 clean: CMakeFiles/replan_policy_test.dir/clean
+clean: CMakeFiles/task_state_test.dir/clean
+clean: CMakeFiles/planning_request_test.dir/clean
+clean: CMakeFiles/cleaning_event_log_test.dir/clean
+clean: CMakeFiles/localization_health_test.dir/clean
+clean: CMakeFiles/pause_ownership_test.dir/clean
+clean: CMakeFiles/waypoint_guard_test.dir/clean
 clean: gtest/clean
 .PHONY : clean
 
@@ -163,12 +177,12 @@ CMakeFiles/robot_cleaning_manager_uninstall.dir/clean:
 CMakeFiles/task_execution.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_execution.dir/build.make CMakeFiles/task_execution.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=15,16,17 "Built target task_execution"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=25,26,27,28,29,30,31,32 "Built target task_execution"
 .PHONY : CMakeFiles/task_execution.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/task_execution.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/task_execution.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
 .PHONY : CMakeFiles/task_execution.dir/rule
@@ -189,12 +203,12 @@ CMakeFiles/task_execution.dir/clean:
 CMakeFiles/cleaning_task_manager_node.dir/all: CMakeFiles/task_execution.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_task_manager_node.dir/build.make CMakeFiles/cleaning_task_manager_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_task_manager_node.dir/build.make CMakeFiles/cleaning_task_manager_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=3,4 "Built target cleaning_task_manager_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=5,6 "Built target cleaning_task_manager_node"
 .PHONY : CMakeFiles/cleaning_task_manager_node.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cleaning_task_manager_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cleaning_task_manager_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
 .PHONY : CMakeFiles/cleaning_task_manager_node.dir/rule
@@ -207,6 +221,32 @@ cleaning_task_manager_node: CMakeFiles/cleaning_task_manager_node.dir/rule
 CMakeFiles/cleaning_task_manager_node.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_task_manager_node.dir/build.make CMakeFiles/cleaning_task_manager_node.dir/clean
 .PHONY : CMakeFiles/cleaning_task_manager_node.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/localization_health_monitor_node.dir
+
+# All Build rule for target.
+CMakeFiles/localization_health_monitor_node.dir/all: CMakeFiles/task_execution.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_monitor_node.dir/build.make CMakeFiles/localization_health_monitor_node.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_monitor_node.dir/build.make CMakeFiles/localization_health_monitor_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=13,14 "Built target localization_health_monitor_node"
+.PHONY : CMakeFiles/localization_health_monitor_node.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/localization_health_monitor_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/localization_health_monitor_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
+.PHONY : CMakeFiles/localization_health_monitor_node.dir/rule
+
+# Convenience name for target.
+localization_health_monitor_node: CMakeFiles/localization_health_monitor_node.dir/rule
+.PHONY : localization_health_monitor_node
+
+# clean rule for target.
+CMakeFiles/localization_health_monitor_node.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_monitor_node.dir/build.make CMakeFiles/localization_health_monitor_node.dir/clean
+.PHONY : CMakeFiles/localization_health_monitor_node.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/checkpoint_test.dir
@@ -222,7 +262,7 @@ CMakeFiles/checkpoint_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/checkpoint_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/checkpoint_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
 .PHONY : CMakeFiles/checkpoint_test.dir/rule
@@ -245,12 +285,12 @@ CMakeFiles/navigation_progress_test.dir/all: gtest/CMakeFiles/gtest.dir/all
 CMakeFiles/navigation_progress_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation_progress_test.dir/build.make CMakeFiles/navigation_progress_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/navigation_progress_test.dir/build.make CMakeFiles/navigation_progress_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=11,12 "Built target navigation_progress_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=17,18 "Built target navigation_progress_test"
 .PHONY : CMakeFiles/navigation_progress_test.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/navigation_progress_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/navigation_progress_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
 .PHONY : CMakeFiles/navigation_progress_test.dir/rule
@@ -272,7 +312,7 @@ CMakeFiles/completion_decision_test.dir/all: gtest/CMakeFiles/gtest.dir/all
 CMakeFiles/completion_decision_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/completion_decision_test.dir/build.make CMakeFiles/completion_decision_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/completion_decision_test.dir/build.make CMakeFiles/completion_decision_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=5,6 "Built target completion_decision_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=7,8 "Built target completion_decision_test"
 .PHONY : CMakeFiles/completion_decision_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -299,7 +339,7 @@ CMakeFiles/replan_policy_test.dir/all: gtest/CMakeFiles/gtest.dir/all
 CMakeFiles/replan_policy_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/replan_policy_test.dir/build.make CMakeFiles/replan_policy_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/replan_policy_test.dir/build.make CMakeFiles/replan_policy_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=13,14 "Built target replan_policy_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=23,24 "Built target replan_policy_test"
 .PHONY : CMakeFiles/replan_policy_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -319,13 +359,181 @@ CMakeFiles/replan_policy_test.dir/clean:
 .PHONY : CMakeFiles/replan_policy_test.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/task_state_test.dir
+
+# All Build rule for target.
+CMakeFiles/task_state_test.dir/all: CMakeFiles/task_execution.dir/all
+CMakeFiles/task_state_test.dir/all: gtest/CMakeFiles/gtest.dir/all
+CMakeFiles/task_state_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_state_test.dir/build.make CMakeFiles/task_state_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_state_test.dir/build.make CMakeFiles/task_state_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=33,34 "Built target task_state_test"
+.PHONY : CMakeFiles/task_state_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/task_state_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/task_state_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
+.PHONY : CMakeFiles/task_state_test.dir/rule
+
+# Convenience name for target.
+task_state_test: CMakeFiles/task_state_test.dir/rule
+.PHONY : task_state_test
+
+# clean rule for target.
+CMakeFiles/task_state_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task_state_test.dir/build.make CMakeFiles/task_state_test.dir/clean
+.PHONY : CMakeFiles/task_state_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/planning_request_test.dir
+
+# All Build rule for target.
+CMakeFiles/planning_request_test.dir/all: CMakeFiles/task_execution.dir/all
+CMakeFiles/planning_request_test.dir/all: gtest/CMakeFiles/gtest.dir/all
+CMakeFiles/planning_request_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/planning_request_test.dir/build.make CMakeFiles/planning_request_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/planning_request_test.dir/build.make CMakeFiles/planning_request_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=21,22 "Built target planning_request_test"
+.PHONY : CMakeFiles/planning_request_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/planning_request_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/planning_request_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
+.PHONY : CMakeFiles/planning_request_test.dir/rule
+
+# Convenience name for target.
+planning_request_test: CMakeFiles/planning_request_test.dir/rule
+.PHONY : planning_request_test
+
+# clean rule for target.
+CMakeFiles/planning_request_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/planning_request_test.dir/build.make CMakeFiles/planning_request_test.dir/clean
+.PHONY : CMakeFiles/planning_request_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/cleaning_event_log_test.dir
+
+# All Build rule for target.
+CMakeFiles/cleaning_event_log_test.dir/all: CMakeFiles/task_execution.dir/all
+CMakeFiles/cleaning_event_log_test.dir/all: gtest/CMakeFiles/gtest.dir/all
+CMakeFiles/cleaning_event_log_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_event_log_test.dir/build.make CMakeFiles/cleaning_event_log_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_event_log_test.dir/build.make CMakeFiles/cleaning_event_log_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=3,4 "Built target cleaning_event_log_test"
+.PHONY : CMakeFiles/cleaning_event_log_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/cleaning_event_log_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cleaning_event_log_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
+.PHONY : CMakeFiles/cleaning_event_log_test.dir/rule
+
+# Convenience name for target.
+cleaning_event_log_test: CMakeFiles/cleaning_event_log_test.dir/rule
+.PHONY : cleaning_event_log_test
+
+# clean rule for target.
+CMakeFiles/cleaning_event_log_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cleaning_event_log_test.dir/build.make CMakeFiles/cleaning_event_log_test.dir/clean
+.PHONY : CMakeFiles/cleaning_event_log_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/localization_health_test.dir
+
+# All Build rule for target.
+CMakeFiles/localization_health_test.dir/all: CMakeFiles/task_execution.dir/all
+CMakeFiles/localization_health_test.dir/all: gtest/CMakeFiles/gtest.dir/all
+CMakeFiles/localization_health_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_test.dir/build.make CMakeFiles/localization_health_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_test.dir/build.make CMakeFiles/localization_health_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=15,16 "Built target localization_health_test"
+.PHONY : CMakeFiles/localization_health_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/localization_health_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/localization_health_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
+.PHONY : CMakeFiles/localization_health_test.dir/rule
+
+# Convenience name for target.
+localization_health_test: CMakeFiles/localization_health_test.dir/rule
+.PHONY : localization_health_test
+
+# clean rule for target.
+CMakeFiles/localization_health_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/localization_health_test.dir/build.make CMakeFiles/localization_health_test.dir/clean
+.PHONY : CMakeFiles/localization_health_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/pause_ownership_test.dir
+
+# All Build rule for target.
+CMakeFiles/pause_ownership_test.dir/all: CMakeFiles/task_execution.dir/all
+CMakeFiles/pause_ownership_test.dir/all: gtest/CMakeFiles/gtest.dir/all
+CMakeFiles/pause_ownership_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pause_ownership_test.dir/build.make CMakeFiles/pause_ownership_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pause_ownership_test.dir/build.make CMakeFiles/pause_ownership_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=19,20 "Built target pause_ownership_test"
+.PHONY : CMakeFiles/pause_ownership_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/pause_ownership_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pause_ownership_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
+.PHONY : CMakeFiles/pause_ownership_test.dir/rule
+
+# Convenience name for target.
+pause_ownership_test: CMakeFiles/pause_ownership_test.dir/rule
+.PHONY : pause_ownership_test
+
+# clean rule for target.
+CMakeFiles/pause_ownership_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pause_ownership_test.dir/build.make CMakeFiles/pause_ownership_test.dir/clean
+.PHONY : CMakeFiles/pause_ownership_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/waypoint_guard_test.dir
+
+# All Build rule for target.
+CMakeFiles/waypoint_guard_test.dir/all: CMakeFiles/task_execution.dir/all
+CMakeFiles/waypoint_guard_test.dir/all: gtest/CMakeFiles/gtest.dir/all
+CMakeFiles/waypoint_guard_test.dir/all: gtest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/waypoint_guard_test.dir/build.make CMakeFiles/waypoint_guard_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/waypoint_guard_test.dir/build.make CMakeFiles/waypoint_guard_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=35,36 "Built target waypoint_guard_test"
+.PHONY : CMakeFiles/waypoint_guard_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/waypoint_guard_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/waypoint_guard_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles 0
+.PHONY : CMakeFiles/waypoint_guard_test.dir/rule
+
+# Convenience name for target.
+waypoint_guard_test: CMakeFiles/waypoint_guard_test.dir/rule
+.PHONY : waypoint_guard_test
+
+# clean rule for target.
+CMakeFiles/waypoint_guard_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/waypoint_guard_test.dir/build.make CMakeFiles/waypoint_guard_test.dir/clean
+.PHONY : CMakeFiles/waypoint_guard_test.dir/clean
+
+#=============================================================================
 # Target rules for target gtest/CMakeFiles/gtest.dir
 
 # All Build rule for target.
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) $(MAKESILENT) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) $(MAKESILENT) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=7,8 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=9,10 "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -351,7 +559,7 @@ gtest/CMakeFiles/gtest.dir/clean:
 gtest/CMakeFiles/gtest_main.dir/all:
 	$(MAKE) $(MAKESILENT) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=9,10 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=11,12 "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.

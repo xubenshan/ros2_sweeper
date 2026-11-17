@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "robot_cleaning_interfaces/msg/detail/coverage_status__type_support.h"
 #include "robot_cleaning_interfaces/msg/detail/coverage_status__functions.h"
-#include "robot_cleaning_interfaces/msg/detail/coverage_status__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "robot_cleaning_interfaces/msg/detail/coverage_status__type_support.h"
+#include "robot_cleaning_interfaces/msg/detail/coverage_status__struct.h"
 
 #ifdef __cplusplus
 extern "C"

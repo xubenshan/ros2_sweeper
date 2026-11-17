@@ -228,22 +228,31 @@ CMakeFiles/robot_cleaning_interfaces_s__rosidl_typesupport_introspection_c.dir/r
  /opt/ros/jazzy/include/rosidl_typesupport_interface/rosidl_typesupport_interface/macros.h \
  /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/service_type_support_struct.h \
  /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/action_type_support_struct.h \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.h \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/rosidl_generator_c__visibility_control.h \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__struct.h \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__struct.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__struct.h \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/header__struct.h \
  /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__struct.h \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__struct.h \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/map_meta_data__struct.h \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__struct.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.h \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.h \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__struct.h \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__struct.h \
  /opt/ros/jazzy/include/service_msgs/service_msgs/msg/detail/service_event_info__struct.h \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__struct.h \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.h \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.h \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__struct.h \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__struct.h \

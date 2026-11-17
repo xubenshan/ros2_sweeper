@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "robot_cleaning_interfaces/srv/detail/begin_coverage__functions.h"
 #include "robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.h"
-#include "robot_cleaning_interfaces/srv/detail/begin_coverage__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "robot_cleaning_interfaces/srv/detail/begin_coverage__struct.h"
+#include "robot_cleaning_interfaces/srv/detail/begin_coverage__functions.h"
 
 #ifdef __cplusplus
 extern "C"

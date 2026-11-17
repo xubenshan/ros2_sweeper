@@ -146,6 +146,7 @@ navigation_progress_test: /opt/ros/jazzy/lib/libstatic_transform_broadcaster_nod
 navigation_progress_test: /opt/ros/jazzy/lib/libtf2_ros.so
 navigation_progress_test: /opt/ros/jazzy/lib/librclcpp_action.so
 navigation_progress_test: /opt/ros/jazzy/lib/librcl_action.so
+navigation_progress_test: /opt/ros/jazzy/lib/libtf2.so
 navigation_progress_test: /opt/ros/jazzy/lib/libmessage_filters.so
 navigation_progress_test: /opt/ros/jazzy/lib/librclcpp.so
 navigation_progress_test: /opt/ros/jazzy/lib/liblibstatistics_collector.so
@@ -186,7 +187,6 @@ navigation_progress_test: /opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupp
 navigation_progress_test: /opt/ros/jazzy/lib/libstatistics_msgs__rosidl_generator_c.so
 navigation_progress_test: /opt/ros/jazzy/lib/libtracetools.so
 navigation_progress_test: /opt/ros/jazzy/lib/librcl_logging_interface.so
-navigation_progress_test: /opt/ros/jazzy/lib/libtf2.so
 navigation_progress_test: /opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_fastrtps_c.so
 navigation_progress_test: /opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_introspection_c.so
 navigation_progress_test: /opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_fastrtps_cpp.so

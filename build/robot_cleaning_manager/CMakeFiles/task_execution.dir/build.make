@@ -83,10 +83,38 @@ CMakeFiles/task_execution.dir/src/navigation_executor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_execution.dir/src/navigation_executor.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/navigation_executor.cpp -o CMakeFiles/task_execution.dir/src/navigation_executor.cpp.s
 
+CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o: CMakeFiles/task_execution.dir/flags.make
+CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/cleaning_event_log.cpp
+CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o: CMakeFiles/task_execution.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o -MF CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o.d -o CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o -c /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/cleaning_event_log.cpp
+
+CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/cleaning_event_log.cpp > CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.i
+
+CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/cleaning_event_log.cpp -o CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.s
+
+CMakeFiles/task_execution.dir/src/localization_health.cpp.o: CMakeFiles/task_execution.dir/flags.make
+CMakeFiles/task_execution.dir/src/localization_health.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/localization_health.cpp
+CMakeFiles/task_execution.dir/src/localization_health.cpp.o: CMakeFiles/task_execution.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/task_execution.dir/src/localization_health.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_execution.dir/src/localization_health.cpp.o -MF CMakeFiles/task_execution.dir/src/localization_health.cpp.o.d -o CMakeFiles/task_execution.dir/src/localization_health.cpp.o -c /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/localization_health.cpp
+
+CMakeFiles/task_execution.dir/src/localization_health.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/task_execution.dir/src/localization_health.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/localization_health.cpp > CMakeFiles/task_execution.dir/src/localization_health.cpp.i
+
+CMakeFiles/task_execution.dir/src/localization_health.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_execution.dir/src/localization_health.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/localization_health.cpp -o CMakeFiles/task_execution.dir/src/localization_health.cpp.s
+
 CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o: CMakeFiles/task_execution.dir/flags.make
 CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/checkpoint_store.cpp
 CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o: CMakeFiles/task_execution.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o -MF CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o.d -o CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o -c /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/checkpoint_store.cpp
 
 CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.i: cmake_force
@@ -97,19 +125,71 @@ CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/checkpoint_store.cpp -o CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.s
 
+CMakeFiles/task_execution.dir/src/task_state.cpp.o: CMakeFiles/task_execution.dir/flags.make
+CMakeFiles/task_execution.dir/src/task_state.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/task_state.cpp
+CMakeFiles/task_execution.dir/src/task_state.cpp.o: CMakeFiles/task_execution.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/task_execution.dir/src/task_state.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_execution.dir/src/task_state.cpp.o -MF CMakeFiles/task_execution.dir/src/task_state.cpp.o.d -o CMakeFiles/task_execution.dir/src/task_state.cpp.o -c /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/task_state.cpp
+
+CMakeFiles/task_execution.dir/src/task_state.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/task_execution.dir/src/task_state.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/task_state.cpp > CMakeFiles/task_execution.dir/src/task_state.cpp.i
+
+CMakeFiles/task_execution.dir/src/task_state.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_execution.dir/src/task_state.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/task_state.cpp -o CMakeFiles/task_execution.dir/src/task_state.cpp.s
+
+CMakeFiles/task_execution.dir/src/planning_request.cpp.o: CMakeFiles/task_execution.dir/flags.make
+CMakeFiles/task_execution.dir/src/planning_request.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/planning_request.cpp
+CMakeFiles/task_execution.dir/src/planning_request.cpp.o: CMakeFiles/task_execution.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/task_execution.dir/src/planning_request.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_execution.dir/src/planning_request.cpp.o -MF CMakeFiles/task_execution.dir/src/planning_request.cpp.o.d -o CMakeFiles/task_execution.dir/src/planning_request.cpp.o -c /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/planning_request.cpp
+
+CMakeFiles/task_execution.dir/src/planning_request.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/task_execution.dir/src/planning_request.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/planning_request.cpp > CMakeFiles/task_execution.dir/src/planning_request.cpp.i
+
+CMakeFiles/task_execution.dir/src/planning_request.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_execution.dir/src/planning_request.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/planning_request.cpp -o CMakeFiles/task_execution.dir/src/planning_request.cpp.s
+
+CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o: CMakeFiles/task_execution.dir/flags.make
+CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/waypoint_guard.cpp
+CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o: CMakeFiles/task_execution.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o -MF CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o.d -o CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o -c /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/waypoint_guard.cpp
+
+CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/waypoint_guard.cpp > CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.i
+
+CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/src/waypoint_guard.cpp -o CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.s
+
 # Object files for target task_execution
 task_execution_OBJECTS = \
 "CMakeFiles/task_execution.dir/src/navigation_executor.cpp.o" \
-"CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o"
+"CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o" \
+"CMakeFiles/task_execution.dir/src/localization_health.cpp.o" \
+"CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o" \
+"CMakeFiles/task_execution.dir/src/task_state.cpp.o" \
+"CMakeFiles/task_execution.dir/src/planning_request.cpp.o" \
+"CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o"
 
 # External object files for target task_execution
 task_execution_EXTERNAL_OBJECTS =
 
 libtask_execution.a: CMakeFiles/task_execution.dir/src/navigation_executor.cpp.o
+libtask_execution.a: CMakeFiles/task_execution.dir/src/cleaning_event_log.cpp.o
+libtask_execution.a: CMakeFiles/task_execution.dir/src/localization_health.cpp.o
 libtask_execution.a: CMakeFiles/task_execution.dir/src/checkpoint_store.cpp.o
+libtask_execution.a: CMakeFiles/task_execution.dir/src/task_state.cpp.o
+libtask_execution.a: CMakeFiles/task_execution.dir/src/planning_request.cpp.o
+libtask_execution.a: CMakeFiles/task_execution.dir/src/waypoint_guard.cpp.o
 libtask_execution.a: CMakeFiles/task_execution.dir/build.make
 libtask_execution.a: CMakeFiles/task_execution.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libtask_execution.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_manager/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libtask_execution.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/task_execution.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/task_execution.dir/link.txt --verbose=$(VERBOSE)
 

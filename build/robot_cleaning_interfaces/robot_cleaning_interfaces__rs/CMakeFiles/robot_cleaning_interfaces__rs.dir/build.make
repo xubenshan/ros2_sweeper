@@ -86,8 +86,11 @@ rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: /opt/ros/jazzy/sh
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: /opt/ros/jazzy/share/rosidl_generator_rs/resource/templates/srv_idiomatic.rs.em
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: /opt/ros/jazzy/share/rosidl_generator_rs/resource/templates/srv_rmw.rs.em
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: rosidl_adapter/robot_cleaning_interfaces/action/CleanTask.idl
+rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: rosidl_adapter/robot_cleaning_interfaces/msg/CleaningEvent.idl
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: rosidl_adapter/robot_cleaning_interfaces/msg/CoverageStatus.idl
+rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: rosidl_adapter/robot_cleaning_interfaces/msg/LocalizationHealth.idl
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: rosidl_adapter/robot_cleaning_interfaces/srv/BeginCoverage.idl
+rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: rosidl_adapter/robot_cleaning_interfaces/srv/ListCleaningEvents.idl
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: rosidl_adapter/robot_cleaning_interfaces/srv/PlanCoverage.idl
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: /opt/ros/jazzy/share/geometry_msgs/msg/Accel.idl
 rosidl_generator_rs/robot_cleaning_interfaces/rust/src/lib.rs: /opt/ros/jazzy/share/geometry_msgs/msg/AccelStamped.idl

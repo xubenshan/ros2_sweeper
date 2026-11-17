@@ -1,0 +1,1 @@
+/home/xbs/ros2_sweeper_resume_project/build/oomwoo_localization_msgs/rosidl_generator_c/oomwoo_localization_msgs/srv/detail/relocalize__struct.h

@@ -97,19 +97,35 @@ CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/coverage_plan.cpp -o CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.s
 
+CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o: CMakeFiles/coverage_grid.dir/flags.make
+CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/baseline_coverage_plan.cpp
+CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o: CMakeFiles/coverage_grid.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o -MF CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o.d -o CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o -c /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/baseline_coverage_plan.cpp
+
+CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/baseline_coverage_plan.cpp > CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.i
+
+CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/src/baseline_coverage_plan.cpp -o CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.s
+
 # Object files for target coverage_grid
 coverage_grid_OBJECTS = \
 "CMakeFiles/coverage_grid.dir/src/grid_map.cpp.o" \
-"CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.o"
+"CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.o" \
+"CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o"
 
 # External object files for target coverage_grid
 coverage_grid_EXTERNAL_OBJECTS =
 
 libcoverage_grid.a: CMakeFiles/coverage_grid.dir/src/grid_map.cpp.o
 libcoverage_grid.a: CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.o
+libcoverage_grid.a: CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o
 libcoverage_grid.a: CMakeFiles/coverage_grid.dir/build.make
 libcoverage_grid.a: CMakeFiles/coverage_grid.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libcoverage_grid.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libcoverage_grid.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/coverage_grid.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/coverage_grid.dir/link.txt --verbose=$(VERBOSE)
 

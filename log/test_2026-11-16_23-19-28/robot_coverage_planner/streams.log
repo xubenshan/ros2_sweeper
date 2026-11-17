@@ -1,0 +1,87 @@
+[0.021s] Invoking command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner': AMENT_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner:/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner:/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/lib:/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
+[0.028s] UpdateCTestConfiguration  from :/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/CTestConfiguration.ini
+[0.028s] Parse Config file:/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/CTestConfiguration.ini
+[0.028s]    Site: ubuntu24.04
+[0.029s]    Build name: (empty)
+[0.029s]  Add coverage exclude regular expressions.
+[0.029s] Create new tag: 20261116-1519 - Experimental
+[0.029s] UpdateCTestConfiguration  from :/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/CTestConfiguration.ini
+[0.029s] Parse Config file:/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/CTestConfiguration.ini
+[0.029s] Test project /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner
+[0.029s] Constructing a list of tests
+[0.029s] Done constructing a list of tests
+[0.029s] Updating test list for fixtures
+[0.029s] Added 0 tests to meet fixture requirements
+[0.029s] Checking test dependency graph...
+[0.029s] Checking test dependency graph end
+[0.029s] test 1
+[0.029s]     Start 1: coverage_test
+[0.029s] 
+[0.029s] 1: Test command: /usr/bin/python3 "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml" "--package-name" "robot_coverage_planner" "--output-file" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/ament_cmake_gtest/coverage_test.txt" "--command" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/coverage_test" "--gtest_output=xml:/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml"
+[0.030s] 1: Working Directory: /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner
+[0.030s] 1: Test timeout computed to be: 60
+[0.076s] 1: -- run_test.py: invoking following command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner':
+[0.076s] 1:  - /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/coverage_test --gtest_output=xml:/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml
+[0.079s] 1: Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
+[0.079s] 1: [==========] Running 18 tests from 3 test suites.
+[0.079s] 1: [----------] Global test environment set-up.
+[0.079s] 1: [----------] 5 tests from GridMap
+[0.079s] 1: [ RUN      ] GridMap.RotatedOriginAndBounds
+[0.080s] 1: [       OK ] GridMap.RotatedOriginAndBounds (0 ms)
+[0.080s] 1: [ RUN      ] GridMap.InflationAndCornerClearance
+[0.080s] 1: [       OK ] GridMap.InflationAndCornerClearance (0 ms)
+[0.080s] 1: [ RUN      ] GridMap.IncludesBrushBoundaryWithFloat32MapResolution
+[0.080s] 1: [       OK ] GridMap.IncludesBrushBoundaryWithFloat32MapResolution (0 ms)
+[0.080s] 1: [ RUN      ] GridMap.CoverageAtPoseResolvesMovementInsideOneCell
+[0.080s] 1: [       OK ] GridMap.CoverageAtPoseResolvesMovementInsideOneCell (0 ms)
+[0.080s] 1: [ RUN      ] GridMap.RejectsInvalidGeometry
+[0.083s] 1: [       OK ] GridMap.RejectsInvalidGeometry (2 ms)
+[0.083s] 1: [----------] 5 tests from GridMap (2 ms total)
+[0.083s] 1: 
+[0.083s] 1: [----------] 10 tests from CoveragePlan
+[0.083s] 1: [ RUN      ] CoveragePlan.OpenFloorLeavesTheEdgeBandForEdgeCleaning
+[0.423s] 1: [       OK ] CoveragePlan.OpenFloorLeavesTheEdgeBandForEdgeCleaning (341 ms)
+[0.423s] 1: [ RUN      ] CoveragePlan.LiveInscribedCellsBlockSweepWithoutChangingTheTaskFloor
+[0.455s] 1: [       OK ] CoveragePlan.LiveInscribedCellsBlockSweepWithoutChangingTheTaskFloor (32 ms)
+[0.455s] 1: [ RUN      ] CoveragePlan.GapRouteStopsAfterEnoughNewFloor
+[0.638s] 1: [       OK ] CoveragePlan.GapRouteStopsAfterEnoughNewFloor (182 ms)
+[0.638s] 1: [ RUN      ] CoveragePlan.SplitMergeAndCollisionFreeTransitions
+[0.639s] 1: [       OK ] CoveragePlan.SplitMergeAndCollisionFreeTransitions (0 ms)
+[0.642s] 1: [ RUN      ] CoveragePlan.AvoidsOverlappingShortSweepsAroundFurniture
+[0.672s] 1: [       OK ] CoveragePlan.AvoidsOverlappingShortSweepsAroundFurniture (32 ms)
+[0.672s] 1: [ RUN      ] CoveragePlan.NarrowGapSelectsReachableBrushPosition
+[0.672s] 1: [       OK ] CoveragePlan.NarrowGapSelectsReachableBrushPosition (0 ms)
+[0.672s] 1: [ RUN      ] CoveragePlan.GapFillCreditsCellsSweptBetweenGoals
+[0.673s] 1: [       OK ] CoveragePlan.GapFillCreditsCellsSweptBetweenGoals (0 ms)
+[0.673s] 1: [ RUN      ] CoveragePlan.GapFillPrefersPriorityFloorAndStillPlansEdgeCells
+[0.673s] 1: [       OK ] CoveragePlan.GapFillPrefersPriorityFloorAndStillPlansEdgeCells (0 ms)
+[0.673s] 1: [ RUN      ] CoveragePlan.RequestedRegionsKeepOrder
+[0.673s] 1: [       OK ] CoveragePlan.RequestedRegionsKeepOrder (0 ms)
+[0.675s] 1: [ RUN      ] CoveragePlan.FullyCoveredHasNoSupplementalGoals
+[0.675s] 1: [       OK ] CoveragePlan.FullyCoveredHasNoSupplementalGoals (0 ms)
+[0.675s] 1: [----------] 10 tests from CoveragePlan (592 ms total)
+[0.675s] 1: 
+[0.675s] 1: [----------] 3 tests from BaselineCoveragePlan
+[0.675s] 1: [ RUN      ] BaselineCoveragePlan.ProducesDeterministicCollisionFreeBoustrophedonRoute
+[0.675s] 1: [       OK ] BaselineCoveragePlan.ProducesDeterministicCollisionFreeBoustrophedonRoute (0 ms)
+[0.675s] 1: [ RUN      ] BaselineCoveragePlan.BasicGapFillMovesToNearestMissingFloor
+[0.675s] 1: [       OK ] BaselineCoveragePlan.BasicGapFillMovesToNearestMissingFloor (0 ms)
+[0.676s] 1: [ RUN      ] BaselineCoveragePlan.UsesSameTaskFloorAsOptimizedPlanner
+[0.676s] 1: [       OK ] BaselineCoveragePlan.UsesSameTaskFloorAsOptimizedPlanner (0 ms)
+[0.676s] 1: [----------] 3 tests from BaselineCoveragePlan (1 ms total)
+[0.676s] 1: 
+[0.676s] 1: [----------] Global test environment tear-down
+[0.676s] 1: [==========] 18 tests from 3 test suites ran. (596 ms total)
+[0.677s] 1: [  PASSED  ] 18 tests.
+[0.677s] 1: -- run_test.py: return code 0
+[0.677s] 1: -- run_test.py: inject classname prefix into gtest result file '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml'
+[0.679s] 1: -- run_test.py: verify result file '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml'
+[0.688s] 1/1 Test #1: coverage_test ....................   Passed    0.66 sec
+[0.690s] 
+[0.691s] 100% tests passed, 0 tests failed out of 1
+[0.691s] 
+[0.691s] Label Time Summary:
+[0.691s] gtest    =   0.66 sec*proc (1 test)
+[0.692s] 
+[0.693s] Total Test time (real) =   0.66 sec
+[0.693s] Invoked command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner' returned '0': AMENT_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner:/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner:/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/xbs/ros2_sweeper_resume_project/install/robot_coverage_planner/lib:/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/xbs/ros2_sweeper_resume_project/install/robot_cleaning_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process

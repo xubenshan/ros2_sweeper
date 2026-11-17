@@ -89,8 +89,11 @@ rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: /opt/ros/jazzy
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: /opt/ros/jazzy/share/rosidl_generator_c/resource/srv__type_support.c.em
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: /opt/ros/jazzy/share/rosidl_generator_c/resource/srv__type_support.h.em
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: rosidl_adapter/robot_cleaning_interfaces/action/CleanTask.idl
+rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: rosidl_adapter/robot_cleaning_interfaces/msg/CleaningEvent.idl
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: rosidl_adapter/robot_cleaning_interfaces/msg/CoverageStatus.idl
+rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: rosidl_adapter/robot_cleaning_interfaces/msg/LocalizationHealth.idl
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: rosidl_adapter/robot_cleaning_interfaces/srv/BeginCoverage.idl
+rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: rosidl_adapter/robot_cleaning_interfaces/srv/ListCleaningEvents.idl
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: rosidl_adapter/robot_cleaning_interfaces/srv/PlanCoverage.idl
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: /opt/ros/jazzy/share/geometry_msgs/msg/Accel.idl
 rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h: /opt/ros/jazzy/share/geometry_msgs/msg/AccelStamped.idl
@@ -187,6 +190,18 @@ rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__struct.h:
 rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.h
 
+rosidl_generator_c/robot_cleaning_interfaces/msg/cleaning_event.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/cleaning_event.h
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.h
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__struct.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__struct.h
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.h
+
 rosidl_generator_c/robot_cleaning_interfaces/msg/coverage_status.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/coverage_status.h
 
@@ -199,6 +214,18 @@ rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__struct.
 rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.h
 
+rosidl_generator_c/robot_cleaning_interfaces/msg/localization_health.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/localization_health.h
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.h
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__struct.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__struct.h
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.h
+
 rosidl_generator_c/robot_cleaning_interfaces/srv/begin_coverage.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/begin_coverage.h
 
@@ -210,6 +237,18 @@ rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__struct.h
 
 rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.h
+
+rosidl_generator_c/robot_cleaning_interfaces/srv/list_cleaning_events.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/list_cleaning_events.h
+
+rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.h
+
+rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__struct.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__struct.h
+
+rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.h
 
 rosidl_generator_c/robot_cleaning_interfaces/srv/plan_coverage.h: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/plan_coverage.h
@@ -232,6 +271,15 @@ rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__functions
 rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c
 
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c
+
 rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c
 
@@ -241,6 +289,15 @@ rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functio
 rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c
 
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c
+
+rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c
+
 rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c
 
@@ -249,6 +306,15 @@ rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__function
 
 rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c
+
+rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c
+
+rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c
+
+rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c
 
 rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c: rosidl_generator_c/robot_cleaning_interfaces/action/clean_task.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c
@@ -301,10 +367,52 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c.s
 
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.s
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.s
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.s
+
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.i: cmake_force
@@ -318,7 +426,7 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.i: cmake_force
@@ -332,7 +440,7 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.i: cmake_force
@@ -343,10 +451,52 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.s
 
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.s
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.s
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.s
+
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.i: cmake_force
@@ -360,7 +510,7 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.i: cmake_force
@@ -374,7 +524,7 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.i: cmake_force
@@ -385,10 +535,52 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.s
 
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.s
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.s
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c > CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.i
+
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.s
+
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.i: cmake_force
@@ -402,7 +594,7 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.i: cmake_force
@@ -416,7 +608,7 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o -MF CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o.d -o CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o -c /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c
 
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.i: cmake_force
@@ -432,12 +624,21 @@ robot_cleaning_interfaces__rosidl_generator_c_OBJECTS = \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__description.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__functions.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o" \
+"CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o" \
 "CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o"
@@ -448,12 +649,21 @@ robot_cleaning_interfaces__rosidl_generator_c_EXTERNAL_OBJECTS =
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__description.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__functions.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c.o
+librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c.o
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c.o
@@ -468,7 +678,7 @@ librobot_cleaning_interfaces__rosidl_generator_c.so: /opt/ros/jazzy/lib/libbuilt
 librobot_cleaning_interfaces__rosidl_generator_c.so: /opt/ros/jazzy/lib/librosidl_runtime_c.so
 librobot_cleaning_interfaces__rosidl_generator_c.so: /opt/ros/jazzy/lib/librcutils.so
 librobot_cleaning_interfaces__rosidl_generator_c.so: CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking C shared library librobot_cleaning_interfaces__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking C shared library librobot_cleaning_interfaces__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -486,13 +696,27 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_gene
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__struct.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/action/detail/clean_task__type_support.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/cleaning_event.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/coverage_status.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__description.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__functions.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__struct.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__description.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__functions.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__struct.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__description.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__functions.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__struct.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/detail/localization_health__type_support.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/msg/localization_health.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/begin_coverage.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__description.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__functions.c
@@ -500,12 +724,19 @@ CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_gene
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__struct.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__description.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__functions.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__struct.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.c
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__description.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__functions.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__struct.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.c
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.h
+CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/list_cleaning_events.h
 CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_cleaning_interfaces/srv/plan_coverage.h
 	cd /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_interfaces /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/robot_cleaning_interfaces__rosidl_generator_c.dir/depend

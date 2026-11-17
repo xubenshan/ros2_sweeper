@@ -4,9 +4,9 @@
 
 #include <string.h>
 
-#include "robot_cleaning_interfaces/srv/detail/plan_coverage__functions.h"
-#include "robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.h"
+#include "robot_cleaning_interfaces/srv/detail/plan_coverage__functions.h"
 #include "robot_cleaning_interfaces/srv/detail/plan_coverage__struct.h"
 
 #ifdef __cplusplus

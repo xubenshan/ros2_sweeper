@@ -1,0 +1,1027 @@
+[INFO] [launch]: All log files can be found below /home/xbs/.ros/log/2026-11-16-12-11-25-750581-ubuntu24.04-420637
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [420650]
+[INFO] [robot_state_publisher-2]: process started with pid [420651]
+[INFO] [parameter_bridge-3]: process started with pid [420653]
+[INFO] [create-4]: process started with pid [420654]
+[robot_state_publisher-2] [INFO] [1794802286.188097656] [robot_state_publisher]: Robot initialized
+[create-4] [INFO] [1794802286.196241377] [ros_gz_sim]: Waiting messages on topic [robot_description].
+[create-4] [INFO] [1794802286.971166019] [ros_gz_sim]: Entity creation successful.
+[INFO] [create-4]: process has finished cleanly [pid 420654]
+[INFO] [map_server-5]: process started with pid [420715]
+[INFO] [amcl-6]: process started with pid [420716]
+[INFO] [lifecycle_manager-7]: process started with pid [420717]
+[INFO] [initialpose_pub-8]: process started with pid [420718]
+[INFO] [cmd_vel_arbiter-9]: process started with pid [420719]
+[INFO] [localization_health_monitor_node-10]: process started with pid [420720]
+[INFO] [coverage_planner_node-11]: process started with pid [420721]
+[INFO] [cleaning_task_manager_node-12]: process started with pid [420722]
+[INFO] [ground_truth-13]: process started with pid [420723]
+[INFO] [coverage_meter-14]: process started with pid [420726]
+[lifecycle_manager-7] [INFO] [1794802287.157463013] [lifecycle_manager_localization]: Creating
+[map_server-5] [INFO] [1794802287.157479929] [map_server]: 
+[map_server-5] 	map_server lifecycle node launched. 
+[map_server-5] 	Waiting on external lifecycle transitions to activate
+[map_server-5] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-5] [INFO] [1794802287.157535471] [map_server]: Creating
+[lifecycle_manager-7] [INFO] [1794802287.165489900] [lifecycle_manager_localization]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[amcl-6] [INFO] [1794802287.171430242] [amcl]: 
+[amcl-6] 	amcl lifecycle node launched. 
+[amcl-6] 	Waiting on external lifecycle transitions to activate
+[amcl-6] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[amcl-6] [INFO] [1794802287.173904621] [amcl]: Creating
+[cleaning_task_manager_node-12] [INFO] [1794802287.239330429] [cleaning_task_manager]: task= state=IDLE completed=0 next=0/0
+[parameter_bridge-3] [INFO] [1794802287.244423354] [ros_gz_bridge]: Creating GZ->ROS Bridge: [clock (gz.msgs.Clock) -> clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.247143441] [ros_gz_bridge]: Creating GZ->ROS Bridge: [joint_states (gz.msgs.Model) -> joint_states (sensor_msgs/msg/JointState)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.251031447] [ros_gz_bridge]: Creating GZ->ROS Bridge: [imu (gz.msgs.IMU) -> imu (sensor_msgs/msg/Imu)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.252935992] [ros_gz_bridge]: Creating GZ->ROS Bridge: [odom (gz.msgs.Odometry) -> odom (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.255919038] [ros_gz_bridge]: Creating GZ->ROS Bridge: [odom_wheel (gz.msgs.Odometry) -> odom_wheel (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.258151333] [ros_gz_bridge]: Creating GZ->ROS Bridge: [odom_truth (gz.msgs.Odometry) -> odom_truth (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.259118376] [ros_gz_bridge]: Creating GZ->ROS Bridge: [tf (gz.msgs.Pose_V) -> tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.261104796] [ros_gz_bridge]: Creating ROS->GZ Bridge: [cmd_vel (geometry_msgs/msg/Twist) -> cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.262252840] [ros_gz_bridge]: Creating GZ->ROS Bridge: [scan (gz.msgs.LaserScan) -> scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.263448633] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/world/default/model/oomwoo_one/link/base_footprint/sensor/bumper_left/contact (gz.msgs.Contacts) -> bumper_left/contact (ros_gz_interfaces/msg/Contacts)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.265351303] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/world/default/model/oomwoo_one/link/base_footprint/sensor/bumper_right/contact (gz.msgs.Contacts) -> bumper_right/contact (ros_gz_interfaces/msg/Contacts)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.266279929] [ros_gz_bridge]: Creating GZ->ROS Bridge: [range_left (gz.msgs.LaserScan) -> range_left (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.266930222] [ros_gz_bridge]: Creating GZ->ROS Bridge: [range_right (gz.msgs.LaserScan) -> range_right (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.267336847] [ros_gz_bridge]: Creating GZ->ROS Bridge: [tof_front/points (gz.msgs.PointCloudPacked) -> tof_front/points (sensor_msgs/msg/PointCloud2)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.268017265] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/image (gz.msgs.Image) -> camera/image (sensor_msgs/msg/Image)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1794802287.268698391] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/camera_info (gz.msgs.CameraInfo) -> camera/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[lifecycle_manager-7] [INFO] [1794802287.606483283] [lifecycle_manager_localization]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-7] [INFO] [1794802287.606531575] [lifecycle_manager_localization]: [34m[1mConfiguring map_server[0m[0m
+[parameter_bridge-3] [INFO] [1794802287.606912533] [ros_gz_bridge]: Passing message from ROS geometry_msgs/msg/Twist to Gazebo gz.msgs.Twist (showing msg only once per type)
+[ground_truth-13] [INFO] [1794802287.672433467] [ground_truth]: ground_truth up (teleport-aware odom truth)
+[coverage_meter-14] [INFO] [1794802287.673604844] [coverage_meter]: coverage_meter up; waiting for /map + truth
+[map_server-5] [INFO] [1794802287.797621284] [map_server]: Configuring
+[map_server-5] [INFO] [1794802287.797689492] [map_io]: Loading yaml file: /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/final2-multi-room/multi_room/run-1/map.yaml
+[map_server-5] [INFO] [1794802287.798112701] [map_io]: resolution: 0.05
+[map_server-5] [INFO] [1794802287.798118868] [map_io]: origin[0]: -1.8
+[map_server-5] [INFO] [1794802287.798120618] [map_io]: origin[1]: -1.3
+[map_server-5] [INFO] [1794802287.798122243] [map_io]: origin[2]: 0
+[map_server-5] [INFO] [1794802287.798124034] [map_io]: free_thresh: 0.196
+[map_server-5] [INFO] [1794802287.798125743] [map_io]: occupied_thresh: 0.65
+[map_server-5] [INFO] [1794802287.798128243] [map_io]: mode: trinary
+[map_server-5] [INFO] [1794802287.798130534] [map_io]: negate: 0
+[map_server-5] [INFO] [1794802287.798275285] [map_io]: Loading image_file: /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/final2-multi-room/multi_room/run-1/map.pgm
+[map_server-5] [INFO] [1794802287.798465618] [map_io]: Read map /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/final2-multi-room/multi_room/run-1/map.pgm: 72 X 52 map @ 0.05 m/cell
+[lifecycle_manager-7] [INFO] [1794802287.807090965] [lifecycle_manager_localization]: [34m[1mConfiguring amcl[0m[0m
+[amcl-6] [INFO] [1794802287.807676466] [amcl]: Configuring
+[amcl-6] [INFO] [1794802287.808002174] [amcl]: initTransforms
+[amcl-6] [INFO] [1794802287.815524519] [amcl]: initPubSub
+[amcl-6] [INFO] [1794802287.821571112] [amcl]: Subscribed to map topic.
+[lifecycle_manager-7] [INFO] [1794802287.827395912] [lifecycle_manager_localization]: [34m[1mActivating map_server[0m[0m
+[map_server-5] [INFO] [1794802287.827969663] [map_server]: Activating
+[map_server-5] [INFO] [1794802287.828164955] [map_server]: Creating bond (map_server) to lifecycle manager.
+[amcl-6] [INFO] [1794802287.828469414] [amcl]: Received a 72 X 52 map @ 0.050 m/pix
+[coverage_meter-14] [INFO] [1794802287.829253957] [coverage_meter]: map 72x52 @ 0.050m, 2522 free cells (reachable set computed at first truth pose)
+[lifecycle_manager-7] [INFO] [1794802287.932343073] [lifecycle_manager_localization]: Server map_server connected with bond.
+[lifecycle_manager-7] [INFO] [1794802287.932385115] [lifecycle_manager_localization]: [34m[1mActivating amcl[0m[0m
+[amcl-6] [INFO] [1794802287.932921199] [amcl]: Activating
+[amcl-6] [INFO] [1794802287.932942782] [amcl]: initialPoseReceived
+[amcl-6] [INFO] [1794802287.932980907] [amcl]: Setting pose (0.000000): -1.080 0.250 0.000
+[amcl-6] [INFO] [1794802287.933223449] [amcl]: Creating bond (amcl) to lifecycle manager.
+[lifecycle_manager-7] [INFO] [1794802288.037385609] [lifecycle_manager_localization]: Server amcl connected with bond.
+[lifecycle_manager-7] [INFO] [1794802288.037424109] [lifecycle_manager_localization]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-7] [INFO] [1794802288.037428900] [lifecycle_manager_localization]: [34m[1mCreating bond timer...[0m[0m
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="range_left"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="range_right"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="imu"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="oomwoo_one"]/link[@name="base_footprint"]/sensor[@name="laser_scan_sensor"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: NEEDS EXTENSION: falling back to kms_swrast
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: egl: failed to create dri2 screen
+[gazebo-1] libEGL warning: NEEDS EXTENSION: falling back to kms_swrast
+[ground_truth-13] [INFO] [1794802290.233552892] [ground_truth]: ground_truth: using /odom_truth as truth (wheel-odom mode)
+[coverage_meter-14] [INFO] [1794802290.236887773] [coverage_meter]: serviceable cells from start (30, 14): 1750 (raw reachable 2522, edge_margin 0.15m deferred to floor-care)
+[amcl-6] [INFO] [1794802290.240401236] [amcl]: createLaserObject
+[localization_health_monitor_node-10] [INFO] [1794802290.296935365] [localization_health_monitor]: Localization DEGRADED: map-to-base transform unavailable
+[coverage_meter-14] [INFO] [1794802290.624138284] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=0.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[initialpose_pub-8] [INFO] [1794802290.633148090] [initialpose_pub]: AMCL localized after 0.5s (0 backstop seed(s)) — releasing navigation
+[INFO] [initialpose_pub-8]: process has finished cleanly [pid 420718]
+[INFO] [controller_server-15]: process started with pid [421001]
+[INFO] [planner_server-16]: process started with pid [421002]
+[INFO] [behavior_server-17]: process started with pid [421003]
+[INFO] [bt_navigator-18]: process started with pid [421004]
+[INFO] [lifecycle_manager-19]: process started with pid [421005]
+[controller_server-15] [INFO] [1794802290.839005697] [controller_server]: 
+[controller_server-15] 	controller_server lifecycle node launched. 
+[planner_server-16] [INFO] [1794802290.839127531] [planner_server]: 
+[planner_server-16] 	planner_server lifecycle node launched. 
+[planner_server-16] 	Waiting on external lifecycle transitions to activate
+[planner_server-16] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] 	Waiting on external lifecycle transitions to activate
+[controller_server-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-16] [INFO] [1794802290.840550283] [planner_server]: Creating
+[behavior_server-17] [INFO] [1794802290.846102917] [behavior_server]: 
+[behavior_server-17] 	behavior_server lifecycle node launched. 
+[behavior_server-17] 	Waiting on external lifecycle transitions to activate
+[behavior_server-17] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1794802290.846874043] [controller_server]: Creating controller server
+[planner_server-16] [INFO] [1794802290.851170174] [global_costmap.global_costmap]: 
+[planner_server-16] 	global_costmap lifecycle node launched. 
+[planner_server-16] 	Waiting on external lifecycle transitions to activate
+[planner_server-16] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-16] [INFO] [1794802290.851557758] [global_costmap.global_costmap]: Creating Costmap
+[controller_server-15] [INFO] [1794802290.857119517] [local_costmap.local_costmap]: 
+[controller_server-15] 	local_costmap lifecycle node launched. 
+[controller_server-15] 	Waiting on external lifecycle transitions to activate
+[controller_server-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1794802290.857470976] [local_costmap.local_costmap]: Creating Costmap
+[bt_navigator-18] [INFO] [1794802290.864453320] [bt_navigator]: 
+[bt_navigator-18] 	bt_navigator lifecycle node launched. 
+[bt_navigator-18] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-18] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-18] [INFO] [1794802290.866398739] [bt_navigator]: Creating
+[lifecycle_manager-19] [INFO] [1794802290.869695661] [lifecycle_manager_navigation]: Creating
+[lifecycle_manager-19] [INFO] [1794802290.872880208] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[lifecycle_manager-19] [INFO] [1794802290.974529572] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-19] [INFO] [1794802290.974568364] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m
+[controller_server-15] [INFO] [1794802290.975282657] [controller_server]: Configuring controller interface
+[controller_server-15] [INFO] [1794802290.975300032] [controller_server]: getting progress checker plugins..
+[controller_server-15] [INFO] [1794802290.975357240] [controller_server]: getting goal checker plugins..
+[controller_server-15] [INFO] [1794802290.975374657] [controller_server]: Controller frequency set to 5.0000Hz
+[controller_server-15] [INFO] [1794802290.975391240] [local_costmap.local_costmap]: Configuring
+[controller_server-15] [INFO] [1794802290.983169127] [local_costmap.local_costmap]: Using plugin "obstacle_layer"
+[controller_server-15] [INFO] [1794802290.986005381] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-15] [INFO] [1794802290.989504304] [local_costmap.local_costmap]: Initialized plugin "obstacle_layer"
+[controller_server-15] [INFO] [1794802290.989536637] [local_costmap.local_costmap]: Using plugin "voxel_layer"
+[controller_server-15] [INFO] [1794802290.989672387] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-15] [INFO] [1794802290.997533941] [local_costmap.local_costmap]: Initialized plugin "voxel_layer"
+[controller_server-15] [INFO] [1794802290.997617024] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-15] [INFO] [1794802290.998036525] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[controller_server-15] [INFO] [1794802291.015492760] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-15] [INFO] [1794802291.015620010] [controller_server]: Controller Server has progress_checker  progress checkers available.
+[controller_server-15] [INFO] [1794802291.016047386] [controller_server]: Created goal checker : goal_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-15] [INFO] [1794802291.016455428] [controller_server]: Created goal checker : coverage_gap_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-15] [INFO] [1794802291.016502262] [controller_server]: Controller Server has goal_checker coverage_gap_checker  goal checkers available.
+[controller_server-15] [INFO] [1794802291.017210054] [controller_server]: Created controller : FollowPath of type nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794802291.020903185] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-19] [INFO] [1794802291.028172738] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m
+[planner_server-16] [INFO] [1794802291.028664280] [planner_server]: Configuring
+[planner_server-16] [INFO] [1794802291.029195531] [global_costmap.global_costmap]: Configuring
+[planner_server-16] [INFO] [1794802291.037369752] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-16] [INFO] [1794802291.040349673] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-16] [INFO] [1794802291.041573800] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-16] [INFO] [1794802291.041590384] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[planner_server-16] [INFO] [1794802291.042415760] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-16] [INFO] [1794802291.051416690] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-16] [INFO] [1794802291.051440274] [global_costmap.global_costmap]: Using plugin "voxel_layer"
+[planner_server-16] [INFO] [1794802291.053714944] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-16] [INFO] [1794802291.071436929] [global_costmap.global_costmap]: Initialized plugin "voxel_layer"
+[planner_server-16] [INFO] [1794802291.071462013] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-16] [INFO] [1794802291.071655221] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[planner_server-16] [INFO] [1794802291.091939294] [planner_server]: Created global planner plugin GridBased of type nav2_navfn_planner::NavfnPlanner
+[planner_server-16] [INFO] [1794802291.091985253] [planner_server]: Configuring plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794802291.093329463] [planner_server]: Created global planner plugin CoverageDirect of type robot_coverage_planner::CoverageDirectPlanner
+[planner_server-16] [INFO] [1794802291.093369755] [planner_server]: Configuring plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794802291.094519590] [planner_server]: Coverage direct connectors enabled: maximum_length=1.20 m maximum_cost=220
+[planner_server-16] [INFO] [1794802291.094535590] [planner_server]: Planner Server has GridBased CoverageDirect  planners available.
+[lifecycle_manager-19] [INFO] [1794802291.104234772] [lifecycle_manager_navigation]: [34m[1mConfiguring behavior_server[0m[0m
+[behavior_server-17] [INFO] [1794802291.104521189] [behavior_server]: Configuring
+[behavior_server-17] [INFO] [1794802291.112807326] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors::Spin
+[behavior_server-17] [INFO] [1794802291.113961620] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors::BackUp
+[behavior_server-17] [INFO] [1794802291.114723829] [behavior_server]: Creating behavior plugin drive_on_heading of type nav2_behaviors::DriveOnHeading
+[behavior_server-17] [INFO] [1794802291.115708998] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors::Wait
+[behavior_server-17] [INFO] [1794802291.116379874] [behavior_server]: Creating behavior plugin assisted_teleop of type nav2_behaviors::AssistedTeleop
+[behavior_server-17] [INFO] [1794802291.127091223] [behavior_server]: Configuring spin
+[behavior_server-17] [INFO] [1794802291.137230447] [behavior_server]: Configuring backup
+[planner_server-16] [INFO] [1794802291.139716618] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 72 X 52 at 0.050000 m/pix
+[behavior_server-17] [INFO] [1794802291.141036703] [behavior_server]: Configuring drive_on_heading
+[behavior_server-17] [INFO] [1794802291.147534547] [behavior_server]: Configuring wait
+[behavior_server-17] [INFO] [1794802291.151730136] [behavior_server]: Configuring assisted_teleop
+[lifecycle_manager-19] [INFO] [1794802291.163653405] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m
+[bt_navigator-18] [INFO] [1794802291.166325659] [bt_navigator]: Configuring
+[bt_navigator-18] [INFO] [1794802291.177666426] [bt_navigator]: Creating navigator id navigate_to_pose of type nav2_bt_navigator::NavigateToPoseNavigator
+[bt_navigator-18] [WARN] [1794802291.183726102] [bt_navigator]: Error_code parameters were not set. Using default values of: follow_path_error_code compute_path_error_code
+[bt_navigator-18] Make sure these match your BT and there are not other sources of error codes youreported to your application
+[bt_navigator-18] [INFO] [1794802291.251121622] [bt_navigator]: Creating navigator id navigate_through_poses of type nav2_bt_navigator::NavigateThroughPosesNavigator
+[lifecycle_manager-19] [INFO] [1794802291.268592524] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[controller_server-15] [INFO] [1794802291.268999525] [controller_server]: Activating
+[controller_server-15] [INFO] [1794802291.269024275] [local_costmap.local_costmap]: Activating
+[controller_server-15] [INFO] [1794802291.269028608] [local_costmap.local_costmap]: Checking transform
+[controller_server-15] [INFO] [1794802291.269052775] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[coverage_meter-14] [INFO] [1794802291.623898446] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=1.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802291.769141461] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-15] [INFO] [1794802292.269131022] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[coverage_meter-14] [INFO] [1794802292.623331359] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=2.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802292.769132667] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+[controller_server-15] [INFO] [1794802293.269256021] [local_costmap.local_costmap]: start
+[controller_server-15] [INFO] [1794802293.471974625] [controller_server]: Activating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794802293.472059917] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794802293.476265882] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[planner_server-16] [INFO] [1794802293.476570507] [planner_server]: Activating
+[planner_server-16] [INFO] [1794802293.476598924] [global_costmap.global_costmap]: Activating
+[planner_server-16] [INFO] [1794802293.476604507] [global_costmap.global_costmap]: Checking transform
+[planner_server-16] [INFO] [1794802293.476630466] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+[coverage_meter-14] [INFO] [1794802293.623155733] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=3.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794802293.977341821] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation at time 5.340000, but only time 10.200000 is in the buffer, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794802294.476875051] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 5.840000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794802294.623273402] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=4.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794802294.976959656] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 6.340000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[localization_health_monitor_node-10] [INFO] [1794802295.296127316] [localization_health_monitor]: Localization HEALTHY: transient localization degradation cleared
+[planner_server-16] [INFO] [1794802295.477184013] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 6.840000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794802295.623406822] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=5.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794802295.977019244] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 7.340000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794802296.477222018] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 7.840000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794802296.623659078] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=6.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794802296.977086458] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 8.340000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794802297.476974233] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 8.840000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794802297.623147543] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=7.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794802297.977208383] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 9.340000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[planner_server-16] [INFO] [1794802298.476722200] [global_costmap.global_costmap]: Timed out waiting for transform from base_link to map to become available, tf error: Lookup would require extrapolation into the past.  Requested time 9.840000 but the earliest data is at time 10.200000, when looking up transform from frame [base_link] to frame [map]
+[coverage_meter-14] [INFO] [1794802298.623471636] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=8.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [INFO] [1794802298.977658061] [global_costmap.global_costmap]: start
+[planner_server-16] [INFO] [1794802299.480612426] [planner_server]: Activating plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794802299.480696176] [planner_server]: Activating plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794802299.485097683] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794802299.489273647] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[behavior_server-17] [INFO] [1794802299.489671648] [behavior_server]: Activating
+[behavior_server-17] [INFO] [1794802299.489705231] [behavior_server]: Activating spin
+[behavior_server-17] [INFO] [1794802299.489713356] [behavior_server]: Activating backup
+[behavior_server-17] [INFO] [1794802299.489718856] [behavior_server]: Activating drive_on_heading
+[behavior_server-17] [INFO] [1794802299.489730148] [behavior_server]: Activating wait
+[behavior_server-17] [INFO] [1794802299.489966273] [behavior_server]: Activating assisted_teleop
+[behavior_server-17] [INFO] [1794802299.489977732] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794802299.494345322] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[bt_navigator-18] [INFO] [1794802299.494924948] [bt_navigator]: Activating
+[bt_navigator-18] [INFO] [1794802299.586468798] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-19] [INFO] [1794802299.590661972] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+[coverage_meter-14] [INFO] [1794802299.623385189] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=9.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802300.624365871] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=10.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[cleaning_task_manager_node-12] [INFO] [1794802301.479304827] [cleaning_task_manager]: task=multi_room-183-1794802301 state=WAITING_MAP completed=0 next=0/0
+[cleaning_task_manager_node-12] [INFO] [1794802301.540337380] [cleaning_task_manager]: task=multi_room-183-1794802301 state=PLANNING completed=0 next=0/0
+[coverage_planner_node-11] [INFO] [1794802301.543115385] [coverage_planner]: Tracking 1750 target cells with edge_margin=0.15 m
+[cleaning_task_manager_node-12] [INFO] [1794802301.544011469] [cleaning_task_manager]: task=multi_room-183-1794802301 state=PLANNING completed=0 next=0/0
+[coverage_planner_node-11] [INFO] [1794802301.544891346] [coverage_planner]: Planning with 95 additional live obstacle cells
+[coverage_meter-14] [INFO] [1794802301.624086344] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=11.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802302.622901651] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=12.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802303.622878671] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=13.4 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_planner_node-11] [INFO] [1794802304.307694741] [coverage_planner]: algorithm=optimized gap_fill=0 waypoints=34 planned_m=11.17: Selected sweep lanes by travel and predicted missed floor
+[cleaning_task_manager_node-12] [INFO] [1794802304.309074035] [cleaning_task_manager]: task=multi_room-183-1794802301 state=RUNNING completed=0 next=0/34
+[coverage_meter-14] [INFO] [1794802304.309538744] [coverage_meter]: cleaning job active: path/time accounting reset
+[bt_navigator-18] [INFO] [1794802304.411606695] [bt_navigator]: Begin navigating from current location (-1.08, 0.25) to (-1.17, 0.63)
+[controller_server-15] [INFO] [1794802304.433193520] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [WARN] [1794802304.433255854] [controller_server]: No progress checker was specified in parameter 'current_progress_checker'. Server will use only plugin loaded progress_checker . This warning will appear once.
+[localization_health_monitor_node-10] [INFO] [1794802304.496148785] [localization_health_monitor]: Localization DEGRADED: localization pose stale while robot is moving
+[coverage_meter-14] [INFO] [1794802304.623173067] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=0.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[localization_health_monitor_node-10] [INFO] [1794802304.696107181] [localization_health_monitor]: Localization HEALTHY: transient localization degradation cleared
+[coverage_meter-14] [INFO] [1794802305.623426633] [coverage_meter]: COVERAGE_REPORT coverage=0.0280 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.00 ideal_m=10.94 reachable_cells=1750 sim_t=1.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802305.633577732] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802306.623517742] [coverage_meter]: COVERAGE_REPORT coverage=0.0383 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.08 ideal_m=10.94 reachable_cells=1750 sim_t=2.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802306.633522216] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802307.623141101] [coverage_meter]: COVERAGE_REPORT coverage=0.0566 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.26 ideal_m=10.94 reachable_cells=1750 sim_t=3.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802307.633533868] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802307.833586890] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802307.862184018] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802307.940586641] [bt_navigator]: Begin navigating from current location (-1.14, 0.55) to (-1.27, 0.73)
+[controller_server-15] [INFO] [1794802307.962651218] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802308.623476465] [coverage_meter]: COVERAGE_REPORT coverage=0.0709 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.42 ideal_m=10.94 reachable_cells=1750 sim_t=4.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802308.762822600] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802308.791042145] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802308.840688848] [bt_navigator]: Begin navigating from current location (-1.21, 0.66) to (-1.22, 0.38)
+[controller_server-15] [INFO] [1794802308.843685436] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802309.623200912] [coverage_meter]: COVERAGE_REPORT coverage=0.0777 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.46 ideal_m=10.94 reachable_cells=1750 sim_t=5.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802310.044058158] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802310.624103238] [coverage_meter]: COVERAGE_REPORT coverage=0.0777 efficiency=0.0000 revisit_ratio=0.0000 path_m=0.46 ideal_m=10.94 reachable_cells=1750 sim_t=6.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802311.044349109] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802311.623512189] [coverage_meter]: COVERAGE_REPORT coverage=0.0783 efficiency=20.6154 revisit_ratio=0.0000 path_m=0.53 ideal_m=10.94 reachable_cells=1750 sim_t=7.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802312.044026102] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802312.624067227] [coverage_meter]: COVERAGE_REPORT coverage=0.0817 efficiency=16.7566 revisit_ratio=0.0000 path_m=0.65 ideal_m=10.94 reachable_cells=1750 sim_t=8.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802312.644218925] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802312.671507177] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802312.740942453] [bt_navigator]: Begin navigating from current location (-1.25, 0.46) to (-1.12, -0.02)
+[controller_server-15] [INFO] [1794802312.743795707] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802313.624040057] [coverage_meter]: COVERAGE_REPORT coverage=0.0857 efficiency=13.5072 revisit_ratio=0.3130 path_m=0.81 ideal_m=10.94 reachable_cells=1750 sim_t=9.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802313.943996230] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802314.624465932] [coverage_meter]: COVERAGE_REPORT coverage=0.0966 efficiency=10.8334 revisit_ratio=0.2510 path_m=1.01 ideal_m=10.94 reachable_cells=1750 sim_t=10.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802314.944025730] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802315.144121880] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802315.172011841] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802315.240592241] [bt_navigator]: Begin navigating from current location (-1.18, 0.05) to (-1.07, -0.42)
+[controller_server-15] [INFO] [1794802315.244136788] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802315.623086806] [coverage_meter]: COVERAGE_REPORT coverage=0.1114 efficiency=9.4299 revisit_ratio=0.2185 path_m=1.16 ideal_m=10.94 reachable_cells=1750 sim_t=11.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802316.444444234] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802316.623553518] [coverage_meter]: COVERAGE_REPORT coverage=0.1326 efficiency=8.0433 revisit_ratio=0.1864 path_m=1.36 ideal_m=10.94 reachable_cells=1750 sim_t=12.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802317.244467629] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802317.270905671] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802317.340454115] [bt_navigator]: Begin navigating from current location (-1.12, -0.33) to (-1.12, -0.72)
+[controller_server-15] [INFO] [1794802317.343006827] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802317.622836980] [coverage_meter]: COVERAGE_REPORT coverage=0.1480 efficiency=7.1836 revisit_ratio=0.1665 path_m=1.52 ideal_m=10.94 reachable_cells=1750 sim_t=13.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802318.543141402] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802318.623550738] [coverage_meter]: COVERAGE_REPORT coverage=0.1686 efficiency=6.3531 revisit_ratio=0.1472 path_m=1.72 ideal_m=10.94 reachable_cells=1750 sim_t=14.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802319.143248857] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802319.171477818] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802319.241023346] [bt_navigator]: Begin navigating from current location (-1.11, -0.65) to (-0.52, -0.72)
+[controller_server-15] [INFO] [1794802319.243676850] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802319.623497372] [coverage_meter]: COVERAGE_REPORT coverage=0.1800 efficiency=6.0022 revisit_ratio=0.1391 path_m=1.82 ideal_m=10.94 reachable_cells=1750 sim_t=15.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802320.444186013] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802320.623472049] [coverage_meter]: COVERAGE_REPORT coverage=0.1800 efficiency=5.9614 revisit_ratio=0.1381 path_m=1.83 ideal_m=10.94 reachable_cells=1750 sim_t=16.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802321.443987608] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802321.624117771] [coverage_meter]: COVERAGE_REPORT coverage=0.1909 efficiency=5.5768 revisit_ratio=0.1292 path_m=1.96 ideal_m=10.94 reachable_cells=1750 sim_t=17.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802322.444172414] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802322.623223617] [coverage_meter]: COVERAGE_REPORT coverage=0.2080 efficiency=5.0626 revisit_ratio=0.1173 path_m=2.16 ideal_m=10.94 reachable_cells=1750 sim_t=18.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802323.444072138] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802323.623098342] [coverage_meter]: COVERAGE_REPORT coverage=0.2263 efficiency=4.6545 revisit_ratio=0.1079 path_m=2.35 ideal_m=10.94 reachable_cells=1750 sim_t=19.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802323.644120875] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802323.671364752] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802323.740837280] [bt_navigator]: Begin navigating from current location (-0.61, -0.73) to (-0.62, -0.42)
+[controller_server-15] [INFO] [1794802323.743419284] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802324.623610986] [coverage_meter]: COVERAGE_REPORT coverage=0.2263 efficiency=4.6260 revisit_ratio=0.1072 path_m=2.36 ideal_m=10.94 reachable_cells=1750 sim_t=20.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802324.943555165] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802325.870376443] [coverage_meter]: COVERAGE_REPORT coverage=0.2303 efficiency=4.5128 revisit_ratio=0.1046 path_m=2.42 ideal_m=10.94 reachable_cells=1750 sim_t=21.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802325.946450440] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802326.943593250] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802326.956060103] [coverage_meter]: COVERAGE_REPORT coverage=0.2434 efficiency=4.2215 revisit_ratio=0.0978 path_m=2.59 ideal_m=10.94 reachable_cells=1750 sim_t=22.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802327.343583018] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802327.371559313] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802327.440960591] [bt_navigator]: Begin navigating from current location (-0.60, -0.50) to (-0.67, -0.02)
+[controller_server-15] [INFO] [1794802327.443954888] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802327.974719491] [coverage_meter]: COVERAGE_REPORT coverage=0.2589 efficiency=3.9812 revisit_ratio=0.0923 path_m=2.75 ideal_m=10.94 reachable_cells=1750 sim_t=23.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802328.644711153] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802329.151565219] [coverage_meter]: COVERAGE_REPORT coverage=0.2800 efficiency=3.7111 revisit_ratio=0.0860 path_m=2.95 ideal_m=10.94 reachable_cells=1750 sim_t=24.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802329.644148847] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802329.844438836] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802329.873497216] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802329.941537326] [bt_navigator]: Begin navigating from current location (-0.63, -0.10) to (-0.77, 0.38)
+[controller_server-15] [INFO] [1794802329.944129747] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802330.175559537] [coverage_meter]: COVERAGE_REPORT coverage=0.2954 efficiency=3.5279 revisit_ratio=0.0818 path_m=3.10 ideal_m=10.94 reachable_cells=1750 sim_t=25.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802331.144314017] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802331.176445319] [coverage_meter]: COVERAGE_REPORT coverage=0.3166 efficiency=3.3152 revisit_ratio=0.0768 path_m=3.30 ideal_m=10.94 reachable_cells=1750 sim_t=26.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802332.144365924] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802332.175312224] [coverage_meter]: COVERAGE_REPORT coverage=0.3320 efficiency=3.1281 revisit_ratio=0.0725 path_m=3.50 ideal_m=10.94 reachable_cells=1750 sim_t=27.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802332.344828123] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802332.372210668] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802332.441233779] [bt_navigator]: Begin navigating from current location (-0.74, 0.31) to (-0.82, 0.78)
+[controller_server-15] [INFO] [1794802332.462332689] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802333.175464884] [coverage_meter]: COVERAGE_REPORT coverage=0.3429 efficiency=3.0016 revisit_ratio=0.0696 path_m=3.64 ideal_m=10.94 reachable_cells=1750 sim_t=28.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802333.662548881] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802334.175097753] [coverage_meter]: COVERAGE_REPORT coverage=0.3600 efficiency=2.8455 revisit_ratio=0.0659 path_m=3.84 ideal_m=10.94 reachable_cells=1750 sim_t=29.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802334.462520677] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802334.491595516] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794802334.540113553] [cleaning_task_manager]: Adjusted sweep waypoint 11 around live obstacle
+[bt_navigator-18] [INFO] [1794802334.540658095] [bt_navigator]: Begin navigating from current location (-0.81, 0.69) to (-0.82, 0.73)
+[controller_server-15] [INFO] [1794802334.551955530] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794802334.552052280] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802334.570989561] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802334.641399509] [bt_navigator]: Begin navigating from current location (-0.81, 0.69) to (-0.37, 0.73)
+[controller_server-15] [INFO] [1794802334.644192721] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802335.175995209] [coverage_meter]: COVERAGE_REPORT coverage=0.3669 efficiency=2.7989 revisit_ratio=0.0649 path_m=3.91 ideal_m=10.94 reachable_cells=1750 sim_t=30.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802335.844462210] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802336.175233497] [coverage_meter]: COVERAGE_REPORT coverage=0.3669 efficiency=2.7817 revisit_ratio=0.0645 path_m=3.93 ideal_m=10.94 reachable_cells=1750 sim_t=31.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802336.844623627] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802337.238295558] [coverage_meter]: COVERAGE_REPORT coverage=0.3714 efficiency=2.7122 revisit_ratio=0.0628 path_m=4.03 ideal_m=10.94 reachable_cells=1750 sim_t=32.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802337.844842337] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802338.238515602] [coverage_meter]: COVERAGE_REPORT coverage=0.3766 efficiency=2.6423 revisit_ratio=0.0612 path_m=4.14 ideal_m=10.94 reachable_cells=1750 sim_t=33.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802338.844642923] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802339.262297228] [coverage_meter]: COVERAGE_REPORT coverage=0.3834 efficiency=2.5757 revisit_ratio=0.0597 path_m=4.25 ideal_m=10.94 reachable_cells=1750 sim_t=34.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802339.444352858] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802339.474500408] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802339.541470183] [bt_navigator]: Begin navigating from current location (-0.46, 0.76) to (-0.32, 0.58)
+[controller_server-15] [INFO] [1794802339.543467520] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802340.263173902] [coverage_meter]: COVERAGE_REPORT coverage=0.3897 efficiency=2.5408 revisit_ratio=0.0589 path_m=4.30 ideal_m=10.94 reachable_cells=1750 sim_t=35.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802340.743969562] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802341.263523035] [coverage_meter]: COVERAGE_REPORT coverage=0.3954 efficiency=2.4906 revisit_ratio=0.0577 path_m=4.39 ideal_m=10.94 reachable_cells=1750 sim_t=36.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802341.744006820] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802341.744171112] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802341.781989507] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802341.840793353] [bt_navigator]: Begin navigating from current location (-0.33, 0.68) to (-0.27, 0.18)
+[controller_server-15] [INFO] [1794802341.844265609] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802342.263394461] [coverage_meter]: COVERAGE_REPORT coverage=0.3989 efficiency=2.4494 revisit_ratio=0.0568 path_m=4.47 ideal_m=10.94 reachable_cells=1750 sim_t=37.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802343.044485197] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802343.263142305] [coverage_meter]: COVERAGE_REPORT coverage=0.4046 efficiency=2.3922 revisit_ratio=0.0554 path_m=4.57 ideal_m=10.94 reachable_cells=1750 sim_t=38.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [WARN] [1794802343.644613555] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [INFO] [1794802344.044413876] [controller_server]: Passing new path to controller.
+[controller_server-15] [WARN] [1794802344.044644377] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[coverage_meter-14] [INFO] [1794802344.263584152] [coverage_meter]: COVERAGE_REPORT coverage=0.4080 efficiency=2.3619 revisit_ratio=0.0547 path_m=4.63 ideal_m=10.94 reachable_cells=1750 sim_t=39.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [WARN] [1794802344.844536105] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [INFO] [1794802345.044402516] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802345.263596292] [coverage_meter]: COVERAGE_REPORT coverage=0.4120 efficiency=2.3547 revisit_ratio=0.0546 path_m=4.64 ideal_m=10.94 reachable_cells=1750 sim_t=40.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802346.044406157] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802346.264160726] [coverage_meter]: COVERAGE_REPORT coverage=0.4211 efficiency=2.3056 revisit_ratio=0.0534 path_m=4.74 ideal_m=10.94 reachable_cells=1750 sim_t=41.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802347.044521383] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802347.244495004] [controller_server]: Reached the goal!
+[coverage_meter-14] [INFO] [1794802347.263496744] [coverage_meter]: COVERAGE_REPORT coverage=0.4291 efficiency=2.2564 revisit_ratio=0.0523 path_m=4.85 ideal_m=10.94 reachable_cells=1750 sim_t=42.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[bt_navigator-18] [INFO] [1794802347.271226340] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802347.340623912] [bt_navigator]: Begin navigating from current location (-0.31, 0.27) to (-0.22, -0.22)
+[controller_server-15] [INFO] [1794802347.344311127] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802348.307693837] [coverage_meter]: COVERAGE_REPORT coverage=0.4366 efficiency=2.2062 revisit_ratio=0.0511 path_m=4.96 ideal_m=10.94 reachable_cells=1750 sim_t=43.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802348.544888019] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802349.340137746] [coverage_meter]: COVERAGE_REPORT coverage=0.4537 efficiency=2.1231 revisit_ratio=0.0492 path_m=5.15 ideal_m=10.94 reachable_cells=1750 sim_t=44.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802349.544566333] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802349.945040493] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802349.967260154] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794802350.039936441] [cleaning_task_manager]: Adjusted sweep waypoint 16 around live obstacle
+[bt_navigator-18] [INFO] [1794802350.042269278] [bt_navigator]: Begin navigating from current location (-0.23, -0.14) to (0.28, 0.18)
+[controller_server-15] [INFO] [1794802350.053935131] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802350.339221310] [coverage_meter]: COVERAGE_REPORT coverage=0.4617 efficiency=2.0756 revisit_ratio=0.0481 path_m=5.27 ideal_m=10.94 reachable_cells=1750 sim_t=45.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802351.254092820] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802351.339525211] [coverage_meter]: COVERAGE_REPORT coverage=0.4617 efficiency=2.0739 revisit_ratio=0.0481 path_m=5.27 ideal_m=10.94 reachable_cells=1750 sim_t=46.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802352.254081806] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802352.339679197] [coverage_meter]: COVERAGE_REPORT coverage=0.4646 efficiency=2.0483 revisit_ratio=0.0475 path_m=5.34 ideal_m=10.94 reachable_cells=1750 sim_t=47.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802353.254064043] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802353.339257518] [coverage_meter]: COVERAGE_REPORT coverage=0.4829 efficiency=1.9770 revisit_ratio=0.0458 path_m=5.53 ideal_m=10.94 reachable_cells=1750 sim_t=48.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802354.254257325] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802354.339229507] [coverage_meter]: COVERAGE_REPORT coverage=0.5000 efficiency=1.9082 revisit_ratio=0.0442 path_m=5.73 ideal_m=10.94 reachable_cells=1750 sim_t=49.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802354.654153946] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802354.682862535] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802354.742427592] [bt_navigator]: Begin navigating from current location (0.21, 0.13) to (0.18, 0.13)
+[controller_server-15] [INFO] [1794802354.745658097] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1794802354.745912348] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802354.753081235] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802354.840289546] [bt_navigator]: Begin navigating from current location (0.21, 0.13) to (0.28, -0.27)
+[controller_server-15] [INFO] [1794802354.843070384] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802355.339488707] [coverage_meter]: COVERAGE_REPORT coverage=0.5057 efficiency=1.8855 revisit_ratio=0.0437 path_m=5.80 ideal_m=10.94 reachable_cells=1750 sim_t=50.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802356.043348083] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802356.339496325] [coverage_meter]: COVERAGE_REPORT coverage=0.5057 efficiency=1.8844 revisit_ratio=0.0437 path_m=5.80 ideal_m=10.94 reachable_cells=1750 sim_t=51.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802357.043393703] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802357.339655362] [coverage_meter]: COVERAGE_REPORT coverage=0.5137 efficiency=1.8493 revisit_ratio=0.0429 path_m=5.91 ideal_m=10.94 reachable_cells=1750 sim_t=52.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802358.043273199] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802358.340517735] [coverage_meter]: COVERAGE_REPORT coverage=0.5326 efficiency=1.7897 revisit_ratio=0.0415 path_m=6.11 ideal_m=10.94 reachable_cells=1750 sim_t=53.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802358.443614198] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802358.471060619] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802358.541102235] [bt_navigator]: Begin navigating from current location (0.27, -0.20) to (0.28, -0.47)
+[controller_server-15] [INFO] [1794802358.552918505] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802359.339599815] [coverage_meter]: COVERAGE_REPORT coverage=0.5474 efficiency=1.7463 revisit_ratio=0.0405 path_m=6.26 ideal_m=10.94 reachable_cells=1750 sim_t=54.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802359.753211379] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802359.753354963] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802359.792231069] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802359.841036734] [bt_navigator]: Begin navigating from current location (0.28, -0.38) to (0.38, -0.72)
+[controller_server-15] [INFO] [1794802359.844198448] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802360.340006941] [coverage_meter]: COVERAGE_REPORT coverage=0.5554 efficiency=1.7158 revisit_ratio=0.0398 path_m=6.37 ideal_m=10.94 reachable_cells=1750 sim_t=55.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802361.044352158] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802361.338882149] [coverage_meter]: COVERAGE_REPORT coverage=0.5697 efficiency=1.6835 revisit_ratio=0.0390 path_m=6.50 ideal_m=10.94 reachable_cells=1750 sim_t=56.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802362.044397119] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802362.044570744] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802362.082467766] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802362.141023489] [bt_navigator]: Begin navigating from current location (0.35, -0.64) to (0.78, -0.72)
+[controller_server-15] [INFO] [1794802362.143212118] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802362.357683018] [coverage_meter]: COVERAGE_REPORT coverage=0.5743 efficiency=1.6618 revisit_ratio=0.0385 path_m=6.58 ideal_m=10.94 reachable_cells=1750 sim_t=57.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802363.343381291] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802363.401537013] [coverage_meter]: COVERAGE_REPORT coverage=0.5817 efficiency=1.6515 revisit_ratio=0.0383 path_m=6.62 ideal_m=10.94 reachable_cells=1750 sim_t=58.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802364.343412673] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802364.401539687] [coverage_meter]: COVERAGE_REPORT coverage=0.5954 efficiency=1.6067 revisit_ratio=0.0372 path_m=6.81 ideal_m=10.94 reachable_cells=1750 sim_t=59.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802365.143434472] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802365.172243562] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802365.240524426] [bt_navigator]: Begin navigating from current location (0.70, -0.72) to (0.73, -0.47)
+[controller_server-15] [INFO] [1794802365.243465556] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802365.401642530] [coverage_meter]: COVERAGE_REPORT coverage=0.6086 efficiency=1.5722 revisit_ratio=0.0364 path_m=6.96 ideal_m=10.94 reachable_cells=1750 sim_t=60.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802366.402429667] [coverage_meter]: COVERAGE_REPORT coverage=0.6086 efficiency=1.5714 revisit_ratio=0.0364 path_m=6.96 ideal_m=10.94 reachable_cells=1750 sim_t=61.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802366.443702403] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802367.402375929] [coverage_meter]: COVERAGE_REPORT coverage=0.6183 efficiency=1.5443 revisit_ratio=0.0358 path_m=7.08 ideal_m=10.94 reachable_cells=1750 sim_t=62.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802367.443676582] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802367.843684171] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802367.871142592] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802367.940875792] [bt_navigator]: Begin navigating from current location (0.73, -0.55) to (0.68, -0.07)
+[controller_server-15] [INFO] [1794802367.943967506] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802368.402476819] [coverage_meter]: COVERAGE_REPORT coverage=0.6326 efficiency=1.5152 revisit_ratio=0.0351 path_m=7.22 ideal_m=10.94 reachable_cells=1750 sim_t=63.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802369.144113816] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802369.401963542] [coverage_meter]: COVERAGE_REPORT coverage=0.6531 efficiency=1.4744 revisit_ratio=0.0342 path_m=7.42 ideal_m=10.94 reachable_cells=1750 sim_t=64.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802370.144106417] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802370.144247959] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802370.182389273] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802370.241159539] [bt_navigator]: Begin navigating from current location (0.70, -0.17) to (0.63, 0.33)
+[controller_server-15] [INFO] [1794802370.244297544] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802370.402190269] [coverage_meter]: COVERAGE_REPORT coverage=0.6674 efficiency=1.4421 revisit_ratio=0.0334 path_m=7.58 ideal_m=10.94 reachable_cells=1750 sim_t=65.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802371.402193330] [coverage_meter]: COVERAGE_REPORT coverage=0.6874 efficiency=1.4055 revisit_ratio=0.0326 path_m=7.78 ideal_m=10.94 reachable_cells=1750 sim_t=66.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802371.444454943] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802372.401689558] [coverage_meter]: COVERAGE_REPORT coverage=0.7080 efficiency=1.3712 revisit_ratio=0.0318 path_m=7.98 ideal_m=10.94 reachable_cells=1750 sim_t=67.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802372.444451505] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802372.444590839] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802372.481557568] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802372.543073339] [bt_navigator]: Begin navigating from current location (0.65, 0.25) to (0.53, 0.73)
+[controller_server-15] [INFO] [1794802372.545255217] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802373.402960250] [coverage_meter]: COVERAGE_REPORT coverage=0.7240 efficiency=1.3438 revisit_ratio=0.0311 path_m=8.14 ideal_m=10.94 reachable_cells=1750 sim_t=68.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802373.745641079] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802374.402711649] [coverage_meter]: COVERAGE_REPORT coverage=0.7463 efficiency=1.3116 revisit_ratio=0.0304 path_m=8.34 ideal_m=10.94 reachable_cells=1750 sim_t=69.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802374.745720480] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802374.746101189] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802374.783505002] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802374.840533057] [bt_navigator]: Begin navigating from current location (0.56, 0.64) to (0.73, 0.73)
+[controller_server-15] [INFO] [1794802374.843364437] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802375.401161256] [coverage_meter]: COVERAGE_REPORT coverage=0.7509 efficiency=1.3000 revisit_ratio=0.0301 path_m=8.41 ideal_m=10.94 reachable_cells=1750 sim_t=70.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802376.043540761] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802376.402029286] [coverage_meter]: COVERAGE_REPORT coverage=0.7554 efficiency=1.2960 revisit_ratio=0.0300 path_m=8.44 ideal_m=10.94 reachable_cells=1750 sim_t=71.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802377.043640832] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802377.243546255] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802377.270942801] [bt_navigator]: Goal succeeded
+[bt_navigator-18] [INFO] [1794802377.340569044] [bt_navigator]: Begin navigating from current location (0.64, 0.71) to (0.88, 0.48)
+[controller_server-15] [INFO] [1794802377.343333257] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802377.402194691] [coverage_meter]: COVERAGE_REPORT coverage=0.7577 efficiency=1.2854 revisit_ratio=0.0298 path_m=8.51 ideal_m=10.94 reachable_cells=1750 sim_t=72.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802378.423236716] [coverage_meter]: COVERAGE_REPORT coverage=0.7611 efficiency=1.2823 revisit_ratio=0.0297 path_m=8.53 ideal_m=10.94 reachable_cells=1750 sim_t=73.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802378.543546004] [controller_server]: Passing new path to controller.
+[coverage_meter-14] [INFO] [1794802379.424373460] [coverage_meter]: COVERAGE_REPORT coverage=0.7680 efficiency=1.2592 revisit_ratio=0.0292 path_m=8.69 ideal_m=10.94 reachable_cells=1750 sim_t=74.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802379.543614746] [controller_server]: Passing new path to controller.
+[controller_server-15] [INFO] [1794802379.943511884] [controller_server]: Reached the goal!
+[bt_navigator-18] [INFO] [1794802379.965430088] [bt_navigator]: Goal succeeded
+[cleaning_task_manager_node-12] [INFO] [1794802380.040239966] [cleaning_task_manager]: Adjusted sweep waypoint 28 around live obstacle
+[bt_navigator-18] [INFO] [1794802380.040965300] [bt_navigator]: Begin navigating from current location (0.83, 0.55) to (0.88, 0.38)
+[controller_server-15] [INFO] [1794802380.061926752] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802380.422451325] [coverage_meter]: COVERAGE_REPORT coverage=0.7731 efficiency=1.2450 revisit_ratio=0.0288 path_m=8.79 ideal_m=10.94 reachable_cells=1750 sim_t=75.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [WARN] [1794802380.462481934] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802380.662534567] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [ERROR] [1794802380.662603192] [controller_server]: Controller patience exceeded
+[controller_server-15] [WARN] [1794802380.662930442] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[controller_server-15] [INFO] [1794802380.682906935] [local_costmap.local_costmap]: Received request to clear entirely the local_costmap
+[controller_server-15] [INFO] [1794802380.683718853] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [WARN] [1794802380.874603136] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802380.885030695] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [INFO] [1794802381.084531952] [controller_server]: Passing new path to controller.
+[controller_server-15] [WARN] [1794802381.085142036] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [ERROR] [1794802381.085178661] [controller_server]: Controller patience exceeded
+[controller_server-15] [WARN] [1794802381.085244495] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[controller_server-15] [INFO] [1794802381.112047499] [local_costmap.local_costmap]: Received request to clear entirely the local_costmap
+[planner_server-16] [INFO] [1794802381.112617666] [global_costmap.global_costmap]: Received request to clear entirely the global_costmap
+[coverage_meter-14] [INFO] [1794802381.423058779] [coverage_meter]: COVERAGE_REPORT coverage=0.7731 efficiency=1.2436 revisit_ratio=0.0288 path_m=8.80 ideal_m=10.94 reachable_cells=1750 sim_t=76.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[planner_server-16] [WARN] [1794802381.483997799] [planner_server]: Planner loop missed its desired rate of 10.0000 Hz. Current loop rate is 2.7027 Hz
+[controller_server-15] [INFO] [1794802381.502645539] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [WARN] [1794802381.502823915] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802381.903038472] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802382.102956813] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [ERROR] [1794802382.103049313] [controller_server]: Controller patience exceeded
+[controller_server-15] [WARN] [1794802382.103260438] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[controller_server-15] [INFO] [1794802382.121597595] [local_costmap.local_costmap]: Received request to clear entirely the local_costmap
+[controller_server-15] [INFO] [1794802382.122461054] [controller_server]: Received a goal, begin computing control effort.
+[coverage_meter-14] [INFO] [1794802382.422616608] [coverage_meter]: COVERAGE_REPORT coverage=0.7731 efficiency=1.2402 revisit_ratio=0.0287 path_m=8.82 ideal_m=10.94 reachable_cells=1750 sim_t=77.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [INFO] [1794802382.522653154] [controller_server]: Passing new path to controller.
+[controller_server-15] [WARN] [1794802382.723025829] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802382.923151254] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [ERROR] [1794802382.923200879] [controller_server]: Controller patience exceeded
+[controller_server-15] [WARN] [1794802382.923289504] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[behavior_server-17] [INFO] [1794802382.943927789] [behavior_server]: Running spin
+[behavior_server-17] [INFO] [1794802382.944093498] [behavior_server]: Turning 1.57 for spin behavior.
+[behavior_server-17] [WARN] [1794802383.044987211] [behavior_server]: Collision Ahead - Exiting Spin
+[behavior_server-17] [WARN] [1794802383.045023170] [behavior_server]: spin failed
+[behavior_server-17] [WARN] [1794802383.045029628] [behavior_server]: [spin] [ActionServer] Aborting handle.
+[behavior_server-17] [INFO] [1794802383.061993157] [behavior_server]: Running wait
+[coverage_meter-14] [INFO] [1794802383.423320316] [coverage_meter]: COVERAGE_REPORT coverage=0.7749 efficiency=1.2355 revisit_ratio=0.0286 path_m=8.85 ideal_m=10.94 reachable_cells=1750 sim_t=78.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802384.422580356] [coverage_meter]: COVERAGE_REPORT coverage=0.7749 efficiency=1.2355 revisit_ratio=0.0286 path_m=8.85 ideal_m=10.94 reachable_cells=1750 sim_t=79.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802385.423270776] [coverage_meter]: COVERAGE_REPORT coverage=0.7749 efficiency=1.2355 revisit_ratio=0.0286 path_m=8.85 ideal_m=10.94 reachable_cells=1750 sim_t=80.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802386.442608354] [coverage_meter]: COVERAGE_REPORT coverage=0.7749 efficiency=1.2355 revisit_ratio=0.0286 path_m=8.85 ideal_m=10.94 reachable_cells=1750 sim_t=81.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802387.442272400] [coverage_meter]: COVERAGE_REPORT coverage=0.7749 efficiency=1.2355 revisit_ratio=0.0286 path_m=8.85 ideal_m=10.94 reachable_cells=1750 sim_t=82.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[behavior_server-17] [INFO] [1794802388.162445010] [behavior_server]: wait completed successfully
+[controller_server-15] [INFO] [1794802388.176215325] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [WARN] [1794802388.176655659] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802388.376952253] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[coverage_meter-14] [INFO] [1794802388.443493575] [coverage_meter]: COVERAGE_REPORT coverage=0.7749 efficiency=1.2355 revisit_ratio=0.0286 path_m=8.85 ideal_m=10.94 reachable_cells=1750 sim_t=83.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[controller_server-15] [WARN] [1794802388.577086638] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [ERROR] [1794802388.577131930] [controller_server]: Controller patience exceeded
+[controller_server-15] [WARN] [1794802388.577245638] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[controller_server-15] [INFO] [1794802388.595646878] [local_costmap.local_costmap]: Received request to clear entirely the local_costmap
+[controller_server-15] [INFO] [1794802388.597110547] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [WARN] [1794802388.677308227] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802388.797361058] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [WARN] [1794802388.997343151] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-15] [ERROR] [1794802388.997392317] [controller_server]: Controller patience exceeded
+[controller_server-15] [WARN] [1794802388.997447026] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[behavior_server-17] [INFO] [1794802389.055401167] [behavior_server]: Running backup
+[localization_health_monitor_node-10] [INFO] [1794802389.196123784] [localization_health_monitor]: Localization DEGRADED: localization pose stale while robot is moving
+[coverage_meter-14] [INFO] [1794802389.500507473] [coverage_meter]: COVERAGE_REPORT coverage=0.7749 efficiency=1.2281 revisit_ratio=0.0285 path_m=8.91 ideal_m=10.94 reachable_cells=1750 sim_t=84.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[localization_health_monitor_node-10] [ERROR] [1794802390.196343085] [localization_health_monitor]: Localization LOST: localization pose stale while robot is moving
+[cleaning_task_manager_node-12] [INFO] [1794802390.196595503] [cleaning_task_manager]: task=multi_room-183-1794802301 state=PAUSED completed=28 next=28/34
+[bt_navigator-18] [ERROR] [1794802390.220730086] [bt_navigator_navigate_to_pose_rclcpp_node]: Failed to get result for backup in node halt!
+[bt_navigator-18] [INFO] [1794802390.221025128] [bt_navigator]: [navigate_to_pose] [ActionServer] Client requested to cancel the goal. Cancelling.
+[bt_navigator-18] [INFO] [1794802390.221161503] [bt_navigator]: Goal canceled
+[behavior_server-17] [INFO] [1794802390.255882480] [behavior_server]: Canceling backup
+[behavior_server-17] [INFO] [1794802390.256011771] [behavior_server]: [backup] [ActionServer] Client requested to cancel the goal. Cancelling.
+[coverage_meter-14] [INFO] [1794802390.500309983] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=85.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802391.500638954] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=86.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802392.500439925] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=87.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802393.500104523] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=88.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802394.522274495] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=89.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802395.533692366] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=90.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802396.533866137] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=91.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802397.533645491] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=92.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802398.534113474] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=93.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802399.534162582] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=94.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802400.534162984] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=95.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802401.555893342] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=96.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802402.554548036] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=97.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802403.555006193] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=98.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802404.555220727] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=99.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802405.555435137] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=100.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802406.578458005] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=101.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802407.577708875] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=102.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802408.577255622] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=103.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802409.579467709] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=104.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802410.578207250] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=105.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802411.578010544] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=106.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802412.578308007] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=107.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802413.596651004] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=108.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802414.595974135] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=109.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802415.596000228] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=110.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802416.596408989] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=111.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802417.596489877] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=112.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802418.647360564] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=113.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802419.646489078] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=114.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802420.647373763] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=115.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802421.647644615] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=116.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802422.670015050] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=117.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802423.668896029] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=118.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802424.668453134] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=119.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802425.669514911] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=120.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802426.719670819] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=121.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802427.719585222] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=122.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802428.720485128] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=123.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802429.719969492] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=124.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802430.721434277] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=125.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802431.719460641] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=126.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802432.744044637] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=127.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802433.743886841] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=128.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802434.743518088] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=129.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802435.743501045] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=130.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802436.743489337] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=131.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802437.744057340] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=132.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802438.768887971] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=133.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802439.769048018] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=134.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802440.770313193] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=135.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802441.768326739] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=136.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802442.824513891] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=137.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802443.824439944] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=138.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802444.844206159] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=139.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802445.843558130] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=140.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802446.843562479] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=141.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802447.843725121] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=142.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802448.843477764] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=143.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802449.858511353] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=144.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802450.859148209] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=145.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802451.858413397] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=146.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802452.859954757] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=147.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802453.859226449] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=148.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802454.858279266] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=149.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802455.859197963] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=150.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802456.859484869] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=151.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802457.858995400] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=152.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802458.858852474] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=153.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802459.939508114] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=154.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802460.941482946] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=155.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802461.939161063] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=156.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802462.939467102] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=157.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802463.939616685] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=158.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802464.964619606] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=159.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802465.966138819] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=160.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802466.964273735] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=161.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802467.965922368] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=162.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802468.965078372] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=163.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802470.037685180] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=164.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802471.029319049] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=165.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802472.030224352] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=166.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802473.029685613] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=167.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802474.029199917] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=168.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802475.030081392] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=169.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802476.074218656] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=170.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802477.291231201] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=171.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802478.312987344] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=172.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802479.312489322] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=173.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802480.312019635] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=174.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802481.312310867] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=175.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802482.312075891] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=176.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802483.311630375] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=177.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802484.311550653] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=178.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802485.311502431] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=179.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802486.312172713] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=180.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802487.311651452] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=181.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802488.312395695] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=182.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802489.313103064] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=183.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802490.411442742] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=184.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802491.409314234] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=185.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802492.409541107] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=186.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802493.409523272] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=187.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802494.411084524] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=188.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802495.409034647] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=189.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802496.409171941] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=190.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802497.410273530] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=191.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802498.411565080] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=192.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802499.411942170] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=193.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802500.411377260] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=194.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802501.467071458] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=195.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802502.510237175] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=196.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802503.512070649] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=197.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802504.513023372] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=198.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802505.511247175] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=199.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802506.510918774] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=200.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802507.511545292] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=201.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802508.512377646] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=202.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802509.511238830] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=203.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802510.512493896] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=204.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802511.510884624] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=205.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802512.511957566] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=206.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802513.511570466] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=207.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802514.511388742] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=208.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802515.510301934] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=209.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802516.511196757] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=210.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802517.511008245] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=211.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802518.511690028] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=212.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802519.511637936] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=213.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802520.511642179] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=214.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802521.510649838] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=215.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802522.509939623] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=216.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802523.511378831] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=217.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802524.510296951] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=218.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802525.512262079] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=219.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802526.511203411] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=220.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802527.510951620] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=221.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802528.512030834] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=222.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802529.510650293] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=223.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802530.512351135] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=224.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802531.512177100] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=225.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802532.563084123] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=226.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802533.561580004] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=227.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802534.564593229] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=228.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802535.586464324] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=229.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802536.587192089] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=230.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802537.586962686] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=231.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802538.586970327] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=232.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802539.609514970] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=233.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802540.607927985] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=234.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802541.608472672] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=235.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802542.608198526] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=236.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802543.608229922] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=237.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802544.608258571] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=238.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802545.608236845] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=239.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802546.639016972] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=240.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802547.638642831] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=241.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802548.638628109] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=242.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802549.639317098] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=243.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802550.638154917] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=244.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802551.638449075] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=245.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802552.638539149] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=246.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802553.661493811] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=247.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802554.662432182] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=248.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802555.661689633] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=249.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802556.662127339] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=250.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802557.662674545] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=251.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802558.661663125] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=252.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802559.762293905] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=253.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802560.759332650] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=254.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802561.759048943] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=255.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802562.759846448] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=256.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802563.763866169] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=257.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802564.758532164] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=258.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802565.758067586] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=259.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802566.760566474] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=260.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802567.757831686] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=261.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802568.782547620] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=262.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802569.782961299] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=263.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802570.783318063] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=264.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802571.784168870] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=265.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802572.783209258] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=266.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802573.782529356] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=267.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802574.783281792] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=268.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802575.809405737] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=269.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802576.807709920] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=270.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802577.809036444] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=271.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802578.807434129] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=272.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802579.808116029] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=273.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802580.808401303] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=274.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802581.807727161] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=275.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802582.838331665] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=276.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802583.837713608] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=277.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802584.835541841] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=278.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802585.836314539] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=279.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802586.840308203] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=280.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802587.838173273] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=281.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802588.894488252] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=282.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802589.911726821] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=283.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802590.911332189] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=284.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802591.912313020] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=285.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802592.912074308] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=286.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802593.912050138] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=287.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802594.912513971] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=288.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802595.922010656] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=289.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802596.919083693] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=290.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802597.917159358] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=291.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802598.942151369] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=292.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802599.942025582] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=293.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802601.086410543] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=294.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802602.121632370] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=295.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802603.143056379] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=296.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802604.144437349] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=297.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802605.148287492] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=298.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802606.143604702] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=299.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802607.143842589] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=300.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802608.145336897] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=301.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802609.143214574] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=302.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802610.144259425] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=303.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802611.143684148] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=304.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802612.145692378] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=305.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802613.145080270] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=306.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802614.144191121] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=307.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802615.143055598] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=308.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802616.148534381] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=309.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802617.146311733] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=310.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802618.151421475] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=311.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802619.152219627] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=312.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802620.157286288] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=313.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802621.157190065] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=314.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802622.302998181] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=315.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802623.311609228] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=316.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802624.357608602] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=317.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802625.361720933] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=318.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802626.358064417] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=319.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802627.425401629] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=320.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802628.426330166] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=321.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802629.430678335] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=322.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802630.430820706] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=323.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802631.431237119] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=324.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802632.431675284] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=325.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802633.472357949] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=326.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802634.552200528] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=327.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802635.547615102] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=328.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802636.548342980] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=329.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802637.549116359] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=330.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802638.549059946] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=331.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802639.549616535] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=332.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802640.644278485] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=333.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802641.643290989] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=334.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802642.681323408] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=335.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802643.680274373] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=336.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802644.681171135] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=337.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802645.677229763] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=338.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802646.677963901] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=339.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802647.736243367] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=340.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802648.738086760] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=341.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802649.735504852] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=342.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802650.735981536] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=343.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802651.735398093] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=344.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802652.740660497] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=345.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802653.928187819] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=346.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802654.926252335] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=347.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802655.926338940] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=348.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802656.927331755] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=349.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802657.926609235] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=350.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802658.926532301] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=351.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802659.926949368] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=352.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802660.926250851] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=353.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802661.927184547] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=354.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802662.926450573] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=355.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802663.927163770] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=356.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802664.927724343] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=357.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802665.925470744] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=358.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802666.926157819] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=359.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802667.927360562] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=360.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802668.927239429] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=361.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802669.941320493] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=362.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802670.934136306] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=363.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802671.933467049] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=364.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802672.934284213] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=365.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802673.934590878] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=366.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802674.934416167] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=367.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802675.934007540] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=368.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802676.933529705] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=369.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802677.934209041] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=370.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802678.933504832] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=371.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802679.934037711] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=372.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802680.933905673] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=373.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802681.933689760] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=374.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802682.934160808] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=375.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802683.934716232] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=376.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802684.933626904] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=377.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802685.933883579] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=378.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802686.934044964] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=379.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802687.934568433] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=380.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802688.933465400] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=381.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802689.933478412] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=382.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802690.934148010] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=383.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802691.934388982] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=384.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802692.933463120] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=385.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802693.933481678] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=386.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802694.933947362] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=387.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802695.940633185] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=388.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802696.933981689] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=389.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802697.935252086] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=390.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802698.935404857] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=391.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802699.934998544] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=392.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802700.934350773] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=393.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802701.933640169] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=394.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802702.935062529] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=395.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802703.935694430] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=396.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802704.934543328] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=397.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802705.933581103] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=398.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802706.933869339] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=399.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802707.933601992] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=400.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802708.935389983] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=401.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802709.932475299] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=402.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802710.934696959] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=403.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802711.934136532] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=404.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802712.959578327] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=405.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802713.978536734] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=406.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802714.979125686] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=407.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802715.978971180] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=408.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802716.979070966] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=409.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802717.978133585] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=410.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802718.979085292] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=411.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802719.979122997] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=412.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802720.978903620] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=413.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[cleaning_task_manager_node-12] [INFO] [1794802721.542153400] [cleaning_task_manager]: task=multi_room-183-1794802301 state=CANCELING completed=28 next=28/34
+[cleaning_task_manager_node-12] [INFO] [1794802721.542395692] [cleaning_task_manager]: task=multi_room-183-1794802301 state=CANCELED completed=28 next=28/34
+[coverage_meter-14] [INFO] [1794802721.978848911] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=414.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[coverage_meter-14] [INFO] [1794802722.978116826] [coverage_meter]: COVERAGE_REPORT coverage=0.7754 efficiency=1.2117 revisit_ratio=0.0281 path_m=9.03 ideal_m=10.94 reachable_cells=1750 sim_t=415.3 target_hit=False t_target=None pose_jumps=0 sim_unstable=False
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [lifecycle_manager-19]: sending signal 'SIGINT' to process[lifecycle_manager-19]
+[INFO] [bt_navigator-18]: sending signal 'SIGINT' to process[bt_navigator-18]
+[INFO] [behavior_server-17]: sending signal 'SIGINT' to process[behavior_server-17]
+[INFO] [planner_server-16]: sending signal 'SIGINT' to process[planner_server-16]
+[INFO] [controller_server-15]: sending signal 'SIGINT' to process[controller_server-15]
+[INFO] [coverage_meter-14]: sending signal 'SIGINT' to process[coverage_meter-14]
+[INFO] [ground_truth-13]: sending signal 'SIGINT' to process[ground_truth-13]
+[INFO] [cleaning_task_manager_node-12]: sending signal 'SIGINT' to process[cleaning_task_manager_node-12]
+[INFO] [coverage_planner_node-11]: sending signal 'SIGINT' to process[coverage_planner_node-11]
+[INFO] [localization_health_monitor_node-10]: sending signal 'SIGINT' to process[localization_health_monitor_node-10]
+[INFO] [cmd_vel_arbiter-9]: sending signal 'SIGINT' to process[cmd_vel_arbiter-9]
+[INFO] [lifecycle_manager-7]: sending signal 'SIGINT' to process[lifecycle_manager-7]
+[INFO] [amcl-6]: sending signal 'SIGINT' to process[amcl-6]
+[INFO] [map_server-5]: sending signal 'SIGINT' to process[map_server-5]
+[INFO] [parameter_bridge-3]: sending signal 'SIGINT' to process[parameter_bridge-3]
+[INFO] [robot_state_publisher-2]: sending signal 'SIGINT' to process[robot_state_publisher-2]
+[INFO] [gazebo-1]: sending signal 'SIGINT' to process[gazebo-1]
+[lifecycle_manager-19] [INFO] [1794802723.017996202] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-19] [INFO] [1794802723.018097577] [lifecycle_manager_navigation]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_navigation)
+[bt_navigator-18] [INFO] [1794802723.026619054] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-18] [INFO] [1794802723.026704512] [bt_navigator]: Running Nav2 LifecycleNode rcl preshutdown (bt_navigator)
+[bt_navigator-18] [INFO] [1794802723.028338391] [bt_navigator]: Deactivating
+[bt_navigator-18] [INFO] [1794802723.029078559] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[behavior_server-17] [INFO] [1794802723.030932896] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[behavior_server-17] [INFO] [1794802723.031013688] [behavior_server]: Running Nav2 LifecycleNode rcl preshutdown (behavior_server)
+[behavior_server-17] [INFO] [1794802723.031107105] [behavior_server]: Deactivating
+[behavior_server-17] [INFO] [1794802723.031172522] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[planner_server-16] [INFO] [1794802723.031193230] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-16] [INFO] [1794802723.031247813] [planner_server]: Running Nav2 LifecycleNode rcl preshutdown (planner_server)
+[planner_server-16] [INFO] [1794802723.031370564] [planner_server]: Deactivating
+[planner_server-16] [INFO] [1794802723.032229357] [global_costmap.global_costmap]: Deactivating
+[controller_server-15] [INFO] [1794802723.033990778] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[controller_server-15] [INFO] [1794802723.034050236] [controller_server]: Running Nav2 LifecycleNode rcl preshutdown (controller_server)
+[controller_server-15] [INFO] [1794802723.034378653] [controller_server]: Deactivating
+[controller_server-15] [INFO] [1794802723.034404653] [controller_server]: Deactivating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794802723.034503445] [local_costmap.local_costmap]: Deactivating
+[bt_navigator-18] [INFO] [1794802723.041402002] [bt_navigator]: Cleaning up
+[behavior_server-17] [INFO] [1794802723.044316091] [behavior_server]: Cleaning up
+[lifecycle_manager-19] [INFO] [1794802723.045490635] [lifecycle_manager_navigation]: Destroying lifecycle_manager_navigation
+[coverage_planner_node-11] [INFO] [1794802723.049660769] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[localization_health_monitor_node-10] [INFO] [1794802723.052512942] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[cmd_vel_arbiter-9] [INFO] [1794802723.057533203] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[behavior_server-17] [INFO] [1794802723.062493672] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-7] [INFO] [1794802723.063790924] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-7] [INFO] [1794802723.063888674] [lifecycle_manager_localization]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_localization)
+[lifecycle_manager-7] [INFO] [1794802723.063948133] [lifecycle_manager_localization]: [34m[1mTerminating bond timer...[0m[0m
+[controller_server-15] [INFO] [1794802723.072236026] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[amcl-6] [INFO] [1794802723.074313905] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[amcl-6] [INFO] [1794802723.074877781] [amcl]: Running Nav2 LifecycleNode rcl preshutdown (amcl)
+[amcl-6] [INFO] [1794802723.075799575] [amcl]: Deactivating
+[amcl-6] [INFO] [1794802723.075838867] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[controller_server-15] [INFO] [1794802723.082601298] [controller_server]: Cleaning up
+[controller_server-15] [INFO] [1794802723.082701131] [controller_server]: Cleaning up controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1794802723.083367216] [local_costmap.local_costmap]: Cleaning up
+[map_server-5] [INFO] [1794802723.084279301] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-5] [INFO] [1794802723.084375968] [map_server]: Running Nav2 LifecycleNode rcl preshutdown (map_server)
+[map_server-5] [INFO] [1794802723.086134263] [map_server]: Deactivating
+[map_server-5] [INFO] [1794802723.086151972] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[amcl-6] [INFO] [1794802723.087649225] [amcl]: Cleaning up
+[parameter_bridge-3] [INFO] [1794802723.089267228] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-5] [INFO] [1794802723.099150249] [map_server]: Cleaning up
+[map_server-5] [INFO] [1794802723.099179625] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[robot_state_publisher-2] [INFO] [1794802723.110298856] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[amcl-6] [INFO] [1794802723.112016943] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[map_server-5] [INFO] [1794802723.117129538] [map_server]: Destroying
+[lifecycle_manager-7] [INFO] [1794802723.133562198] [lifecycle_manager_localization]: Destroying lifecycle_manager_localization
+[amcl-6] [INFO] [1794802723.148447146] [amcl]: Destroying
+[behavior_server-17] [INFO] [1794802723.217853877] [behavior_server]: Destroying
+[controller_server-15] [INFO] [1794802723.230265362] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[INFO] [lifecycle_manager-19]: process has finished cleanly [pid 421005]
+[controller_server-15] [INFO] [1794802723.238407587] [local_costmap.local_costmap]: Destroying
+[INFO] [parameter_bridge-3]: process has finished cleanly [pid 420653]
+[controller_server-15] [INFO] [1794802723.258473630] [controller_server]: Destroying
+[bt_navigator-18] [INFO] [1794802723.283018765] [bt_navigator]: Completed Cleaning up
+[bt_navigator-18] [INFO] [1794802723.283077890] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[bt_navigator-18] [INFO] [1794802723.291330450] [bt_navigator]: Destroying
+[INFO] [cmd_vel_arbiter-9]: process has finished cleanly [pid 420719]
+[INFO] [localization_health_monitor_node-10]: process has finished cleanly [pid 420720]
+[INFO] [coverage_planner_node-11]: process has finished cleanly [pid 420721]
+[INFO] [map_server-5]: process has finished cleanly [pid 420715]
+[INFO] [robot_state_publisher-2]: process has finished cleanly [pid 420651]
+[INFO] [lifecycle_manager-7]: process has finished cleanly [pid 420717]
+[INFO] [amcl-6]: process has finished cleanly [pid 420716]
+[INFO] [cleaning_task_manager_node-12]: process has finished cleanly [pid 420722]
+[INFO] [behavior_server-17]: process has finished cleanly [pid 421003]
+[INFO] [ground_truth-13]: process has finished cleanly [pid 420723]
+[INFO] [controller_server-15]: process has finished cleanly [pid 421001]
+[INFO] [coverage_meter-14]: process has finished cleanly [pid 420726]
+[INFO] [bt_navigator-18]: process has finished cleanly [pid 421004]
+[planner_server-16] [INFO] [1794802723.477408970] [planner_server]: Deactivating plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794802723.477448679] [planner_server]: Deactivating plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794802723.477467429] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-16] [INFO] [1794802723.487689159] [planner_server]: Cleaning up
+[planner_server-16] [INFO] [1794802723.493982839] [global_costmap.global_costmap]: Cleaning up
+[planner_server-16] [INFO] [1794802723.498996308] [planner_server]: Cleaning up plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794802723.499311767] [planner_server]: Cleaning up plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794802723.499334350] [planner_server]: Destroying plugin CoverageDirect of type NavfnPlanner
+[planner_server-16] [INFO] [1794802723.499340309] [planner_server]: Destroying plugin GridBased of type NavfnPlanner
+[planner_server-16] [INFO] [1794802723.507501743] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-16] [INFO] [1794802723.511304876] [global_costmap.global_costmap]: Destroying
+[planner_server-16] [INFO] [1794802723.516713179] [planner_server]: Destroying
+[INFO] [planner_server-16]: process has finished cleanly [pid 421002]
+[ERROR] [gazebo-1]: process[gazebo-1] failed to terminate '5' seconds after receiving 'SIGINT', escalating to 'SIGTERM'
+[INFO] [gazebo-1]: sending signal 'SIGTERM' to process[gazebo-1]
+[ERROR] [gazebo-1]: process has died [pid 420650, exit code -15, cmd 'ruby /opt/ros/jazzy/opt/gz_tools_vendor/bin/gz sim -s -r --headless-rendering -v 2 /home/xbs/ros2_sweeper_resume_project/results/coverage-direct-20261116/final2-multi-room/multi_room/run-1/scene.world --force-version 8'].
+[INFO] [launch]: process[gazebo-1] was required: shutting down launched system

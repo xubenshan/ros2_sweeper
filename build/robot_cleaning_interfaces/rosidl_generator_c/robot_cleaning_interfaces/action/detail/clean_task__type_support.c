@@ -6,8 +6,8 @@
 
 #include "robot_cleaning_interfaces/action/detail/clean_task__struct.h"
 #include "robot_cleaning_interfaces/action/detail/clean_task__functions.h"
-#include "robot_cleaning_interfaces/action/detail/clean_task__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "robot_cleaning_interfaces/action/detail/clean_task__type_support.h"
 
 #ifdef __cplusplus
 extern "C"

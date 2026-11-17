@@ -315,8 +315,8 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install(DIRECTORY "launch" "DESTINATION" "share/robot_sweeper_bringup")
-ament_cmake_symlink_install_directory("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_sweeper_bringup" DIRECTORY "launch" "DESTINATION" "share/robot_sweeper_bringup")
+# install(DIRECTORY "launch" "rviz" "DESTINATION" "share/robot_sweeper_bringup")
+ament_cmake_symlink_install_directory("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_sweeper_bringup" DIRECTORY "launch" "rviz" "DESTINATION" "share/robot_sweeper_bringup")
 
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_sweeper_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/robot_sweeper_bringup" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_sweeper_bringup" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_sweeper_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/robot_sweeper_bringup" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

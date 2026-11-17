@@ -238,6 +238,15 @@ CMakeFiles/cleaning_task_manager_node.dir/src/cleaning_task_manager.cpp.o: \
  /opt/ros/jazzy/include/rcutils/rcutils/visibility_control_macros.h \
  /opt/ros/jazzy/include/rcutils/rcutils/sha256.h \
  /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/cleaning_event_log.hpp \
+ /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
+ /usr/include/c++/13/bits/deque.tcc \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/cleaning_event.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/cleaning_event__struct.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/cleaning_event__builder.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/cleaning_event__traits.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/cleaning_event__type_support.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/completion_decision.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/navigation_executor.hpp \
  /usr/include/c++/13/chrono /usr/include/c++/13/functional \
@@ -653,8 +662,6 @@ CMakeFiles/cleaning_task_manager_node.dir/src/cleaning_task_manager.cpp.o: \
  /opt/ros/jazzy/include/rclcpp/rclcpp/publisher_options.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/detail/rmw_implementation_specific_publisher_payload.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/executors/executor_entities_collection.hpp \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc \
  /opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_base.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/wait_result.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/wait_result_kind.hpp \
@@ -808,6 +815,26 @@ CMakeFiles/cleaning_task_manager_node.dir/src/cleaning_task_manager.cpp.o: \
  /opt/ros/jazzy/include/rcl_action/rcl_action/goal_state_machine.h \
  /opt/ros/jazzy/include/rclcpp_action/rclcpp_action/server.hpp \
  /opt/ros/jazzy/include/rclcpp_action/rclcpp_action/server_goal_handle.hpp \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/pause_ownership.hpp \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/planning_request.hpp \
+ /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/point.hpp \
+ /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point__builder.hpp \
+ /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point__type_support.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/occupancy_grid.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__struct.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/map_meta_data__struct.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__builder.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__traits.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/map_meta_data__traits.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__type_support.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/plan_coverage.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__struct.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__struct.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__builder.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__traits.hpp \
+ /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__traits.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/replan_policy.hpp \
  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/recovery_executor.hpp \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/twist.hpp \
@@ -817,14 +844,8 @@ CMakeFiles/cleaning_task_manager_node.dir/src/cleaning_task_manager.cpp.o: \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__traits.hpp \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3__traits.hpp \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__type_support.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/occupancy_grid.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__struct.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/map_meta_data__struct.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__builder.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__traits.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/map_meta_data__traits.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__type_support.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/task_state.hpp \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_cleaning_manager/include/robot_cleaning_manager/waypoint_guard.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/odometry.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/odometry__struct.hpp \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__struct.hpp \
@@ -835,31 +856,33 @@ CMakeFiles/cleaning_task_manager_node.dir/src/cleaning_task_manager.cpp.o: \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist_with_covariance__traits.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/odometry__type_support.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/path.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__struct.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__builder.hpp \
- /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__traits.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__type_support.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/action/clean_task.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/action/detail/clean_task__struct.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/action/detail/clean_task__builder.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/action/detail/clean_task__traits.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/action/detail/clean_task__type_support.hpp \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/coverage_status.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/coverage_status__struct.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/coverage_status__builder.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/coverage_status__traits.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/coverage_status__type_support.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/localization_health.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__struct.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__builder.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__traits.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/msg/detail/localization_health__type_support.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/begin_coverage.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/begin_coverage__struct.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/begin_coverage__builder.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/begin_coverage__traits.hpp \
  /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/begin_coverage__type_support.hpp \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/plan_coverage.hpp \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__struct.hpp \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__builder.hpp \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__traits.hpp \
- /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/list_cleaning_events.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/list_cleaning_events__struct.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/list_cleaning_events__builder.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/list_cleaning_events__traits.hpp \
+ /home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/list_cleaning_events__type_support.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/float32.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/float32__struct.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/float32__builder.hpp \
