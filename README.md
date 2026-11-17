@@ -110,30 +110,30 @@ Gazebo ground truth -> Coverage Meter -> 自动化测试与实验报告
 - `Coverage Meter`：根据 Gazebo 真值位姿独立统计覆盖率、实际里程、路径效率和重复行驶率，只用于验收。
 
 ## 导航策略与实验口径
-## 项目目录
 
-The default launch path uses Nav2 `NavfnPlanner` through the `GridBased` planner ID.
-Cleaning still uses `NavigateToPose` through the BT Navigator, Planner Server, and
-Controller Server; `CoverageDirectPlanner` does not change default navigation.
+默认启动路径使用 Nav2 的 `NavfnPlanner`，插件 ID 为 `GridBased`。清扫任务仍通过
+`NavigateToPose` 进入 BT Navigator，再由 Planner Server 和 Controller Server 执行；
+`CoverageDirectPlanner` 不改变默认导航行为。
 
-`CoverageDirectPlanner` is an opt-in experiment. Only
-`direct_sweep_navigation:=true` creates the `CoverageDirect` tree for the main sweep
-pass. It attempts short connectors that pass center-cost and full-footprint checks;
-rejected connectors fall back to Navfn, while gap navigation remains `GridBased/Navfn`.
-Per-request decisions are published on `/coverage_direct_planner/events`; per-request
-console diagnostics use `DEBUG` level.
+`CoverageDirectPlanner` 是可选实验策略。只有显式设置
+`direct_sweep_navigation:=true` 时，主清扫 pass 才使用 `CoverageDirect` 行为树。
+它只尝试通过中心 cost 和完整 footprint 检查的短连接；拒绝时回退 Navfn，补扫和 gap
+导航继续使用 `GridBased/Navfn`。逐请求决策发布到
+`/coverage_direct_planner/events`，控制台逐请求诊断使用 `DEBUG` 级别。
 
-Keep these experiments separate:
+两类实验必须分开解释：
 
-| Experiment | Variable | Purpose |
+| 实验 | 对照变量 | 结论用途 |
 |---|---|---|
-| Coverage Planner vs baseline | `coverage_algorithm=optimized` vs `baseline` | Evaluate sweep ordering and gap strategy |
-| CoverageDirectPlanner vs Navfn | Fixed optimized planner; toggle `direct_sweep_navigation` | Evaluate the optional Nav2 connector |
+| Coverage Planner 相对 baseline | `coverage_algorithm=optimized` 与 `baseline` | 评价清扫带顺序、连接和补扫策略 |
+| CoverageDirectPlanner 相对 Navfn | 固定优化版 Coverage Planner，仅切换 `direct_sweep_navigation` | 评价可选的 Nav2 短连接插件 |
 
-Final A/B data and coordinate-alignment notes are under
-[`results/coverage-direct-20261116/`](results/coverage-direct-20261116/). The call graph is in
-[`docs/coverage-nav2-architecture.md`](docs/coverage-nav2-architecture.md). Mileage and
-90% coverage metrics use Gazebo truth; repeated `/plan` lengths are diagnostic only.
+最终 A/B 数据和坐标对齐说明位于
+[`results/coverage-direct-20261116/`](results/coverage-direct-20261116/)，系统调用链图见
+[`docs/coverage-nav2-architecture.md`](docs/coverage-nav2-architecture.md)。里程和达到 90%
+覆盖率的指标优先使用 Gazebo 真值轨迹，不把多次 `/plan` 路径长度相加作为实际里程。
+
+## 项目目录
 
 ```text
 .
