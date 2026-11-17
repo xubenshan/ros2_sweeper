@@ -16,7 +16,9 @@ import rclpy
 from rclpy.action import ActionClient, ActionServer, CancelResponse
 from rclpy.qos import DurabilityPolicy, QoSProfile
 from robot_cleaning_interfaces.action import CleanTask
+from robot_cleaning_interfaces.msg import LocalizationHealth
 from std_srvs.srv import Trigger
+import yaml
 
 from run_cleaning_benchmark import stop
 from verify_navigation import wait
@@ -50,6 +52,15 @@ def main():
     grid.info.origin.orientation.w = 1.0
     grid.data = [0] * 100
     map_publisher.publish(grid)
+    health_publisher = node.create_publisher(
+        LocalizationHealth, '/cleaning/localization_health',
+        QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL))
+    health = LocalizationHealth()
+    health.header.frame_id = 'map'
+    health.state = LocalizationHealth.HEALTHY
+    health.healthy = True
+    health.reason = 'Controlled cancel-race test localization'
+    health_publisher.publish(health)
     tasks = ActionClient(node, CleanTask, '/cleaning/task')
     pause = node.create_client(Trigger, '/cleaning/pause')
     resume = node.create_client(Trigger, '/cleaning/resume')
@@ -59,9 +70,16 @@ def main():
     process = None
     try:
         with tempfile.TemporaryDirectory(prefix='sweeper-cancel-') as directory:
+            geometry = yaml.safe_load((
+                get_package_share_path('oomwoo_one') / 'config' / 'robot_geometry.yaml'
+            ).read_text())
+            frames = geometry['frames']
             process = subprocess.Popen([
                 str(binary), '--ros-args', '--params-file', str(config),
                 '-p', f'checkpoint_dir:={directory}',
+                '-p', f'cleaning_radius:={geometry["cleaning"]["radius_m"]}',
+                '-p', f'map_frame:={frames["global"]}',
+                '-p', f'base_frame:={frames["base_footprint"]}',
             ], start_new_session=True)
             wait(node, tasks.server_is_ready, 20, 'task server')
             sent = tasks.send_goal_async(CleanTask.Goal(

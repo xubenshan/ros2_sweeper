@@ -109,7 +109,31 @@ Gazebo ground truth -> Coverage Meter -> 自动化测试与实验报告
 - `CleaningEvent`：通过可靠、Transient Local Topic 和查询服务记录任务生命周期与异常恢复事件。
 - `Coverage Meter`：根据 Gazebo 真值位姿独立统计覆盖率、实际里程、路径效率和重复行驶率，只用于验收。
 
+## 导航策略与实验口径
 ## 项目目录
+
+The default launch path uses Nav2 `NavfnPlanner` through the `GridBased` planner ID.
+Cleaning still uses `NavigateToPose` through the BT Navigator, Planner Server, and
+Controller Server; `CoverageDirectPlanner` does not change default navigation.
+
+`CoverageDirectPlanner` is an opt-in experiment. Only
+`direct_sweep_navigation:=true` creates the `CoverageDirect` tree for the main sweep
+pass. It attempts short connectors that pass center-cost and full-footprint checks;
+rejected connectors fall back to Navfn, while gap navigation remains `GridBased/Navfn`.
+Per-request decisions are published on `/coverage_direct_planner/events`; per-request
+console diagnostics use `DEBUG` level.
+
+Keep these experiments separate:
+
+| Experiment | Variable | Purpose |
+|---|---|---|
+| Coverage Planner vs baseline | `coverage_algorithm=optimized` vs `baseline` | Evaluate sweep ordering and gap strategy |
+| CoverageDirectPlanner vs Navfn | Fixed optimized planner; toggle `direct_sweep_navigation` | Evaluate the optional Nav2 connector |
+
+Final A/B data and coordinate-alignment notes are under
+[`results/coverage-direct-20261116/`](results/coverage-direct-20261116/). The call graph is in
+[`docs/coverage-nav2-architecture.md`](docs/coverage-nav2-architecture.md). Mileage and
+90% coverage metrics use Gazebo truth; repeated `/plan` lengths are diagnostic only.
 
 ```text
 .
@@ -124,12 +148,27 @@ Gazebo ground truth -> Coverage Meter -> 自动化测试与实验报告
 ├── scripts/                             # 场景生成、自动测试和验收脚本
 ├── docs/
 │   ├── assets/                          # 架构图、GIF 和仿真截图
-│   └── refactor_and_baseline.md         # 重构与基线实验说明
+│   ├── coverage-nav2-architecture.md    # Coverage Planner 与 Nav2 调用链
+│   └── refactor_and_baseline.md          # 重构与 baseline 实验说明
 ├── results/                             # 已筛选提交的基线数据与验收报告
 └── README.md
 ```
 
 五个清扫应用包通过 ROS 2 Topic、Service 和 Action 解耦；`robot_sweeper_bringup` 负责把机器人模型、Gazebo、定位、Nav2、清扫应用层和 RViz2 组合成完整系统。
+## 构建、测试与默认回归
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install \
+  --packages-select robot_coverage_planner robot_cleaning_manager robot_sweeper_bringup
+colcon test --packages-select robot_coverage_planner robot_cleaning_manager
+colcon test-result --verbose
+```
+
+默认清扫不需要额外参数；验证可选策略时才增加
+`direct_sweep_navigation:=true`。完整结果、测试限制和未完成项目以
+[`results/coverage-direct-20261116/report.md`](results/coverage-direct-20261116/report.md)
+及其 [`strict-ab/ab-report.md`](results/coverage-direct-20261116/strict-ab/ab-report.md) 为准。
 
 ## 面试中可以重点介绍的内容
 

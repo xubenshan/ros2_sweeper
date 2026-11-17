@@ -117,6 +117,7 @@ public:
     target_path_efficiency_(declare_parameter("target_path_efficiency", 0.0)),
     minimum_gap_distance_budget_m_(
       declare_parameter("minimum_gap_distance_budget_m", 0.50)),
+    sweep_behavior_tree_(declare_parameter<std::string>("sweep_behavior_tree", "")),
     gap_behavior_tree_(declare_parameter<std::string>("gap_behavior_tree", "")),
     planning_requests_(PlanningRequestOptions{
         cleaning_radius_, target_path_efficiency_, minimum_gap_distance_budget_m_}),
@@ -227,6 +228,7 @@ public:
     state_pub_ = create_publisher<std_msgs::msg::String>("cleaning/state", latched);
     progress_pub_ = create_publisher<std_msgs::msg::Float32>("cleaning/progress", latched);
     goal_pub_ = create_publisher<Pose>("cleaning/current_goal", latched);
+    navigation_goal_pub_ = create_publisher<std_msgs::msg::String>("cleaning/navigation_goals", 100);
     path_pub_ = create_publisher<nav_msgs::msg::Path>("cleaning/path", latched);
     event_pub_ = create_publisher<CleaningEvent>(
       "cleaning/events", rclcpp::QoS(50).reliable().transient_local());
@@ -457,6 +459,29 @@ private:
     {
       pause_ownership_.localization_recovered();
     }
+  }
+
+  void publish_navigation_goal(const Pose & pose, bool adjusted)
+  {
+    if (!navigation_goal_pub_) {
+      return;
+    }
+    const auto behavior_tree = current_.pass > 0 ? gap_behavior_tree_ : sweep_behavior_tree_;
+    std_msgs::msg::String message;
+    std::ostringstream event;
+    event << "{\"stamp_ns\":" << now().nanoseconds()
+          << ",\"sequence\":" << ++nav_goal_sequence_
+          << ",\"task_id\":\"" << current_.task_id
+          << "\",\"stage\":\"" << (current_.pass > 0 ? "gap" : "sweep")
+          << "\",\"pass\":" << current_.pass
+          << ",\"index\":" << current_.next
+          << ",\"attempt\":" << (attempts_ + 1)
+          << ",\"adjusted\":" << (adjusted ? "true" : "false")
+          << ",\"x\":" << pose.pose.position.x
+          << ",\"y\":" << pose.pose.position.y
+          << ",\"behavior_tree\":\"" << behavior_tree << "\"}";
+    message.data = event.str();
+    navigation_goal_pub_->publish(message);
   }
 
   void publish_state()
@@ -1042,6 +1067,7 @@ private:
     auto pose = adjusted.value_or(current_.path[current_.next]);
     pose.header.stamp = now();
     goal_pub_->publish(pose);
+    publish_navigation_goal(pose, adjusted.has_value());
     const auto generation = generation_;
     nav_.send(pose, [this, generation](NavigationExecutor::Status status) {
         if (!task_ || generation != generation_ || shutting_down_) {
@@ -1061,7 +1087,7 @@ private:
           return;
         }
         on_navigation_result(status);
-      }, current_.pass > 0 ? gap_behavior_tree_ : std::string{});
+      }, current_.pass > 0 ? gap_behavior_tree_ : sweep_behavior_tree_);
   }
 
   void run_recovery()
@@ -1213,6 +1239,7 @@ private:
   const double coverage_completion_margin_;
   const double target_path_efficiency_;
   const double minimum_gap_distance_budget_m_;
+  const std::string sweep_behavior_tree_;
   const std::string gap_behavior_tree_;
   const PlanningRequestBuilder planning_requests_;
   const WaypointGuard waypoint_guard_;
@@ -1258,6 +1285,7 @@ private:
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr contact_sub_;
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr estop_sub_;
   std::uint64_t generation_{0};
+  std::uint64_t nav_goal_sequence_{0};
   int attempts_{0};
   int consecutive_failures_{0};
   bool early_replan_attempted_{false};
@@ -1268,6 +1296,7 @@ private:
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr state_pub_;
   rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr progress_pub_;
   rclcpp::Publisher<Pose>::SharedPtr goal_pub_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr navigation_goal_pub_;
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr path_pub_;
   rclcpp::Publisher<CleaningEvent>::SharedPtr event_pub_;
   rclcpp::Service<ListCleaningEvents>::SharedPtr event_list_;

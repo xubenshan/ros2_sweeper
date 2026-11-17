@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
-source ros2_ws/install/setup.bash
+source install/setup.bash
 export ROS_DOMAIN_ID="${ROS_DOMAIN_ID:-53}"
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 export GZ_PARTITION="${GZ_PARTITION:-sweeper_${ROS_DOMAIN_ID}}"

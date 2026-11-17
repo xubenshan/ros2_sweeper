@@ -112,11 +112,12 @@ class Measurements:
 
 
 class PoseComparison:
-    """Read-only, time-aligned simulator diagnostics for acceptance runs."""
+    """Read-only execution trace for coverage, Nav2 plans and simulator truth."""
 
-    def __init__(self, node):
-        self.buffer = Buffer()
-        self.listener = TransformListener(self.buffer, node)
+    def __init__(self, node, compare_poses=False):
+        self.compare_poses = compare_poses
+        self.buffer = Buffer() if compare_poses else None
+        self.listener = TransformListener(self.buffer, node) if compare_poses else None
         self.pending = deque(maxlen=40)
         self.rows = []
         self.last_stamp = None
@@ -124,10 +125,22 @@ class PoseComparison:
         self.truth_grid = None
         self.waypoints = []
         self.route_count = 0
+        self.goal_count = 0
+        self.global_plans = []
+        self.global_plan_poses = []
+        self.plan_count_by_goal = Counter()
+        self.planner_events = []
+        self.navigation_goals = []
         latched = QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL)
-        node.create_subscription(PoseStamped, '/ground_truth/pose', self.on_truth, 10)
+        if compare_poses:
+            node.create_subscription(PoseStamped, '/ground_truth/pose', self.on_truth, 10)
         node.create_subscription(NavPath, '/cleaning/path', self.on_route, latched)
         node.create_subscription(PoseStamped, '/cleaning/current_goal', self.on_goal, latched)
+        node.create_subscription(NavPath, '/plan', self.on_global_plan, 10)
+        node.create_subscription(String, '/coverage_direct_planner/events',
+                                 self.on_planner_event, 100)
+        node.create_subscription(String, '/cleaning/navigation_goals',
+                                 self.on_navigation_goal, 100)
         node.create_subscription(OccupancyGrid, '/cleaning/covered_grid',
                                  lambda msg: setattr(self, 'task_grid', msg), latched)
         node.create_subscription(OccupancyGrid, '/coverage_meter/covered_grid',
@@ -141,9 +154,65 @@ class PoseComparison:
             self.waypoints.append((stamp, 'planned', self.route_count, index, p.x, p.y))
 
     def on_goal(self, msg):
+        self.goal_count += 1
         p = msg.pose.position
         stamp = Time.from_msg(msg.header.stamp).nanoseconds
         self.waypoints.append((stamp, 'submitted', self.route_count, '', p.x, p.y))
+
+    @staticmethod
+    def path_length(poses):
+        return sum(math.hypot(b.pose.position.x - a.pose.position.x,
+                              b.pose.position.y - a.pose.position.y)
+                   for a, b in zip(poses, poses[1:]))
+
+    @staticmethod
+    def is_straight(poses):
+        if len(poses) < 2:
+            return False
+        start = poses[0].pose.position
+        end = poses[-1].pose.position
+        dx, dy = end.x - start.x, end.y - start.y
+        length = math.hypot(dx, dy)
+        if length < 1e-6:
+            return False
+        # CoverageDirectPlanner samples an exact segment. NavFn paths normally
+        # contain grid-induced lateral deviation, even when their lengths match.
+        return max(abs(dy * (pose.pose.position.x - start.x) -
+                       dx * (pose.pose.position.y - start.y)) / length
+                   for pose in poses) <= 1e-4
+
+    def on_global_plan(self, msg):
+        # Ignore a transient-local plan left over before the first cleaning goal.
+        if not self.goal_count or not msg.poses:
+            return
+        self.plan_count_by_goal[self.goal_count] += 1
+        replan = self.plan_count_by_goal[self.goal_count]
+        stamp = Time.from_msg(msg.header.stamp).nanoseconds
+        length = self.path_length(msg.poses)
+        straight = self.is_straight(msg.poses)
+        start, end = msg.poses[0].pose.position, msg.poses[-1].pose.position
+        self.global_plans.append((stamp, self.goal_count, replan, len(msg.poses), length,
+                                  straight, start.x, start.y, end.x, end.y))
+        for index, pose in enumerate(msg.poses):
+            point = pose.pose.position
+            self.global_plan_poses.append(
+                (stamp, self.goal_count, replan, index, point.x, point.y))
+
+    def on_planner_event(self, message):
+        try:
+            event = json.loads(message.data)
+        except (TypeError, ValueError):
+            return
+        if isinstance(event, dict) and 'stamp_ns' in event:
+            self.planner_events.append(event)
+
+    def on_navigation_goal(self, message):
+        try:
+            event = json.loads(message.data)
+        except (TypeError, ValueError):
+            return
+        if isinstance(event, dict) and 'stamp_ns' in event:
+            self.navigation_goals.append(event)
 
     def on_truth(self, msg):
         stamp = Time.from_msg(msg.header.stamp)
@@ -152,6 +221,8 @@ class PoseComparison:
             self.last_stamp = stamp.nanoseconds
 
     def sample(self, state):
+        if not self.compare_poses:
+            return
         while self.pending:
             truth = self.pending[0]
             stamp = Time.from_msg(truth.header.stamp)
@@ -176,12 +247,108 @@ class PoseComparison:
             writer = csv.writer(file)
             writer.writerow(('stamp_ns', 'type', 'route', 'index', 'x', 'y'))
             writer.writerows(self.waypoints)
+        with (folder / 'nav2-global-plans.csv').open('w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(('stamp_ns', 'goal', 'plan_for_goal', 'poses', 'path_m',
+                             'straight', 'start_x', 'start_y', 'goal_x', 'goal_y'))
+            writer.writerows(self.global_plans)
+        with (folder / 'navigation-goals.csv').open('w', newline='') as file:
+            fields = ('stamp_ns', 'sequence', 'task_id', 'stage', 'pass',
+                      'index', 'attempt', 'adjusted', 'x', 'y',
+                      'behavior_tree')
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(self.navigation_goals)
+        with (folder / 'nav2-global-plan-poses.csv').open('w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(('stamp_ns', 'goal', 'plan_for_goal', 'index', 'x', 'y'))
+            writer.writerows(self.global_plan_poses)
+        submitted = [
+            (goal_number, row) for goal_number, row in enumerate(
+                (row for row in self.waypoints if row[1] == 'submitted'), start=1)]
+        event_fields = ('stamp_ns', 'request_id', 'sequence', 'goal', 'route',
+                        'stage', 'pass', 'index', 'attempt', 'adjusted',
+                        'decision', 'attempted_direct', 'fallback',
+                        'start_x', 'start_y', 'goal_x', 'goal_y',
+                        'length_m', 'reject_reason', 'request_count',
+                        'direct_attempts', 'direct_successes', 'distance_rejections',
+                        'costmap_rejections', 'footprint_rejections', 'navfn_fallbacks')
+        event_rows = []
+        for event in self.planner_events:
+            target_x = float(event.get('goal_x', 0.0))
+            target_y = float(event.get('goal_y', 0.0))
+            candidates = []
+            for goal_event in self.navigation_goals:
+                distance = math.hypot(float(goal_event.get('x', 0.0)) - target_x,
+                                      float(goal_event.get('y', 0.0)) - target_y)
+                delta = int(event['stamp_ns']) - int(goal_event.get('stamp_ns', 0))
+                if distance <= 0.12 and delta >= -1_000_000_000:
+                    candidates.append((max(delta, 0), distance, goal_event))
+            matched_goal = min(candidates, default=None,
+                               key=lambda item: (item[0], item[1]))
+            goal_event = matched_goal[2] if matched_goal else None
+            matched = min(submitted, key=lambda item: math.hypot(
+                float(item[1][4]) - target_x, float(item[1][5]) - target_y), default=None)
+            goal_number, goal = matched if matched else ('', None)
+            event_rows.append({
+                'stamp_ns': int(event['stamp_ns']),
+                'request_id': event.get('request_id', ''),
+                'sequence': goal_event.get('sequence', '') if goal_event else '',
+                'goal': goal_number, 'route': goal[2] if goal else '',
+                'stage': goal_event.get('stage', '') if goal_event else '',
+                'pass': goal_event.get('pass', '') if goal_event else '',
+                'index': goal_event.get('index', '') if goal_event else '',
+                'attempt': goal_event.get('attempt', '') if goal_event else '',
+                'adjusted': goal_event.get('adjusted', '') if goal_event else '',
+                'decision': event.get('decision', ''),
+                'attempted_direct': event.get('attempted_direct', ''),
+                'fallback': event.get('fallback', ''),
+                'start_x': event.get('start_x', ''), 'start_y': event.get('start_y', ''),
+                'goal_x': event.get('goal_x', ''), 'goal_y': event.get('goal_y', ''),
+                'length_m': event.get('length_m', ''),
+                'reject_reason': event.get('reject_reason', ''),
+                'request_count': event.get('request_count', ''),
+                'direct_attempts': event.get('direct_attempts', ''),
+                'direct_successes': event.get('direct_successes', ''),
+                'distance_rejections': event.get('distance_rejections', ''),
+                'costmap_rejections': event.get('costmap_rejections', ''),
+                'footprint_rejections': event.get('footprint_rejections', ''),
+                'navfn_fallbacks': event.get('navfn_fallbacks', ''),
+            })
+        with (folder / 'coverage-direct-planner-events.csv').open('w', newline='') as file:
+            writer = csv.DictWriter(file, fieldnames=event_fields)
+            writer.writeheader()
+            writer.writerows(event_rows)
         errors = sorted(row[-1] for row in self.rows if row[1] == 'RUNNING')
         report = {'running_samples': len(errors)}
         if errors:
             report.update(median_error_m=statistics.median(errors),
                           p95_error_m=errors[math.ceil(.95 * len(errors)) - 1],
                           max_error_m=errors[-1])
+        initial = [row for row in self.global_plans if row[2] == 1]
+        report.update(
+            nav2_global_plan_messages=len(self.global_plans),
+            nav2_goals_with_plan=len(initial),
+            nav2_replans=max(0, len(self.global_plans) - len(initial)),
+            nav2_initial_plan_m=sum(row[4] for row in initial),
+            nav2_all_plan_messages_m=sum(row[4] for row in self.global_plans),
+            nav2_straight_initial_plans=sum(row[5] for row in initial),
+            nav2_straight_initial_plan_ratio=(sum(row[5] for row in initial) / len(initial)
+                                              if initial else None),
+            coverage_direct_planner_events=len(event_rows),
+            coverage_direct_successes=sum(
+                row['decision'] == 'direct_success' for row in event_rows),
+            coverage_direct_rejections=sum(
+                str(row['attempted_direct']).lower() == 'true' and
+                row['decision'] != 'direct_success' for row in event_rows),
+            coverage_navfn_fallbacks=sum(
+                str(row['fallback']).lower() == 'true' for row in event_rows),
+            coverage_navfn_bypasses=sum(
+                row['decision'] == 'navfn_fallback' for row in event_rows),
+            coverage_navfn_exceptions=sum(
+                row['decision'] in ('navfn_exception', 'direct_rejected_navfn_exception')
+                for row in event_rows),
+        )
         task, truth = self.task_grid, self.truth_grid
         if (task is not None and truth is not None and task.header.frame_id == truth.header.frame_id
             and task.info.resolution == truth.info.resolution and task.info.origin == truth.info.origin
@@ -292,8 +459,9 @@ def run(scenario, args, folder, domain):
         launch_args += ['refine_sweep:=true']
     if args.static_sweep:
         launch_args += ['sweep_use_live_costmap:=false']
-    if args.direct_sweep_navigation:
-        launch_args += ['direct_sweep_navigation:=true']
+    if args.direct_sweep_navigation is not None:
+        launch_args += [
+            f'direct_sweep_navigation:={str(args.direct_sweep_navigation).lower()}']
     whole_map = scenario == 'living_room' or args.whole_map
     report = {'scenario': scenario, 'domain': domain, 'command': launch_args,
               'coverage_algorithm': args.coverage_algorithm,
@@ -307,7 +475,7 @@ def run(scenario, args, folder, domain):
     node = rclpy.create_node('sweeper_benchmark')
     observe_costmaps = args.open_floor
     measure = Measurements(node, observe_costmaps)
-    pose_comparison = PoseComparison(node) if args.compare_poses else None
+    execution_trace = PoseComparison(node, args.compare_poses)
     client = ActionClient(node, CleanTask, '/cleaning/task')
     nav_client = ActionClient(node, NavigateToPose, '/navigate_to_pose')
     begin = node.create_client(BeginCoverage, '/cleaning/begin_coverage')
@@ -388,8 +556,7 @@ def run(scenario, args, folder, domain):
             interrupted = False
             while not result.done() and time.monotonic() - start_wall < args.timeout:
                 rclpy.spin_once(node, timeout_sec=.10)
-                if pose_comparison:
-                    pose_comparison.sample(measure.last_state)
+                execution_trace.sample(measure.last_state)
                 now = time.monotonic()
                 if scenario == 'dynamic' and not motion_parked and now >= next_motion and (
                     moving is None or moving.poll() is not None
@@ -444,9 +611,14 @@ def run(scenario, args, folder, domain):
                 if all(measure.metric_samples[key] >= before[key] + 2 for key in keys):
                     fresh_metrics = True
                     break
-            if pose_comparison:
-                pose_comparison.sample(measure.last_state)
-                report['pose_comparison'] = pose_comparison.report(folder)
+            execution_trace.sample(measure.last_state)
+            trace_report = execution_trace.report(folder)
+            report.update({key: value for key, value in trace_report.items()
+                           if key.startswith('nav2_')})
+            if args.compare_poses:
+                report['pose_comparison'] = {
+                    key: value for key, value in trace_report.items()
+                    if not key.startswith('nav2_')}
             counts = Counter(measure.goals.values())
             finished_goals = sum(counts[s] for s in (4, 5, 6))
             report.update(
@@ -515,6 +687,8 @@ def run(scenario, args, folder, domain):
     report['gap_passes'] = len(gap_plans)
     report['gap_plans'] = [{'waypoints': int(count), 'planned_m': float(length)}
                            for count, length in gap_plans]
+    report['coverage_planned_path_m_total'] = report.get('planned_path_m', 0.0) + sum(
+        plan['planned_m'] for plan in report['gap_plans'])
     report['deferred_sweep_waypoints'] = sum(map(
         int, re.findall(r'Deferred (\d+) sweep waypoints blocked by live costmap', log_text)))
     report['adjusted_sweep_waypoints'] = log_text.count('Adjusted sweep waypoint ')
@@ -597,7 +771,8 @@ def main():
                         help='Refine interior sweep waypoints against travel and swept floor')
     parser.add_argument('--static-sweep', action='store_true',
                         help='Generate the initial sweep from the static map for comparison')
-    parser.add_argument('--direct-sweep-navigation', action='store_true',
+    parser.add_argument('--direct-sweep-navigation', action=argparse.BooleanOptionalAction,
+                        default=None,
                         help='Prefer collision-checked straight connectors with NavFn fallback')
     parser.add_argument('--precise-gap-navigation', action='store_true')
     parser.add_argument('--finish-main-before-gap', action='store_true')
@@ -664,7 +839,10 @@ def main():
               'measurement_valid', 'performance_passed', 'reason',
               'ratio', 'efficiency', 'revisit_ratio', 'truth_path_m',
               'path_to_70_m', 'path_to_80_m', 'path_to_85_m', 'path_to_90_m',
-              'truth_target_cells', 'ideal_path_m', 'planned_path_m', 'planned_waypoints',
+              'truth_target_cells', 'ideal_path_m', 'planned_path_m',
+              'coverage_planned_path_m_total', 'planned_waypoints',
+              'nav2_initial_plan_m', 'nav2_global_plan_messages', 'nav2_replans',
+              'nav2_straight_initial_plan_ratio',
               'task_coverage', 'task_path_m', 'wall_time_s', 'real_time_factor', 'nav_goal_success_rate',
               'navigation_timeouts', 'gap_passes', 'deferred_sweep_waypoints',
               'adjusted_sweep_waypoints', 'deferred_gap_waypoints', 'adjusted_gap_waypoints',

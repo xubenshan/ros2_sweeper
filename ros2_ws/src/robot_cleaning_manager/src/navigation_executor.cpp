@@ -44,7 +44,8 @@ bool NavigationProgress::observe(double remaining, const geometry_msgs::msg::Pos
 
 NavigationExecutor::NavigationExecutor(rclcpp::Node & node)
 : client_(rclcpp_action::create_client<Action>(&node, "navigate_to_pose")),
-  lifecycle_(node.create_client<GetState>("bt_navigator/get_state"))
+  lifecycle_(node.create_client<GetState>("bt_navigator/get_state")),
+  logger_(node.get_logger())
 {
 }
 
@@ -72,6 +73,10 @@ void NavigationExecutor::send(
   Action::Goal request;
   request.pose = pose;
   request.behavior_tree = behavior_tree;
+  RCLCPP_INFO(
+    logger_, "NavigateToPose goal=(%.3f, %.3f) behavior_tree=%s",
+    pose.pose.position.x, pose.pose.position.y,
+    behavior_tree.empty() ? "<default>" : behavior_tree.c_str());
   rclcpp_action::Client<Action>::SendGoalOptions options;
   options.goal_response_callback = [this, sequence](Handle::SharedPtr handle) {
       if (sequence != sequence_ || !busy_) {

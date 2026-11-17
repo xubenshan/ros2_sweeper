@@ -63,3 +63,14 @@ Nav2 控制器、代价地图和传感器参数继续留在 Nav2/launch 配置�
 
 两种算法共享同一个静态地图、实时障碍掩码、机器人半径、清扫半径、区域、覆盖目标、Nav2、起点、
 运行时覆盖跟踪和 Gazebo 真值评价。实验脚本把算法名称写入每轮 `result.json` 和汇总 CSV。
+
+## 与 CoverageDirectPlanner A/B 的边界
+
+Coverage Planner 的 `optimized`/`baseline` 对照与 CoverageDirectPlanner 的 Navfn 对照是两个
+独立实验，不能把两者的结果混在同一张表中解释。最终直连 A/B 固定使用优化版 Coverage Planner，
+只切换 `direct_sweep_navigation`：A 组为 Navfn，B 组为主清扫 pass 的 CoverageDirectPlanner；
+补扫、gap 导航、RPP、costmap、恢复策略和安全控制保持不变。最终数据见
+`results/coverage-direct-20261116/strict-ab/ab-report.md`。
+
+CoverageDirectPlanner 的命中率必须来自 `createPlan()` 的运行时事件记录。路径几何共线只能说明
+发布结果的形状，不能区分直线分支和 Navfn 恰好返回的近似直线路径。

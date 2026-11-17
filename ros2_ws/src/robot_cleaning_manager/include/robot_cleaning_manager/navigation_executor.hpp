@@ -53,6 +53,7 @@ private:
   using GetState = lifecycle_msgs::srv::GetState;
   rclcpp_action::Client<Action>::SharedPtr client_;
   rclcpp::Client<GetState>::SharedPtr lifecycle_;
+  rclcpp::Logger logger_;
   Clock::time_point last_check_;
   Clock::time_point last_active_;
   Handle::SharedPtr goal_;

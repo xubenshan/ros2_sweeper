@@ -127,10 +127,8 @@ def configure_navigation_params(
     with open(params, encoding='utf-8') as config_file:
         config = yaml.safe_load(config_file)
     rewrites = navigation_geometry_rewrites(geometry)
-    if direct_sweep_navigation:
-        planner = config['planner_server']['ros__parameters']['planner_plugins'][0]
-        rewrites[f'planner_server.ros__parameters.{planner}.plugin'] = (
-            'robot_coverage_planner::CoverageDirectPlanner')
+    # RewrittenYaml only converts scalar values; planner_plugins is added to the
+    # generated YAML below so the ROS parameter keeps its native list type.
     if sweep_goal_tolerance:
         controller_params = config['controller_server']['ros__parameters']
         checker = controller_params.get('goal_checker_plugins', ['goal_checker'])[0]
@@ -165,8 +163,24 @@ def configure_navigation_params(
         rewrites[f'{prefix}.observation_sources'] = ' '.join([*sources, 'front_tof'])
         for key, value in FRONT_TOF_PROFILE.items():
             rewrites[f'{prefix}.front_tof.{key}'] = value
-    return RewrittenYaml(
+    rewritten = RewrittenYaml(
         source_file=params, param_rewrites=rewrites, convert_types=True).perform(context)
+    if direct_sweep_navigation:
+        with open(rewritten, encoding='utf-8') as config_file:
+            rewritten_config = yaml.safe_load(config_file)
+        planner_parameters = rewritten_config['planner_server']['ros__parameters']
+        planners = planner_parameters['planner_plugins']
+        if 'CoverageDirect' not in planners:
+            planners.append('CoverageDirect')
+        planner_parameters['CoverageDirect'] = {
+            'plugin': 'robot_coverage_planner::CoverageDirectPlanner',
+            'maximum_direct_length': 1.20,
+            'maximum_direct_cost': 220,
+            'sampling_step': 0.025,
+        }
+        with open(rewritten, 'w', encoding='utf-8') as config_file:
+            yaml.safe_dump(rewritten_config, config_file, sort_keys=False)
+    return rewritten
 
 
 def configure(context):
@@ -254,38 +268,50 @@ def configure(context):
     ]
 
     gap_tree = ''
+    sweep_tree = ''
     pose_tree = ''
     through_tree = ''
     gap_controller = {}
+    tree_dir = None
+    bt_dir = get_package_share_path('nav2_bt_navigator') / 'behavior_trees'
+    with open(params, encoding='utf-8') as nav_file:
+        controller = yaml.safe_load(nav_file)['controller_server']['ros__parameters']
+    checkers = controller.get('goal_checker_plugins', ['goal_checker'])
+
+    def customized_tree(template, filename, checker='', planner=''):
+        nonlocal tree_dir
+        if tree_dir is None:
+            tree_dir = tempfile.TemporaryDirectory(prefix='sweeper-bt-')
+        behavior = ET.parse(bt_dir / template)
+        if checker:
+            for follow in behavior.iter('FollowPath'):
+                follow.set('goal_checker_id', checker)
+        if planner:
+            for sequence in behavior.iter('PipelineSequence'):
+                for selector in list(sequence):
+                    if selector.tag == 'PlannerSelector':
+                        sequence.remove(selector)
+            for compute in behavior.iter('ComputePathToPose'):
+                compute.set('planner_id', planner)
+        destination = Path(tree_dir.name) / filename
+        behavior.write(destination, encoding='utf-8', xml_declaration=True)
+        return str(destination)
+
+    if direct_sweep_navigation:
+        sweep_tree = customized_tree(
+            'navigate_to_pose_w_replanning_and_recovery.xml',
+            'navigate_coverage_sweep.xml', checker=checkers[0], planner='CoverageDirect')
+
     if benchmark_nav and mode == 'localize' and value('implementation') == 'cpp' and (
         value('precise_gap_navigation') == 'true'
     ):
-        bt_dir = get_package_share_path('nav2_bt_navigator') / 'behavior_trees'
-        tree_dir = tempfile.TemporaryDirectory(prefix='sweeper-gap-bt-')
-        with open(params, encoding='utf-8') as nav_file:
-            controller = yaml.safe_load(nav_file)['controller_server']['ros__parameters']
-        checkers = controller.get('goal_checker_plugins', ['goal_checker'])
-
-        def with_checker(template, filename, checker):
-            behavior = ET.parse(bt_dir / template)
-            for follow in behavior.iter('FollowPath'):
-                follow.set('goal_checker_id', checker)
-            destination = Path(tree_dir.name) / filename
-            behavior.write(destination, encoding='utf-8', xml_declaration=True)
-            return str(destination)
-
         pose_template = 'navigate_to_pose_w_replanning_and_recovery.xml'
-        gap_tree = with_checker(pose_template, 'navigate_gap.xml', 'coverage_gap_checker')
-        pose_tree = with_checker(pose_template, 'navigate_pose.xml', checkers[0])
-        through_tree = with_checker('navigate_through_poses_w_replanning_and_recovery.xml',
-                                    'navigate_through.xml', checkers[0])
-
-        def clean_tree(_context):
-            tree_dir.cleanup()
-            return []
-
-        stack.append(RegisterEventHandler(OnShutdown(on_shutdown=[
-            OpaqueFunction(function=clean_tree)])))
+        gap_tree = customized_tree(
+            pose_template, 'navigate_gap.xml', checker='coverage_gap_checker')
+        pose_tree = customized_tree(pose_template, 'navigate_pose.xml', checker=checkers[0])
+        through_tree = customized_tree(
+            'navigate_through_poses_w_replanning_and_recovery.xml',
+            'navigate_through.xml', checker=checkers[0])
         gap_controller = {
             'goal_checker_plugins': [*checkers, 'coverage_gap_checker'],
             'coverage_gap_checker.plugin': 'nav2_controller::SimpleGoalChecker',
@@ -293,6 +319,14 @@ def configure(context):
             'coverage_gap_checker.yaw_goal_tolerance': 3.2,
             'coverage_gap_checker.stateful': True,
         }
+
+    if tree_dir is not None:
+        def clean_tree(_context):
+            tree_dir.cleanup()
+            return []
+
+        stack.append(RegisterEventHandler(OnShutdown(on_shutdown=[
+            OpaqueFunction(function=clean_tree)])))
 
     def after_spawn(event, _context):
         if event.returncode:
@@ -422,6 +456,7 @@ def configure(context):
                                   **geometry_parameters['manager'],
                                   'defer_blocked_sweep_goals': open_floor,
                                   'adjust_blocked_gap_goals': value('guard_gap_goals') == 'true',
+                                  'sweep_behavior_tree': sweep_tree,
                                   'gap_behavior_tree': gap_tree,
                                   'early_gap_replan': value('early_gap_replan') == 'true',
                                   'gap_progress_timeout_s': int(value('gap_progress_timeout_s')),
@@ -502,6 +537,8 @@ def generate_launch_description():
         DeclareLaunchArgument('continuous_coverage_tracking', default_value='false', choices=boolean),
         DeclareLaunchArgument('refine_sweep', default_value='true', choices=boolean),
         DeclareLaunchArgument('sweep_use_live_costmap', default_value='true', choices=boolean),
+        # Optional experiment: preserve short, collision-checked sweep connectors.
+        # CoverageDirectPlanner falls back to NavFn for unsafe or longer transits.
         DeclareLaunchArgument('direct_sweep_navigation', default_value='false', choices=boolean),
         DeclareLaunchArgument('safety', default_value='true', choices=boolean),
         DeclareLaunchArgument('task_manager', default_value='true', choices=boolean),
