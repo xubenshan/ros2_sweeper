@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 #include "robot_coverage_planner/baseline_coverage_plan.hpp"
 #include "robot_coverage_planner/coverage_plan.hpp"
+#include "robot_coverage_planner/coverage_search.hpp"
 
 #include <algorithm>
 #include <array>
@@ -375,4 +376,77 @@ TEST(BaselineCoveragePlan, UsesSameTaskFloorAsOptimizedPlanner)
   const CoveragePlan optimized(grid, options, start);
   const BaselineCoveragePlan baseline(grid, options, start);
   EXPECT_EQ(baseline.target_floor({}), optimized.target_floor({}));
+}
+
+TEST(CoverageSearch, FindsAFreeRouteAroundAnObstacle)
+{
+  SearchGrid grid{20, 12, 0.10, std::vector<std::uint8_t>(240, 0),
+    std::vector<std::int8_t>(240, 0)};
+  for (int y = 1; y < 11; ++y) {
+    grid.cost[y * grid.width + 9] = 253;
+  }
+  SearchOptions options;
+  const auto candidates = coverage_candidates(grid, 2 * grid.width + 6, 2 * grid.width + 13, options);
+  ASSERT_FALSE(candidates.empty());
+  EXPECT_EQ(candidates.front().cells.front(), 2 * grid.width + 6);
+  EXPECT_EQ(candidates.front().cells.back(), 2 * grid.width + 13);
+  EXPECT_GT(candidates.front().length_m, 0.7);
+  EXPECT_TRUE(std::all_of(candidates.front().cells.begin(), candidates.front().cells.end(),
+    [&](int cell) {return grid.cost[cell] < options.lethal_cost;}));
+}
+
+TEST(CoverageSearch, EstimatesUniqueSweptAreaUsingCleaningRadius)
+{
+  SearchGrid grid{20, 12, 0.10, std::vector<std::uint8_t>(240, 0),
+    std::vector<std::int8_t>(240, 100)};
+  for (int x = 2; x <= 7; ++x) {
+    grid.coverage[6 * grid.width + x] = 0;
+  }
+  SearchOptions options;
+  options.cleaning_radius = 0.20;
+  const auto candidates = coverage_candidates(grid, 6 * grid.width + 2,
+    6 * grid.width + 7, options);
+  ASSERT_FALSE(candidates.empty());
+  EXPECT_GT(candidates.front().estimated_new_area_m2, 0.0);
+  EXPECT_LT(candidates.front().estimated_new_area_m2, 1.0);
+}
+
+TEST(CoverageSearch, GeneratesBoundedCoverageDetourThroughUncoveredPatch)
+{
+  SearchGrid grid{40, 20, 0.10, std::vector<std::uint8_t>(800, 0),
+    std::vector<std::int8_t>(800, 100)};
+  for (int y = 3; y <= 6; ++y) {
+    for (int x = 18; x <= 21; ++x) {
+      grid.coverage[y * grid.width + x] = 0;
+    }
+  }
+  SearchOptions options;
+  options.cleaning_radius = 0.20;
+  options.coverage_weight = 0.60;
+  const int start = 10 * grid.width + 4;
+  const int goal = 10 * grid.width + 35;
+  std::vector<int> direct;
+  for (int x = 4; x <= 35; ++x) {
+    direct.push_back(10 * grid.width + x);
+  }
+  const auto reference = evaluate_route(grid, direct, options);
+  const auto candidates = coverage_candidates(grid, start, goal, options);
+  ASSERT_FALSE(candidates.empty());
+  EXPECT_TRUE(std::any_of(candidates.begin(), candidates.end(), [&](const auto & candidate) {
+    return candidate.length_m > reference.length_m &&
+           candidate.estimated_new_area_m2 > reference.estimated_new_area_m2;
+  }));
+}
+
+TEST(CoverageSearch, RejectsUnreachableAndInvalidInputs)
+{
+  SearchGrid grid{8, 8, 0.10, std::vector<std::uint8_t>(64, 0),
+    std::vector<std::int8_t>(64, 0)};
+  for (int y = 0; y < grid.height; ++y) {
+    grid.cost[y * grid.width + 3] = 253;
+  }
+  SearchOptions options;
+  EXPECT_TRUE(coverage_candidates(grid, 1, 6, options).empty());
+  options.coverage_weight = -1.0;
+  EXPECT_THROW(coverage_candidates(grid, 1, 2, options), std::invalid_argument);
 }

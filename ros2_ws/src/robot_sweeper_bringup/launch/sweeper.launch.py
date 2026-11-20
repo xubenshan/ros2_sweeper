@@ -122,7 +122,7 @@ def application_geometry_parameters(geometry):
 
 def configure_navigation_params(
     params, context, use_tof, collision_aware, clearance_control, sweep_goal_tolerance,
-    direct_sweep_navigation, geometry,
+    direct_sweep_navigation, coverage_aware_navigation, geometry,
 ):
     with open(params, encoding='utf-8') as config_file:
         config = yaml.safe_load(config_file)
@@ -165,19 +165,34 @@ def configure_navigation_params(
             rewrites[f'{prefix}.front_tof.{key}'] = value
     rewritten = RewrittenYaml(
         source_file=params, param_rewrites=rewrites, convert_types=True).perform(context)
-    if direct_sweep_navigation:
+    if direct_sweep_navigation or coverage_aware_navigation:
         with open(rewritten, encoding='utf-8') as config_file:
             rewritten_config = yaml.safe_load(config_file)
         planner_parameters = rewritten_config['planner_server']['ros__parameters']
         planners = planner_parameters['planner_plugins']
-        if 'CoverageDirect' not in planners:
-            planners.append('CoverageDirect')
-        planner_parameters['CoverageDirect'] = {
+        planner_id = 'CoverageAware' if coverage_aware_navigation else 'CoverageDirect'
+        if planner_id not in planners:
+            planners.append(planner_id)
+        planner_parameters[planner_id] = {
             'plugin': 'robot_coverage_planner::CoverageDirectPlanner',
-            'maximum_direct_length': 1.20,
-            'maximum_direct_cost': 220,
-            'sampling_step': 0.025,
+            'strategy': 'coverage_aware' if coverage_aware_navigation else 'direct',
         }
+        if coverage_aware_navigation:
+            planner_parameters[planner_id].update({
+                'coverage_cleaning_radius': 0.20,
+                'max_detour_ratio': 1.25,
+                'max_detour_distance': 0.75,
+                'coverage_weight': 0.35,
+                'min_coverage_gain_m2': 0.0025,
+                'min_coverage_gain_per_extra_meter': 0.05,
+                'min_score_gain_m': 0.03,
+            })
+        if not coverage_aware_navigation:
+            planner_parameters[planner_id].update({
+                'maximum_direct_length': 1.20,
+                'maximum_direct_cost': 220,
+                'sampling_step': 0.025,
+            })
         with open(rewritten, 'w', encoding='utf-8') as config_file:
             yaml.safe_dump(rewritten_config, config_file, sort_keys=False)
     return rewritten
@@ -220,12 +235,15 @@ def configure(context):
                and value('tof_costmap') == 'true')
     clearance_control = value('clearance_control') == 'true'
     direct_sweep_navigation = value('direct_sweep_navigation') == 'true'
-    collision_aware = (clearance_control or direct_sweep_navigation or
+    coverage_aware_navigation = value('coverage_aware_navigation') == 'true'
+    if direct_sweep_navigation and coverage_aware_navigation:
+        raise RuntimeError('Choose either direct_sweep_navigation or coverage_aware_navigation')
+    collision_aware = (clearance_control or direct_sweep_navigation or coverage_aware_navigation or
                        value('collision_aware_nav') == 'true')
     sweep_goal_tolerance = value('sweep_goal_tolerance')
     params = configure_navigation_params(
         params, context, use_tof, collision_aware, clearance_control, sweep_goal_tolerance,
-        direct_sweep_navigation, geometry)
+        direct_sweep_navigation, coverage_aware_navigation, geometry)
 
     robot = xacro.process_file(str(model / 'urdf' / 'robot.urdf.xacro'), mappings={
         'odom_source': value('odom_source'), 'enable_tof': value('enable_tof'),
@@ -301,6 +319,10 @@ def configure(context):
         sweep_tree = customized_tree(
             'navigate_to_pose_w_replanning_and_recovery.xml',
             'navigate_coverage_sweep.xml', checker=checkers[0], planner='CoverageDirect')
+    elif coverage_aware_navigation:
+        sweep_tree = customized_tree(
+            'navigate_to_pose_w_replanning_and_recovery.xml',
+            'navigate_coverage_aware_sweep.xml', checker=checkers[0], planner='CoverageAware')
 
     if benchmark_nav and mode == 'localize' and value('implementation') == 'cpp' and (
         value('precise_gap_navigation') == 'true'
@@ -540,6 +562,7 @@ def generate_launch_description():
         # Optional experiment: preserve short, collision-checked sweep connectors.
         # CoverageDirectPlanner falls back to NavFn for unsafe or longer transits.
         DeclareLaunchArgument('direct_sweep_navigation', default_value='false', choices=boolean),
+        DeclareLaunchArgument('coverage_aware_navigation', default_value='false', choices=boolean),
         DeclareLaunchArgument('safety', default_value='true', choices=boolean),
         DeclareLaunchArgument('task_manager', default_value='true', choices=boolean),
         DeclareLaunchArgument('evaluate', default_value='false', choices=boolean),

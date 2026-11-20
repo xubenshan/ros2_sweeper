@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/coverage_grid.dir/src/baseline_coverage_plan.cpp.o.d"
   "CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.o"
   "CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.o.d"
+  "CMakeFiles/coverage_grid.dir/src/coverage_search.cpp.o"
+  "CMakeFiles/coverage_grid.dir/src/coverage_search.cpp.o.d"
   "CMakeFiles/coverage_grid.dir/src/grid_map.cpp.o"
   "CMakeFiles/coverage_grid.dir/src/grid_map.cpp.o.d"
   "libcoverage_grid.a"

@@ -12,6 +12,7 @@ endforeach()
 add_library(coverage_grid
   src/grid_map.cpp
   src/coverage_plan.cpp
+  src/coverage_search.cpp
   src/baseline_coverage_plan.cpp)
 target_include_directories(coverage_grid PUBLIC include)
 target_compile_features(coverage_grid PUBLIC cxx_std_17)
@@ -23,11 +24,14 @@ ament_target_dependencies(coverage_planner_node ${dependencies})
 add_library(coverage_direct_planner SHARED src/coverage_direct_planner.cpp)
 target_compile_features(coverage_direct_planner PRIVATE cxx_std_17)
 target_compile_options(coverage_direct_planner PRIVATE -Wall -Wextra -Wpedantic)
+target_include_directories(coverage_direct_planner PRIVATE include)
 ament_target_dependencies(coverage_direct_planner ${nav2_dependencies} geometry_msgs nav_msgs std_msgs)
+target_link_libraries(coverage_direct_planner coverage_grid)
 pluginlib_export_plugin_description_file(nav2_core coverage_nav2_plugin.xml)
 install(TARGETS coverage_direct_planner DESTINATION lib)
 install(TARGETS coverage_grid coverage_planner_node DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY include/ DESTINATION include)
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
   ament_add_gtest(coverage_test test/coverage_test.cpp)

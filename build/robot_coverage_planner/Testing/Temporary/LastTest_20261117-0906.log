@@ -1,0 +1,88 @@
+Start testing: Nov 17 17:06 CST
+----------------------------------------------------------
+1/1 Testing: coverage_test
+1/1 Test: coverage_test
+Command: "/usr/bin/python3" "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml" "--package-name" "robot_coverage_planner" "--output-file" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/ament_cmake_gtest/coverage_test.txt" "--command" "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/coverage_test" "--gtest_output=xml:/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml"
+Directory: /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner
+"coverage_test" start time: Nov 17 17:06 CST
+Output:
+----------------------------------------------------------
+-- run_test.py: invoking following command in '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner':
+ - /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/coverage_test --gtest_output=xml:/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml
+Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 22 tests from 4 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from GridMap
+[ RUN      ] GridMap.RotatedOriginAndBounds
+[       OK ] GridMap.RotatedOriginAndBounds (0 ms)
+[ RUN      ] GridMap.InflationAndCornerClearance
+[       OK ] GridMap.InflationAndCornerClearance (0 ms)
+[ RUN      ] GridMap.IncludesBrushBoundaryWithFloat32MapResolution
+[       OK ] GridMap.IncludesBrushBoundaryWithFloat32MapResolution (0 ms)
+[ RUN      ] GridMap.CoverageAtPoseResolvesMovementInsideOneCell
+[       OK ] GridMap.CoverageAtPoseResolvesMovementInsideOneCell (0 ms)
+[ RUN      ] GridMap.RejectsInvalidGeometry
+[       OK ] GridMap.RejectsInvalidGeometry (0 ms)
+[----------] 5 tests from GridMap (0 ms total)
+
+[----------] 10 tests from CoveragePlan
+[ RUN      ] CoveragePlan.OpenFloorLeavesTheEdgeBandForEdgeCleaning
+[       OK ] CoveragePlan.OpenFloorLeavesTheEdgeBandForEdgeCleaning (286 ms)
+[ RUN      ] CoveragePlan.LiveInscribedCellsBlockSweepWithoutChangingTheTaskFloor
+[       OK ] CoveragePlan.LiveInscribedCellsBlockSweepWithoutChangingTheTaskFloor (31 ms)
+[ RUN      ] CoveragePlan.GapRouteStopsAfterEnoughNewFloor
+[       OK ] CoveragePlan.GapRouteStopsAfterEnoughNewFloor (179 ms)
+[ RUN      ] CoveragePlan.SplitMergeAndCollisionFreeTransitions
+[       OK ] CoveragePlan.SplitMergeAndCollisionFreeTransitions (0 ms)
+[ RUN      ] CoveragePlan.AvoidsOverlappingShortSweepsAroundFurniture
+[       OK ] CoveragePlan.AvoidsOverlappingShortSweepsAroundFurniture (36 ms)
+[ RUN      ] CoveragePlan.NarrowGapSelectsReachableBrushPosition
+[       OK ] CoveragePlan.NarrowGapSelectsReachableBrushPosition (0 ms)
+[ RUN      ] CoveragePlan.GapFillCreditsCellsSweptBetweenGoals
+[       OK ] CoveragePlan.GapFillCreditsCellsSweptBetweenGoals (0 ms)
+[ RUN      ] CoveragePlan.GapFillPrefersPriorityFloorAndStillPlansEdgeCells
+[       OK ] CoveragePlan.GapFillPrefersPriorityFloorAndStillPlansEdgeCells (0 ms)
+[ RUN      ] CoveragePlan.RequestedRegionsKeepOrder
+[       OK ] CoveragePlan.RequestedRegionsKeepOrder (0 ms)
+[ RUN      ] CoveragePlan.FullyCoveredHasNoSupplementalGoals
+[       OK ] CoveragePlan.FullyCoveredHasNoSupplementalGoals (0 ms)
+[----------] 10 tests from CoveragePlan (535 ms total)
+
+[----------] 3 tests from BaselineCoveragePlan
+[ RUN      ] BaselineCoveragePlan.ProducesDeterministicCollisionFreeBoustrophedonRoute
+[       OK ] BaselineCoveragePlan.ProducesDeterministicCollisionFreeBoustrophedonRoute (0 ms)
+[ RUN      ] BaselineCoveragePlan.BasicGapFillMovesToNearestMissingFloor
+[       OK ] BaselineCoveragePlan.BasicGapFillMovesToNearestMissingFloor (0 ms)
+[ RUN      ] BaselineCoveragePlan.UsesSameTaskFloorAsOptimizedPlanner
+[       OK ] BaselineCoveragePlan.UsesSameTaskFloorAsOptimizedPlanner (0 ms)
+[----------] 3 tests from BaselineCoveragePlan (1 ms total)
+
+[----------] 4 tests from CoverageSearch
+[ RUN      ] CoverageSearch.FindsAFreeRouteAroundAnObstacle
+[       OK ] CoverageSearch.FindsAFreeRouteAroundAnObstacle (7 ms)
+[ RUN      ] CoverageSearch.EstimatesUniqueSweptAreaUsingCleaningRadius
+[       OK ] CoverageSearch.EstimatesUniqueSweptAreaUsingCleaningRadius (0 ms)
+[ RUN      ] CoverageSearch.GeneratesBoundedCoverageDetourThroughUncoveredPatch
+[       OK ] CoverageSearch.GeneratesBoundedCoverageDetourThroughUncoveredPatch (19 ms)
+[ RUN      ] CoverageSearch.RejectsUnreachableAndInvalidInputs
+[       OK ] CoverageSearch.RejectsUnreachableAndInvalidInputs (0 ms)
+[----------] 4 tests from CoverageSearch (28 ms total)
+
+[----------] Global test environment tear-down
+[==========] 22 tests from 4 test suites ran. (564 ms total)
+[  PASSED  ] 22 tests.
+-- run_test.py: return code 0
+-- run_test.py: inject classname prefix into gtest result file '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml'
+-- run_test.py: verify result file '/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml'
+<end of output>
+Test time =   0.63 sec
+----------------------------------------------------------
+Test Passed.
+"coverage_test" end time: Nov 17 17:06 CST
+"coverage_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 17 17:06 CST
+
+gtest =   0.63 sec*proc
+

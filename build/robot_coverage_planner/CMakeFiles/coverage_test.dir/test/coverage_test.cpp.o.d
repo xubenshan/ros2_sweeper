@@ -71,6 +71,7 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/coverage_search.hpp \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \

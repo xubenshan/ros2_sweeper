@@ -78,7 +78,15 @@ CMakeFiles/coverage_direct_planner.dir/src/coverage_direct_planner.cpp.o: \
  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/aarch64-linux-gnu/bits/stdint-least.h \
  /usr/include/c++/13/bits/atomic_lockfree_defines.h \
- /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
+ /usr/include/c++/13/chrono /usr/include/c++/13/bits/requires_hosted.h \
+ /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
+ /usr/include/c++/13/cstdint /usr/include/c++/13/limits \
+ /usr/include/c++/13/ctime /usr/include/time.h \
+ /usr/include/aarch64-linux-gnu/bits/time.h \
+ /usr/include/aarch64-linux-gnu/bits/timex.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h \
+ /usr/include/c++/13/bits/parse_numbers.h /usr/include/c++/13/cmath \
  /usr/include/math.h /usr/include/aarch64-linux-gnu/bits/math-vector.h \
  /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h \
@@ -88,8 +96,7 @@ CMakeFiles/coverage_direct_planner.dir/src/coverage_direct_planner.cpp.o: \
  /usr/include/aarch64-linux-gnu/bits/mathcalls.h \
  /usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/aarch64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/limits \
- /usr/include/c++/13/tr1/gamma.tcc \
+ /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/tr1/gamma.tcc \
  /usr/include/c++/13/tr1/special_function_util.h \
  /usr/include/c++/13/tr1/bessel_function.tcc \
  /usr/include/c++/13/tr1/beta_function.tcc \
@@ -133,13 +140,6 @@ CMakeFiles/coverage_direct_planner.dir/src/coverage_direct_planner.cpp.o: \
  /usr/include/c++/13/exception /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/bits/nested_exception.h \
- /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
- /usr/include/c++/13/cstdint /usr/include/c++/13/ctime \
- /usr/include/time.h /usr/include/aarch64-linux-gnu/bits/time.h \
- /usr/include/aarch64-linux-gnu/bits/timex.h \
- /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h \
- /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h \
- /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/aarch64-linux-gnu/c++/13/bits/error_constants.h \
  /usr/include/c++/13/cerrno /usr/include/errno.h \
  /usr/include/aarch64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
@@ -419,7 +419,6 @@ CMakeFiles/coverage_direct_planner.dir/src/coverage_direct_planner.cpp.o: \
  /opt/ros/jazzy/include/rclcpp/rclcpp/logging.hpp \
  /opt/ros/jazzy/include/rcutils/rcutils/logging_macros.h \
  /opt/ros/jazzy/include/rclcpp/rclcpp/utilities.hpp \
- /usr/include/c++/13/chrono \
  /opt/ros/jazzy/include/rclcpp/rclcpp/context.hpp \
  /usr/include/c++/13/condition_variable /usr/include/c++/13/typeindex \
  /usr/include/c++/13/unordered_set \
@@ -1047,6 +1046,7 @@ CMakeFiles/coverage_direct_planner.dir/src/coverage_direct_planner.cpp.o: \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__type_support.hpp \
  /opt/ros/jazzy/include/nav2_navfn_planner/navfn.hpp \
  /opt/ros/jazzy/include/nav2_util/nav2_util/geometry_utils.hpp \
+ /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/coverage_search.hpp \
  /opt/ros/jazzy/include/pluginlib/pluginlib/class_list_macros.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/string.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__struct.hpp \

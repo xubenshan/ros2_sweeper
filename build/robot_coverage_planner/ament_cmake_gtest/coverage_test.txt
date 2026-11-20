@@ -2,7 +2,7 @@
  - /home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/coverage_test --gtest_output=xml:/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/test_results/robot_coverage_planner/coverage_test.gtest.xml
 
 Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
-[==========] Running 18 tests from 3 test suites.
+[==========] Running 22 tests from 4 test suites.
 [----------] Global test environment set-up.
 [----------] 5 tests from GridMap
 [ RUN      ] GridMap.RotatedOriginAndBounds
@@ -19,15 +19,15 @@ Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
 
 [----------] 10 tests from CoveragePlan
 [ RUN      ] CoveragePlan.OpenFloorLeavesTheEdgeBandForEdgeCleaning
-[       OK ] CoveragePlan.OpenFloorLeavesTheEdgeBandForEdgeCleaning (310 ms)
+[       OK ] CoveragePlan.OpenFloorLeavesTheEdgeBandForEdgeCleaning (286 ms)
 [ RUN      ] CoveragePlan.LiveInscribedCellsBlockSweepWithoutChangingTheTaskFloor
-[       OK ] CoveragePlan.LiveInscribedCellsBlockSweepWithoutChangingTheTaskFloor (30 ms)
+[       OK ] CoveragePlan.LiveInscribedCellsBlockSweepWithoutChangingTheTaskFloor (31 ms)
 [ RUN      ] CoveragePlan.GapRouteStopsAfterEnoughNewFloor
-[       OK ] CoveragePlan.GapRouteStopsAfterEnoughNewFloor (170 ms)
+[       OK ] CoveragePlan.GapRouteStopsAfterEnoughNewFloor (179 ms)
 [ RUN      ] CoveragePlan.SplitMergeAndCollisionFreeTransitions
 [       OK ] CoveragePlan.SplitMergeAndCollisionFreeTransitions (0 ms)
 [ RUN      ] CoveragePlan.AvoidsOverlappingShortSweepsAroundFurniture
-[       OK ] CoveragePlan.AvoidsOverlappingShortSweepsAroundFurniture (32 ms)
+[       OK ] CoveragePlan.AvoidsOverlappingShortSweepsAroundFurniture (36 ms)
 [ RUN      ] CoveragePlan.NarrowGapSelectsReachableBrushPosition
 [       OK ] CoveragePlan.NarrowGapSelectsReachableBrushPosition (0 ms)
 [ RUN      ] CoveragePlan.GapFillCreditsCellsSweptBetweenGoals
@@ -38,7 +38,7 @@ Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
 [       OK ] CoveragePlan.RequestedRegionsKeepOrder (0 ms)
 [ RUN      ] CoveragePlan.FullyCoveredHasNoSupplementalGoals
 [       OK ] CoveragePlan.FullyCoveredHasNoSupplementalGoals (0 ms)
-[----------] 10 tests from CoveragePlan (546 ms total)
+[----------] 10 tests from CoveragePlan (535 ms total)
 
 [----------] 3 tests from BaselineCoveragePlan
 [ RUN      ] BaselineCoveragePlan.ProducesDeterministicCollisionFreeBoustrophedonRoute
@@ -49,9 +49,20 @@ Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
 [       OK ] BaselineCoveragePlan.UsesSameTaskFloorAsOptimizedPlanner (0 ms)
 [----------] 3 tests from BaselineCoveragePlan (1 ms total)
 
+[----------] 4 tests from CoverageSearch
+[ RUN      ] CoverageSearch.FindsAFreeRouteAroundAnObstacle
+[       OK ] CoverageSearch.FindsAFreeRouteAroundAnObstacle (7 ms)
+[ RUN      ] CoverageSearch.EstimatesUniqueSweptAreaUsingCleaningRadius
+[       OK ] CoverageSearch.EstimatesUniqueSweptAreaUsingCleaningRadius (0 ms)
+[ RUN      ] CoverageSearch.GeneratesBoundedCoverageDetourThroughUncoveredPatch
+[       OK ] CoverageSearch.GeneratesBoundedCoverageDetourThroughUncoveredPatch (19 ms)
+[ RUN      ] CoverageSearch.RejectsUnreachableAndInvalidInputs
+[       OK ] CoverageSearch.RejectsUnreachableAndInvalidInputs (0 ms)
+[----------] 4 tests from CoverageSearch (28 ms total)
+
 [----------] Global test environment tear-down
-[==========] 18 tests from 3 test suites ran. (548 ms total)
-[  PASSED  ] 18 tests.
+[==========] 22 tests from 4 test suites ran. (564 ms total)
+[  PASSED  ] 22 tests.
 
 
 -- run_test.py: return code 0

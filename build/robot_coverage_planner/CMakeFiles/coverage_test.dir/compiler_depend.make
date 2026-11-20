@@ -4,6 +4,7 @@
 CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/test/coverage_test.cpp \
   /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/baseline_coverage_plan.hpp \
   /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/coverage_plan.hpp \
+  /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/coverage_search.hpp \
   /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/grid_map.hpp \
   /opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest-assertion-result.h \
   /opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest-death-test.h \
@@ -534,9 +535,7 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 
 /usr/include/c++/13/bits/stl_tempbuf.h:
 
-/usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/aarch64-linux-gnu/bits/iscanonical.h:
+/usr/include/c++/13/bits/stl_raw_storage_iter.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
 
@@ -734,7 +733,11 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 
 /opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest_pred_impl.h:
 
-/opt/ros/jazzy/src/gtest_vendor/include/gtest/internal/gtest-death-test-internal.h:
+/usr/include/c++/13/tr1/bessel_function.tcc:
+
+/usr/include/c++/13/initializer_list:
+
+/usr/include/aarch64-linux-gnu/sys/time.h:
 
 /opt/ros/jazzy/src/gtest_vendor/include/gtest/internal/gtest-port.h:
 
@@ -758,26 +761,6 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 
 /usr/include/aarch64-linux-gnu/c++/13/bits/time_members.h:
 
-/opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest-message.h:
-
-/usr/include/aarch64-linux-gnu/bits/signum-arch.h:
-
-/usr/include/aarch64-linux-gnu/asm/sigcontext.h:
-
-/usr/include/c++/13/bits/unordered_map.h:
-
-/usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/aarch64-linux-gnu/gnu/stubs.h:
-
-/usr/include/aarch64-linux-gnu/bits/math-vector.h:
-
-/usr/include/c++/13/tr1/bessel_function.tcc:
-
-/usr/include/c++/13/initializer_list:
-
-/usr/include/aarch64-linux-gnu/sys/time.h:
-
 /usr/include/aarch64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
@@ -796,6 +779,26 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 
 /usr/include/c++/13/algorithm:
 
+/opt/ros/jazzy/src/gtest_vendor/include/gtest/internal/gtest-death-test-internal.h:
+
+/opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest-message.h:
+
+/usr/include/regex.h:
+
+/opt/ros/jazzy/src/gtest_vendor/include/gtest/internal/gtest-type-util.h:
+
+/opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest-typed-test.h:
+
+/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/baseline_coverage_plan.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/environments.h:
+
+/usr/include/c++/13/bits/invoke.h:
+
+/usr/include/aarch64-linux-gnu/bits/errno.h:
+
+/usr/include/aarch64-linux-gnu/bits/siginfo-consts-arch.h:
+
 /home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/grid_map.hpp:
 
 /opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest-assertion-result.h:
@@ -813,6 +816,10 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 /usr/include/aarch64-linux-gnu/bits/types/sigevent_t.h:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_statx_timestamp.h:
+
+/opt/ros/jazzy/src/gtest_vendor/include/gtest/internal/custom/gtest-port.h:
 
 /usr/include/c++/13/vector:
 
@@ -848,10 +855,6 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 
 /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h:
 
-/usr/include/aarch64-linux-gnu/bits/siginfo-consts-arch.h:
-
-/usr/include/aarch64-linux-gnu/bits/errno.h:
-
 /usr/include/aarch64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/c++/13/bits/stl_relops.h:
@@ -862,21 +865,17 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 
 /usr/include/c++/13/bits/exception.h:
 
-/usr/include/regex.h:
+/usr/include/aarch64-linux-gnu/bits/signum-arch.h:
 
-/opt/ros/jazzy/src/gtest_vendor/include/gtest/internal/gtest-type-util.h:
+/usr/include/aarch64-linux-gnu/asm/sigcontext.h:
 
-/opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest-typed-test.h:
+/usr/include/c++/13/bits/unordered_map.h:
 
-/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/baseline_coverage_plan.hpp:
+/usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
-/usr/include/aarch64-linux-gnu/bits/environments.h:
+/usr/include/aarch64-linux-gnu/gnu/stubs.h:
 
-/opt/ros/jazzy/src/gtest_vendor/include/gtest/internal/custom/gtest-port.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_statx_timestamp.h:
-
-/usr/include/c++/13/bits/invoke.h:
+/usr/include/aarch64-linux-gnu/bits/math-vector.h:
 
 /usr/include/c++/13/backward/binders.h:
 
@@ -907,6 +906,10 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 /usr/include/c++/13/ext/numeric_traits.h:
 
 /usr/include/c++/13/bits/stl_iterator.h:
+
+/usr/include/aarch64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls-helper-functions.h:
 
@@ -1074,6 +1077,8 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 
 /usr/include/c++/13/bits/stl_multimap.h:
 
+/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/coverage_search.hpp:
+
 /usr/include/c++/13/bits/functional_hash.h:
 
 /usr/include/c++/13/bits/hashtable.h:
@@ -1143,5 +1148,3 @@ CMakeFiles/coverage_test.dir/test/coverage_test.cpp.o: /home/xbs/ros2_sweeper_re
 /usr/include/c++/13/bits/stl_function.h:
 
 /usr/include/c++/13/bits/stl_map.h:
-
-/usr/include/c++/13/bits/stl_raw_storage_iter.h:

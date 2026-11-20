@@ -327,6 +327,9 @@ include("/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/amen
 # install(DIRECTORY "config" "DESTINATION" "share/robot_coverage_planner")
 ament_cmake_symlink_install_directory("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner" DIRECTORY "config" "DESTINATION" "share/robot_coverage_planner")
 
+# install(DIRECTORY "include/" "DESTINATION" "include")
+ament_cmake_symlink_install_directory("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner" DIRECTORY "include/" "DESTINATION" "include")
+
 # install(FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/robot_coverage_planner" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner" FILES "/home/xbs/ros2_sweeper_resume_project/build/robot_coverage_planner/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/robot_coverage_planner" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 

@@ -266,11 +266,17 @@ class PoseComparison:
         submitted = [
             (goal_number, row) for goal_number, row in enumerate(
                 (row for row in self.waypoints if row[1] == 'submitted'), start=1)]
-        event_fields = ('stamp_ns', 'request_id', 'sequence', 'goal', 'route',
+        event_fields = ('stamp_ns', 'request_id', 'strategy', 'sequence', 'goal', 'route',
                         'stage', 'pass', 'index', 'attempt', 'adjusted',
                         'decision', 'attempted_direct', 'fallback',
                         'start_x', 'start_y', 'goal_x', 'goal_y',
-                        'length_m', 'reject_reason', 'request_count',
+                        'length_m', 'reference_length_m', 'selected_length_m',
+                        'extra_distance_m', 'new_area_m2', 'planning_ms',
+                        'reference_new_area_m2', 'best_candidate_length_m',
+                        'best_candidate_new_area_m2', 'best_candidate_score_m',
+                        'rejected_detour', 'rejected_area', 'rejected_score',
+                        'rejected_safety',
+                        'candidate_count', 'coverage_search_participated', 'reject_reason', 'request_count',
                         'direct_attempts', 'direct_successes', 'distance_rejections',
                         'costmap_rejections', 'footprint_rejections', 'navfn_fallbacks')
         event_rows = []
@@ -293,6 +299,7 @@ class PoseComparison:
             event_rows.append({
                 'stamp_ns': int(event['stamp_ns']),
                 'request_id': event.get('request_id', ''),
+                'strategy': event.get('strategy', ''),
                 'sequence': goal_event.get('sequence', '') if goal_event else '',
                 'goal': goal_number, 'route': goal[2] if goal else '',
                 'stage': goal_event.get('stage', '') if goal_event else '',
@@ -306,6 +313,21 @@ class PoseComparison:
                 'start_x': event.get('start_x', ''), 'start_y': event.get('start_y', ''),
                 'goal_x': event.get('goal_x', ''), 'goal_y': event.get('goal_y', ''),
                 'length_m': event.get('length_m', ''),
+                'reference_length_m': event.get('reference_length_m', ''),
+                'selected_length_m': event.get('selected_length_m', ''),
+                'extra_distance_m': event.get('extra_distance_m', ''),
+                'new_area_m2': event.get('new_area_m2', ''),
+                'planning_ms': event.get('planning_ms', ''),
+                'reference_new_area_m2': event.get('reference_new_area_m2', ''),
+                'best_candidate_length_m': event.get('best_candidate_length_m', ''),
+                'best_candidate_new_area_m2': event.get('best_candidate_new_area_m2', ''),
+                'best_candidate_score_m': event.get('best_candidate_score_m', ''),
+                'rejected_detour': event.get('rejected_detour', ''),
+                'rejected_area': event.get('rejected_area', ''),
+                'rejected_score': event.get('rejected_score', ''),
+                'rejected_safety': event.get('rejected_safety', ''),
+                'candidate_count': event.get('candidate_count', ''),
+                'coverage_search_participated': event.get('coverage_search_participated', ''),
                 'reject_reason': event.get('reject_reason', ''),
                 'request_count': event.get('request_count', ''),
                 'direct_attempts': event.get('direct_attempts', ''),
@@ -348,6 +370,29 @@ class PoseComparison:
             coverage_navfn_exceptions=sum(
                 row['decision'] in ('navfn_exception', 'direct_rejected_navfn_exception')
                 for row in event_rows),
+            coverage_aware_requests=sum(
+                row['strategy'] == 'coverage_aware' for row in event_rows),
+            coverage_aware_participated=sum(
+                str(row['coverage_search_participated']).lower() == 'true' for row in event_rows),
+            coverage_aware_selected=sum(
+                row['decision'] == 'coverage_selected' for row in event_rows),
+            coverage_aware_candidates_generated=sum(
+                int(row['candidate_count']) for row in event_rows
+                if str(row['candidate_count']).strip()),
+            coverage_aware_new_area_m2=sum(
+                float(row['new_area_m2']) for row in event_rows
+                if str(row['new_area_m2']).strip()),
+            coverage_aware_extra_distance_m=sum(
+                float(row['extra_distance_m']) for row in event_rows
+                if str(row['extra_distance_m']).strip()),
+            coverage_aware_planning_ms_mean=(statistics.mean(
+                float(row['planning_ms']) for row in event_rows
+                if str(row['planning_ms']).strip()) if any(
+                    str(row['planning_ms']).strip() for row in event_rows) else None),
+            coverage_aware_fallback_reasons=dict(Counter(
+                row['decision'] for row in event_rows
+                if row['strategy'] == 'coverage_aware' and
+                row['decision'].startswith('coverage_fallback_'))),
         )
         task, truth = self.task_grid, self.truth_grid
         if (task is not None and truth is not None and task.header.frame_id == truth.header.frame_id
@@ -462,6 +507,8 @@ def run(scenario, args, folder, domain):
     if args.direct_sweep_navigation is not None:
         launch_args += [
             f'direct_sweep_navigation:={str(args.direct_sweep_navigation).lower()}']
+    if args.coverage_aware_navigation:
+        launch_args += ['coverage_aware_navigation:=true']
     whole_map = scenario == 'living_room' or args.whole_map
     report = {'scenario': scenario, 'domain': domain, 'command': launch_args,
               'coverage_algorithm': args.coverage_algorithm,
@@ -614,11 +661,11 @@ def run(scenario, args, folder, domain):
             execution_trace.sample(measure.last_state)
             trace_report = execution_trace.report(folder)
             report.update({key: value for key, value in trace_report.items()
-                           if key.startswith('nav2_')})
+                           if key.startswith(('nav2_', 'coverage_'))})
             if args.compare_poses:
                 report['pose_comparison'] = {
                     key: value for key, value in trace_report.items()
-                    if not key.startswith('nav2_')}
+                    if not key.startswith(('nav2_', 'coverage_'))}
             counts = Counter(measure.goals.values())
             finished_goals = sum(counts[s] for s in (4, 5, 6))
             report.update(
@@ -774,6 +821,8 @@ def main():
     parser.add_argument('--direct-sweep-navigation', action=argparse.BooleanOptionalAction,
                         default=None,
                         help='Prefer collision-checked straight connectors with NavFn fallback')
+    parser.add_argument('--coverage-aware-navigation', action='store_true',
+                        help='Use the opt-in coverage-aware global planner for sweep goals')
     parser.add_argument('--precise-gap-navigation', action='store_true')
     parser.add_argument('--finish-main-before-gap', action='store_true')
     parser.add_argument('--gap-progress-timeout', type=int, default=35)
@@ -843,6 +892,10 @@ def main():
               'coverage_planned_path_m_total', 'planned_waypoints',
               'nav2_initial_plan_m', 'nav2_global_plan_messages', 'nav2_replans',
               'nav2_straight_initial_plan_ratio',
+              'coverage_aware_requests', 'coverage_aware_participated',
+              'coverage_aware_selected', 'coverage_aware_candidates_generated',
+              'coverage_aware_new_area_m2', 'coverage_aware_extra_distance_m',
+              'coverage_aware_planning_ms_mean', 'coverage_aware_fallback_reasons',
               'task_coverage', 'task_path_m', 'wall_time_s', 'real_time_factor', 'nav_goal_success_rate',
               'navigation_timeouts', 'gap_passes', 'deferred_sweep_waypoints',
               'adjusted_sweep_waypoints', 'deferred_gap_waypoints', 'adjusted_gap_waypoints',

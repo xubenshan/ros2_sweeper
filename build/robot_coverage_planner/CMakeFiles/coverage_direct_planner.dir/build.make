@@ -264,6 +264,7 @@ libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_srvs__rosidl_typesuppor
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_srvs__rosidl_typesupport_cpp.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libstd_srvs__rosidl_generator_py.so
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libnav2_util_core.so
+libcoverage_direct_planner.so: libcoverage_grid.a
 libcoverage_direct_planner.so: /opt/ros/jazzy/lib/libclass_loader.so
 libcoverage_direct_planner.so: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.1.0
 libcoverage_direct_planner.so: /usr/lib/aarch64-linux-gnu/libtinyxml2.so.10.0.0

@@ -371,6 +371,30 @@ src/coverage_plan.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/coverage_grid.dir/build.make CMakeFiles/coverage_grid.dir/src/coverage_plan.cpp.s
 .PHONY : src/coverage_plan.cpp.s
 
+src/coverage_search.o: src/coverage_search.cpp.o
+.PHONY : src/coverage_search.o
+
+# target to build an object file
+src/coverage_search.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/coverage_grid.dir/build.make CMakeFiles/coverage_grid.dir/src/coverage_search.cpp.o
+.PHONY : src/coverage_search.cpp.o
+
+src/coverage_search.i: src/coverage_search.cpp.i
+.PHONY : src/coverage_search.i
+
+# target to preprocess a source file
+src/coverage_search.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/coverage_grid.dir/build.make CMakeFiles/coverage_grid.dir/src/coverage_search.cpp.i
+.PHONY : src/coverage_search.cpp.i
+
+src/coverage_search.s: src/coverage_search.cpp.s
+.PHONY : src/coverage_search.s
+
+# target to generate assembly for a file
+src/coverage_search.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/coverage_grid.dir/build.make CMakeFiles/coverage_grid.dir/src/coverage_search.cpp.s
+.PHONY : src/coverage_search.cpp.s
+
 src/grid_map.o: src/grid_map.cpp.o
 .PHONY : src/grid_map.o
 
@@ -452,6 +476,9 @@ help:
 	@echo "... src/coverage_plan.o"
 	@echo "... src/coverage_plan.i"
 	@echo "... src/coverage_plan.s"
+	@echo "... src/coverage_search.o"
+	@echo "... src/coverage_search.i"
+	@echo "... src/coverage_search.s"
 	@echo "... src/grid_map.o"
 	@echo "... src/grid_map.i"
 	@echo "... src/grid_map.s"

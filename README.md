@@ -165,10 +165,37 @@ colcon test --packages-select robot_coverage_planner robot_cleaning_manager
 colcon test-result --verbose
 ```
 
-默认清扫不需要额外参数；验证可选策略时才增加
-`direct_sweep_navigation:=true`。完整结果、测试限制和未完成项目以
+默认清扫不需要额外参数，默认仍使用 Navfn。验证旧短直连策略时增加
+`direct_sweep_navigation:=true`；验证新覆盖感知策略时增加
+`coverage_aware_navigation:=true`，两者不能同时启用。完整结果、测试限制和未完成项目以
 [`results/coverage-direct-20261116/report.md`](results/coverage-direct-20261116/report.md)
 及其 [`strict-ab/ab-report.md`](results/coverage-direct-20261116/strict-ab/ab-report.md) 为准。
+
+### CoverageAware 全局规划器
+
+`CoverageAware` 是 `robot_coverage_planner::CoverageDirectPlanner` 的可选策略。它保留
+Navfn 作为参考路线和安全回退，在 `/cleaning/covered_grid` 有效时生成有限数量的覆盖感知
+A* 候选。候选综合路径长度、转弯、costmap 风险、重复通行和清扫半径内的新增覆盖面积，
+并受到 `max_detour_ratio`、`max_detour_distance`、`min_coverage_gain_m2`、
+`min_coverage_gain_per_extra_meter` 和 `min_score_gain_m` 约束。候选不会降低完整 footprint
+碰撞检查要求，覆盖数据无效时直接使用 Navfn。
+
+默认参数如下：
+
+```text
+coverage_cleaning_radius=0.20
+max_detour_ratio=1.25
+max_detour_distance=0.75
+coverage_weight=0.35
+min_coverage_gain_m2=0.0025
+min_coverage_gain_per_extra_meter=0.05
+min_score_gain_m=0.03
+```
+
+覆盖网格语义为 `100=已覆盖`、`0=目标但未覆盖`、负值为非目标区域。规划器事件记录在
+`/coverage_direct_planner/events`，benchmark 会将逐请求事件写入
+`coverage-direct-planner-events.csv`，并在 `result.json` 中汇总候选数量、覆盖搜索参与次数、
+采用次数、回退原因和平均规划耗时。
 
 ## 面试中可以重点介绍的内容
 
@@ -349,6 +376,23 @@ python3 scripts/run_cleaning_benchmark.py \
   --coverage-algorithm optimized \
   --output results/manual-living-room
 ```
+
+覆盖感知 C 组示例：
+
+```bash
+python3 scripts/run_cleaning_benchmark.py \
+  --scenario multi_room --whole-map --runs 3 --no-gui \
+  --coverage-aware-navigation \
+  --output results/coverage-aware-20261117
+```
+
+A 组 Navfn 不传规划器开关，B 组旧策略使用 `--direct-sweep-navigation`，C 组使用
+`--coverage-aware-navigation`。三组必须保持相同 Coverage Planner、地图、起点、Controller、
+costmap 和恢复参数。最终里程、达到 90% 覆盖的里程和重复率使用 Gazebo 真值轨迹，不用
+Nav2 `/plan` 路径长度之和替代。
+
+本轮覆盖感知实现和真实 Gazebo 样本记录在
+[`results/coverage-aware-20261117/report.md`](results/coverage-aware-20261117/report.md)。
 
 运行结束后查看：
 
