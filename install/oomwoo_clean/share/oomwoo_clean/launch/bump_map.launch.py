@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_clean/launch/bump_map.launch.py

@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_sim_support/launch/coverage_regression.launch.py

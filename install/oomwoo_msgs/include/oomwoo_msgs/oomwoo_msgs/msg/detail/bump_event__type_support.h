@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_msgs/rosidl_generator_c/oomwoo_msgs/msg/detail/bump_event__type_support.h

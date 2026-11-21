@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/xbs/ros2_sweeper_resume_project/build/robot_motion_safety/cmd_vel_arbiter" "TARGETS" "cmd_vel_arbiter" "DESTINATION" "lib/robot_motion_safety")

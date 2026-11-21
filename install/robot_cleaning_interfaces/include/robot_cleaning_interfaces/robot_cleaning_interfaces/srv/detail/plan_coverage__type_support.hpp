@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_cpp/robot_cleaning_interfaces/srv/detail/plan_coverage__type_support.hpp

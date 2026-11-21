@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_bringup/ament_cmake_environment_hooks/local_setup.zsh

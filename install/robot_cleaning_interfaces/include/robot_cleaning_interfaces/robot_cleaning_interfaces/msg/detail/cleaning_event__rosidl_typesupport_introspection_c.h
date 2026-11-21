@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_typesupport_introspection_c/robot_cleaning_interfaces/msg/detail/cleaning_event__rosidl_typesupport_introspection_c.h

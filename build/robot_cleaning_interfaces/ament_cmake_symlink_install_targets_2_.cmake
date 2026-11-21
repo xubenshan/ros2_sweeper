@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/rosidl_generator_py/robot_cleaning_interfaces/robot_cleaning_interfaces_s__rosidl_typesupport_c.so" "TARGETS" "robot_cleaning_interfaces_s__rosidl_typesupport_c" "DESTINATION" "lib/python3.12/site-packages/robot_cleaning_interfaces")

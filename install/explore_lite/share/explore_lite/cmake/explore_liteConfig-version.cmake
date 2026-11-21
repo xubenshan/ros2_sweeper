@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/explore_lite/ament_cmake_core/explore_liteConfig-version.cmake

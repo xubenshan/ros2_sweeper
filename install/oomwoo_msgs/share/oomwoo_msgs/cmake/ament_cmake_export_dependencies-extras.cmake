@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_msgs/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake

@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/upstream/oomwoo_ws/oomwoo_gazebo/include/oomwoo_gazebo/self_drive_gazebo.hpp

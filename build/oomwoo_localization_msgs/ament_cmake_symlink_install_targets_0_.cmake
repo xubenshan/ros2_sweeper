@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/xbs/ros2_sweeper_resume_project/build/oomwoo_localization_msgs/rosidl_generator_py/oomwoo_localization_msgs/oomwoo_localization_msgs_s__rosidl_typesupport_fastrtps_c.so" "TARGETS" "oomwoo_localization_msgs_s__rosidl_typesupport_fastrtps_c" "DESTINATION" "lib/python3.12/site-packages/oomwoo_localization_msgs")

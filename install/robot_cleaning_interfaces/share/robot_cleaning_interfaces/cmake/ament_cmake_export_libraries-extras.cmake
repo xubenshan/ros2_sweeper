@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/robot_cleaning_interfaces/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake

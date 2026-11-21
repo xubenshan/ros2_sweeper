@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/robot_coverage_planner/include/robot_coverage_planner/baseline_coverage_plan.hpp

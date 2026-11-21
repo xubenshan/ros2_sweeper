@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_perception/launch/dynamic_object_detector.launch.py

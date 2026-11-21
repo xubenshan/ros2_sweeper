@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_localization_msgs/rosidl_typesupport_fastrtps_cpp/oomwoo_localization_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h

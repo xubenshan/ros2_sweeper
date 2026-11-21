@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_localization_msgs/rosidl_generator_c/oomwoo_localization_msgs/msg/rosidl_generator_c__visibility_control.h

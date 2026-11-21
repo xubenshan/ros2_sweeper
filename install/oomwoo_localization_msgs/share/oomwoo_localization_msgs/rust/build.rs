@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_localization_msgs/rosidl_generator_rs/oomwoo_localization_msgs/rust/build.rs

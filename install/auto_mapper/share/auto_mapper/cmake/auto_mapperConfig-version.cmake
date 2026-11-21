@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/auto_mapper/ament_cmake_core/auto_mapperConfig-version.cmake

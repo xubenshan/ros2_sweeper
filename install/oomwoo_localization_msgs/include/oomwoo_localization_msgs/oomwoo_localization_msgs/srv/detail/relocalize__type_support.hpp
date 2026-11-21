@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/build/oomwoo_localization_msgs/rosidl_generator_cpp/oomwoo_localization_msgs/srv/detail/relocalize__type_support.hpp

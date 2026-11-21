@@ -1,1 +1,0 @@
-/home/xbs/ros2_sweeper_resume_project/ros2_ws/src/upstream/oomwoo_ws/oomwoo-ros2-tools/src/oomwoo_bringup/launch/navigation.launch.py
